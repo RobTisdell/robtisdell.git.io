@@ -2,101 +2,116 @@ body {
 	background-color: #444449; /* Global gray background, overriden by specific sections later */
 }
 
+/* Disable sidenav from mobile */
+
 .sidenav {
-  font-family: Monaco, monospace;
-  height: 100%;
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111111;
-  padding-top: 20px;
+  display: none;
 }
 
-/*The following all define the general style of the sidenav menu */
-
-.sidenav img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 5px;
-}
-
-.sidenav a {
-  padding: 10px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 23px;
-  color: #818181;
-  display: block;
-  -webkit-transition:color .1s ease-in;
-}
-
-.sidenav a:hover {
-  color: #F1F1F1;
-}
-
-.sidenav a.current {
-	color: #F1F1F1;
-}
-
-/* This is for the dropright menus in particular */
-
-.sidenav ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-
-.sidenav li {
-	margin: 0;
-}
-
-.menu li {
-	position: relative;
-}
-
-.menu li ul {
-    position: absolute;
-	margin-top: 3px;
-	padding: 0px 0px 3px;
-    top: 0;
-    left: 100%;
-	width: 200px;
+/* Top navigation menu for mobile */
+.topnav {
+	font-family: Monaco, monospace;
+	height: 50px;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
 	background-color: #111111;
+}
+
+.topnav-container {
+	height: 50px;
+	width: 100%;
+	display: flex;
+}
+
+.top-left {
+	flex: 33.33%;
+	width: 50px;
+	height: 50px;
+}
+
+.top-left img {
+	max-height: 100%;
+}
+
+.top-right {
+	flex: 0.083%;
+	text-align: right;
+	width: 50px;
+	height: 50px;
+}
+
+.top-right img {
+	max-height: 48px;
+	padding: 1px;
+}
+
+.menulist {
+	position: absolute;
+	width: 99%;
+	top: 33px;
+	left: 0;
+	z-index: 1;
 	display: none;
 }
 
-.menu li:hover > ul {
-	display: block;
+
+.menulist ul {
+	padding: 0;
+    list-style-type: none;
+}
+
+.menulist li.firstitem {
+	height: 50px;
+	background-color: #111111;
+	width: 100%;
+	list-style-type: none;
+	border-style: solid;
+	border-color: #CCCCDD;
+}
+
+.menulist li {
+	height: 50px;
+	background-color: #111111;
+	width: 100%;
+	list-style-type: none;
+	padding-left: 3px;
+	border-style: solid;
+	border-color: #CCCCDD;
+	border-top: none;
+}
+
+.menulist a {
+	color: #CCCCDD;
+	text-decoration: none;
+	vertical-align: middle;
+	line-height: 50px;
 }
 
 /* The following defines the universal style of the contents area */
 
 .content {
-	margin-left: 210px; /* Starts where the width of the sidenav ends */
-	font-size: 20px;
-	padding: 50px 210px;
+	position: fixed;
+	width: 95%;
+	top: 50px;
+	font-size: 1em;
 	color: #BBBBBB;
+	display: block;
 }
 
 .content a {
 	color: #CCCCDD;
 }
 
-.content a:hover {
-	color: #EEEEFF;
-	-webkit-transition:color .1s ease-in;
-}
-
-
 .title {
 	color:#E0AA3E;
 	position: relative;
 	text-align: center;
 	font-size: 1.25em;
-}
 
+}
 .container {
 	display: flex;
 	width: 100%;
@@ -198,8 +213,8 @@ body {
 
 .fa {
   font-size: 24px;
-  width: 40px;
-  height: 20px;
+  width: 50px;
+  height: 50px;
   text-align: center;
   border-radius: 50%;
 }
@@ -207,6 +222,4 @@ body {
 .fa-facebook {
 	background: #444449;
 	color: white;
-}
-
 }

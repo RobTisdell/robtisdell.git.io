@@ -2,6 +2,11 @@ body {
 	background-color: #444449; /* Global gray background, overriden by specific sections later */
 }
 
+/* Turns off the top menu for mobile */
+.topnav {
+	display: none;
+}
+
 .sidenav {
   font-family: Monaco, monospace;
   height: 100%;

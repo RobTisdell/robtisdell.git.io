@@ -1,15 +1,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-	<link rel="stylesheet" href="style.css">
+<!--	<link rel="stylesheet" media="screen and min-width:900px)" href="desktop_style.css"> -->
+<!--	<link rel="stylesheet" media="screen and max-width:900px)" href="mobile_style.css"> -->
+		<link rel="stylesheet" href="mobile_style.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="icon" type="image/png" href="img/logo.png">
+		<link rel="icon" type="image/png" href="img/logo.png">
+		<script src="scripts/mobmenu.js"></script>
         <title>
             Fits Like a Glove
         </title>
     </head>
 	
     <body>
+		<!-- This is the  topnav for mobile view -->
+		<div class="topnav">
+			<div class="topnav-container">
+				<div class="top-left">
+					<a href="javascript:void(0);" onclick="collapseexpandmenu()"><img src="img/icons/menuicon.png" /></a>
+				</div>
+				<div class="top-right">
+					<img src="img/logo.png">
+				</div>
+				<div id="MobileMenuList" class="menulist" >
+					<ul>
+						<a href="index.html"><li class="firstitem">HOME</li></a>
+						<a  href="about.html"><li>ABOUT US</li></a>
+						<a href="current_titleholder.html"><li>TITLEHOLDER</li></a>
+						<a href="previous_titleholders.html"><li>PREVIOUS TITLEHOLDERS</li></a>
+						<a href="contest.html"><li>CONTEST</li></a>
+						<a href="upcoming_events.html"><li>UPCOMING EVENTS</li></a>
+						<a href="previous_events.html"><li>PREVIOUS EVENTS</li></a>
+						<a href="calendar.html"><li>EVENTS CALENDAR</li></a>
+						<a href="staff.html"><li>STAFF</li></a>
+						<a href="membership.html"><li>JOIN US</li></a>
+						<a href="affiliates.html"><li>AFFILIATES</li></a>
+						<li class=><a href="https://www.facebook.com/groups/79158953813" class="fa fa-facebook"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- This is the sidenav for desktop view -->
 		<div class="sidenav">
 			<img src="img/logo.png" style="width: 190px" class="center" />
 			<ul class="menu">
