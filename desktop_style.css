@@ -31,7 +31,7 @@ body {
 .sidenav a {
   padding: 10px 8px 6px 16px;
   text-decoration: none;
-  font-size: 23px;
+  font-size: 1.35vw;
   color: #818181;
   display: block;
   -webkit-transition:color .1s ease-in;
@@ -214,4 +214,8 @@ body {
 	color: white;
 }
 
+.socials a:hover {
+{
+	background: #818181;
+	-webkit-transition:background .1s ease-in;
 }
