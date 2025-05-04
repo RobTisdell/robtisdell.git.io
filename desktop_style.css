@@ -10,7 +10,8 @@ body {
 .sidenav {
   font-family: Monaco, monospace;
   height: 100%;
-  width: 200px;
+  width: 20%;
+  max-width: 200px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -25,13 +26,14 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  width: 100$;
   padding-left: 5px;
 }
 
 .sidenav a {
   padding: 10px 8px 6px 16px;
   text-decoration: none;
-  font-size: 1.35vw;
+  font-size: 2.9vh;
   color: #818181;
   display: block;
   -webkit-transition:color .1s ease-in;
@@ -210,6 +212,7 @@ body {
 }
 
 .fa-facebook {
+	font-size: 24px;
 	background: #444449;
 	color: white;
 }
