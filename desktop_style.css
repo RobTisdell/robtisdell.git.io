@@ -144,8 +144,7 @@ body {
 /* The following defines the universal style of the contents area */
 
 .wrapper .content {
-	width: 87.875vw; /* Always set this to (100 - vw value of sidenav) */
-	margin-left: 12.125vw; /*Always set this to vw value of sidenav.  This + the above width value should always equal 100. */
+	margin-left: 12.125vw;
 	font-size: 20px;
 	color: #AABBCC;
 	font-size: 20px;
