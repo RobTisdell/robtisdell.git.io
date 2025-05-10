@@ -2,7 +2,7 @@ body {
 	background-color: #444449; /* Global gray background, overriden by specific sections later */
 }
 
-/* Disable sidenav from mobile */
+/* Disable sidenav in favor of mobile topnav */
 
 .sidenav {
   display: none;
@@ -50,8 +50,6 @@ body {
 
 .menulist {
 	position: absolute;
-	width: 99%;
-	top: 33px;
 	left: 0;
 	z-index: 1;
 	display: none;
@@ -63,19 +61,9 @@ body {
     list-style-type: none;
 }
 
-.menulist li.firstitem {
-	height: 50px;
-	background-color: #111111;
-	width: 100%;
-	list-style-type: none;
-	border-style: solid;
-	border-color: #CCCCDD;
-}
-
 .menulist li {
-	height: 50px;
+	height: 8.33vh;
 	background-color: #111111;
-	width: 100%;
 	list-style-type: none;
 	padding-left: 3px;
 	border-style: solid;
