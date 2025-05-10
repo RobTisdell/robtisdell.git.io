@@ -1,0 +1,212 @@
+body {
+	background-color: #444449; /* Global gray background, overriden by specific sections later */
+}
+
+.sidenav {
+  font-family: Monaco, monospace;
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111111;
+  padding-top: 20px;
+}
+
+/*The following all define the general style of the sidenav menu */
+
+.sidenav img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5px;
+}
+
+.sidenav a {
+  padding: 10px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 23px;
+  color: #818181;
+  display: block;
+  -webkit-transition:color .1s ease-in;
+}
+
+.sidenav a:hover {
+  color: #F1F1F1;
+}
+
+.sidenav a.current {
+	color: #F1F1F1;
+}
+
+/* This is for the dropright menus in particular */
+
+.sidenav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sidenav li {
+	margin: 0;
+}
+
+.menu li {
+	position: relative;
+}
+
+.menu li ul {
+    position: absolute;
+	margin-top: 3px;
+	padding: 0px 0px 3px;
+    top: 0;
+    left: 100%;
+	width: 200px;
+	background-color: #111111;
+	display: none;
+}
+
+.menu li:hover > ul {
+	display: block;
+}
+
+/* The following defines the universal style of the contents area */
+
+.content {
+	margin-left: 210px; /* Starts where the width of the sidenav ends */
+	font-size: 20px;
+	padding: 50px 210px;
+	color: #BBBBBB;
+}
+
+.content a {
+	color: #CCCCDD;
+}
+
+.content a:hover {
+	color: #EEEEFF;
+	-webkit-transition:color .1s ease-in;
+}
+
+
+.title {
+	color:#E0AA3E;
+	position: relative;
+	text-align: center;
+	font-size: 1.25em;
+}
+
+.container {
+	display: flex;
+	width: 100%;
+}
+
+/* This is specifically for the prototype Google calendar.  Will delete when I have a javascript one. */
+.prototyping {
+	position: relative;
+	text-align: center;	
+}
+
+/* Picture containers for staff and previous titleholders */
+
+.staffpictures {
+    width: 25%;
+	height: 250px;
+    float: left;
+	text-align: center;
+}
+
+.staffpictures img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.staff-box {
+    width: 75%;
+    float: left;
+	color: #AABBCC;
+}
+
+/* Containers for current titleholders.  These are deliberately larger than the staff pictures because I expect only one titleholder at a time*/
+
+.titleholderpictures {
+	width: 35%;
+	height: 350px;
+    float: left;
+	text-align: center;
+}
+
+.titleholderpictures img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.titleholder-box {
+    width: 65%;
+    float: left;
+	color: #AABBCC;
+}
+
+/* Containers for upcoming events. */
+/* This is very much a work in progress.  The ideal here is a javascript that automates this stuff. */
+
+.futureeventbanner img {
+	border-style: solid;
+	width: 90%;
+	height: 180px;
+    float: left;
+	text-align: center;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+/* Containers for past events. */
+/* This is a work in progress, similar to upcoming events.  These will be smaller because I expect more on the screen.*/
+
+.pasteventculumn {
+	float: left;
+	width: 50%;
+}
+
+.pasteventbanners:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.pasteventculumn img {
+	border-style: solid;
+	text-align: center;
+	max-width: 90%;
+	max-height: 90%;
+}
+
+/* Social media links */
+
+.socials {
+	position: absolute;
+	width: 200px;
+	bottom: 50px;
+	display: flex;
+	justify-content: center;
+}
+
+.socials a {
+	  padding: 10px 0px 10px 0px;
+}
+
+.fa {
+  font-size: 24px;
+  width: 40px;
+  height: 20px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.fa-facebook {
+	background: #444449;
+	color: white;
+}
+
+}

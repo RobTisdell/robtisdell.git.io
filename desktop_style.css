@@ -155,9 +155,9 @@ body {
 	just a margin container really*/
 
 .wrapper .content article {
-	margin-left: 10%;
-	margin-right: 10%;
-	margin-top: 8%;
+	margin-left: 10vw;
+	margin-right: 10vw;
+	margin-top: 15vh;
 }
 
 /* Style definitions within the article tag */
