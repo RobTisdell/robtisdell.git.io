@@ -148,6 +148,7 @@ body {
 	font-size: 20px;
 	color: #AABBCC;
 	font-size: 20px;
+	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
 }
 
 /* Defines the Article tag for almost all pages. It's
@@ -157,7 +158,6 @@ body {
 	margin-left: 10vw;
 	margin-right: 10vw;
 	margin-top: 15vh;
-	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
 }
 
 /* Style definitions within the article tag */
