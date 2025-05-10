@@ -113,8 +113,8 @@ body {
 /* Social media buttons alignment and styling */
 
 .wrapper .sidenav .socials {
-	position: relative;
-	top: 25vh;
+	position: absolute;
+	bottom: 5vh;
 	left: 50%;
 	transform: translate(-50%);
 }
@@ -193,10 +193,9 @@ body {
 }
 
 .wrapper .content article .staffpictures {
-    width: 25%;
-	height: 250px;
+    width: 15vw;
+	height: 30vh;
     float: left;
-	text-align: center;
 }
 
 .wrapper .content article .staffpictures img {
@@ -206,8 +205,9 @@ body {
 /* Text container for staff and previous titleholders */
 
 .wrapper .content article .staff-box {
-    width: 75%;
-    float: left;
+	width: 100%;
+	float: left;
+	height: 30vh;
 }
 
 /* Picture containers for the current titleholder.  These are deliberately larger than the staff pictures because I expect only one titleholder at a time*/
