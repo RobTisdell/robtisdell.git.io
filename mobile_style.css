@@ -1,5 +1,6 @@
 body {
 	background-color: #444449; /* Global gray background, overriden by specific sections later */
+	font-size: 1em;
 }
 
 /* Disable sidenav from mobile */
@@ -64,7 +65,7 @@ body {
 }
 
 .menulist li {
-	height: 9vh;
+	height: 6vh;
 	background-color: #111111;
 	width: 100%;
 	list-style-type: none;
