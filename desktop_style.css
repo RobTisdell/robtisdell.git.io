@@ -7,11 +7,6 @@ body {
 	background-color: #444449; /* Global gray background, overriden by specific sections later */
 }
 
-/* Turns off the top menu for mobile */
-.wrapper .topnav {
-	display: none;
-}
-
 /* Settings for the sidenav container */
 
 .wrapper .sidenav {
@@ -180,33 +175,39 @@ body {
 
 /*	This is just prototype content for the calendar.  It's currently just a Google calender, will likely change that in the future.*/
 
-.wrapper .content article .prototyping {
+.prototype-desktop {
 	position: relative;
 	text-align: center;	
 }
 
+.prototype-mobile {
+	display: none;
+}
+
 /* Picture containers for staff and previous titleholders */
 
-.wrapper .content article .staff_pictures_container {
-	display: flex;
+.staff-box {
+	min-height: 30vh;
+	margin-bottom: 5vh;
 }
 
-.wrapper .content article .staffpictures {
-    width: 15vw;
+.staff-title {
+	color: #AABBCC;
+}
+
+.staffpictures {
+    width: 25%;
 	height: 30vh;
     float: left;
+	margin-top: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
 }
 
-.wrapper .content article .staffpictures img {
+.staffpictures img {
 	object-fit: contain;
-}
-
-/* Text container for staff and previous titleholders */
-
-.wrapper .content article .staff-box {
-	width: 100%;
-	float: left;
-	height: 30vh;
+	display: block;
+	margin: auto;
 }
 
 /* Picture containers for the current titleholder.  These are deliberately larger than the staff pictures because I expect only one titleholder at a time*/
@@ -219,6 +220,11 @@ body {
 
 .wrapper .content article .titleholderpictures img {
 	object-fit: contain;
+}
+
+.wrapper .content article .titleholder-title {
+    width: 65%;
+    float: left;
 }
 
 .wrapper .content article .titleholder-box {
@@ -258,3 +264,9 @@ body {
 	max-height: 90%;
 }
 
+/* All content disabling for mobile */
+
+/* Turns off the top menu for mobile */
+.wrapper .topnav {
+	display: none;
+}

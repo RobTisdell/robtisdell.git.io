@@ -2,7 +2,7 @@ body {
 	background-color: #444449; /* Global gray background, overriden by specific sections later */
 }
 
-/* Disable sidenav in favor of mobile topnav */
+/* Disable sidenav from mobile */
 
 .sidenav {
   display: none;
@@ -50,6 +50,8 @@ body {
 
 .menulist {
 	position: absolute;
+	width: 99%;
+	top: 33px;
 	left: 0;
 	z-index: 1;
 	display: none;
@@ -62,8 +64,9 @@ body {
 }
 
 .menulist li {
-	height: 8.33vh;
+	height: 6vh;
 	background-color: #111111;
+	width: 100%;
 	list-style-type: none;
 	padding-left: 3px;
 	border-style: solid;
@@ -75,21 +78,19 @@ body {
 	color: #CCCCDD;
 	text-decoration: none;
 	vertical-align: middle;
-	line-height: 50px;
 }
 
 /* The following defines the universal style of the contents area */
 
-.content {
-	position: fixed;
-	width: 95%;
-	top: 50px;
+.content article {
+	margin-top: 50px;
 	font-size: 1em;
 	color: #BBBBBB;
-	display: block;
+	margin-left: 10vw;
+	margin-right: 10vw;
 }
 
-.content a {
+.content article a {
 	color: #CCCCDD;
 }
 
@@ -100,56 +101,76 @@ body {
 	font-size: 1.25em;
 
 }
+
+
+/* Titleholder styling */
 .container {
 	display: flex;
-	width: 100%;
+	flex-direction: column
 }
 
-/* This is specifically for the prototype Google calendar.  Will delete when I have a javascript one. */
-.prototyping {
-	position: relative;
-	text-align: center;	
-}
-
-/* Picture containers for staff and previous titleholders */
-
-.staffpictures {
-    width: 25%;
-	height: 250px;
-    float: left;
+.titleholder-title {
+	order: 1;
 	text-align: center;
 }
 
-.staffpictures img {
-  max-width: 100%;
-  max-height: 100%;
+.titleholderpictures {
+	order: 2;
+	height: 60vh;
 }
 
-.staff-box {
-    width: 75%;
-    float: left;
+.titleholderpictures img {
+	max-width: 100%;
+	max-height: 100%;
+	display: block;
+	margin: auto;
+}
+
+.titleholder-box {
+	order: 3;
 	color: #AABBCC;
+	margin: auto;
 }
 
 /* Containers for current titleholders.  These are deliberately larger than the staff pictures because I expect only one titleholder at a time*/
 
-.titleholderpictures {
-	width: 35%;
-	height: 350px;
-    float: left;
-	text-align: center;
+/* This is specifically for the prototype Google calendar.  Will delete when I have a javascript one. */
+.prototype-mobile {
+	position: relative;
+	text-align: center;	
 }
 
-.titleholderpictures img {
-  max-width: 100%;
-  max-height: 100%;
+.prototype-desktop {
+	display: none;
 }
 
-.titleholder-box {
-    width: 65%;
-    float: left;
+/* Picture containers for staff and previous titleholders */
+
+.staff-box {
+	min-height: 120px;
+	margin-bottom: 5%;
+	font-size: .75em;
+}
+
+.staff-title {
 	color: #AABBCC;
 }
+
+.staffpictures {
+    width: 25%;
+    float: left;
+	margin-top: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.staffpictures img {
+	max-width: 100%;
+	max-height: 120px;
+	display: block;
+	margin: auto;
+}
+
 
 /* Containers for upcoming events. */
 /* This is very much a work in progress.  The ideal here is a javascript that automates this stuff. */
@@ -184,6 +205,14 @@ body {
 	max-width: 90%;
 	max-height: 90%;
 }
+
+/* upcoming event banners */
+.content article .eventbanner {
+	width: 100%;
+	display: block;
+	margin: auto;
+	margin-top: 5%;
+}	
 
 /* Social media links */
 
