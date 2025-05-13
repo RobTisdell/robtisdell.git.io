@@ -1,6 +1,6 @@
 body {
 	background-color: #444449; /* Global gray background, overriden by specific sections later */
-	font-size: 16px;
+	font-size: 4.7195vh;
 }
 
 /* Disable sidenav from mobile */
@@ -99,6 +99,7 @@ body {
 	position: relative;
 	text-align: center;
 	font-size: 1.25em;
+
 }
 
 
