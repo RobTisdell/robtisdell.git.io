@@ -1,3 +1,9 @@
+html {
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
 body {
 	background-color: #444449; /* Global gray background, overriden by specific sections later */
 	font-size: 2vh;
