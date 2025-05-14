@@ -79,15 +79,17 @@ body {
 	border-style: solid;
 	border-color: #CCCCDD;
 	border-top: none;
+	display: flex;
+	align-items: center;
 }
 
 .menulist a {
 	font-size: 3vh;
 	color: #CCCCDD;
 	text-decoration: none;
-	vertical-align: middle;
 	display: block;
-	width: 100%
+	margin: auto;
+	width: 100%;
 }
 
 /* The following defines the universal style of the contents area */
