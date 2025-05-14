@@ -82,6 +82,7 @@ body {
 }
 
 .menulist a {
+	font-size: 6.9vh;
 	color: #CCCCDD;
 	text-decoration: none;
 	vertical-align: middle;
