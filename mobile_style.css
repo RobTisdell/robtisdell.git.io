@@ -226,6 +226,10 @@ body {
 
 /* Social media links */
 
+.wrapper .topnav .socials {
+	margin: 0 auto;
+}
+
 .wrapper .topnav .socials a{
 	background-color: #444449;
 	border-radius: 50%;
@@ -233,7 +237,6 @@ body {
 	height: 2.5vw;
 	display: flex;
 	align-items: center;
-	margin: 0 auto;
 }
 
 .wrapper .topnav .socials a:hover{
