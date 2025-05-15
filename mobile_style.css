@@ -1,3 +1,4 @@
+/* Keeps mobile browsers from arbitrarily resizing text */
 html {
 	-moz-text-size-adjust: none;
 	-webkit-text-size-adjust: none;
@@ -15,7 +16,7 @@ body {
   display: none;
 }
 
-/* Top navigation menu for mobile */
+/* Top navigation pane */
 .topnav {
 	font-family: Monaco, monospace;
 	height: 50px;
@@ -33,6 +34,7 @@ body {
 	display: flex;
 }
 
+/* Dropdown container */
 .top-left {
 	flex: 33.33%;
 	width: 50px;
@@ -43,6 +45,7 @@ body {
 	max-height: 50px;
 }
 
+/* Logo container */
 .top-right {
 	flex: 0.083%;
 	text-align: right;
@@ -55,6 +58,7 @@ body {
 	padding: 1px;
 }
 
+/* Definition for the dropdown list */
 .menulist {
 	position: absolute;
 	width: 99%;
@@ -90,6 +94,11 @@ body {
 	display: block;
 	margin: auto;
 	width: 100%;
+}
+
+.topnav a:hover {	
+	transition: .3s;
+	color: #F1F1F1;
 }
 
 /* The following defines the universal style of the contents area */
@@ -226,11 +235,11 @@ body {
 
 /* Social media links */
 
-.wrapper .topnav .socials {
+.socials {
 	margin: 0 auto;
 }
 
-.wrapper .topnav .socials a{
+.socials a{
 	background-color: #444449;
 	border-radius: 50%;
 	width: 2.5vw;
@@ -239,12 +248,12 @@ body {
 	align-items: center;
 }
 
-.wrapper .topnav .socials a:hover{
+.socials a:hover{
 	transition: .3s;
 	transform: rotate(360deg);
 	background-color: #333338;
 }
 
-.wrapper .topnav .socials a i{
+.socials a i{
 	margin: 0 auto;
 }
