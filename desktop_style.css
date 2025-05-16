@@ -35,7 +35,7 @@ body {
 	max-height: 90%;
 }
 
-/* Styling for the primary ists in the sidenav */
+/* Styling for the primary lists in the sidenav */
 
 .wrapper .sidenav ul li {
 	list-style: none;
@@ -43,21 +43,13 @@ body {
 	padding: 5px 0px 5px 15px;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
-	margin: 0;
 	position: relative;
 	display: flex;
 	align-items: center;
 }
 
-/*  Further hackery.  I'm sure there's a properly refined way to do this, but fuck if I know what it is.
-	This makes the last blank line in the unordered list in the menu look mostly invisible,
-	while keeping the transparent border effect.*/
-
 .wrapper .sidenav ul li:last-child {
-	list-style: none;
-	border-bottom: none;
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
-	margin: 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* This is for the dropright menus in particular */
