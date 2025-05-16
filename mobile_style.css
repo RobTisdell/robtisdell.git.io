@@ -192,7 +192,7 @@ body {
 }
 
 .staffpictures img {
-	max-width: 100%;
+	max-width: 90%;
 	max-height: 50vh;
 	display: block;
 	margin: auto;
