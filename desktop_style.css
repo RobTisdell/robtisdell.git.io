@@ -176,6 +176,74 @@ body {
 	display: none;
 }
 
+.Calendar_Container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Calendar {
+	width: 50vw;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #333338;
+}
+
+.Calendar_Header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+}
+
+.Calendar_Header button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	border-radius: 50%;
+	background-color: #111111;
+	color: #818181;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+
+.Calendar_Header button:hover {
+	transition: .3s;
+	background-color: #080808;
+	color: #F1F1F1;
+}
+
+.Calendar_Days {
+	display: grid;
+	grid-template-columns: repeat(7,1fr);
+}
+
+.Calendar_Day {
+	text-align: center;
+	padding: 5px;
+}
+
+.Calendar_Dates {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+}
+
+.date {
+	border-style: solid;
+	border-radius: 1px;
+	color: #F1F1F1;
+	height: 15vh;
+	padding: 5px;
+}
+
+.date.inactive{ 
+	color: #818181;
+}
 /* Picture containers for staff and previous titleholders */
 
 .staff-box {
@@ -260,5 +328,9 @@ body {
 
 /* Turns off the top menu for mobile */
 .wrapper .topnav {
+	display: none;
+}
+
+.prototype-desktop {
 	display: none;
 }
