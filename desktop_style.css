@@ -334,3 +334,28 @@ body {
 .prototype-desktop {
 	display: none;
 }
+
+/* Container for affiliate links */
+
+.affiliate_container {
+margin-top: 5vh;
+height: 10vh;
+display: flex;
+padding-bottom: 5px;
+border-bottom: 5px solid black;
+}
+
+.affiliate_picture {
+	max-height: 15vh;
+	max-width: 15vh;
+}
+
+.affiliate_picture img {
+	object-fit: contain;
+}
+
+.affiliate_title {
+	padding-left: 2vw;
+	margin-top: auto;
+	margin-bottom: auto;
+}
