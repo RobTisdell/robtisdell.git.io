@@ -1,3 +1,5 @@
+"use strict"
+
 const monthYearElement = document.getElementById('monthYear')
 const datesElement = document.getElementById('Calendar_Dates')
 const prevBtn = document.getElementById('prevBtn')
