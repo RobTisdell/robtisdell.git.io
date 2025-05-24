@@ -5,7 +5,8 @@
 	"Location": "Providence Eagle",
 	"Date": "2025-06-07",
 	"Image": "img/events/2025_May_10.jpg",
-	"Description": "Are you virtuous or are you wicked?  Come bare your soul at our Angels and Demons night!"
+	"Description": "Are you virtuous or are you wicked?  Come bare your soul at our Angels and Demons night!",
+	"ID": "event_2"
 },
 
 {
@@ -14,7 +15,8 @@
 	"Location": "Eagle's Nest",
 	"Date": "2025-05-23",
 	"Image": "img/events/2025_April_13.jpg",
-	"Description": "FLAG meetup and social event!  Bring some snacks and games!"
+	"Description": "FLAG meetup and social event!  Bring some snacks and games!",
+	"ID": "event_1"
 },
 
 {
@@ -23,6 +25,7 @@
 	"Location": "Providence Eagle",
 	"Date": "2025-04-20",
 	"Image": "img/events/2025_March_22.jpg",
-	"Description": "Come dressed as your favorite superhero!"
+	"Description": "Come dressed as your favorite superhero!",
+	"ID": "event_0"
 }
 ]
