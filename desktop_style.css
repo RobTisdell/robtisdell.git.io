@@ -335,19 +335,21 @@ body {
 	display: none;
 }
 
-/* Container for affiliate links */
+/* Styling for the affiliate links page */
 
 .affiliate_container {
-margin-top: 5vh;
-height: 10vh;
+margin-top: 2vh;
+height: 9vh;
 display: flex;
 padding-bottom: 5px;
-border-bottom: 5px solid black;
+border-bottom: 5px solid #111111;
 }
 
 .affiliate_picture {
-	max-height: 15vh;
-	max-width: 15vh;
+	margin-top: auto;
+	margin-bottom: auto;
+	max-height: 8vh;
+	max-width: 8vh;
 }
 
 .affiliate_picture img {
@@ -358,4 +360,10 @@ border-bottom: 5px solid black;
 	padding-left: 2vw;
 	margin-top: auto;
 	margin-bottom: auto;
+}
+
+.affiliate_container:hover {
+transition: .3s;
+border-bottom: 5px solid;
+border-bottom-color: #080808;
 }

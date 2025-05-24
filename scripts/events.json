@@ -1,8 +1,23 @@
 {
-	"name": "Game Night",
-	"Type": ["social", "Locally Hosted"],
-	"Location": "Jim's House",
-	"Date": "2025-4-20",
-	"Image": ,
-	"Page": ,
+	"name": "Angels and Demons",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"Date": "2025-06-07",
+	"Image": "img/events/2025_May_10.jpg",
+}
+
+{
+	"name": "Angels and Demons",
+	"Type": "Social",
+	"Location": "Eagle's Nest",
+	"Date": "2025-05-23",
+	"Image": "img/events/2025_April_13.jpg",
+}
+
+{
+	"name": "Super Heroes Night",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"Date": "2025-04-20",
+	"Image": "img/events/2025_March_22.jpg",
 }
