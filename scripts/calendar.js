@@ -59,7 +59,7 @@ const updateCalendar = (events = []) => { // Accept events as an argument, defau
         let eventNotesHTML = '';
         if (eventsForThisDay.length > 0) {
             eventsForThisDay.forEach(event => {
-                eventNotesHTML += `<span class="event-note"><br>${event.name}</span>`;
+                eventNotesHTML += `<span class="event-note"><br>${event.Name}</span>`;
             });
         }
 
