@@ -53,13 +53,13 @@ const updateCalendar = (events = []) => { // Accept events as an argument, defau
         if (events && events.length > 0) {
             // Already using formatDateToYYYYMMDD for consistency
             // The format of event.date (from JSON) and formattedCurrentDay will now match
-            eventsForThisDay = events.filter(event => event.date === dayId);
+            eventsForThisDay = events.filter(event => event.Date === dayId);
         }
 
         let eventNotesHTML = '';
         if (eventsForThisDay.length > 0) {
             eventsForThisDay.forEach(event => {
-                eventNotesHTML += `<span class="event-note">${event.title}</span>`;
+                eventNotesHTML += `<span class="event-note"><br>${event.name}</span>`;
             });
         }
 
@@ -84,7 +84,7 @@ const updateCalendar = (events = []) => { // Accept events as an argument, defau
 // Function to fetch events from JSON and populate the calendar
 async function loadEventsAndPopulateCalendar() {
     try {
-        const response = await fetch('events.json'); // Path to your JSON file
+        const response = await fetch('https://robtisdell.github.io/robtisdell.git.io/scripts/events.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
