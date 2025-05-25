@@ -71,7 +71,7 @@ body {
 /* List link style and hover transition effects */
 .wrapper .sidenav a {
   text-decoration: none;
-  font-size: 2.9vh;
+  font-size: 1em;
   color: #818181;
   display: block;
   width: 100%
@@ -367,3 +367,74 @@ transition: .3s;
 border-bottom: 5px solid;
 border-bottom-color: #080808;
 }
+
+/* modal style */
+
+.modal {
+	display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    /* Use flexbox to center the content */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #444449;
+	color: #AABBCC;
+    padding: 20px;
+    border: 1px solid #F1F1F1;
+    width: 80%;
+    max-width: 400px; /* Smaller max-width for "nearly empty" */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 8px;
+    position: relative;
+    text-align: center; /* Center the "simple modal window" text */
+    min-height: 100px; /* Give it a little height */
+}
+
+/* The Close Button */
+.close-button {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+	width: 30px;
+	height: 30px;
+	background-color: #111111;
+	color: #818181;
+	border-radius: 50%;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+}
+
+.close-button:hover,
+.close-button:focus {
+	transition: .3s;
+	background-color: #080808;
+	color: #F1F1F1;
+    cursor: pointer;
+}
+
+/* Style for the event link in the calendar */
+.event-link {
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.event-link:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
