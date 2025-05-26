@@ -1,11 +1,12 @@
-// modal.js
+// scripts/modal.js
 
 // Get reference to the modal container
 const eventModal = document.getElementById('eventModal');
 const closeButton = document.querySelector('#eventModal .close-button');
 
 // Get reference to the element where description will be displayed
-const modalEventDescription = document.getElementById('modalEventDescription');
+const EventDescription = document.getElementById('EventDescription');
+const EventName = document.getElementById('EventName');
 
 // A variable to store all events, which modal.js will now load itself
 let _allEvents = [];
@@ -16,7 +17,8 @@ let _allEvents = [];
  */
 async function loadEventsForModal() {
     try {
-        const response = await fetch('https://robtisdell.github.io/robtisdell.git.io/scripts/events.json'); // Modal.js fetches events itself
+        // Updated URL for clarity, assuming your JSON is hosted here
+        const response = await fetch('https://robtisdell.github.io/robtisdell.git.io/scripts/events.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -27,7 +29,6 @@ async function loadEventsForModal() {
     }
 }
 
-// Function to open the modal (no content population here)
 /**
  * Function to open the modal and populate it with event details.
  * @param {Object} eventData - The specific event object to display.
@@ -35,15 +36,24 @@ async function loadEventsForModal() {
 function openModal(eventData) {
     if (eventData) {
         // Populate the description
-        if (modalEventDescription) {
-            modalEventDescription.textContent = eventData.Description || 'No description available.';
+        if (EventDescription) {
+            EventDescription.textContent = eventData.Description || 'No description available.';
         }
     } else {
         // If no eventData is provided (e.g., event ID not found), clear content
-        if (modalEventDescription) {
-            modalEventDescription.textContent = 'Event details not available.';
+        if (EventDescription) {
+            EventDescription.textContent = 'Event details not available.';
         }
     }
+	
+		 if (EventName) {
+            EventName.textContent = eventData.Name || 'Event Details';
+        }
+		else {
+		if (EventName) {
+			EventName.textcontent = 'Error: No Event Name';
+		}
+	}
     eventModal.style.display = 'flex'; // Make the modal visible and centered
 }
 
@@ -51,8 +61,8 @@ function openModal(eventData) {
 function closeModal() {
     eventModal.style.display = 'none'; // Hide the modal
     // Optionally clear content when closing
-    if (modalEventDescription) {
-        modalEventDescription.textContent = '';
+    if (EventDescription) {
+        EventDescription.textContent = '';
     }
 }
 
@@ -69,8 +79,7 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// --- NEW CODE FOR MODAL.JS: Handle clicks on event links ---
-// This listener will be active on the entire document.
+// --- CRUCIAL: Restore and fix the event listener for clicks on event links ---
 document.addEventListener('click', (e) => {
     // Check if the clicked element (or its closest ancestor) is an element
     // with the class 'event-link'.
@@ -80,12 +89,18 @@ document.addEventListener('click', (e) => {
     if (clickedEventLink) {
         e.preventDefault(); // Stop the link from trying to navigate (e.g., to #)
 
-        // For this simplified modal, we just open it.
-        // If you later wanted to populate the modal with event-specific data,
-        // you would retrieve the data-event-id here:
-        // const eventId = clickedEventLink.dataset.eventId;
-        // console.log("Event link clicked with ID:", eventId); // For debugging
+        // --- THESE LINES ARE WHAT WERE MISSING/COMMENTED OUT ---
+        const eventId = clickedEventLink.dataset.eventId; // Get the ID from the data attribute
+        console.log("Event link clicked with ID:", eventId); // For debugging
 
-        openModal(); // Call the modal's own open function
+        // FIND THE EVENT DATA: Use event.ID (uppercase) to match your JSON
+        const eventData = _allEvents.find(event => event.ID === eventId);
+
+        // Open the modal, passing the found event data
+        openModal(eventData);
     }
 });
+
+// --- Call loadEventsForModal when the DOM is ready ---
+// This ensures _allEvents is populated before a user can click an event link.
+document.addEventListener('DOMContentLoaded', loadEventsForModal);

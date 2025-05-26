@@ -1,23 +1,5 @@
 "use strict"
 
-const monthYearElement = document.getElementById('monthYear');
-const datesElement = document.getElementById('Calendar_Dates');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-
-let currentDate = new Date();
-let allEvents = []; // This will store the loaded events
-
-// Function to format a Date object into YYYY-MM-DD string
-// This function is robust for both date comparison and ID generation
-function formatDateToYYYYMMDD(date) {
-    const year = date.getFullYear();
-    // getMonth() is 0-indexed, so add 1
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
-}
-
 const updateCalendar = (events = []) => { // Accept events as an argument, default to empty array
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth(); // 0-indexed month
@@ -45,16 +27,33 @@ const updateCalendar = (events = []) => { // Accept events as an argument, defau
         const activeClass = date.toDateString() === new Date().toDateString() ? 'active' : '';
 
         // *** FIX: Generate the ID for the current day with padded zeros ***
-        // Use the same formatting logic as formatDateToYYYYMMDD for consistency
         const dayId = formatDateToYYYYMMDD(date);
 
-        // Check for events on this specific date
+        // --- NEW CODE: Check for events that span this specific date ---
         let eventsForThisDay = [];
-        if (events && events.length > 0) {
-            // Already using formatDateToYYYYMMDD for consistency
-            // The format of event.date (from JSON) and formattedCurrentDay will now match
-            eventsForThisDay = events.filter(event => event.Date === dayId);
+        if (allEvents && allEvents.length > 0) { // Using 'allEvents' from global scope
+            const currentDayDate = new Date(currentYear, currentMonth, i); // Create Date object for current calendar day
+            currentDayDate.setHours(0, 0, 0, 0); // Normalize to start of day for comparison
+
+            eventsForThisDay = allEvents.filter(event => {
+                // Ensure event.StartDate and event.EndDate are valid Date objects
+                // These will be in YYYY-MM-DD format from your JSON
+                const eventStartDate = new Date(event.StartDate);
+                const eventEndDate = new Date(event.EndDate);
+
+                // Normalize event dates to start of day for accurate comparison
+                eventStartDate.setHours(0, 0, 0, 0);
+                eventEndDate.setHours(0, 0, 0, 0);
+
+                // An event is relevant for this day if:
+                // The current calendar day is on or after the event's start date
+                // AND
+                // The current calendar day is on or before the event's end date
+                return currentDayDate >= eventStartDate && currentDayDate <= eventEndDate;
+            });
         }
+        // --- END OF NEW CODE ---
+
 
         let eventNotesHTML = '';
         if (eventsForThisDay.length > 0) {

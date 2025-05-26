@@ -1,31 +1,40 @@
 [
 {
+	"ID": "event_2",
 	"Name": "Angels and Demons",
 	"Type": "Bar night",
 	"Location": "Providence Eagle",
-	"Date": "2025-06-07",
-	"Image": "img/events/2025_May_10.jpg",
-	"Description": "Are you virtuous or are you wicked?  Come bare your soul at our Angels and Demons night!",
-	"ID": "event_2"
+	"StartDate": "2025-06-07",
+	"StartTime": "21:00",
+	"EndDate": "2025-06-08",
+	"EndTime": "02:00",
+	"Image": "2025_June_27.jpg",
+	"Description": "Are you virtuous or are you wicked?  Come bare your soul at our Angels and Demons night!"
 },
 
 {
+	"ID": "event_1",
 	"Name": "FLAG Social",
 	"Type": "Social",
 	"Location": "Eagle's Nest",
-	"Date": "2025-05-23",
-	"Image": "img/events/2025_April_13.jpg",
-	"Description": "FLAG meetup and social event!  Bring some snacks and games!",
-	"ID": "event_1"
+	"StartDate": "2025-05-23",
+	"StartTime": "12:00",
+	"EndDate":  "2025-05-23",
+	"EndTime": "17:00",
+	"Image": "2025_April_13.jpg",
+	"Description": "FLAG meetup and social event!  Bring some snacks and games!"
 },
 
 {
+	"ID": "event_0",
 	"Name": "Super Heroes Night",
 	"Type": "Bar night",
 	"Location": "Providence Eagle",
-	"Date": "2025-04-20",
-	"Image": "img/events/2025_March_22.jpg",
-	"Description": "Come dressed as your favorite superhero!",
-	"ID": "event_0"
+	"StartDate": "2025-04-20",
+	"StartTime": "21:00",
+	"EndDate":  "2025-04-21",
+	"EndTime": "02:00",
+	"Image": "2025_April_13.jpg",
+	"Description": "FLAG meetup and social event!  Bring some snacks and games!"
 }
 ]
