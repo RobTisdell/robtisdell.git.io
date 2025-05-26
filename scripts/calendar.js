@@ -1,21 +1,38 @@
-"use strict"
+"use strict";
 
-const updateCalendar = (events = []) => { // Accept events as an argument, default to empty array
+// --- Global DOM Element References ---
+const monthYearElement = document.getElementById('monthYear');
+const datesElement = document.getElementById('Calendar_Dates');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+// --- Global State Variables ---
+let currentDate = new Date(); // Represents the month currently displayed on the calendar
+let allEvents = [];           // Stores all events loaded from JSON
+
+// --- Helper Function: Date Formatting ---
+// This function needs to be defined BEFORE updateCalendar tries to use it.
+function formatDateToYYYYMMDD(date) {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // getMonth() is 0-indexed
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+// --- Main Calendar Rendering Logic ---
+const updateCalendar = (eventsData = []) => { // Renamed parameter for clarity
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth(); // 0-indexed month
 
+    // Get details for the current month's display
     const firstDay = new Date(currentYear, currentMonth, 1);
     const lastDay = new Date(currentYear, currentMonth + 1, 0);
     const totalDays = lastDay.getDate();
     const firstDayIndex = firstDay.getDay(); // 0 for Sunday, 1 for Monday, etc.
-    const lastDayIndex = lastDay.getDay();
-
-    const monthYearString = currentDate.toLocaleString('default', { month: 'long', year: 'numeric' });
-    monthYearElement.textContent = monthYearString;
 
     let datesHTML = '';
 
-    // Add inactive dates from the previous month
+    // Add inactive dates from the previous month (to fill the start of the week)
     for (let i = firstDayIndex; i > 0; i--) {
         const prevDate = new Date(currentYear, currentMonth, 0 - i + 1);
         datesHTML += `<div class="date inactive">${prevDate.getDate()}</div>`;
@@ -24,36 +41,33 @@ const updateCalendar = (events = []) => { // Accept events as an argument, defau
     // Add active dates for the current month
     for (let i = 1; i <= totalDays; i++) {
         const date = new Date(currentYear, currentMonth, i);
-        const activeClass = date.toDateString() === new Date().toDateString() ? 'active' : '';
+        const dayId = formatDateToYYYYMMDD(date); // Generate ID for the specific day cell
+        const activeClass = (date.toDateString() === new Date().toDateString()) ? 'active' : '';
 
-        // *** FIX: Generate the ID for the current day with padded zeros ***
-        const dayId = formatDateToYYYYMMDD(date);
-
-        // --- NEW CODE: Check for events that span this specific date ---
         let eventsForThisDay = [];
-        if (allEvents && allEvents.length > 0) { // Using 'allEvents' from global scope
-            const currentDayDate = new Date(currentYear, currentMonth, i); // Create Date object for current calendar day
+        // Filter events that fall within the current day's range
+        // Use the 'eventsData' parameter, which contains 'allEvents' from the fetch.
+        if (eventsData.length > 0) {
+            const currentDayDate = new Date(currentYear, currentMonth, i);
             currentDayDate.setHours(0, 0, 0, 0); // Normalize to start of day for comparison
 
-            eventsForThisDay = allEvents.filter(event => {
-                // Ensure event.StartDate and event.EndDate are valid Date objects
-                // These will be in YYYY-MM-DD format from your JSON
-                const eventStartDate = new Date(event.StartDate);
-                const eventEndDate = new Date(event.EndDate);
+            eventsForThisDay = eventsData.filter(event => {
+                // --- FIX: Parse dates into local timezone components ---
+                const [startYear, startMonth, startDay] = event.StartDate.split('-').map(Number);
+                const [endYear, endMonth, endDay] = event.EndDate.split('-').map(Number);
 
-                // Normalize event dates to start of day for accurate comparison
+                // Month is 0-indexed in Date constructor (e.g., June is 5, not 6)
+                const eventStartDate = new Date(startYear, startMonth - 1, startDay);
+                const eventEndDate = new Date(endYear, endMonth - 1, endDay);
+                // --- END FIX ---
+
                 eventStartDate.setHours(0, 0, 0, 0);
                 eventEndDate.setHours(0, 0, 0, 0);
 
-                // An event is relevant for this day if:
-                // The current calendar day is on or after the event's start date
-                // AND
-                // The current calendar day is on or before the event's end date
+                // Check if the current calendar day is within the event's span (inclusive)
                 return currentDayDate >= eventStartDate && currentDayDate <= eventEndDate;
             });
         }
-        // --- END OF NEW CODE ---
-
 
         let eventNotesHTML = '';
         if (eventsForThisDay.length > 0) {
@@ -70,49 +84,50 @@ const updateCalendar = (events = []) => { // Accept events as an argument, defau
         `;
     }
 
-    // Add inactive dates for the next month
-    for (let i = 1; i <= (6 - lastDayIndex); i++) {
+    // Add inactive dates for the next month (to fill the end of the week)
+    const lastDayIndex = lastDay.getDay(); // Need to recalculate or ensure this is available
+    const remainingCells = 42 - (firstDayIndex + totalDays); // 42 for 6 rows * 7 days
+    for (let i = 1; i <= remainingCells; i++) {
         const nextDate = new Date(currentYear, currentMonth + 1, i);
         datesHTML += `<div class="date inactive">${nextDate.getDate()}</div>`;
     }
 
+    // Update the DOM elements
+    monthYearElement.textContent = firstDay.toLocaleString('default', { month: 'long', year: 'numeric' });
     datesElement.innerHTML = datesHTML;
 };
 
+// --- Event Data Loading and Initial Setup ---
 
-// Function to fetch events from JSON and populate the calendar
 async function loadEventsAndPopulateCalendar() {
     try {
-        const response = await fetch('https://robtisdell.github.io/robtisdell.git.io/scripts/events.json');
+        const response = await fetch('https://robtisdell.github.io/robtisdell.git.io/scripts/events.json'); // Adjust path if needed
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         allEvents = await response.json(); // Store parsed JSON data globally
-        console.log("Loaded Events:", allEvents);
+        console.log("Calendar loaded events:", allEvents);
 
-        // Now that events are loaded, update the calendar
+        // Initial calendar render using the fetched events
         updateCalendar(allEvents);
 
     } catch (error) {
-        console.error("Error loading or parsing events:", error);
-        // Even if there's an error, still display the calendar without notes
-        updateCalendar();
+        console.error("Error loading or parsing events in calendar.js:", error);
+        // Render an empty calendar if events fail to load, so the page still shows
+        updateCalendar([]);
     }
 }
 
-
-// Event Listeners for navigation buttons
+// --- Event Listeners for Navigation ---
 prevBtn.addEventListener('click', () => {
     currentDate.setMonth(currentDate.getMonth() - 1);
-    updateCalendar(allEvents); // Pass events again when changing month
+    updateCalendar(allEvents); // Pass all loaded events for the new month
 });
 
 nextBtn.addEventListener('click', () => {
     currentDate.setMonth(currentDate.getMonth() + 1);
-    updateCalendar(allEvents); // Pass events again when changing month
+    updateCalendar(allEvents); // Pass all loaded events for the new month
 });
 
-// Initial call to load events and then update the calendar
-document.addEventListener('DOMContentLoaded', () => {
-    loadEventsAndPopulateCalendar();
-});
+// --- Initial Call: Start everything when the DOM is fully loaded ---
+document.addEventListener('DOMContentLoaded', loadEventsAndPopulateCalendar);
