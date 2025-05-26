@@ -380,7 +380,6 @@ border-bottom-color: #080808;
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    /* Use flexbox to center the content */
     justify-content: center;
     align-items: center;
 }
@@ -392,11 +391,10 @@ border-bottom-color: #080808;
     padding: 20px;
     border: 1px solid #F1F1F1;
     width: 80%;
-    max-width: 400px; /* Smaller max-width for "nearly empty" */
+	max-width: 35vw;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     border-radius: 8px;
     position: relative;
-    text-align: center; /* Center the "simple modal window" text */
     min-height: 100px; /* Give it a little height */
 }
 
