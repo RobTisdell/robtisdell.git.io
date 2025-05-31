@@ -74,11 +74,9 @@
 
 			<!-- Main Content Div -->
 			<div class="content" id="MainContent">
-				<article>
-					<p class="title">Calendar</p>
-					<p>This is just a google calendar for now, I intend on making a custom one down the line, though there are arguments for keeping it a Google calendar that can be managed from a Gmail account rather than having to maintain an internal database.</p>
+				<article class="calendar_title">
+					<p class="title">Events Calendar</p>
 					<iframe class="prototype-mobile" src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&showPrint=0&showDate=0&showTabs=0&showCalendars=0&src=NDcyZjRlYjNlMzBhMTBjMjQ1YzgwZTJiNzIzOTgzYzIzZjg5ZmQ2NTgwMTNmOTI0MjM0OGJlMzdlZTZmNWUwZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23AD1457" style="border-width:0" width="320" height="240" frameborder="0" scrolling="no"></iframe>
-					<p>We can also put banners for upcoming events and past events with pictures in them, if we wanted to.</p>
 					<div class="Calendar_Container">
 						<div class="Calendar">
 							<div class="Calendar_Header">
@@ -104,6 +102,7 @@
 			<div class="modal-content">
 				<span class="close-button">&times;</span>
 				<ul>
+					<li><span id="EventImage"></span></li>
 					<li><b>Event:</b> <span id="EventName"></span>&#33;</li>
 					<li><b>Where:</b> <span id="EventLocation"></span></li>
 					<li><b>When:</b> <span id="EventDateTime"></span></li>

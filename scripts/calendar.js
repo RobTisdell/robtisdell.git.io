@@ -35,7 +35,7 @@ const updateCalendar = (eventsData = []) => {
     // Add inactive dates from the previous month
     for (let i = firstDayIndex; i > 0; i--) {
         const prevDate = new Date(currentYear, currentMonth, 0 - i + 1);
-        datesHTML += `<div class="date inactive">${prevDate.getDate()}</div>`;
+        datesHTML += `<div class="date inactive"><span class="calendarnumber">${prevDate.getDate()}</span></div>`;
     }
 
     // Add active dates for the current month
@@ -79,7 +79,6 @@ const updateCalendar = (eventsData = []) => {
                 // Check if the event truly spans multiple distinct calendar days (by date component alone)
                 const isTrulyMultiDayByDate = eventEndDateOnly.getTime() !== eventStartDateOnly.getTime();
 
-                // --- MODIFICATION START ---
                 // If it's a multi-day event by date AND its duration is long enough (e.g., > 10 hours)
                 if (isTrulyMultiDayByDate && durationInHours >= LATE_NIGHT_THRESHOLD_HOURS) {
                     // It's a true multi-day event, show link on all days it spans
@@ -89,7 +88,6 @@ const updateCalendar = (eventsData = []) => {
                     // In these cases, only show the link on the start date
                     return isCurrentDayStartDate;
                 }
-                // --- MODIFICATION END ---
             });
         }
 
@@ -102,7 +100,7 @@ const updateCalendar = (eventsData = []) => {
 
         datesHTML += `
             <div class="date ${activeClass}" id="${dayId}">
-                ${i}
+                <span class="calendarnumber">${i}</span>
                 ${eventNotesHTML}
             </div>
         `;
@@ -113,7 +111,7 @@ const updateCalendar = (eventsData = []) => {
     const remainingCells = 42 - (firstDayIndex + totalDays);
     for (let i = 1; i <= remainingCells; i++) {
         const nextDate = new Date(currentYear, currentMonth + 1, i);
-        datesHTML += `<div class="date inactive">${nextDate.getDate()}</div>`;
+        datesHTML += `<div class="date inactive"><span class="calendarnumber">${nextDate.getDate()}</span></div>`;
     }
 
     // Update the DOM elements

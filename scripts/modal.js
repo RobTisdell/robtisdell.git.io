@@ -5,13 +5,11 @@ const eventModal = document.getElementById('eventModal');
 const closeButton = document.querySelector('#eventModal .close-button');
 
 // Get reference to the elements where content will be displayed
+const EventImage = document.getElementById('EventImage');
 const EventName = document.getElementById('EventName');
 const EventDateTime = document.getElementById('EventDateTime'); // Target for the date/time display
 const EventDescription = document.getElementById('EventDescription');
 const EventLocation = document.getElementById('EventLocation');
-
-// --- ADD THIS CONSOLE LOG ---
-console.log('EventLocation element found at script start:', EventLocation);
 
 
 // A variable to store all events, which modal.js will now load itself
@@ -128,6 +126,9 @@ function formatEventDateTime(eventData) {
  */
 function openModal(eventData) {
     if (eventData) {
+		if (EventImage){
+			EventImage.innerHTML = `<div class="smalleventculumn"><img src="img/events/${eventData.Image}"></img></div>`;
+		}
         if (EventName) {
             EventName.textContent = eventData.Name || 'Event Details';
         }
@@ -138,25 +139,20 @@ function openModal(eventData) {
             EventDescription.textContent = eventData.Description || 'No description available.';
         }
         if (EventLocation) {
-            console.log('EventLocation HTML element IS present.'); // This means the element was found
-            
+            // Check if both Location name AND LocationURL exist for a link
             if (eventData.Location && eventData.LocationURL) {
-                console.log('Both eventData.Location AND eventData.LocationURL are TRUE.');
-                console.log('Location:', eventData.Location);
-                console.log('LocationURL:', eventData.LocationURL);
-
-                EventLocation.innerHTML = `<b>Where:</b> <a href="${eventData.LocationURL}" target="_blank" rel="noopener noreferrer">${eventData.Location}</a>`;
+                // Construct an <a> tag string and set it as innerHTML
+                // target="_blank" opens link in new tab.
+                // rel="noopener noreferrer" is for security best practices with target="_blank".
+                EventLocation.innerHTML = `<a href="${eventData.LocationURL}" target="_blank" rel="noopener noreferrer">${eventData.Location}</a>`;
             } else if (eventData.Location) {
-                console.log('Only eventData.Location is TRUE (no URL).');
-                EventLocation.textContent = `Where: ${eventData.Location}`;
+                // If Location name exists but no URL, just display the text
+                EventLocation.textContent = `${eventData.Location}`;
             } else {
-                console.log('Neither eventData.Location nor eventData.LocationURL are TRUE.');
-                EventLocation.textContent = 'Where: N/A';
+                // If no Location data at all, provide a fallback message
+                EventLocation.textContent = 'Location: N/A';
             }
-        } else {
-            console.log('EventLocation HTML element IS NOT present (it is null). Check calendar.html ID.');
         }
-        // --- END CONSOLE LOGS IN THIS BLOCK ---
 
     } else {
         // If no eventData is provided, clear content

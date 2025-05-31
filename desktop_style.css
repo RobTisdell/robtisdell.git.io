@@ -58,14 +58,19 @@ body {
 	margin: 0;
 	top: 0;
     position: absolute;
+	margin-left: -1px;
 	width: 12.125vw;
     left: 100%;
 	background-color: #111111;
-	display: none;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s linear 0.3s, opacity 0.3s ease-in-out;
 }
 
 .sidenav li:hover > ul.dropright {
-	display: block;
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0.3s;
 }
 
 /* List link style and hover transition effects */
@@ -106,7 +111,7 @@ body {
 	transform: translate(-50%);
 }
 
-.wrapper .sidenav .socials a{
+.wrapper .sidenav .socials a {
 	background-color: #444449;
 	border-radius: 50%;
 	width: 2.5vw;
@@ -137,6 +142,21 @@ body {
 	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
 }
 
+.wrapper .landingimagecontainer {
+    height: 100vh;
+    max-width: 87.875vw;
+}
+
+.wrapper .landingimagecontainer .landingpage {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+body.landing-page-no-scroll {
+    overflow: hidden;
+}
+
 /* Defines the Article tag for almost all pages. It's
 	just a margin container really*/
 
@@ -144,6 +164,13 @@ body {
 	margin-left: 10vw;
 	margin-right: 10vw;
 	margin-top: 15vh;
+}
+
+
+.wrapper .content article.calendar_title {
+	margin-left: 10vw;
+	margin-right: 10vw;
+	margin-top: 2.5vh;
 }
 
 /* Style definitions within the article tag */
@@ -183,7 +210,8 @@ body {
 }
 
 .Calendar {
-	width: 50vw;
+	margin-top: 2.5vh;
+	width: 75vw;
 	height: auto;
 	display: flex;
 	flex-direction: column;
@@ -237,8 +265,27 @@ body {
 	border-style: solid;
 	border-radius: 1px;
 	color: #F1F1F1;
-	height: 15vh;
-	padding: 5px;
+	height: 12vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.calendarnumber {
+	font-size: 2vh;
+}
+
+.event-note {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.date a {
+	margin: auto;
+	font-size: 2vh;
 }
 
 .date.inactive{ 
@@ -295,20 +342,14 @@ body {
 /* Containers for upcoming events. */
 /* This is very much a work in progress.  The ideal here is a javascript that automates this stuff. */
 
-.wrapper .content article img {
-	display: block;
-	width: 50vw;
-	max-width: 100%;
-	max-height: 100%;
-	margin: auto;
-}
 
 /* Containers for past events. */
 /* This is a work in progress, similar to upcoming events.  These will be smaller because I expect more on the screen.*/
 
-.wrapper .content article .pasteventculumn {
+.wrapper .content article .smalleventculumn {
 	float: left;
 	width: 50%;
+	text-align: center;
 }
 
 .wrapper .content article .pasteventbanners:after {
@@ -317,11 +358,11 @@ body {
   clear: both;
 }
 
-.wrapper .content article .pasteventculumn img {
+.smalleventculumn img {
 	border-style: solid;
-	text-align: center;
 	max-width: 90%;
 	max-height: 90%;
+	margin: auto;
 }
 
 /* All content disabling for mobile */
@@ -396,6 +437,10 @@ border-bottom-color: #080808;
     border-radius: 8px;
     position: relative;
     min-height: 100px; /* Give it a little height */
+	display: flex;
+	flex-direction: column; /* Arrange children in a column */
+    justify-content: center; /* Vertically center content when flex-direction is column */
+    align-items: center; /* Horizontally center content when flex-direction is column */
 }
 
 /* The Close Button */
@@ -424,15 +469,16 @@ border-bottom-color: #080808;
     cursor: pointer;
 }
 
-/* Style for the event link in the calendar */
-.event-link {
-    color: #007bff;
-    cursor: pointer;
-    text-decoration: underline;
+.modal-content ul {
+	padding-left: 10%;
+	padding-right: 10%;
 }
 
-.event-link:hover {
-    color: #0056b3;
-    text-decoration: none;
+.modal-content ul li {
+	list-style: none;
 }
 
+.modal-content ul li a {
+	text-decoration: none;
+	color: #CCCCDD;
+}
