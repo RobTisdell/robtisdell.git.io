@@ -1,8 +1,44 @@
 [
+}
+	"ID": "staff_6",
+	"Name": "Leather Daddy 7",
+	"IsActive": false,
+	"CurrentPosition": null,
+	"PastPositions": ["Party Entertainment"]
+	"Image": "dude7.jpg"
+	"Description": "Always hard and doesn't turn down any requests."
+},
+}
+	"ID": "staff_5",
+	"Name": "Leather Daddy 6",
+	"IsActive": false,
+	"CurrentPosition": null,
+	"PastPositions": ["President"]
+	"Image": "dude6.jpg"
+	"Description": "Won't take no for an answer"
+},
+}
+	"ID": "staff_4",
+	"Name": "Leather Daddy 5",
+	"IsActive": false,
+	"CurrentPosition": null,
+	"PastPositions": ["Vice President"]
+	"Image": "dude5.jpg"
+	"Description": "Want a smoke?"
+},
+{
+	"ID": "staff_3",
+	"Name": "Leather Daddy 4",
+	"IsActive": false,
+	"CurrentPosition": null,
+	"PastPositions": ["President", "Vice President"]
+	"Image": "dude4.jpg"
+	"Description": "Loves being manhandled"
+},
 {
 	"ID": "staff_2",
 	"Name": "Leather Daddy 3",
-	"Active": true,
+	"IsActive": true,
 	"CurrentPosition": "Party Entertainment",
 	"PastPositions": ["President", "Vice President"]
 	"Image": "dude3.jpg"
@@ -12,7 +48,7 @@
 {
 	"ID": "staff_1",
 	"Name": "Leather Daddy 2",
-	"Active": true,
+	"IsActive": true,
 	"CurrentPosition": "Vice President",
 	"PastPositions": ["President", "Party Entertainment"]
 	"Image": "dude2.jpg",
@@ -22,7 +58,7 @@
 {
 	"ID": "staff_0",
 	"Name": "Leather Daddy 1",
-	"Active": true,
+	"IsActive": true,
 	"CurrentPosition": "President",
 	"PastPositions": ["Vice-President", "Party Entertainment"]
 	"Image": "dude1.jpg",
