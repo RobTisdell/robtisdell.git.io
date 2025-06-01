@@ -1,0 +1,31 @@
+[
+{
+	"ID": "staff_2",
+	"Name": "Leather Daddy 3",
+	"Active": true,
+	"CurrentPosition": "Party Entertainment",
+	"PastPositions": ["President", "Vice President"]
+	"Image": "dude3.jpg"
+	"Description": "No inhibitions, ready to serve or be served."
+},
+
+{
+	"ID": "staff_1",
+	"Name": "Leather Daddy 2",
+	"Active": true,
+	"CurrentPosition": "Vice President",
+	"PastPositions": ["President", "Party Entertainment"]
+	"Image": "dude2.jpg",
+	"Description": "Emotional support for the president."
+},
+
+{
+	"ID": "staff_0",
+	"Name": "Leather Daddy 1",
+	"Active": true,
+	"CurrentPosition": "President",
+	"PastPositions": ["Vice-President", "Party Entertainment"]
+	"Image": "dude1.jpg",
+	"Description": "Runs the organization, meetings, etc."
+}
+]

@@ -1,0 +1,31 @@
+[
+{
+	"ID": "titled_2",
+	"prefix": "Mr.",
+	"Name": "Daddy",
+	"Active": false,
+	"Year": "2023",
+	"Image": "dude3.jpg",
+	"Description": "You'll do what he says.  And thank him for the privilege."
+},
+
+{
+	"ID": "titled_1",
+	"prefix": "Mr.",
+	"Name": "Beefcake",
+	"Active": false,
+	"Year": "2024",
+	"Image": "dude2.jpg",
+	"Description": "Fun to hug, cuddle, and snuggle"
+},
+
+{
+	"ID": "titled_0",
+	"prefix": "Mr.",
+	"Name": "Leatherman",
+	"Active": true,
+	"Year": "2025",
+	"Image": "dude1.jpg",
+	"Description": "The image here is bigger than the staff page because, presumably, we'd have only one active titlteholder at a time. I assume if we wanted past titleholders, we'd have a historical section where I'd make the list more in-line with the Staff section."
+}
+]
