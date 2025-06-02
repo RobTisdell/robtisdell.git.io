@@ -1,5 +1,14 @@
 [
 {
+	"ID": "staff_6",
+	"Name": "Leather Daddy 7",
+	"IsActive": false,
+	"CurrentPosition": null,
+	"PastPositions": ["President", "Party Entertainment"],
+	"Image": "dude7.jpg",
+	"Description": "Takes what he wants and makes it look good."
+},
+{
 	"ID": "staff_5",
 	"Name": "Leather Daddy 6",
 	"IsActive": false,

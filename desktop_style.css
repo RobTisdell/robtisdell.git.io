@@ -57,10 +57,10 @@ body {
 .wrapper .sidenav ul li ul {
 	margin: 0;
 	top: 0;
-    position: absolute;
+	position: absolute;
 	margin-left: -1px;
 	width: 12.125vw;
-    left: 100%;
+	left: 100%;
 	background-color: #111111;
 	visibility: hidden;
 	opacity: 0;
@@ -143,18 +143,18 @@ body {
 }
 
 .wrapper .landingimagecontainer {
-    height: 100vh;
-    max-width: 87.875vw;
+	height: 100vh;
+	max-width: 87.875vw;
 }
 
 .wrapper .landingimagecontainer .landingpage {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
 }
 
 body.landing-page-no-scroll {
-    overflow: hidden;
+	overflow: hidden;
 }
 
 /* Defines the Article tag for almost all pages. It's
@@ -303,9 +303,9 @@ body.landing-page-no-scroll {
 }
 
 .staffpictures {
-    width: 25%;
+	width: 25%;
 	height: 30vh;
-    float: left;
+	float: left;
 	margin-top: 3px;
 	margin-left: 3px;
 	margin-right: 3px;
@@ -323,7 +323,7 @@ body.landing-page-no-scroll {
 
 .wrapper .content article .titleholderpictures {
 	height: 50vh;
-    float: left;
+	float: left;
 }
 
 .wrapper .content article .titleholderpictures img {
@@ -333,13 +333,13 @@ body.landing-page-no-scroll {
 }
 
 .wrapper .content article .titleholder-title {
-    width: 65%;
-    float: left;
+	width: 65%;
+	float: left;
 }
 
 .wrapper .content article .titleholder-box {
-    width: 65%;
-    float: left;
+	width: 65%;
+	float: left;
 }
 
 /* Containers for upcoming events. */
@@ -418,44 +418,44 @@ border-bottom-color: #080808;
 
 .modal {
 	display: none;
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top of everything */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    justify-content: center;
-    align-items: center;
+	position: fixed; /* Stay in place */
+	z-index: 1000; /* Sit on top of everything */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	justify-content: center;
+	align-items: center;
 }
 
 /* Modal Content */
 .modal-content {
-    background-color: #444449;
+	background-color: #444449;
 	color: #AABBCC;
-    padding: 20px;
-    border: 1px solid #F1F1F1;
-    width: 80%;
+	padding: 20px;
+	border: 1px solid #F1F1F1;
+	width: 80%;
 	max-width: 35vw;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    border-radius: 8px;
-    position: relative;
-    min-height: 100px; /* Give it a little height */
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	border-radius: 8px;
+	position: relative;
+	min-height: 100px; /* Give it a little height */
 	display: flex;
 	flex-direction: column; /* Arrange children in a column */
-    justify-content: center; /* Vertically center content when flex-direction is column */
-    align-items: center; /* Horizontally center content when flex-direction is column */
+	justify-content: center; /* Vertically center content when flex-direction is column */
+	align-items: center; /* Horizontally center content when flex-direction is column */
 }
 
 /* The Close Button */
 .close-button {
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    position: absolute;
-    top: 10px;
-    right: 15px;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	position: absolute;
+	top: 10px;
+	right: 15px;
 	width: 30px;
 	height: 30px;
 	background-color: #111111;
@@ -471,7 +471,7 @@ border-bottom-color: #080808;
 	transition: .3s;
 	background-color: #080808;
 	color: #F1F1F1;
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .modal-content ul {

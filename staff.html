@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-    <head>
+	<head>
 		<link rel="stylesheet" media="screen and (min-device-width: 800px)" href="desktop_style.css" />
 		<link rel="stylesheet" media="screen and (max-device-width: 800px)" href="mobile_style.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="icon" type="image/png" href="img/logo.png">
 		<script src="scripts/mobmenu.js"></script>
-        <title>
-            Fits Like a Glove
-        </title>
-    </head>
+		<title>
+			Fits Like a Glove
+		</title>
+	</head>
 	
-    <body>
+	<body>
 		<!-- Content Wrapper Div -->
 		<div class="wrapper">
 
@@ -63,7 +63,12 @@
 							<li><a href="calendar.html">CALENDAR</a></li>
 						</ul>
 					</li>
-					<li class="current"><a class="current" href="staff.html">STAFF</a></li>
+					<li class="current"><a class="current" href="staff.html">STAFF &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#11162;</a>
+						<ul class="dropright">
+							<li class="current"><a class="current" href="staff.html">CURRENT</a></li>
+							<li><a>FORMER</a></li>
+						</ul>
+					</li>
 					<li><a href="membership.html">JOIN US</a></li>
 					<li><a href="affiliates.html">AFFILIATES</a></li>
 				</ul>
@@ -76,42 +81,11 @@
 			<div class="content" id="MainContent">
 				<article>
 					<p class="title">FLAG Staff</p>
-					<div class="container">
-						<div class="staffpictures">
-							<img src="img\staff\dude1.jpg">
-						</div>
-						<div class="staff-title">
-							<b>Leather Daddy 1 &#9830; President</b>
-						</div>
-						<div class="staff-box">
-							<p>Runs the organization, meetings, etc.</p>
-						</div>
-					</div>
-					<div class="container">
-						<div class="staffpictures">
-							<img src="img\staff\dude2.jpg">
-						</div>
-						<div class="staff-title">
-							<b>Leather Daddy 2 &#9830; Vice President</b>
-						</div>
-						<div class="staff-box">
-							<p>Emotional support for the president.</p>
-						</div>
-					</div>
-					<div class="container">
-						<div class="staffpictures">
-							<img src="img\staff\dude3.jpg">
-						</div>
-						<div class="staff-title">
-							<b>Leather Daddy 3 &#9830; Party Entertainment</b>
-						</div>
-						<div class="staff-box">
-							<p>No inhibitions, ready to serve or be served.</p>
-						</div>
-					</div>
+					<div id="test"></div>
 				</article>
 			</div>
 		</div>
 		<script src="scripts/mobmenu.js"></script>
+		<script src="scripts/currentstaff.js"></script>
 	</body>
 </html>
