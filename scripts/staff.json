@@ -1,29 +1,20 @@
 [
-}
-	"ID": "staff_6",
-	"Name": "Leather Daddy 7",
-	"IsActive": false,
-	"CurrentPosition": null,
-	"PastPositions": ["Party Entertainment"]
-	"Image": "dude7.jpg"
-	"Description": "Always hard and doesn't turn down any requests."
-},
-}
+{
 	"ID": "staff_5",
 	"Name": "Leather Daddy 6",
 	"IsActive": false,
 	"CurrentPosition": null,
-	"PastPositions": ["President"]
-	"Image": "dude6.jpg"
+	"PastPositions": ["President"],
+	"Image": "dude6.jpg",
 	"Description": "Won't take no for an answer"
 },
-}
+{
 	"ID": "staff_4",
 	"Name": "Leather Daddy 5",
 	"IsActive": false,
 	"CurrentPosition": null,
-	"PastPositions": ["Vice President"]
-	"Image": "dude5.jpg"
+	"PastPositions": ["Vice President"],
+	"Image": "dude5.jpg",
 	"Description": "Want a smoke?"
 },
 {
@@ -31,8 +22,8 @@
 	"Name": "Leather Daddy 4",
 	"IsActive": false,
 	"CurrentPosition": null,
-	"PastPositions": ["President", "Vice President"]
-	"Image": "dude4.jpg"
+	"PastPositions": ["President", "Vice President"],
+	"Image": "dude4.jpg",
 	"Description": "Loves being manhandled"
 },
 {
@@ -40,8 +31,8 @@
 	"Name": "Leather Daddy 3",
 	"IsActive": true,
 	"CurrentPosition": "Party Entertainment",
-	"PastPositions": ["President", "Vice President"]
-	"Image": "dude3.jpg"
+	"PastPositions": ["President", "Vice President"],
+	"Image": "dude3.jpg",
 	"Description": "No inhibitions, ready to serve or be served."
 },
 
@@ -50,7 +41,7 @@
 	"Name": "Leather Daddy 2",
 	"IsActive": true,
 	"CurrentPosition": "Vice President",
-	"PastPositions": ["President", "Party Entertainment"]
+	"PastPositions": ["President", "Party Entertainment"],
 	"Image": "dude2.jpg",
 	"Description": "Emotional support for the president."
 },
@@ -60,7 +51,7 @@
 	"Name": "Leather Daddy 1",
 	"IsActive": true,
 	"CurrentPosition": "President",
-	"PastPositions": ["Vice-President", "Party Entertainment"]
+	"PastPositions": ["Vice-President", "Party Entertainment"],
 	"Image": "dude1.jpg",
 	"Description": "Runs the organization, meetings, etc."
 }
