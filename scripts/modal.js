@@ -21,7 +21,7 @@ let _allEvents = [];
  */
 async function loadEventsForModal() {
 	try {
-		const response = await fetch('https://robtisdell.github.io/robtisdell.git.io/scripts/events.json');
+		const response = await fetch('scripts/events.json');
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}

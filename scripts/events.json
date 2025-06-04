@@ -1,4 +1,245 @@
 [
+
+{
+	"ID": "event_18",
+	"Name": "Test Event 16",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-02-22",
+	"StartTime": "21:00",
+	"EndDate": "2025-02-23",
+	"EndTime": "02:00",
+	"Image": "magenta_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_17",
+	"Name": "Test Event 15",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-03-01",
+	"StartTime": "21:00",
+	"EndDate": "2025-03-02",
+	"EndTime": "02:00",
+	"Image": "purple_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_16",
+	"Name": "Test Event 14",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-03-08",
+	"StartTime": "21:00",
+	"EndDate": "2025-03-09",
+	"EndTime": "02:00",
+	"Image": "blue_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_15",
+	"Name": "Test Event 13",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-03-15",
+	"StartTime": "21:00",
+	"EndDate": "2025-03-16",
+	"EndTime": "02:00",
+	"Image": "turquoise_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_14",
+	"Name": "Test Event 12",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-03-22",
+	"StartTime": "21:00",
+	"EndDate": "2025-03-23",
+	"EndTime": "02:00",
+	"Image": "green_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_13",
+	"Name": "Test Event 11",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-03-29",
+	"StartTime": "21:00",
+	"EndDate": "2025-03-30",
+	"EndTime": "02:00",
+	"Image": "yellow_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_12",
+	"Name": "Test Event 10",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-04-05",
+	"StartTime": "21:00",
+	"EndDate": "2025-04-06",
+	"EndTime": "02:00",
+	"Image": "orange_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_11",
+	"Name": "Test Event 9",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-04-12",
+	"StartTime": "21:00",
+	"EndDate": "2025-04-13",
+	"EndTime": "02:00",
+	"Image": "red_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_10",
+	"Name": "Test Event 8",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-08-23",
+	"StartTime": "21:00",
+	"EndDate": "2025-08-24",
+	"EndTime": "02:00",
+	"Image": "magenta_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_9",
+	"Name": "Test Event 7",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-08-16",
+	"StartTime": "21:00",
+	"EndDate": "2025-08-17",
+	"EndTime": "02:00",
+	"Image": "purple_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_8",
+	"Name": "Test Event 6",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-08-09",
+	"StartTime": "21:00",
+	"EndDate": "2025-08-10",
+	"EndTime": "02:00",
+	"Image": "blue_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_7",
+	"Name": "Test Event 5",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-08-02",
+	"StartTime": "21:00",
+	"EndDate": "2025-08-03",
+	"EndTime": "02:00",
+	"Image": "turquoise_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_6",
+	"Name": "Test Event 4",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-07-26",
+	"StartTime": "21:00",
+	"EndDate": "2025-07-27",
+	"EndTime": "02:00",
+	"Image": "green_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_5",
+	"Name": "Test Event 3",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-07-19",
+	"StartTime": "21:00",
+	"EndDate": "2025-07-20",
+	"EndTime": "02:00",
+	"Image": "yellow_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_4",
+	"Name": "Test Event 2",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-07-12",
+	"StartTime": "21:00",
+	"EndDate": "2025-07-13",
+	"EndTime": "02:00",
+	"Image": "orange_event.jpg",
+	"Description": "Test event!"
+},
+
+{
+	"ID": "event_3",
+	"Name": "Test Event 1",
+	"Type": "Bar night",
+	"Location": "Providence Eagle",
+	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
+	"LocationAddress": "124 Snow St, Providence, RI",
+	"StartDate": "2025-07-05",
+	"StartTime": "21:00",
+	"EndDate": "2025-07-06",
+	"EndTime": "02:00",
+	"Image": "red_event.jpg",
+	"Description": "Test event!"
+},
+
 {
 	"ID": "event_2",
 	"Name": "Angels and Demons",

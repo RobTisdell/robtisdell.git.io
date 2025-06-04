@@ -44,34 +44,7 @@
 			</div>
 		
 			<!-- Sidebar Div -->
-			<div class="sidenav">
-				<h1><img src="img/logo.png" class="logo"></h1>
-				<ul>
-					<li><a href="index.html">HOME</a></li>
-					<li><a href="about.html">ABOUT US</a></li>
-					<li><a href="current_titleholder.html">TITLEHOLDER &#11162;</a>
-						<ul class="dropright">
-							<li><a href="current_titleholder.html">CURRENT</a></li>
-							<li><a href="previous_titleholders.html">PREVIOUS</a></li>
-						</ul>
-					</li>
-					<li><a href="contest.html">CONTEST</a></li>
-					<li class="current"><a class="current" href="upcoming_events.html">EVENTS &nbsp;&nbsp;&nbsp;&nbsp; &#11162;</a>
-						<ul class="dropright">
-							<li><a href="upcoming_events.html">UPCOMING</a></li>
-							<li><a href="previous_events.html">PREVIOUS</a></li>
-							<li class="current"><a class="current" href="calendar.html">CALENDAR</a></li>
-						</ul>
-					</li>
-					<li><a href="staff.html">STAFF</a></li>
-					<li><a href="membership.html">JOIN US</a></li>
-					<li><a href="affiliates.html">AFFILIATES</a></li>
-				</ul>
-				<div class="socials">
-					<a href="https://www.facebook.com/groups/79158953813"><i class="fa fa-facebook"></i></a>
-				</div>
-			</div>
-
+			<div class="sidenav" id="sidenav-container"></div>
 			<!-- Main Content Div -->
 			<div class="content" id="MainContent">
 				<article class="calendar_title">
@@ -80,9 +53,9 @@
 					<div class="Calendar_Container">
 						<div class="Calendar">
 							<div class="Calendar_Header">
-								<button id="prevBtn">&lt;</button>
+								<button id="prevBtn">&#11160;</button>
 								<div class="monthYear" id="monthYear"></div>
-								<button id="nextBtn">&gt;</button>
+								<button id="nextBtn">&#11162;</button>
 							</div>
 							<div class="Calendar_Days">
 								<div class="Calendar_Day">Sunday</div>
@@ -114,5 +87,6 @@
 		<script src="scripts/modal.js"></script>
 		<script src="scripts/calendar.js"></script>
 		<script src="scripts/mobmenu.js"></script>
+		<script src="scripts/sidebar_loader.js"></script>
   </body>
 </html>

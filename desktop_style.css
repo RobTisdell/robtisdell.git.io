@@ -349,10 +349,43 @@ body.landing-page-no-scroll {
 /* Containers for past events. */
 /* This is a work in progress, similar to upcoming events.  These will be smaller because I expect more on the screen.*/
 
+.event-display-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
 .wrapper .content article .smalleventculumn {
 	float: left;
 	width: 50%;
 	text-align: center;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-width: 50px;
+}
+
+.pagination-controls button {
+    background-color: #333338;
+    color: #818181;
+    border: 1px solid #818181;
+    padding: 15px 15px;
+    cursor: pointer;
+    font-size: 1.5em;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .wrapper .content article .pasteventbanners:after {
@@ -361,11 +394,36 @@ body.landing-page-no-scroll {
   clear: both;
 }
 
+.pagination-controls button:hover:not(:disabled) {
+    background-color: #080808;
+    color: #F1F1F1;
+    border: 1px solid #818181;
+}
+
+.pagination-controls button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    border-color: #555;
+    color: #888;
+}
+
+.smalleventbanners {
+	height: 59.64vh;
+}
+
+.smalleventbanners:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .smalleventculumn img {
 	border-style: solid;
-	max-width: 90%;
-	max-height: 90%;
+    border-color: #555;
+    max-width: 100%;
+	height: auto;
 	margin: auto;
+    display: block;
 }
 
 /* All content disabling for mobile */
