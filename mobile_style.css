@@ -1,266 +1,241 @@
-/* Keeps mobile browsers from arbitrarily resizing text */
-html {
-	-moz-text-size-adjust: none;
-	-webkit-text-size-adjust: none;
-	text-size-adjust: none;
+/* mobile_style.css (replace previous content with this, or carefully merge) */
+
+/* --- Mobile Menu Toggle Button --- */
+#mobile-menu-toggle-container {
+    display: block; /* Show on mobile resolutions */
+    position: fixed;
+    top: 15px; /* Adjust as needed */
+    left: 15px; /* Adjust as needed */
+    z-index: 1001; /* Ensure it's above the sidenav */
 }
 
-body {
-	background-color: #444449; /* Global gray background, overriden by specific sections later */
-	font-size: 1em;
+#mobile-menu-toggle {
+    background-color: #333338; /* Match your existing button styles */
+    color: #F1F1F1;
+    border: none;
+    border-radius: 5px; /* Slightly rounded corners */
+    padding: 8px 12px;
+    font-size: 28px; /* Larger icon for easy tapping */
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Subtle shadow */
+    transition: background-color 0.3s ease;
 }
 
-/* Disable sidenav from mobile */
-
-.sidenav {
-  display: none;
+#mobile-menu-toggle:hover {
+    background-color: #080808;
 }
 
-/* Top navigation pane */
-.topnav {
-	font-family: Monaco, monospace;
-	height: 50px;
-	width: 100%;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	background-color: #111111;
+/* --- Sidenav Adjustments for Mobile --- */
+
+.wrapper .sidenav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 70vw; /* Adjust width for mobile sidenav */
+    max-width: 300px; /* Max width to prevent it from being too large on tablets */
+    height: 100vh;
+    background-color: #111111;
+    padding-top: 15px; /* Adjust padding for mobile */
+    z-index: 1000; /* Ensure it's above content */
+
+    /* Initially hidden off-screen */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5); /* Add a shadow when open */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
 }
 
-.topnav-container {
-	height: 50px;
-	width: 100%;
-	display: flex;
+/* Class added by JavaScript to show the sidenav */
+.wrapper .sidenav.open {
+    transform: translateX(0);
 }
 
-/* Dropdown container */
-.top-left {
-	flex: 33.33%;
-	width: 50px;
-	height: 50px;
+/* --- Sidenav Content Styling (Overrides for mobile) --- */
+
+.wrapper .sidenav h1 {
+    height: 10vh; /* Adjust logo height for mobile */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.top-left img {
-	max-height: 50px;
+.wrapper .sidenav img.logo {
+    max-width: 80%;
+    max-height: 80%;
 }
 
-/* Logo container */
-.top-right {
-	flex: 0.083%;
-	text-align: right;
-	width: 50px;
-	height: 50px;
+.wrapper .sidenav ul li {
+    height: auto;
+    padding: 12px 15px; /* Increase vertical padding for tapping */
+    display: block; /* Make list items stack */
+    width: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Ensure borders are visible */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.top-right img {
-	max-height: 48px;
-	padding: 1px;
-}
-
-/* Definition for the dropdown list */
-.menulist {
-	position: absolute;
-	width: 99%;
-	top: 33px;
-	left: 0;
-	z-index: 1;
-	display: none;
-}
-
-
-.menulist ul {
-	padding: 0;
-	list-style-type: none;
-}
-
-.menulist li {
-	height: 6vh;
-	background-color: #111111;
-	width: 100%;
-	list-style-type: none;
-	padding-left: 1px;
-	border-style: solid;
-	border-color: #66667D;
-	border-top: none;
-	display: flex;
-	align-items: center;
-}
-
-.menulist li:first-child {
-	border-top: solid;	
-	border-color: #66667D;
-}
-
-.menulist a {
-	font-size: 3vh;
-	color: #CCCCDD;
-	text-decoration: none;
-	display: block;
-	margin: auto;
-	width: 100%;
-}
-
-.topnav a:hover {	
-	transition: .3s;
-	color: #F1F1F1;
-}
-
-/* The following defines the universal style of the contents area */
-
-.content article {
-	margin-top: 50px;
-	color: #BBBBBB;
-	margin-left: 10%;
-	margin-right: 10%;
-}
-
-.content article a {
-	color: #CCCCDD;
-}
-
-.title {
-	color:#E0AA3E;
-	position: relative;
-	text-align: center;
-	font-size: 1.25em;
+.wrapper .sidenav ul li:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 
-/* Titleholder styling */
-.container {
-	display: flex;
-	flex-direction: column
+/* Dropright menu behavior on mobile */
+/* They should stack vertically, not slide out horizontally */
+.wrapper .sidenav ul li ul.dropright {
+    position: static; /* Remove absolute positioning */
+    width: 100%; /* Take full width of parent list item */
+    left: auto; /* Reset left */
+    margin-left: 0; /* Reset margin */
+    background-color: #0d0d0d; /* Slightly different background for sub-menu */
+    visibility: visible; /* Always visible for JS to toggle */
+    opacity: 1; /* Always opaque for JS to toggle */
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; /* Transition for open/close */
+    overflow: hidden;
+    max-height: 0; /* Hidden by default */
+    padding-top: 0; /* No padding when closed */
+    padding-bottom: 0;
 }
 
-.titleholder-title {
-	order: 1;
-	text-align: center;
+/* Class added by JavaScript when a dropright menu is open */
+.wrapper .sidenav ul li ul.dropright.open {
+    max-height: 500px; /* A value greater than the max possible height of your dropdown */
+    padding-top: 5px; /* Add some padding when open */
+    padding-bottom: 5px;
 }
 
-.titleholderpictures {
-	order: 2;
-	height: 60vh;
+/* Adjust sub-menu list item padding */
+.wrapper .sidenav ul.dropright li {
+    padding: 8px 15px 8px 30px; /* Indent sub-items */
+    font-size: 0.9em; /* Slightly smaller font for sub-items */
 }
 
-.titleholderpictures img {
-	max-width: 100%;
-	max-height: 100%;
-	display: block;
-	margin: auto;
+/* Sidenav link text */
+.wrapper .sidenav a {
+    font-size: 2.5vh; /* Adjusted font size for mobile */
 }
 
-.titleholder-box {
-	order: 3;
-	color: #AABBCC;
-	margin: auto;
+/* Socials section for mobile */
+.wrapper .sidenav .socials {
+    position: relative; /* Change from absolute to relative */
+    bottom: auto; /* Remove fixed bottom */
+    left: auto; /* Remove fixed left */
+    transform: none; /* Remove translate */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex; /* Use flexbox to center */
+    justify-content: center;
+    width: 100%;
 }
 
-/* Containers for current titleholders.  These are deliberately larger than the staff pictures because I expect only one titleholder at a time*/
-
-/* This is specifically for the prototype Google calendar.  Will delete when I have a javascript one. */
-.prototype-mobile {
-	position: relative;
-	text-align: center;	
+.wrapper .sidenav .socials a {
+    width: 45px;
+    height: 45px;
+    font-size: 24px;
+    margin: 0 10px; /* Spacing between social icons */
 }
 
+/* --- Main Content Area Adjustments (when sidenav is closed) --- */
+.wrapper .content {
+    margin-left: 0; /* Full width when sidenav is closed */
+    width: 100vw;
+    box-sizing: border-box; /* Include padding in width */
+    padding: 15px; /* Add some default padding to content */
+}
+
+/* When the sidenav is open, you might want to overlay the content or push it */
+/* For simplicity, let's just make the sidenav overlay the content. */
+/* If you want content to be pushed, you'd add a class to .wrapper or <body>
+   and apply margin-left/transform to .content */
+
+/* Ensure text and links within content are readable */
+.wrapper .content {
+    font-size: 1em; /* Adjust base font size */
+}
+
+.wrapper .content article {
+    margin-left: 5vw; /* Smaller side margins for content */
+    margin-right: 5vw;
+    margin-top: 5vh; /* Smaller top margin for content articles */
+    padding: 15px; /* Adjust article padding */
+}
+
+/* Hide the desktop prototype and show mobile prototype */
 .prototype-desktop {
-	display: none;
+    display: none !important; /* Use !important to ensure override */
 }
 
-/* Picture containers for staff and previous titleholders */
-
-.staff-box {
-	order: 3;
-	margin-bottom: 1vh;
+.prototype-mobile {
+    display: block !important;
+    text-align: center;
 }
 
-.staff-box p {
-	margin: 0;
-	padding: 0;
+/* General responsive image rule for any image within content */
+.wrapper .content img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Ensure it behaves as a block element */
 }
 
-.staff-title {
-	text-align: center;
-	order: 1;
-	color: #AABBCC;
-}
-
+/* Override existing float-based layouts with flex or block for mobile */
 .staffpictures {
-	order: 2;
+    float: none;
+    width: 48%; /* Keep two columns, but make them inline-block */
+    display: inline-block;
+    vertical-align: top;
+    margin: 1%;
+    box-sizing: border-box;
 }
 
-.staffpictures img {
-	max-width: 90%;
-	max-height: 50vh;
-	display: block;
-	margin: auto;
+.wrapper .content article .titleholderpictures,
+.wrapper .content article .titleholder-title,
+.wrapper .content article .titleholder-box {
+    float: none;
+    width: 100%;
+    margin-bottom: 10px; /* Add spacing when stacked */
 }
 
-
-/* Containers for upcoming events. */
-/* This is very much a work in progress.  The ideal here is a javascript that automates this stuff. */
-
-.futureeventbanner img {
-	border-style: solid;
-	width: 90%;
-	height: 180px;
-	float: left;
-	text-align: center;
-	max-width: 100%;
-	max-height: 100%;
+.event-display-wrapper {
+    flex-direction: column;
+    gap: 10px;
 }
 
-/* Containers for past events. */
-/* This is a work in progress, similar to upcoming events.  These will be smaller because I expect more on the screen.*/
-
-.pasteventculumn {
-	float: left;
-	width: 50%;
+.wrapper .content article .smalleventculumn {
+    float: none;
+    width: 100%;
 }
 
-.pasteventbanners:after {
-  content: "";
-  display: table;
-  clear: both;
+.smalleventculumn img {
+    max-width: 90%;
+    height: auto;
 }
 
-.pasteventculumn img {
-	border-style: solid;
-	text-align: center;
-	max-width: 90%;
-	max-height: 90%;
+.affiliate_container {
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #111111;
 }
 
-/* upcoming event banners */
-.content article .eventbanner {
-	width: 100%;
-	display: block;
-	margin: auto;
-	margin-top: 5%;
-}	
-
-/* Social media links */
-
-.socials {
-	margin: 0 auto;
+.affiliate_picture {
+    max-height: 10vh;
+    max-width: 10vh;
+    margin: 0 auto 10px auto;
 }
 
-.socials a{
-	background-color: #444449;
-	border-radius: 50%;
-	width: 2.5vw;
-	height: 2.5vw;
-	display: flex;
-	align-items: center;
+.affiliate_title {
+    padding-left: 0;
+    text-align: center;
 }
 
-.socials a:hover{
-	transition: .3s;
-	transform: rotate(360deg);
-	background-color: #333338;
+.modal-content {
+    width: 90%;
+    max-width: 90vw;
+    padding: 15px;
 }
 
-.socials a i{
-	margin: 0 auto;
+.close-button {
+    width: 40px; /* Larger tap target for close button */
+    height: 40px;
+    font-size: 30px;
 }

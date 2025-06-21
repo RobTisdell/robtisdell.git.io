@@ -4,7 +4,22 @@
 }
 
 body {
-	background-color: #444449; /* Global gray background, overriden by specific sections later */
+	background-color: #222227;
+}
+
+/* fade effect for pages loading */
+
+.content {
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out; /* Smooth transition for initial load and default */
+}
+
+.content.fade-out {
+	opacity: 0;
+}
+
+.content.fade-in {
+	opacity: 1;
 }
 
 /* Settings for the sidenav container */
@@ -18,6 +33,7 @@ body {
 	height: 100vh;
 	background-color: #111111;
 	padding-top: 2vh;
+	z-index: 2;
 }
 
 /* Logo for the sidenav */
@@ -92,6 +108,22 @@ body {
 	color: #F1F1F1;
 }
 
+.wrapper .sidenav ul.dropright li:hover {
+    background-color: #080808;
+}
+
+.wrapper .sidenav ul.dropright li:hover > a {
+    color: #F1F1F1;
+}
+
+.wrapper .sidenav ul li:has(ul.dropright li:hover) {
+    background-color: #040404; /* Matches .current LI background */
+}
+
+.wrapper .sidenav ul li:has(ul.dropright li:hover) > a {
+    color: #F1F1F1; /* Matches .current A text color */
+}
+
 /* Makes the currently active page has the same styling as a hover link. */
 
 .wrapper .sidenav li.current {
@@ -161,9 +193,13 @@ body.landing-page-no-scroll {
 	just a margin container really*/
 
 .wrapper .content article {
+	min-height: 60vh;
+	background-color: #444449;
+	padding: 20px;
 	margin-left: 10vw;
 	margin-right: 10vw;
 	margin-top: 15vh;
+	border-style: solid;
 }
 
 
@@ -181,8 +217,9 @@ body.landing-page-no-scroll {
 	font-size: 1.25em;
 }
 
-.wrapper .content article a {
-	color: #CCCCDD;
+.wrapper .content a {
+	color: #EEEEFF;
+	text-decoration: underline;
 }
 
 .wrapper .content article a:hover {
@@ -428,6 +465,10 @@ body.landing-page-no-scroll {
 
 /* All content disabling for mobile */
 
+#mobile_menu_container {
+	display: none;
+}
+
 /* Turns off the top menu for mobile */
 .wrapper .topnav {
 	display: none;
@@ -544,4 +585,36 @@ border-bottom-color: #080808;
 .modal-content ul li a {
 	text-decoration: none;
 	color: #CCCCDD;
+}
+
+/* In your desktop_style.css or mobile_style.css */
+.event-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    line-height: 1.6;
+}
+
+.event-container img {
+	display: block;
+    margin: 0 auto;
+    font-size: 1.5em;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+	width: 40vw;	
+}
+
+.event-container p {
+    margin-bottom: 8px;
+}
+
+.event-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.event-container a:hover {
+    text-decoration: underline;
 }

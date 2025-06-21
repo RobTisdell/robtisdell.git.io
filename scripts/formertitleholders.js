@@ -1,70 +1,76 @@
-const titleholderSource = 'scripts/titleholders.json';
-const targetElementId = 'titlecontainer';
+// scripts/previous_titleholders.js
 
-async function displayformerTitleholders() {
-	try {
-		const response = await fetch(titleholderSource);
-		const allTitleholderData = await response.json();
+(function() { // <--- This opens the IIFE and creates a new scope
 
-		if (!Array.isArray(allTitleholderData)) {
-			console.error("Error: JSON data is not an array.");
-			return; // Exit if data is malformed
-		}
+    const titleholderSource = 'scripts/titleholders.json';
+    const targetElementId = 'titlecontainer'; // Changed ID for clarity and uniqueness
 
-		const formerTitleholders = allTitleholderData.filter(titleholder => titleholder.Active === false);
-		
-		// This block does the sorting
-		formerTitleholders.sort((a, b) => {
-            const yearA = a.Year;
-            const yearB = b.Year;
+    // Function to display former titleholders
+    async function displayFormerTitleholders() {
+        const outputContainer = document.getElementById(targetElementId);
 
-            if (yearA < yearB) {
-                return -1;
+        // IMPORTANT: Check if the target container exists on the page.
+        if (!outputContainer) {
+            // console.warn(`HTML element with ID '${targetElementId}' not found. Script skipped.`);
+            return; // Exit if the target container doesn't exist
+        }
+
+        try {
+            const response = await fetch(titleholderSource);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-            if (yearA > yearB) {
-                return 1;
+            const allTitleholderData = await response.json();
+
+            if (!Array.isArray(allTitleholderData)) {
+                console.error("Error: JSON data is not an array for titleholders.");
+                outputContainer.innerHTML = '<p>Error: Titleholder data is malformed.</p>';
+                return;
             }
-            return 0; // This is to handle the extremely unlikely event of same names.
-        });
 
-		const outputContainer = document.getElementById(targetElementId);
+            const formerTitleholders = allTitleholderData.filter(titleholder => titleholder.Active === false);
 
-		if (!outputContainer) {
-			console.error(`Error: HTML element with ID '${targetElementId}' not found.`);
-			return; // Exit if the target container doesn't exist
-		}
+            // Sort former titleholders by Year (ascending)
+            formerTitleholders.sort((a, b) => {
+                const yearA = a.Year;
+                const yearB = b.Year;
+                return yearA - yearB;
+            });
 
-		// Clear existing content in the container.
-		outputContainer.innerHTML = '';
+            // Clear existing content in the container before rendering new content.
+            outputContainer.innerHTML = '';
 
-		// Construct the HTML for each active staff member
-		formerTitleholders .forEach(titleHolder => {
-			const staffHtml = `
-				<div class="container">
-					<div class="staffpictures">
-						<img src="img/titleholders/${titleHolder.Image}" alt="${titleHolder.Name}">
-					</div>
-					<div class="staff-title">
-						<b>${titleHolder.Name} &#9830; ${titleHolder.Prefix} FLAG (${titleHolder.Year})</b>
-					</div>
-					<div class="staff-box">
-						<p>${titleHolder.Description}</p>
-					</div>
-				</div>
-			`;
-			// Append the generated HTML
-			outputContainer.innerHTML += staffHtml;
-		});
+            if (formerTitleholders.length === 0) {
+                outputContainer.innerHTML = '<p>No previous titleholders found.</p>';
+                return;
+            }
 
-	} catch (error) {
-		console.error("Failed to load or display titleholder data:", error);
-		// You might want to display a user-friendly error message on the page here
-		const outputContainer = document.getElementById(targetElementId);
-		if (outputContainer) {
-			outputContainer.innerHTML = '<p>Error loading titleholder information. Please try again later.</p>';
-		}
-	}
-}
+            // Construct the HTML for each former titleholder
+            formerTitleholders.forEach(titleHolder => {
+                const titleholderHtml = `
+                    <div class="container">
+                        <div class="staffpictures">
+                            <img src="img/titleholders/${titleHolder.Image}" alt="${titleHolder.Name}">
+                        </div>
+                        <div class="staff-title">
+                            <b>${titleHolder.Name} &#9830; ${titleHolder.Prefix} FLAG (${titleHolder.Year})</b>
+                        </div>
+                        <div class="staff-box">
+                            <p>${titleHolder.Description}</p>
+                        </div>
+                    </div>
+                `;
+                // Append the generated HTML
+                outputContainer.innerHTML += titleholderHtml;
+            });
 
-// Call the function to load and display titleholders when the page loads
-document.addEventListener('DOMContentLoaded', displayformerTitleholders);
+        } catch (error) {
+            console.error("Failed to load or display former titleholder data:", error);
+            outputContainer.innerHTML = '<p>Error loading previous titleholder information. Please try again later.</p>';
+        }
+    }
+
+    // Call the function when this script is executed.
+    displayFormerTitleholders();
+
+})(); // <--- This closes the IIFE

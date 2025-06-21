@@ -1,133 +1,162 @@
 // scripts/previous_events_loader.js
 
-"use strict";
+(function() { // Start of the main IIFE for scope isolation
 
-const eventsSource = 'scripts/events.json';
-const targetContainerId = 'previous-events-container'; // ID of the div to output events into
+    "use strict";
 
-// --- Pagination State Variables ---
-const eventsPerPage = 8;
-let currentPage = 0;
-let filteredAndSortedEvents = []; // This will hold all the relevant events after filtering/sorting
+    const eventsSource = 'scripts/events.json';
+    const targetContainerId = 'previous-events-container'; // ID of the div to output events into
 
-// --- DOM Element References for Pagination ---
-const prevBtn = document.getElementById('prev-events-btn');
-const nextBtn = document.getElementById('next-events-btn');
+    // --- Pagination State Variables (reset on each load) ---
+    let currentPage = 0;
+    const eventsPerPage = 8;
+    let filteredAndSortedEvents = []; // This will hold all the relevant events after filtering/sorting
 
-// --- Main Function to Display Events for a Given Page ---
-function displayEventsPage(pageNumber) {
-    const outputContainer = document.getElementById(targetContainerId);
-    if (!outputContainer) {
-        console.error(`Error: HTML element with ID '${targetContainerId}' not found.`);
-        return;
-    }
+    // --- DOM Element References (will be assigned inside the main function) ---
+    let prevBtn = null; // Initialize as null
+    let nextBtn = null; // Initialize as null
 
-    // Clear existing content
-    outputContainer.innerHTML = '';
-
-    // Calculate start and end indices for the current page
-    const startIndex = pageNumber * eventsPerPage;
-    const endIndex = startIndex + eventsPerPage;
-
-    // Get the events for the current page
-    const eventsToDisplay = filteredAndSortedEvents.slice(startIndex, endIndex);
-
-    // Generate HTML for the events
-// add  <p>${event.Name} - ${new Date(event.StartDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p> if we want dates after the events
-    let eventsHTML = '';
-    if (eventsToDisplay.length > 0) {
-        eventsToDisplay.forEach(event => {
-            eventsHTML += `
-                <div class="smalleventculumn">
-                        <img src="img/events/${event.Image}" alt="${event.Name} Event" />
-                </div>
-            `;
-        });
-    } else {
-        // Display a message if no events are found for the current page
-        eventsHTML = '<p style="text-align: center; color: #CCC;">No more previous events to display.</p>';
-    }
-
-    outputContainer.innerHTML = eventsHTML;
-
-    // Update button states (disabled/enabled)
-    prevBtn.disabled = (currentPage === 0);
-    nextBtn.disabled = (endIndex >= filteredAndSortedEvents.length);
-}
-
-
-// --- Event Data Loading and Initial Setup ---
-async function loadAndInitializePreviousEvents() {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // Normalize today's date to midnight for comparison
-
-    try {
-        const response = await fetch(eventsSource);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+    // --- Helper function to remove existing listeners (important for SPA) ---
+    function removeEventListeners() {
+        if (prevBtn) {
+            prevBtn.removeEventListener('click', handlePrevClick);
         }
-        const allEvents = await response.json();
+        if (nextBtn) {
+            nextBtn.removeEventListener('click', handleNextClick);
+        }
+    }
 
-        if (!Array.isArray(allEvents)) {
-            console.error("Error: Events data is not an array.");
+    // --- Pagination Event Handlers (separate functions for easier removal) ---
+    function handlePrevClick() {
+        if (currentPage > 0) {
+            currentPage--;
+            displayEventsPage(currentPage);
+        }
+    }
+
+    function handleNextClick() {
+        const maxPage = Math.ceil(filteredAndSortedEvents.length / eventsPerPage) - 1;
+        if (currentPage < maxPage) {
+            currentPage++;
+            displayEventsPage(currentPage);
+        }
+    }
+
+    // --- Main Function to Display Events for a Given Page ---
+    function displayEventsPage(pageNumber) {
+        const outputContainer = document.getElementById(targetContainerId);
+        if (!outputContainer) {
+            console.error(`Error: HTML element with ID '${targetContainerId}' not found.`);
+            return; // Exit if the container isn't there
+        }
+
+        // Clear existing content
+        outputContainer.innerHTML = '';
+
+        // Calculate start and end indices for the current page
+        const startIndex = pageNumber * eventsPerPage;
+        const endIndex = startIndex + eventsPerPage;
+
+        // Get the events for the current page
+        const eventsToDisplay = filteredAndSortedEvents.slice(startIndex, endIndex);
+
+        // Generate HTML for the events
+        let eventsHTML = '';
+        if (eventsToDisplay.length > 0) {
+            eventsToDisplay.forEach(event => {
+                eventsHTML += `
+                    <div class="smalleventculumn">
+                        <img src="img/events/${event.Image}" alt="${event.Name} Event" />
+                        </div>
+                `;
+            });
+        } else {
+            eventsHTML = '<p style="text-align: center; color: #CCC;">No more previous events to display.</p>';
+        }
+
+        outputContainer.innerHTML = eventsHTML;
+
+        // Update button states (disabled/enabled) ONLY if buttons exist
+        if (prevBtn && nextBtn) {
+            prevBtn.disabled = (currentPage === 0);
+            nextBtn.disabled = (endIndex >= filteredAndSortedEvents.length);
+        }
+    }
+
+    // --- Event Data Loading and Initial Setup ---
+    async function loadAndInitializePreviousEvents() {
+        // --- Reset State and References for a Clean Load ---
+        currentPage = 0; // Always start on the first page
+        filteredAndSortedEvents = []; // Clear previous data
+        removeEventListeners(); // Clean up old event listeners
+
+        // Get references to buttons (they might not exist on other pages)
+        // These IDs are direct children of the DOM when this script runs
+        prevBtn = document.getElementById('prev-events-btn');
+        nextBtn = document.getElementById('next-events-btn');
+
+        const outputContainer = document.getElementById(targetContainerId);
+        // If the target container or pagination buttons aren't present, exit gracefully.
+        if (!outputContainer || !prevBtn || !nextBtn) {
+            // console.warn("Previous events containers or pagination buttons not found. Script skipped.");
             return;
         }
 
-        // 1. Filter for past events
-        const previousEvents = allEvents.filter(event => {
-            const eventStartDate = new Date(event.StartDate);
-            eventStartDate.setHours(0, 0, 0, 0); // Normalize event start date
+        // Add event listeners (now that we know the buttons exist)
+        prevBtn.addEventListener('click', handlePrevClick);
+        nextBtn.addEventListener('click', handleNextClick);
 
-            const eventEndDate = new Date(event.EndDate);
-            eventEndDate.setHours(0, 0, 0, 0); // Normalize event end date
+        // --- Core Data Fetching and Filtering ---
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Normalize today's date to midnight for comparison
 
-            // An event is "past" if its end date is before today
-            // Using EndDate ensures multi-day events are not considered "past" until they actually finish
-            return eventEndDate < today;
-        });
+        try {
+            const response = await fetch(eventsSource);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const allEvents = await response.json();
 
-        // 2. Sort from most recent to oldest (descending by StartDate)
-        previousEvents.sort((a, b) => {
-            const dateA = new Date(a.StartDate);
-            const dateB = new Date(b.StartDate);
-            return dateB.getTime() - dateA.getTime(); // Sort by date in descending order
-        });
+            if (!Array.isArray(allEvents)) {
+                console.error("Error: Events data is not an array for previous events.");
+                outputContainer.innerHTML = '<p>Error: Events data is malformed.</p>';
+                if (prevBtn) prevBtn.disabled = true;
+                if (nextBtn) nextBtn.disabled = true;
+                return;
+            }
 
-        // Store the filtered and sorted events globally
-        filteredAndSortedEvents = previousEvents;
+            // 1. Filter for past events
+            const previousEvents = allEvents.filter(event => {
+                const eventEndDate = new Date(event.EndDate);
+                // Normalize event end date to end of day for more robust comparison
+                eventEndDate.setHours(23, 59, 59, 999); 
+                
+                // An event is "past" if its end date is strictly before the beginning of today
+                return eventEndDate < today; 
+            });
 
-        // Display the first page of events
-        displayEventsPage(currentPage);
+            // 2. Sort from most recent to oldest (descending by StartDate)
+            previousEvents.sort((a, b) => {
+                const dateA = new Date(a.StartDate);
+                const dateB = new Date(b.StartDate);
+                return dateB.getTime() - dateA.getTime(); // Sort by date in descending order
+            });
 
-    } catch (error) {
-        console.error("Failed to load or display previous events:", error);
-        const outputContainer = document.getElementById(targetContainerId);
-        if (outputContainer) {
+            // Store the filtered and sorted events globally within this module's scope
+            filteredAndSortedEvents = previousEvents;
+
+            // Display the first page of events
+            displayEventsPage(currentPage);
+
+        } catch (error) {
+            console.error("Failed to load or display previous events:", error);
             outputContainer.innerHTML = '<p>Error loading previous events. Please try again later.</p>';
+            if (prevBtn) prevBtn.disabled = true;
+            if (nextBtn) nextBtn.disabled = true;
         }
-        // Disable buttons if there's an error
-        prevBtn.disabled = true;
-        nextBtn.disabled = true;
     }
-}
 
-// --- Event Listeners for Pagination Buttons ---
-prevBtn.addEventListener('click', () => {
-    if (currentPage > 0) {
-        currentPage--;
-        displayEventsPage(currentPage);
-    }
-});
+    // --- Initial Call: Execute when the script is loaded/injected ---
+    loadAndInitializePreviousEvents();
 
-nextBtn.addEventListener('click', () => {
-    // Check if there are more events to display
-    const maxPage = Math.ceil(filteredAndSortedEvents.length / eventsPerPage) - 1;
-    if (currentPage < maxPage) {
-        currentPage++;
-        displayEventsPage(currentPage);
-    }
-});
-
-
-// --- Initial Call: Start everything when the DOM is fully loaded ---
-document.addEventListener('DOMContentLoaded', loadAndInitializePreviousEvents);
+})(); // End of the main IIFE
