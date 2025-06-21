@@ -48,7 +48,7 @@
             // Construct the HTML for each former titleholder
             formerTitleholders.forEach(titleHolder => {
                 const titleholderHtml = `
-                    <div class="container">
+                    <div class="divided_boxes">
                         <div class="staffpictures">
                             <img src="img/titleholders/${titleHolder.Image}" alt="${titleHolder.Name}">
                         </div>

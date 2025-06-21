@@ -83,7 +83,7 @@
             // Construct the HTML for each former staff member
             formerStaff.forEach(staffMember => {
                 const staffHtml = `
-                    <div class="container">
+                    <div class="divided_boxes">
                         <div class="staffpictures">
                             <img src="img/staff/${staffMember.Image}" alt="${staffMember.Name}">
                         </div>

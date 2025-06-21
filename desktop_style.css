@@ -588,7 +588,7 @@ border-bottom-color: #080808;
 }
 
 /* In your desktop_style.css or mobile_style.css */
-.event-container {
+.divided_boxes {
     border: 1px solid #ddd;
     padding: 15px;
     margin-bottom: 20px;
@@ -598,7 +598,7 @@ border-bottom-color: #080808;
 	background: #333338;
 }
 
-.event-container img {
+.divided_boxes img {
 	display: block;
     margin: 0 auto;
     font-size: 1.5em;
@@ -607,15 +607,15 @@ border-bottom-color: #080808;
 	width: 40vw;	
 }
 
-.event-container p {
+.divided_boxes p {
     margin-bottom: 8px;
 }
 
-.event-container a {
+.divided_boxes a {
     color: #007bff;
     text-decoration: none;
 }
 
-.event-container a:hover {
+.divided_boxes a:hover {
     text-decoration: underline;
 }

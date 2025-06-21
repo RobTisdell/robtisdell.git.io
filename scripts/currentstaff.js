@@ -65,7 +65,7 @@
             activeStaff.forEach(staffMember => {
                 const staffHtml = `
                     <div class="container">
-                        <div class="staffpictures">
+                        <div class="divided_boxes">
                             <img src="img/staff/${staffMember.Image}" alt="${staffMember.Name}">
                         </div>
                         <div class="staff-title">

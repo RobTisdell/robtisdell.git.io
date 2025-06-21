@@ -68,7 +68,7 @@
 
 
         return `
-            <div class="event-container" id="event-${event.ID}">
+            <div class="divided_boxes" id="event-${event.ID}">
                 <p><img src="img/events/${event.Image}" alt="${event.Name} image" style="max-width:100%; height:auto;"></p>
                 <p><strong>Type:</strong> ${event.Type}</p>
                 <p><strong>Location:</strong> ${locationHtml} (${event.LocationAddress || 'Address TBD'})</p>
