@@ -87,13 +87,11 @@
                         <div class="staffpictures">
                             <img src="img/staff/${staffMember.Image}" alt="${staffMember.Name}">
                         </div>
-                        <div class="staff-title">
-                            <b>${staffMember.Name}</b>
-                        </div>
-                        <div class="staff-box">
-                            <p>Past Positions: ${staffMember.PastPositions && staffMember.PastPositions.length > 0 ? staffMember.PastPositions.join(', ') : 'N/A'}</p>
-                            <p>${staffMember.Description}</p>
-                        </div>
+						<div class="staff-box">
+								<b>${staffMember.Name}</b>
+								<b>Past Positions: ${staffMember.PastPositions && staffMember.PastPositions.length > 0 ? staffMember.PastPositions.join(', ') : 'N/A'}</b>
+								<p>${staffMember.Description}</p>
+						</div>
                     </div>
                 `;
                 // Append the generated HTML

@@ -52,10 +52,9 @@
                         <div class="staffpictures">
                             <img src="img/titleholders/${titleHolder.Image}" alt="${titleHolder.Name}">
                         </div>
-                        <div class="staff-title">
-                            <b>${titleHolder.Name} &#9830; ${titleHolder.Prefix} FLAG (${titleHolder.Year})</b>
-                        </div>
                         <div class="staff-box">
+                            <b>${titleHolder.Name}</b>
+							<b>${titleHolder.Prefix} FLAG (${titleHolder.Year})</b>
                             <p>${titleHolder.Description}</p>
                         </div>
                     </div>

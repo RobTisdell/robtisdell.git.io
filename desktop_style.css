@@ -330,14 +330,6 @@ body.landing-page-no-scroll {
 }
 /* Picture containers for staff and previous titleholders */
 
-.staff-box {
-	margin-bottom: 5vh;
-}
-
-.staff-title {
-	color: #AABBCC;
-}
-
 .staffpictures {
 	width: 25%;
 	height: 30vh;
@@ -355,27 +347,29 @@ body.landing-page-no-scroll {
 	margin: auto;
 }
 
+.staff-box {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 5vh;
+}
+
 /* Picture containers for the current titleholder.  These are deliberately larger than the staff pictures because I expect only one titleholder at a time*/
 
-.wrapper .content article .titleholderpictures {
-	height: 50vh;
-	float: left;
+.titleholder-box {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 5vh;
 }
 
-.wrapper .content article .titleholderpictures img {
-	object-fit: contain;
+.titleholderpictures {
+	float: left;
+	margin-top: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.titleholderpictures img {
 	max-width: 100%;
-	max-height: 100%;
-}
-
-.wrapper .content article .titleholder-title {
-	width: 65%;
-	float: left;
-}
-
-.wrapper .content article .titleholder-box {
-	width: 65%;
-	float: left;
 }
 
 /* Containers for upcoming events. */
@@ -595,6 +589,7 @@ border-bottom-color: #080808;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     line-height: 1.6;
 	background: #333338;
+	display: flex;
 }
 
 .divided_boxes img {
@@ -602,7 +597,6 @@ border-bottom-color: #080808;
     margin: 0 auto;
     font-size: 1.5em;
     padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
 	width: 40vw;	
 }
 
@@ -617,4 +611,22 @@ border-bottom-color: #080808;
 
 .divided_boxes a:hover {
     text-decoration: underline;
+}
+
+.unified_box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    line-height: 1.6;
+	background: #333338;
+	display: flex;
+}
+
+.unified_box img {
+	display: block;
+    font-size: 1.5em;
+	width: 40vw;	
+	vertical-align: middle;
 }

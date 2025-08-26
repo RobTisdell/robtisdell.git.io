@@ -1,10 +1,5 @@
-// scripts/modal.js
-
 (function() { // Start of IIFE
 
-    // --- DOM Element References ---
-    // These must be retrieved *inside* the IIFE, and ideally, after the IIFE ensures they exist.
-    // We'll add checks before using them.
     const eventModal = document.getElementById('eventModal');
     const closeButton = eventModal ? document.querySelector('#eventModal .close-button') : null;
 

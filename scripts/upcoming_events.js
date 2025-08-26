@@ -150,7 +150,6 @@
             let introText = ''; // Variable for the intro text
 
             if (filteredEvents.length === 0) {
-                upcomingEventsHtml = '<p>No upcoming events within the next 31 days or currently in progress. Check back soon or view our <a href="calendar.html">Calendar</a> for future events!</p>';
                 introText = '<p>We have no events planned for the immediate future. Check out our <a href="calendar.html">calendar</a> to see what we have planned later in the year!</p>';
             } else {
                 introText = '<p>These are the upcoming events for the month. For events further out, check out our <a href="calendar.html">calendar</a>!</p>';

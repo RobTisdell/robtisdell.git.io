@@ -42,14 +42,13 @@
             // Construct the HTML for the active titleholder(s)
             activeTitleholder.forEach(titleHolder => {
                 const titleholderHtml = `
-                    <div class="container">
+                    <div class="unified_box">
                         <div class="titleholderpictures">
                             <img src="img/titleholders/${titleHolder.Image}" alt="${titleHolder.Name}">
                         </div>
-                        <div class="titleholder-title">
-                            <b>${titleHolder.Name} &#9830; ${titleHolder.Prefix} FLAG ${titleHolder.Year.slice(0, 4)}</b>
-                        </div>
                         <div class="titleholder-box">
+                            <b>${titleHolder.Name}</b>
+							<b>${titleHolder.Prefix} FLAG ${titleHolder.Year.slice(0, 4)}</b>
                             <p>${titleHolder.Description}</p>
                         </div>
                     </div>

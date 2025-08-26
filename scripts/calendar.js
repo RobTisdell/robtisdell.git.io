@@ -1,5 +1,4 @@
-// Updated calendar.js
-(function() { // Start of the Immediately Invoked Function Expression (IIFE)
+(function() {
 
     // --- Global DOM Element References ---
     const monthYearElement = document.getElementById('monthYear');

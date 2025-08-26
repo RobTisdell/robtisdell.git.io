@@ -68,12 +68,11 @@
                         <div class="staffpictures">
                             <img src="img/staff/${staffMember.Image}" alt="${staffMember.Name}">
                         </div>
-                        <div class="staff-title">
-                            <b>${staffMember.Name} ${staffMember.CurrentPosition ? '&#9830; ' + staffMember.CurrentPosition : ''}</b>
-                        </div>
-                        <div class="staff-box">
-                            <p>${staffMember.Description}</p>
-                        </div>
+						<div class="staff-box">
+							<b>${staffMember.Name}</b>
+							<b>${staffMember.CurrentPosition}</b>
+							<p>${staffMember.Description}</p>
+						</div>
                     </div>
                 `;
                 // Append the generated HTML

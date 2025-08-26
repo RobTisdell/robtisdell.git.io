@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const mainContentDiv = document.getElementById('MainContent');
     const sidenavContainer = document.getElementById('sidenav-container');
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle'); // Get the new toggle button
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const defaultPage = 'about.html';
     const sidenavPage = 'sidenav.html';
 
@@ -119,22 +119,38 @@ document.addEventListener('DOMContentLoaded', function() {
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = html;
 
-            const fetchedContentArticle = tempDiv.querySelector('article');
-            const contentToInject = fetchedContentArticle ? fetchedContentArticle.outerHTML : html;
+            const fetchedContent = tempDiv.querySelector('.content') || tempDiv;
+            const contentToInject = fetchedContent.innerHTML;
 
+            // Clear previous scripts
+            mainContentDiv.querySelectorAll('script').forEach(script => script.remove());
+            
+            // Extract and prepare scripts from the fetched content before injection
+            const scriptsToExecute = Array.from(tempDiv.querySelectorAll('script'));
+            
+            // Inject the main content. This injection should not include the script tags
             mainContentDiv.innerHTML = contentToInject;
-
-            const scriptsToExecute = tempDiv.querySelectorAll('script');
-            scriptsToExecute.forEach(oldScript => {
+            
+            // Load and execute scripts in the correct order
+            for (const script of scriptsToExecute) {
                 const newScript = document.createElement('script');
-                Array.from(oldScript.attributes).forEach(attr => {
-                    newScript.setAttribute(attr.name, oldScript.getAttribute(attr.name));
+                Array.from(script.attributes).forEach(attr => {
+                    newScript.setAttribute(attr.name, script.getAttribute(attr.name));
                 });
-                if (oldScript.textContent) {
-                    newScript.textContent = oldScript.textContent;
+                if (script.textContent) {
+                    newScript.textContent = script.textContent;
                 }
-                mainContentDiv.appendChild(newScript);
-            });
+                
+                newScript.async = false;
+                await new Promise((resolve, reject) => {
+                    newScript.onload = () => {
+                        console.log(`[Content Loader] Executed ${newScript.src || 'inline'} script.`);
+                        resolve();
+                    };
+                    newScript.onerror = reject;
+                    document.body.appendChild(newScript);
+                });
+            }
 
             mainContentDiv.style.opacity = '0';
             mainContentDiv.style.transition = 'opacity 0.5s ease-in';
@@ -146,8 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             highlightActiveNavLink(pageName);
 
-            // Close sidenav after loading content on mobile
-            if (sidenavContainer.classList.contains('open') && window.innerWidth <= 800) { // Check if it's mobile view
+            if (sidenavContainer.classList.contains('open') && window.innerWidth <= 800) {
                 sidenavContainer.classList.remove('open');
             }
 
@@ -206,26 +221,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const parentLi = link.closest('li');
         const droprightUl = parentLi ? parentLi.querySelector('.dropright') : null;
 
-        // If this link has a dropright AND it's not a child link within a dropright
-        // AND we are in a mobile view (or sidenav is open, implying mobile behavior)
-        // Check window.innerWidth to ensure this behavior is only for mobile layouts
         if (droprightUl && !parentLi.parentElement.classList.contains('dropright') && window.innerWidth <= 800) {
-            event.preventDefault(); // Prevent navigation for top-level dropdown toggles
+            event.preventDefault();
             droprightUl.classList.toggle('open');
-            // Optional: Close other open dropdowns if you want only one open at a time
-            // sidenavContainer.querySelectorAll('.dropright.open').forEach(ul => {
-            //     if (ul !== droprightUl) {
-            //         ul.classList.remove('open');
-            //     }
-            // });
             console.log("[Navigation] Toggled dropright for:", link.textContent.trim());
         } else if (targetPage) {
-            event.preventDefault(); // Prevent default link behavior for content navigation
+            event.preventDefault();
             await loadMainContent(targetPage);
             history.pushState({ page: targetPage }, '', targetPage);
             console.log(`[Navigation] Navigated to: ${targetPage}`);
         } else {
-             console.warn("Clicked nav link missing data-target-page attribute or unhandled scenario:", link);
+            console.warn("Clicked nav link missing data-target-page attribute or unhandled scenario:", link);
         }
     }
 
@@ -245,7 +251,6 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.warn("Mobile menu toggle button with ID 'mobile-menu-toggle' not found.");
     }
-
 
     // --- Initial Page Load Sequence ---
     async function initialPageLoad() {
@@ -286,8 +291,8 @@ document.addEventListener('DOMContentLoaded', function() {
         await loadMainContent(pageToLoad);
 
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1) !== pageToLoad) {
-             history.replaceState({ page: pageToLoad }, '', pageToLoad);
-             console.log(`[Initial Load] Replaced history state to: ${pageToLoad}`);
+            history.replaceState({ page: pageToLoad }, '', pageToLoad);
+            console.log(`[Initial Load] Replaced history state to: ${pageToLoad}`);
         }
     }
 
