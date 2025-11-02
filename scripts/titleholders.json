@@ -1,7 +1,7 @@
 [
 
 {
-	"ID": "titled_22",
+	"ID": "titled_19",
 	"Prefix": "Ms.",
 	"Name": "Amethyst Rain",
 	"Active": true,
@@ -218,5 +218,15 @@
 	"Year": "2003",
 	"Image": "dude2.jpg",
 	"Description": ""
+},
+
+{
+	"ID": "titled_0",
+	"Prefix": "Mr.",
+	"Name": "Leatherman",
+	"Active": true,
+	"Year": "2025-2026",
+	"Image": "dude1.jpg",
+	"Description": "The image here is bigger than the staff page because, presumably, we'd have only one active titlteholder at a time. I assume if we wanted past titleholders, we'd have a historical section where I'd make the list more in-line with the Staff section.  But we could also merge the previous and current titleholders into one page, with the current titleholder being on top if we wanted to."
 }
 ]
