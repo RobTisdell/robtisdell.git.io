@@ -1,6 +1,156 @@
 [
 
 {
+	"ID": "titled_19",
+	"Prefix": "Ms.",
+	"Name": "Amethyst Rain",
+	"Active": true,
+	"Year": "2025",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_21",
+	"Prefix": "Mx.",
+	"Name": "Banshee",
+	"Active": false,
+	"Year": "2024",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_20",
+	"Prefix": "Mr.",
+	"Name": "Pup Red",
+	"Active": false,
+	"Year": "2023",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_19",
+	"Prefix": "Mr.",
+	"Name": "Jack Keegan",
+	"Active": false,
+	"Year": "2022",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_18",
+	"Prefix": "Mr.",
+	"Name": "Sir Dan",
+	"Active": false,
+	"Year": "2021",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_17",
+	"Prefix": "Mr.",
+	"Name": "Boggy Fryer",
+	"Active": false,
+	"Year": "2019 and 2020",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_16",
+	"Prefix": "Mr.",
+	"Name": "Russ Wyatt",
+	"Active": false,
+	"Year": "2018",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_15",
+	"Prefix": "Mr.",
+	"Name": "Russell Goodman",
+	"Active": false,
+	"Year": "2017",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_14",
+	"Prefix": "Ms.",
+	"Name": "Staci Rose",
+	"Active": false,
+	"Year": "2016",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_13",
+	"Prefix": "Q.",
+	"Name": "Remi Graber",
+	"Active": false,
+	"Year": "2015",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_12",
+	"Prefix": "Mr.",
+	"Name": "Marky Mucknam",
+	"Active": false,
+	"Year": "2014",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_11",
+	"Prefix": "Mr.",
+	"Name": "Greg Costa",
+	"Active": false,
+	"Year": "2013",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_10",
+	"Prefix": "Mr.",
+	"Name": "Cory Grant",
+	"Active": false,
+	"Year": "2012",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_9",
+	"Prefix": "Ms.",
+	"Name": "Diva Corvette",
+	"Active": false,
+	"Year": "2011",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_8",
+	"Prefix": "Mr.",
+	"Name": "Mark Badway",
+	"Active": false,
+	"Year": "2010",
+	"Image": "dude3.jpg",
+	"Description": ""
+},
+
+{
 	"ID": "titled_7",
 	"Prefix": "Mr.",
 	"Name": "Arne Grandell",
@@ -69,14 +219,4 @@
 	"Image": "dude2.jpg",
 	"Description": ""
 },
-
-{
-	"ID": "titled_0",
-	"Prefix": "Mr.",
-	"Name": "Leatherman",
-	"Active": true,
-	"Year": "2025-2026",
-	"Image": "dude1.jpg",
-	"Description": "The image here is bigger than the staff page because, presumably, we'd have only one active titlteholder at a time. I assume if we wanted past titleholders, we'd have a historical section where I'd make the list more in-line with the Staff section.  But we could also merge the previous and current titleholders into one page, with the current titleholder being on top if we wanted to."
-}
 ]
