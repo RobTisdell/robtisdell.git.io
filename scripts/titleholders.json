@@ -1,4 +1,5 @@
 [
+
 {
 	"ID": "titled_2",
 	"Prefix": "Mr.",
@@ -9,14 +10,36 @@
 	"Description": "Fun to hug, cuddle, and snuggle"
 },
 
+
+
+{
+	"ID": "titled_2",
+	"Prefix": "Mr.",
+	"Name": "Aaron Lenburg",
+	"Active": false,
+	"Year": "2004",
+	"Image": "dude2.jpg",
+	"Description": ""
+},
+
+{
+	"ID": "titled_2",
+	"Prefix": "Mr.",
+	"Name": "Aaron Lenburg",
+	"Active": false,
+	"Year": "2004",
+	"Image": "dude2.jpg",
+	"Description": ""
+},
+
 {
 	"ID": "titled_1",
 	"Prefix": "Mr.",
-	"Name": "Beefcake",
+	"Name": "Joe Roy",
 	"Active": false,
-	"Year": "2024-2025",
+	"Year": "2003",
 	"Image": "dude2.jpg",
-	"Description": "You'll do what he says.  And thank him for the privilege."
+	"Description": ""
 },
 
 {
