@@ -30,11 +30,11 @@
 
             const formerTitleholders = allTitleholderData.filter(titleholder => titleholder.Active === false);
 
-		// Sort former titleholders by Year (descending, using first 4 digits)
+			// Sort former titleholders by Year (descending, using first 4 digits)
 			formerTitleholders.sort((a, b) => {
 				const yearA = parseInt(a.Year.substring(0, 4), 10);
 				const yearB = parseInt(b.Year.substring(0, 4), 10);
-				return yearB - yearA; // descending order
+				return yearB - yearA;
 			});
 
             // Clear existing content in the container before rendering new content.
