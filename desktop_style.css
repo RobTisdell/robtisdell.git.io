@@ -174,7 +174,7 @@ body {
 .wrapper .content {
 	margin-left: 12.125vw;
 	font-size: 1.25em;
-	color: #AAAAAA;
+	color: #AABBCC;
 	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
 }
 
@@ -258,8 +258,8 @@ body.landing-page-no-scroll {
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
-	border-radius: 10px;
-	background-color: #333338;
+	border-radius: 15px;
+	background-color: #333338AA;
 }
 
 .Calendar_Header {
