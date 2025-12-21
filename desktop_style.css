@@ -97,14 +97,14 @@ body {
 .wrapper .sidenav a {
   text-decoration: none;
   font-size: 2.9vh;
-  color: #818181;
+  color: #818181CC;
   display: block;
   width: 100%
 }
 
 .wrapper .sidenav li:hover {
 	transition: .3s;
-	background-color: #080808;
+	background-color: #080808AA;
 }
 
 .wrapper .sidenav a:hover {	
@@ -113,7 +113,7 @@ body {
 }
 
 .wrapper .sidenav ul.dropright li:hover {
-    background-color: #080808;
+    background-color: #080808AA;
 }
 
 .wrapper .sidenav ul.dropright li:hover > a {
