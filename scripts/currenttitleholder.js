@@ -1,23 +1,17 @@
-// scripts/current_titleholder.js (or whatever your script name is)
+(function() {
 
-(function() { // Wrap in an IIFE for scope isolation
+    const titleholderSource = 'scripts/titleholders.json';
+    const targetElementId = 'titlecontainer';
 
-    const titleSource = 'scripts/titleholders.json';
-    const targetElementId = 'titlecontainer'; // ID of the div where titleholder will be rendered
-
-    // Function to display the active titleholder
     async function displayActiveTitleholder() {
         const outputContainer = document.getElementById(targetElementId);
 
-        // IMPORTANT: Check if the target container exists on the page
-        // If not, this script isn't meant for the current content, so it exits cleanly.
         if (!outputContainer) {
-            // console.warn(`HTML element with ID '${targetElementId}' not found. Script skipped.`);
-            return; // Exit if the target container doesn't exist
+            return;
         }
 
         try {
-            const response = await fetch(titleSource);
+            const response = await fetch(titleholderSource);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }

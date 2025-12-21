@@ -1,18 +1,13 @@
-// scripts/previous_titleholders.js
-
-(function() { // <--- This opens the IIFE and creates a new scope
+(function() {
 
     const titleholderSource = 'scripts/titleholders.json';
-    const targetElementId = 'titlecontainer'; // Changed ID for clarity and uniqueness
+    const targetElementId = 'titlecontainer';
 
-    // Function to display former titleholders
     async function displayFormerTitleholders() {
         const outputContainer = document.getElementById(targetElementId);
 
-        // IMPORTANT: Check if the target container exists on the page.
         if (!outputContainer) {
-            // console.warn(`HTML element with ID '${targetElementId}' not found. Script skipped.`);
-            return; // Exit if the target container doesn't exist
+            return;
         }
 
         try {
@@ -29,6 +24,9 @@
             }
 
             const formerTitleholders = allTitleholderData.filter(titleholder => titleholder.Active === false);
+			
+            // Clear existing content in the container before rendering new content.
+            outputContainer.innerHTML = '';
 
 			// Sort former titleholders by Year (descending, using first 4 digits)
 			formerTitleholders.sort((a, b) => {
@@ -37,8 +35,6 @@
 				return yearB - yearA;
 			});
 
-            // Clear existing content in the container before rendering new content.
-            outputContainer.innerHTML = '';
 
             if (formerTitleholders.length === 0) {
                 outputContainer.innerHTML = '<p>No previous titleholders found.</p>';
@@ -53,8 +49,7 @@
                             <img src="img/titleholders/${titleHolder.Image}" alt="${titleHolder.Name}">
                         </div>
                         <div class="staff-box">
-                            <b>${titleHolder.Name}</b>
-							<b>${titleHolder.Prefix} FLAG (${titleHolder.Year})</b>
+                            <b>${titleHolder.Name} - ${titleHolder.Prefix} FLAG (${titleHolder.Year})</b>
                             <p>${titleHolder.Description}</p>
                         </div>
                     </div>
