@@ -131,7 +131,7 @@ body {
 /* Makes the currently active page has the same styling as a hover link. */
 
 .wrapper .sidenav li.current {
-	background-color: #040404;
+	background-color: #040404AA;
 }
 
 .wrapper .sidenav a.current {
