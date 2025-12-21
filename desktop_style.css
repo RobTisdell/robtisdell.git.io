@@ -95,11 +95,11 @@ body {
 
 /* List link style and hover transition effects */
 .wrapper .sidenav a {
-  text-decoration: none;
-  font-size: 2.9vh;
-  color: #818181;
-  display: block;
-  width: 100%
+	text-decoration: none;
+	font-size: 2.9vh;
+	color: #AAAAAA;
+	display: block;
+	width: 100%
 }
 
 .wrapper .sidenav li:hover {
