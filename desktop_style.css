@@ -121,7 +121,7 @@ body {
 }
 
 .wrapper .sidenav ul li:has(ul.dropright li:hover) {
-    background-color: #040404; /* Matches .current LI background */
+    background-color: #040404AA;
 }
 
 .wrapper .sidenav ul li:has(ul.dropright li:hover) > a {
@@ -198,7 +198,7 @@ body.landing-page-no-scroll {
 
 .wrapper .content article {
 	min-height: 60vh;
-	background-color: #444449;
+	background-color: #444449AA;
 	padding: 20px;
 	margin-left: 10vw;
 	margin-right: 10vw;
