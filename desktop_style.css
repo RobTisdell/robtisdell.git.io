@@ -600,7 +600,7 @@ border-bottom-color: #080808;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     line-height: 1.6;
-	background: #333338AA;
+	background: #333338FF;
 	display: flex;
 }
 
@@ -632,13 +632,24 @@ border-bottom-color: #080808;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     line-height: 1.6;
-	background: #333338;
+	background: #333338AA;
 	display: flex;
 }
 
 .unified_box img {
 	display: block;
     font-size: 1.5em;
-	width: 40vw;	
+	max-width: 100%;	
 	vertical-align: middle;
+}
+
+.current_titleholder_picture {
+	float: left;
+	margin-top: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.current_titleholder_picture img {
+	max-width: 100%;
 }
