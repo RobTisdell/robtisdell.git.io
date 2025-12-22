@@ -3,17 +3,12 @@
 	padding: 0;
 }
 
-body::before {
-	content: "";
-	position: fixed;
-	top: 0;
-	left: 0;
-	inset: 0;
-	background-image: url("img/background.jpg");
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	z-index: -1;
+html { 
+  background: url("img/background.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 /* fade effect for pages loading */
