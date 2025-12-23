@@ -233,7 +233,7 @@ body.landing-page-no-scroll {
 .wrapper .content article p {
 	font-size: 1.25em;
 	text-indent: 2em;
-	line-height: 1.5em;
+	line-height: 1.5;
 	margin-bottim: 1em;
 	margin-left: 2em;
 	margin-right: 2em;
