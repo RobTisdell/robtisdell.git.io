@@ -235,6 +235,8 @@ body.landing-page-no-scroll {
 	text-indent: 2em;
 	line-height: 1.5em;
 	margin-bottim: 1em;
+	margin-left: 2em;
+	margin-right: 2em;
 }
 
 .wrapper .content article p::first-letter {
