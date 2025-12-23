@@ -225,9 +225,14 @@ body.landing-page-no-scroll {
 	text-indent: 0px;
 }
 
+.wrapper .content article p::first-letter {
+	font-size: 1em;
+	font-weight: normal;
+}
+
 .wrapper .content article p {
 	font-size: 1.25em;
-	text-indent: 5em;
+	text-indent: 2em;
 }
 
 .wrapper .content article p::first-letter {
