@@ -221,15 +221,15 @@ body.landing-page-no-scroll {
 	color:#E0AA3E;
 	text-align: center;
 	font-size: 2em;
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 }
 
-.wrapper .content article .p {
+.wrapper .content article p {
 	font-size: 1.5em;
 	text-indent: 5em;
 }
 
-.wrapper .content article .p::first-letter {
+.wrapper .content article p::first-letter {
 	font-size: 1.75em;
 	font-weight: bold;
 }
