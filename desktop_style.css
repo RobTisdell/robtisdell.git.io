@@ -217,11 +217,12 @@ body.landing-page-no-scroll {
 
 /* Style definitions within the article tag */
 
-.wrapper .content article .title {
+.wrapper .content article p .title {
 	color:#E0AA3E;
 	text-align: center;
 	font-size: 2em;
 	margin-bottom: 1em;
+	text-indent: 0px;
 }
 
 .wrapper .content article p {
