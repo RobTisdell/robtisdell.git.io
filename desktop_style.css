@@ -229,6 +229,11 @@ body.landing-page-no-scroll {
 	text-indent: 5em;
 }
 
+.wrapper .content article .p::first-letter {
+	font-size: 1.75em;
+	font-weight: bold;
+}
+
 .wrapper .content a {
 	color: #EEEEFF;
 	text-decoration: underline;
