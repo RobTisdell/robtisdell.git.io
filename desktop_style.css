@@ -225,7 +225,7 @@ body.landing-page-no-scroll {
 	text-indent: 0px;
 }
 
-.wrapper .content article p::first-letter {
+.wrapper .content article p.title::first-letter {
 	font-size: 1em;
 	font-weight: normal;
 }
