@@ -220,7 +220,13 @@ body.landing-page-no-scroll {
 .wrapper .content article .title {
 	color:#E0AA3E;
 	text-align: center;
-	font-size: 1.25em;
+	font-size: 2em;
+	margin-bottom: 2em;
+}
+
+.wrapper .content article .p {
+	font-size: 1.5em;
+	text-indent: 5em;
 }
 
 .wrapper .content a {
