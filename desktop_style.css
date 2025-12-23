@@ -217,7 +217,7 @@ body.landing-page-no-scroll {
 
 /* Style definitions within the article tag */
 
-.wrapper .content article p .title {
+.wrapper .content article p.title {
 	color:#E0AA3E;
 	text-align: center;
 	font-size: 2em;
