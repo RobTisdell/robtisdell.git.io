@@ -385,11 +385,12 @@ body.landing-page-no-scroll {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 5vh;
+	width: 60%;
 }
 
 .titleholderpictures {
 	float: left;
-	width: 100%;
+	background-color: #444444;
 }
 
 .titleholder-title {
