@@ -390,11 +390,15 @@ body.landing-page-no-scroll {
 
 .titleholderpictures {
 	float: left;
-	margin-top: 3px;
-	margin-left: 3px;
-	margin-right: 3px;
+	align-items: center;
 	background-color: #333333;
 	width: 100%;
+}
+
+.titleholder-title {
+	color: #E0AA3E;
+	font-weight: 1em;
+	
 }
 
 .titleholderpictures img {
