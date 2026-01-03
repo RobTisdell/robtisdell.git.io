@@ -395,12 +395,26 @@ body.landing-page-no-scroll {
 .titleholder-title {
 	color: #E0AA3E;
 	text-align: center;
-	font-weight: 1em;
+	font-size: 1.25em;
 }
 
-.titleholderpictures img {
+.titleholder-pictures img {
 	max-width: 100%;
-	vertical-align: baseline;
+	vertical-align: center;
+}
+
+.titleholder-description {
+	font-size: 1.125em;
+	text-indent: 2em;
+	line-height: 1.5;
+	margin-bottim: 1em;
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+p.titleholder-description::first-letter {
+	font-size: 1.25em;
+	font-weight: bold;
 }
 
 /* Containers for upcoming events. */
