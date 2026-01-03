@@ -208,7 +208,6 @@ body.landing-page-no-scroll {
 	border-color: #AAAAAAAA;
 }
 
-
 .wrapper .content article.calendar_title {
 	margin-left: 10vw;
 	margin-right: 10vw;
@@ -390,19 +389,18 @@ body.landing-page-no-scroll {
 
 .titleholderpictures {
 	float: left;
-	align-items: center;
-	background-color: #333333;
 	width: 100%;
 }
 
 .titleholder-title {
-	color: #8888FF;
-/*		color: #E0AA3E; */
+	color: #E0AA3E;
+	text-align: center;
 	font-weight: 1em;
 }
 
 .titleholderpictures img {
 	max-width: 100%;
+	vertical-align: baseline;
 }
 
 /* Containers for upcoming events. */
