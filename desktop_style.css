@@ -233,7 +233,7 @@ body.landing-page-no-scroll {
 	font-size: 1.25em;
 	text-indent: 2em;
 	line-height: 1.5;
-	margin-bottim: 1em;
+	margin-bottom: 1em;
 	margin-left: 2em;
 	margin-right: 2em;
 }
@@ -403,12 +403,13 @@ body.landing-page-no-scroll {
 	vertical-align: center;
 }
 
-p.titleholder-description {
+.wrapper .content article p.titleholder-description {
+	text-indent: 0;
 	font-size: 1.125em;
 	color: red;
 }
 
-p.titleholder-description::first-letter {
+.wrapper .content article p.titleholder-description::first-letter {
 	font-size: 1.25em;
 	font-weight: bold;
 }

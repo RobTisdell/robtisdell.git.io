@@ -37,7 +37,7 @@
             activeTitleholder.forEach(titleHolder => {
                 const titleholderHtml = `
                     <div class="unified_box">
-                        <div class="titleholderpictures">
+                        <div class="titleholder-pictures">
                             <img src="img/titleholders/${titleHolder.Image}" alt="${titleHolder.Name}">
                         </div>
                         <div class="titleholder-box">
