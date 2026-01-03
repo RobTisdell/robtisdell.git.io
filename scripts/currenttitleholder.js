@@ -41,8 +41,8 @@
                             <img src="img/titleholders/${titleHolder.Image}" alt="${titleHolder.Name}">
                         </div>
                         <div class="titleholder-box">
-                            <b>${titleHolder.Name}</b>
-							<b>${titleHolder.Prefix} FLAG ${titleHolder.Year.slice(0, 4)}</b>
+                            <p class="title"><b>${titleHolder.Name}</b></p>
+							<p class="title"><b>${titleHolder.Prefix} FLAG ${titleHolder.Year.slice(0, 4)}</b></p>
                             <p>${titleHolder.Description}</p>
                         </div>
                     </div>
