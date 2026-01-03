@@ -393,9 +393,9 @@ body.landing-page-no-scroll {
 	flex: 0 0 20%;
 }
 
-.titleholder-title {
+.wrapper .content article p.titleholder-title {
 /*	color: #E0AA3E; */
-	color: silver;
+	color: orange;
 	text-align: center;
 	font-size: 1.25em;
 	margin: 0;
