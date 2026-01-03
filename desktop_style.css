@@ -401,13 +401,11 @@ body.landing-page-no-scroll {
 }
 
 .titleholder-pictures img {
-	max-width: 100%;
 	vertical-align: center;
 }
 
 .wrapper .content article p.titleholder-description {
 	font-size: 1.125em;
-	color: red;
 }
 
 .wrapper .content article p.titleholder-description::first-letter {	
