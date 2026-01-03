@@ -391,6 +391,7 @@ body.landing-page-no-scroll {
 .titleholderpictures {
 	float: left;
 	background-color: #444444;
+	width: 40%;
 }
 
 .titleholder-title {
