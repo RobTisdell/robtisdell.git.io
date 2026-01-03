@@ -395,11 +395,12 @@ body.landing-page-no-scroll {
 
 .titleholder-title {
 /*	color: #E0AA3E; */
-	color: red;
+	color: green;
 	text-align: center;
 	font-size: 1.25em;
 	margin: 0;
 	text-indent: 0;
+	line-height: 0.5;
 }
 
 .titleholder-pictures img {
