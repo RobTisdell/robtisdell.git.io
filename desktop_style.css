@@ -406,6 +406,8 @@ body.landing-page-no-scroll {
 .wrapper .content article p.titleholder-description {
 	font-size: 1.125em;
 	line-height: 1;
+	margin: 0;
+	text-indent: 0;
 }
 
 .wrapper .content article p.titleholder-description::first-letter {	
