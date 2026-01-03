@@ -394,13 +394,9 @@ body.landing-page-no-scroll {
 }
 
 .titleholder-title {
-/*	color: #E0AA3E; */
-	color: green;
+	color: #E0AA3E;
 	text-align: center;
 	font-size: 1.25em;
-	margin: 0;
-	text-indent: 0;
-	line-height: 0.5;
 }
 
 .titleholder-pictures img {
@@ -409,7 +405,6 @@ body.landing-page-no-scroll {
 
 .wrapper .content article p.titleholder-description {
 	font-size: 1.125em;
-	line-height: 1;
 }
 
 .wrapper .content article p.titleholder-description::first-letter {	
