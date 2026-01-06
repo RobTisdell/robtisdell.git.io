@@ -443,6 +443,13 @@ body.landing-page-no-scroll {
 	background: #2222AAAA;
 }
 
+.event_boxes img {
+	display: block;
+	margin: auto;
+}
+
+
+
 /* Containers for past events. */
 /* This is a work in progress, similar to upcoming events.  These will be smaller because I expect more on the screen.*/
 
