@@ -440,7 +440,7 @@ body.landing-page-no-scroll {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     line-height: 1.6;
 /*	background: #333338AA; */
-	background: #AA2222AA;
+	background: #22AA22AA;
 }
 
 .event_boxes img {
@@ -448,6 +448,22 @@ body.landing-page-no-scroll {
 	margin: auto;
 }
 
+.event_boxes p {
+	
+}
+
+.event_boxes p {
+	font-size: 1.25em;
+	text-indent: 2em;
+	line-height: 1.5;
+	margin-bottom: 1em;
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+.event_boxes p::first-letter {
+	font-size: 1.5em;
+}
 
 
 /* Containers for past events. */
