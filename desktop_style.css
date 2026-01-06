@@ -455,10 +455,7 @@ body.landing-page-no-scroll {
 .event_boxes p {
 	font-size: 1.25em;
 	text-indent: 2em;
-	line-height: 1.5;
-	margin-bottom: 1em;
 	margin-left: 2em;
-	margin-right: 2em;
 }
 
 .event_boxes p::first-letter {
