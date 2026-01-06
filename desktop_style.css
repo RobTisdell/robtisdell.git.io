@@ -216,8 +216,12 @@ body.landing-page-no-scroll {
 
 /* Style definitions within the article tag */
 
+.wrapper .content article ol {
+	list-style-position: inside;
+}
+
 .wrapper .content article li {
-	color: red;
+	color: blue;
 	font-size: 1.25em;
 	text-indent: 2em;
 	margin-bottom: 0.25em;
