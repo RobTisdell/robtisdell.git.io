@@ -70,7 +70,7 @@
         return `
             <div class="event_boxes" id="event-${event.ID}">
                 <img src="img/events/${event.Image}" alt="${event.Name} image">
-                <p><strong>Type:</strong> ${event.Type}</p>
+                <p><strong>Type of event:</strong> ${event.Type}</p>
                 <p><strong>Location:</strong> ${locationHtml} (${event.LocationAddress || 'Address TBD'})</p>
                 <p><strong>${dateLabel}:</strong> ${dateDisplay}</p>
                 <p><strong>Time:</strong> ${formatTime(event.StartTime)} - ${formatTime(event.EndTime)}</p>

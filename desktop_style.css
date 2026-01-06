@@ -216,6 +216,15 @@ body.landing-page-no-scroll {
 
 /* Style definitions within the article tag */
 
+.wrapper .content article li {
+	font-size: 1.25em;
+	text-indent: 2em;
+	line-height: 1.5;
+	margin-bottom: 1em;
+	margin-left: 2em;
+	margin-right: 2em;	
+}
+
 .wrapper .content article p.title {
 	color:#E0AA3E;
 	text-align: center;
@@ -636,7 +645,6 @@ border-bottom-color: #080808;
 	color: #CCCCDD;
 }
 
-/* In your desktop_style.css or mobile_style.css */
 .divided_boxes {
     border: 1px solid #ddd;
     padding: 15px;
