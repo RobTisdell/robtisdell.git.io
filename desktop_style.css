@@ -217,8 +217,10 @@ body.landing-page-no-scroll {
 /* Style definitions within the article tag */
 
 .wrapper .content article li {
+	color: red;
 	font-size: 1.25em;
 	text-indent: 2em;
+	margin-bottom: 0.25em;
 	margin-left: 2em;
 	margin-right: 2em;	
 }
