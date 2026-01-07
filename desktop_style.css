@@ -172,7 +172,7 @@ html, body {
 	background-color: #333338;
 }
 
-.wrapper .sidenav .socials a i{
+.sidenav .socials > a > i {
 	margin: 0 auto;
 }
 
@@ -449,7 +449,7 @@ body.landing-page-no-scroll {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     line-height: 1.6;
 /*	background: #333338AA; */
-	background: #AA2222AA;
+	background: #22AA22AA;
 }
 
 .event_boxes img {
