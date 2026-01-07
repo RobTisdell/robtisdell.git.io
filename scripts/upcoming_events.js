@@ -59,7 +59,7 @@
         // Check if LocationURL exists for linking, otherwise just display Location
         let locationHtml;
         if (event.LocationURL && event.Location) {
-            locationHtml = `<a href="${event.LocationURL}" target="_blank" rel="noopener noreferrer">${event.Location} <i class="fa fa-external-link-square"></i></a>`;
+            locationHtml = `<a href="${event.LocationURL}" target="_blank" rel="noopener noreferrer">${event.Location}</a> `;
         } else if (event.Location) {
             locationHtml = event.Location;
         } else {
