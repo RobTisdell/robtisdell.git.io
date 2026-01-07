@@ -65,13 +65,20 @@
         } else {
             locationHtml = 'TBD'; // Fallback if no location data
         }
+		
+		let mapLink;
+		if (event.LocationAddress && event.LocationAddress !== '') {
+			const encodedAddress = encodeURIComponent(event.LocationAddress)
+			const mapURL = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+			mapLink = `(<a href="${mapUrl}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-map-location-dot"> see on maps</i></a>)`;
+		}
 
 
         return `
             <div class="event_boxes" id="event-${event.ID}">
                 <img src="img/events/${event.Image}" alt="${event.Name} image">
                 <p class="event_details"><strong>Type of event:</strong> ${event.Type}</p>
-                <p class="event_details"><strong>Location:</strong> ${locationHtml} (${event.LocationAddress || 'Address TBD'})</p>
+                <p class="event_details"><strong>Location:</strong> ${locationHtml} (${event.LocationAddress || 'Address TBD'}) ${mapLink}</p>
                 <p class="event_details"><strong>${dateLabel}:</strong> ${dateDisplay}</p>
                 <p class="event_details"><strong>Time:</strong> ${formatTime(event.StartTime)} - ${formatTime(event.EndTime)}</p>
                 <p class="event_description">${event.Description}</p>
