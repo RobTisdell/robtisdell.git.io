@@ -78,7 +78,7 @@
             <div class="event_boxes" id="event-${event.ID}">
                 <img src="img/events/${event.Image}" alt="${event.Name} image">
                 <p class="event_details"><strong>Type of event:</strong> ${event.Type}</p>
-                <p class="event_details"><strong>Location:</strong> ${locationHtml} (${mapLink || 'Address TBD'})</p>
+                <p class="event_details"><strong>Location:</strong> ${locationHtml} &mdash ${mapLink || 'Address TBD'}</p>
                 <p class="event_details"><strong>${dateLabel}:</strong> ${dateDisplay}</p>
                 <p class="event_details"><strong>Time:</strong> ${formatTime(event.StartTime)} - ${formatTime(event.EndTime)}</p>
                 <p class="event_description">${event.Description}</p>
