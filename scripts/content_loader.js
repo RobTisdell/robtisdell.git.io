@@ -1,5 +1,3 @@
-// scripts/content_loader.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const mainContentDiv = document.getElementById('MainContent');
     const sidenavContainer = document.getElementById('sidenav-container');
