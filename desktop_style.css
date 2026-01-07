@@ -16,6 +16,10 @@ html, body {
 	overscroll-behavior: none;
 }
 
+.fa {
+	font-family: FontAwesome !important;
+}
+
 /* fade effect for pages loading */
 
 .content {
