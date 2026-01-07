@@ -70,7 +70,7 @@
 		if (event.LocationAddress && event.LocationAddress.trim() !== '') {
 			const encodedAddress = encodeURIComponent(event.LocationAddress)
 			const mapURL = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-			mapLink = `(<a href="${mapURL}" target="_blank" rel="noopener noreferrer"><i class="fa fa-map"></i> Map it</a>)`;
+			mapLink = `<a href="${mapURL}" target="_blank" rel="noopener noreferrer"><i class="fa fa-map"></i> - map link</a>`;
 		}
 
 
@@ -78,7 +78,7 @@
             <div class="event_boxes" id="event-${event.ID}">
                 <img src="img/events/${event.Image}" alt="${event.Name} image">
                 <p class="event_details"><strong>Type of event:</strong> ${event.Type}</p>
-                <p class="event_details"><strong>Location:</strong> ${locationHtml} (${event.LocationAddress || 'Address TBD'}) ${mapLink}</p>
+                <p class="event_details"><strong>Location:</strong> ${locationHtml} (${event.LocationAddress || 'Address TBD'} - ${mapLink})</p>
                 <p class="event_details"><strong>${dateLabel}:</strong> ${dateDisplay}</p>
                 <p class="event_details"><strong>Time:</strong> ${formatTime(event.StartTime)} - ${formatTime(event.EndTime)}</p>
                 <p class="event_description">${event.Description}</p>
