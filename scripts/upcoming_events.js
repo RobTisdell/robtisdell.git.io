@@ -67,7 +67,7 @@
         }
 		
 		let mapLink;
-		if (event.LocationAddress && event.LocationAddress !== '') {
+		if (event.LocationAddress && event.LocationAddress.trim() !== '') {
 			const encodedAddress = encodeURIComponent(event.LocationAddress)
 			const mapURL = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
 			mapLink = `(<a href="${mapUrl}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-map-location-dot"> see on maps</i></a>)`;
