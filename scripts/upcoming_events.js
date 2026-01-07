@@ -70,7 +70,7 @@
 		if (event.LocationAddress && event.LocationAddress.trim() !== '') {
 			const encodedAddress = encodeURIComponent(event.LocationAddress)
 			const mapURL = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-			mapLink = `(<a href="${mapURL}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-map-location-dot"> Map it</i></a>)`;
+			mapLink = `(<a href="${mapURL}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-map-location-dot"></i> Map it</a>)`;
 		}
 
 
