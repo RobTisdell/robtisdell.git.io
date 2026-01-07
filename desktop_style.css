@@ -482,6 +482,7 @@ body.landing-page-no-scroll {
 
 .event_boxes i.fa {
 	margin: 0;
+	text-indent: 0 !important;
 }
 
 
