@@ -440,7 +440,7 @@ body.landing-page-no-scroll {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     line-height: 1.6;
 /*	background: #333338AA; */
-	background: #AA2222AA;
+	background: #22AA22AA;
 }
 
 .event_boxes img {
@@ -449,7 +449,7 @@ body.landing-page-no-scroll {
 }
 
 .wrapper .content article .event_boxes p {
-	font-size: 1.25em;
+	font-size: 1.125em;
 	text-indent: 2em;
 	margin-bottom: 0.25em;
 	margin-left: 2em;
@@ -457,8 +457,21 @@ body.landing-page-no-scroll {
 }
 
 .wrapper .content article .event_boxes p::first-letter {
+	font-size: 1.25em;
+}
+
+.wrapper .content article .event_boxes p.event_description {
+	font-size: 1.25em;
+	text-indent: 2em;
+	margin-bottom: 0.25em;
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+.wrapper .content article .event_boxes pevent_description::first-letter {
 	font-size: 1.5em;
 }
+
 
 
 /* Containers for past events. */
