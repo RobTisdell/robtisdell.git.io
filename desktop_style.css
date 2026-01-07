@@ -461,15 +461,16 @@ body.landing-page-no-scroll {
 }
 
 .wrapper .content article .event_boxes p.event_description {
-	font-size: 1.25em;
+	color: red;
+	font-size: 2em;
 	text-indent: 2em;
 	margin-bottom: 0.25em;
 	margin-left: 2em;
 	margin-right: 2em;
 }
 
-.wrapper .content article .event_boxes pevent_description::first-letter {
-	font-size: 1.5em;
+.wrapper .content article .event_boxes p.event_description::first-letter {
+	font-size: 2.5em;
 }
 
 
