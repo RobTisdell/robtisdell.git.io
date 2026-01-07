@@ -9,7 +9,11 @@ html {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	overflow-y: scroll;
+	scrollbar-gutter: stable;
+}
+
+html, body {
+	overscroll-behavior: none;
 }
 
 /* fade effect for pages loading */
