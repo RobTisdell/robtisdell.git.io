@@ -73,7 +73,7 @@
                 <p><strong>Type of event:</strong> ${event.Type}</p>
                 <p><strong>Location:</strong> ${locationHtml} (${event.LocationAddress || 'Address TBD'})</p>
                 <p><strong>${dateLabel}:</strong> ${dateDisplay}</p>
-                <p><strong>Time:</strong> ${formatTime(event.StartTime)} - ${formatTime(event.EndTime)}</p>
+                <p class="event_details"><strong>Time:</strong> ${formatTime(event.StartTime)} - ${formatTime(event.EndTime)}</p>
                 <p class="event_description">${event.Description}</p>
             </div>
         `;

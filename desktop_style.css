@@ -440,7 +440,7 @@ body.landing-page-no-scroll {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     line-height: 1.6;
 /*	background: #333338AA; */
-	background: #2222AAAA;
+	background: #AA2222AA;
 }
 
 .event_boxes img {
@@ -448,7 +448,7 @@ body.landing-page-no-scroll {
 	margin: auto;
 }
 
-.wrapper .content article .event_boxes p {
+.wrapper .content article .event_boxes p.event_details {
 	font-size: 1.125em;
 	text-indent: 2em;
 	margin-bottom: 0.25em;
@@ -456,12 +456,12 @@ body.landing-page-no-scroll {
 	margin-right: 2em;
 }
 
-.wrapper .content article .event_boxes p::first-letter {
+.wrapper .content article .event_boxes p.event_details::first-letter {
 	font-size: 1.25em;
 }
 
 .wrapper .content article .event_boxes p.event_description {
-	color: red;
+	color: blue;
 	font-size: 2em;
 	text-indent: 2em;
 	margin-bottom: 0.25em;
