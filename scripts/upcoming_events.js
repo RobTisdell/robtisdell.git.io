@@ -78,7 +78,7 @@
             <div class="event_boxes" id="event-${event.ID}">
                 <img src="img/events/${event.Image}" alt="${event.Name} image">
                 <p class="event_details"><strong>Type of event:</strong> ${event.Type}</p>
-                <p class="event_details"><strong>Location:</strong> ${locationHtml} &mdash ${mapLink || 'Address TBD'}</p>
+                <p class="event_details"><strong>Location:</strong> ${locationHtml} &mdash; ${mapLink || 'Address TBD'}</p>
                 <p class="event_details"><strong>${dateLabel}:</strong> ${dateDisplay}</p>
                 <p class="event_details"><strong>Time:</strong> ${formatTime(event.StartTime)} - ${formatTime(event.EndTime)}</p>
                 <p class="event_description">${event.Description}</p>
@@ -131,14 +131,8 @@
                 const eventEndDate = new Date(event.EndDate);
                 eventEndDate.setHours(23, 59, 59, 999); // Normalize event end date to end of day
 
-                // Rule 1: Event is currently occurring (today is between StartDate and EndDate, inclusive)
-                // The current date/time (today) must be greater than or equal to the event's start date
-                // AND less than or equal to the event's end date.
                 const isCurrentlyOccurring = (today.getTime() >= eventStartDate.getTime() && today.getTime() <= eventEndDate.getTime());
 
-                // Rule 2: Event starts within the next 31 days (from today)
-                // Event's start date must be greater than or equal to today
-                // AND less than or equal to 31 days from now.
                 const startsWithin31Days = (eventStartDate.getTime() >= today.getTime() && eventStartDate.getTime() <= thirtyOneDaysFromNow.getTime());
 
                 if (isCurrentlyOccurring || startsWithin31Days) {
