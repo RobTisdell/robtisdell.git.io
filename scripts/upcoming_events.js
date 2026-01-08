@@ -25,96 +25,114 @@
         return `${hour}:${minute.toString().padStart(2, '0')} ${ampm}`;
     }
 
-    function getEventDayCount(event) {
-        const start = new Date(event.StartDate);
-        const end = new Date(event.EndDate);
-        const [endHourStr] = event.EndTime.split(':');
-        const endHour = parseInt(endHourStr, 10);
-        const diffDays = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
-        if (diffDays === 1 && endHour < 6) {
-            return 1;
-        }
-        return diffDays + 1;
-    }
-
+    // Build normalized schedule from Option 3 JSON
     function buildDailySchedule(event) {
-        const dayCount = getEventDayCount(event);
         const schedule = [];
-        const startDate = new Date(event.StartDate);
 
-        for (let i = 1; i <= dayCount; i++) {
-            const date = new Date(startDate);
-            date.setDate(startDate.getDate() + (i - 1));
+        // Sort days chronologically
+        const sortedDays = [...event.Days].sort((a, b) =>
+            new Date(a.Date) - new Date(b.Date)
+        );
 
-            const suffix = `-Day${i}`;
-
-            const startTime = event[`StartTime${suffix}`] || event.StartTime;
-            const endTime = event[`EndTime${suffix}`] || event.EndTime;
-
-            const location = event[`Location${suffix}`] || event.Location;
-            const locationURL = event[`LocationURL${suffix}`] || event.LocationURL;
-            const locationAddress = event[`LocationAddress${suffix}`] || event.LocationAddress;
+        sortedDays.forEach((day, index) => {
+            const times = day.OverrideTimes || event.DefaultTimes;
+            const location = day.OverrideLocation || event.DefaultLocation;
 
             schedule.push({
-                dayNumber: i,
-                date: date.toISOString().split('T')[0],
-                startTime,
-                endTime,
-                location,
-                locationURL,
-                locationAddress
+                dayNumber: index + 1,
+                date: day.Date,
+                startTime: times.Start,
+                endTime: times.End,
+                location: location.Name,
+                locationURL: location.URL,
+                locationAddress: location.Address
             });
-        }
+        });
 
         return schedule;
     }
 
+    // Group consecutive days with identical details
+    function groupConsecutiveDays(schedule) {
+        const groups = [];
+        let current = null;
+
+        schedule.forEach(day => {
+            const sameAsCurrent =
+                current &&
+                current.location === day.location &&
+                current.locationAddress === day.locationAddress &&
+                current.locationURL === day.locationURL &&
+                current.startTime === day.startTime &&
+                current.endTime === day.endTime;
+
+            if (!current || !sameAsCurrent) {
+                current = {
+                    startDay: day.dayNumber,
+                    endDay: day.dayNumber,
+                    location: day.location,
+                    locationAddress: day.locationAddress,
+                    locationURL: day.locationURL,
+                    startTime: day.startTime,
+                    endTime: day.endTime
+                };
+                groups.push(current);
+            } else {
+                current.endDay = day.dayNumber;
+            }
+        });
+
+        return groups;
+    }
+
     function createEventHtml(event) {
         const schedule = buildDailySchedule(event);
+        const groups = groupConsecutiveDays(schedule);
+
+        const startDate = schedule[0].date;
+        const endDate = schedule[schedule.length - 1].date;
 
         let dateDisplay;
         let dateLabel = 'Date';
-        const startDate = new Date(event.StartDate);
-        const endDate = new Date(event.EndDate);
-        const diffTime = Math.abs(endDate - startDate);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        const [endHourStr] = event.EndTime.split(':');
-        const endHour = parseInt(endHourStr, 10);
 
-        if (diffDays === 1 && endHour < 6) {
-            dateDisplay = formatDate(event.StartDate);
-        } else if (event.StartDate === event.EndDate) {
-            dateDisplay = formatDate(event.StartDate);
+        if (startDate === endDate) {
+            dateDisplay = formatDate(startDate);
         } else {
-            dateDisplay = `${formatDate(event.StartDate)} - ${formatDate(event.EndDate)}`;
+            dateDisplay = `${formatDate(startDate)} - ${formatDate(endDate)}`;
             dateLabel = 'Dates';
         }
 
         let locationHtml = '';
-        schedule.forEach(day => {
+        let timeHtml = '';
+
+        groups.forEach(group => {
+            const dayLabel =
+                group.startDay === group.endDay
+                    ? `Day ${group.startDay}`
+                    : `Days ${group.startDay} & ${group.endDay}`;
+
+            // Location
             let loc;
-            if (day.locationURL && day.locationURL !== 'None') {
-                loc = `<a href="${day.locationURL}" target="_blank" rel="noopener noreferrer">${day.location}</a>`;
+            if (group.locationURL && group.locationURL !== 'None') {
+                loc = `<a href="${group.locationURL}" target="_blank" rel="noopener noreferrer">${group.location}</a>`;
             } else {
-                loc = day.location || 'TBD';
+                loc = group.location || 'TBD';
             }
 
             let mapLink = 'Address TBD';
-            if (day.locationAddress && day.locationAddress.trim() !== '') {
-                const encoded = encodeURIComponent(day.locationAddress);
+            if (group.locationAddress && group.locationAddress.trim() !== '') {
+                const encoded = encodeURIComponent(group.locationAddress);
                 const mapURL = `https://www.google.com/maps/search/?api=1&query=${encoded}`;
-                mapLink = `<a href="${mapURL}" target="_blank" rel="noopener noreferrer">${day.locationAddress} <i class="fa fa-map"></i></a>`;
+                mapLink = `<a href="${mapURL}" target="_blank" rel="noopener noreferrer">${group.locationAddress} <i class="fa fa-map"></i></a>`;
             }
 
             locationHtml += `
-                <p class="event_details"><strong>Day ${day.dayNumber} Location:</strong> ${loc} — ${mapLink}</p>
+                <p class="event_details"><strong>Location for ${dayLabel}:</strong> ${loc} — ${mapLink}</p>
             `;
-        });
 
-        let timeHtml = '';
-        schedule.forEach(day => {
+            // Time
             timeHtml += `
-                <p class="event_details"><strong>Day ${day.dayNumber}:</strong> ${formatTime(day.startTime)} - ${formatTime(day.endTime)}</p>
+                <p class="event_details"><strong>Time for ${dayLabel}:</strong> ${formatTime(group.startTime)} - ${formatTime(group.endTime)}</p>
             `;
         });
 
@@ -162,14 +180,20 @@
             let filteredEvents = [];
 
             events.forEach(event => {
-                const eventStartDate = new Date(event.StartDate);
-                eventStartDate.setHours(0, 0, 0, 0);
+                const schedule = buildDailySchedule(event);
+                const eventStart = new Date(schedule[0].date);
+                const eventEnd = new Date(schedule[schedule.length - 1].date);
 
-                const eventEndDate = new Date(event.EndDate);
-                eventEndDate.setHours(23, 59, 59, 999);
+                eventStart.setHours(0, 0, 0, 0);
+                eventEnd.setHours(23, 59, 59, 999);
 
-                const isCurrentlyOccurring = (today.getTime() >= eventStartDate.getTime() && today.getTime() <= eventEndDate.getTime());
-                const startsWithin31Days = (eventStartDate.getTime() >= today.getTime() && eventStartDate.getTime() <= thirtyOneDaysFromNow.getTime());
+                const isCurrentlyOccurring =
+                    today.getTime() >= eventStart.getTime() &&
+                    today.getTime() <= eventEnd.getTime();
+
+                const startsWithin31Days =
+                    eventStart.getTime() >= today.getTime() &&
+                    eventStart.getTime() <= thirtyOneDaysFromNow.getTime();
 
                 if (isCurrentlyOccurring || startsWithin31Days) {
                     filteredEvents.push(event);
@@ -177,9 +201,9 @@
             });
 
             filteredEvents.sort((a, b) => {
-                const dateA = new Date(a.StartDate);
-                const dateB = new Date(b.StartDate);
-                return dateA.getTime() - dateB.getTime();
+                const aStart = buildDailySchedule(a)[0].date;
+                const bStart = buildDailySchedule(b)[0].date;
+                return new Date(aStart) - new Date(bStart);
             });
 
             let upcomingEventsHtml = '';
