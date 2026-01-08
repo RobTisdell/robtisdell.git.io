@@ -6,9 +6,6 @@
     const introTextContainerId = 'upcoming-events-intro';
     const eventsJsonSource = 'scripts/events.json';
 
-    // --- Helper Functions (can remain as is within the IIFE) ---
-
-    // Function to format date for display
     function formatDate(dateString) {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', {
@@ -24,78 +21,120 @@
         const minute = parseInt(minuteStr, 10);
         const ampm = hour >= 12 ? 'PM' : 'AM';
         hour = hour % 12;
-        hour = hour === 0 ? 12 : hour; // The hour '0' (midnight) should be '12'
+        hour = hour === 0 ? 12 : hour;
         return `${hour}:${minute.toString().padStart(2, '0')} ${ampm}`;
     }
 
-    // Function to generate event HTML
+    function getEventDayCount(event) {
+        const start = new Date(event.StartDate);
+        const end = new Date(event.EndDate);
+        const [endHourStr] = event.EndTime.split(':');
+        const endHour = parseInt(endHourStr, 10);
+        const diffDays = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+        if (diffDays === 1 && endHour < 6) {
+            return 1;
+        }
+        return diffDays + 1;
+    }
+
+    function buildDailySchedule(event) {
+        const dayCount = getEventDayCount(event);
+        const schedule = [];
+        const startDate = new Date(event.StartDate);
+
+        for (let i = 1; i <= dayCount; i++) {
+            const date = new Date(startDate);
+            date.setDate(startDate.getDate() + (i - 1));
+
+            const suffix = `-Day${i}`;
+
+            const startTime = event[`StartTime${suffix}`] || event.StartTime;
+            const endTime = event[`EndTime${suffix}`] || event.EndTime;
+
+            const location = event[`Location${suffix}`] || event.Location;
+            const locationURL = event[`LocationURL${suffix}`] || event.LocationURL;
+            const locationAddress = event[`LocationAddress${suffix}`] || event.LocationAddress;
+
+            schedule.push({
+                dayNumber: i,
+                date: date.toISOString().split('T')[0],
+                startTime,
+                endTime,
+                location,
+                locationURL,
+                locationAddress
+            });
+        }
+
+        return schedule;
+    }
+
     function createEventHtml(event) {
+        const schedule = buildDailySchedule(event);
+
         let dateDisplay;
-        let dateLabel = 'Date'; // Default label
+        let dateLabel = 'Date';
         const startDate = new Date(event.StartDate);
         const endDate = new Date(event.EndDate);
-
-        // Calculate the difference in days
         const diffTime = Math.abs(endDate - startDate);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-        // Get the end time hour to determine if it's an early morning spillover
         const [endHourStr] = event.EndTime.split(':');
         const endHour = parseInt(endHourStr, 10);
 
-        // Rule for "spill over" events: if the event ends one day after it starts,
-        // AND the end time is before 6 AM, display only the start date.
-        if (diffDays === 1 && endHour < 6) { // You can adjust '6' to any hour that defines "early morning"
+        if (diffDays === 1 && endHour < 6) {
             dateDisplay = formatDate(event.StartDate);
-            dateLabel = 'Date'; // Still "Date" for these single-day display cases
         } else if (event.StartDate === event.EndDate) {
             dateDisplay = formatDate(event.StartDate);
-            dateLabel = 'Date'; // Single day event
         } else {
             dateDisplay = `${formatDate(event.StartDate)} - ${formatDate(event.EndDate)}`;
-            dateLabel = 'Dates'; // Multi-day event
+            dateLabel = 'Dates';
         }
 
-        // Check if LocationURL exists for linking, otherwise just display Location
-        let locationHtml;
-        if (event.LocationURL && event.Location) {
-            locationHtml = `<a href="${event.LocationURL}" target="_blank" rel="noopener noreferrer">${event.Location}</a> `;
-        } else if (event.Location) {
-            locationHtml = event.Location;
-        } else {
-            locationHtml = 'TBD'; // Fallback if no location data
-        }
-		
-		let mapLink;
-		if (event.LocationAddress && event.LocationAddress.trim() !== '') {
-			const encodedAddress = encodeURIComponent(event.LocationAddress);
-			const mapURL = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-			mapLink = `<a href="${mapURL}" target="_blank" rel="noopener noreferrer">${event.LocationAddress} <i class="fa fa-map"></i></a>`;
-		}
+        let locationHtml = '';
+        schedule.forEach(day => {
+            let loc;
+            if (day.locationURL && day.locationURL !== 'None') {
+                loc = `<a href="${day.locationURL}" target="_blank" rel="noopener noreferrer">${day.location}</a>`;
+            } else {
+                loc = day.location || 'TBD';
+            }
 
+            let mapLink = 'Address TBD';
+            if (day.locationAddress && day.locationAddress.trim() !== '') {
+                const encoded = encodeURIComponent(day.locationAddress);
+                const mapURL = `https://www.google.com/maps/search/?api=1&query=${encoded}`;
+                mapLink = `<a href="${mapURL}" target="_blank" rel="noopener noreferrer">${day.locationAddress} <i class="fa fa-map"></i></a>`;
+            }
+
+            locationHtml += `
+                <p class="event_details"><strong>Day ${day.dayNumber} Location:</strong> ${loc} — ${mapLink}</p>
+            `;
+        });
+
+        let timeHtml = '';
+        schedule.forEach(day => {
+            timeHtml += `
+                <p class="event_details"><strong>Day ${day.dayNumber}:</strong> ${formatTime(day.startTime)} - ${formatTime(day.endTime)}</p>
+            `;
+        });
 
         return `
             <div class="event_boxes" id="event-${event.ID}">
                 <img src="img/events/${event.Image}" alt="${event.Name} image">
                 <p class="event_details"><strong>Type of event:</strong> ${event.Type}</p>
-                <p class="event_details"><strong>Location:</strong> ${locationHtml} &mdash; ${mapLink || 'Address TBD'}</p>
+                ${locationHtml}
                 <p class="event_details"><strong>${dateLabel}:</strong> ${dateDisplay}</p>
-                <p class="event_details"><strong>Time:</strong> ${formatTime(event.StartTime)} - ${formatTime(event.EndTime)}</p>
+                ${timeHtml}
                 <p class="event_description">${event.Description}</p>
             </div>
         `;
     }
 
-    // --- Main Logic Function ---
     async function loadUpcomingEvents() {
-        // Get references to the target containers
         const eventsListContainer = document.getElementById(eventsListContainerId);
         const introTextContainer = document.getElementById(introTextContainerId);
 
-        // Crucial: Check if the required elements exist before proceeding.
-        // If not, this script isn't meant for the current page content.
         if (!eventsListContainer || !introTextContainer) {
-            // console.warn("Upcoming events containers not found. Script skipped for this page.");
             return;
         }
 
@@ -113,26 +152,23 @@
                 return;
             }
 
-            // Get current date and normalize to start of the day for accurate comparison
             const today = new Date();
             today.setHours(0, 0, 0, 0);
 
-            // Calculate 31 days from now, normalized
             const thirtyOneDaysFromNow = new Date(today);
             thirtyOneDaysFromNow.setDate(today.getDate() + 31);
-            thirtyOneDaysFromNow.setHours(23, 59, 59, 999); // Set to end of the 31st day
+            thirtyOneDaysFromNow.setHours(23, 59, 59, 999);
 
             let filteredEvents = [];
 
             events.forEach(event => {
                 const eventStartDate = new Date(event.StartDate);
-                eventStartDate.setHours(0, 0, 0, 0); // Normalize event start date
+                eventStartDate.setHours(0, 0, 0, 0);
 
                 const eventEndDate = new Date(event.EndDate);
-                eventEndDate.setHours(23, 59, 59, 999); // Normalize event end date to end of day
+                eventEndDate.setHours(23, 59, 59, 999);
 
                 const isCurrentlyOccurring = (today.getTime() >= eventStartDate.getTime() && today.getTime() <= eventEndDate.getTime());
-
                 const startsWithin31Days = (eventStartDate.getTime() >= today.getTime() && eventStartDate.getTime() <= thirtyOneDaysFromNow.getTime());
 
                 if (isCurrentlyOccurring || startsWithin31Days) {
@@ -140,15 +176,14 @@
                 }
             });
 
-            // Sort filtered events by their start date
             filteredEvents.sort((a, b) => {
                 const dateA = new Date(a.StartDate);
                 const dateB = new Date(b.StartDate);
-                return dateA.getTime() - dateB.getTime(); // Use getTime() for reliable date comparison
+                return dateA.getTime() - dateB.getTime();
             });
 
             let upcomingEventsHtml = '';
-            let introText = ''; // Variable for the intro text
+            let introText = '';
 
             if (filteredEvents.length === 0) {
                 introText = '<p>We have no events planned for the immediate future. Check out our <a href="calendar.html">calendar</a> to see what we have planned later in the year!</p>';
@@ -159,7 +194,6 @@
                 });
             }
 
-            // Set the introductory text and events list
             introTextContainer.innerHTML = introText;
             eventsListContainer.innerHTML = upcomingEventsHtml;
 
@@ -170,7 +204,6 @@
         }
     }
 
-    // Call the main function when the script is executed by content_loader.js
     loadUpcomingEvents();
 
 })(); // End of IIFE
