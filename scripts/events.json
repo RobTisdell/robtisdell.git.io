@@ -232,9 +232,9 @@
 	"Location": "Providence Eagle",
 	"LocationURL": "http://providenceeagle.com/Providence_Eagle/index.html",
 	"LocationAddress": "124 Snow St, Providence RI",
-	"StartDate": "2026-01-31",
+	"StartDate": "2026-01-30",
 	"StartTime": "21:00",
-	"EndDate": "2026-02-01",
+	"EndDate": "2026-02-02",
 	"EndTime": "02:00",
 	"Image": "red_event.jpg",
 	"Description": "Test event!"
