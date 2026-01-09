@@ -78,7 +78,14 @@
     "Days": [
         { "Date": "2026-01-30" },
         { "Date": "2026-01-31" },
-        { "Date": "2026-02-01" }
+        { "Date": "2026-02-01",
+          "OverrideTimes": { "Start" : "11:00", "End" : "17:00" },
+		  "OverrideLocation": {
+              "Name": "Dave's House",
+              "URL": "None",
+              "Address" : "123 Fake Road, Nowhere KY"
+           }
+		}
     ]
 },
 
