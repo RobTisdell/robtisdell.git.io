@@ -121,10 +121,14 @@
         let groupedHtml = '';
 
         groups.forEach(group => {
-            const dayLabel =
-                group.startDay === group.endDay
-                    ? `Day ${group.startDay}`
-                    : `Days ${group.startDay}–${group.endDay}`;
+            // Determine day label (omit for single-day events)
+            let dayLabel = '';
+            if (schedule.length > 1) {
+                dayLabel =
+                    group.startDay === group.endDay
+                        ? `Day ${group.startDay}`
+                        : `Days ${group.startDay}–${group.endDay}`;
+            }
 
             // Location name (linked or plain)
             let loc;
@@ -144,7 +148,7 @@
 
             groupedHtml += `
                 <div class="event_group_block">
-                    <p class="event_details"><strong>${dayLabel}:</strong></p>
+                    ${dayLabel ? `<p class="event_details"><strong>${dayLabel}:</strong></p>` : ''}
                     <p class="event_details"><strong>Location:</strong> ${loc} — ${mapLink}</p>
                     <p class="event_details"><strong>Time:</strong> ${formatTime(group.startTime)} - ${formatTime(group.endTime)}</p>
                 </div>
