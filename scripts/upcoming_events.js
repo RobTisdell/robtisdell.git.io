@@ -6,8 +6,14 @@
     const introTextContainerId = 'upcoming-events-intro';
     const eventsJsonSource = 'scripts/events.json';
 
+    // Parse YYYY-MM-DD as a local date (avoids UTC shift issues)
+    function parseLocalDate(dateString) {
+        const [y, m, d] = dateString.split('-');
+        return new Date(Number(y), Number(m) - 1, Number(d));
+    }
+
     function formatDate(dateString) {
-        const date = new Date(dateString);
+        const date = parseLocalDate(dateString);
         return date.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
@@ -19,6 +25,11 @@
         const [hourStr, minuteStr] = timeString.split(':');
         let hour = parseInt(hourStr, 10);
         const minute = parseInt(minuteStr, 10);
+
+        if (Number.isNaN(hour) || Number.isNaN(minute)) {
+            return 'TBD';
+        }
+
         const ampm = hour >= 12 ? 'PM' : 'AM';
         hour = hour % 12;
         hour = hour === 0 ? 12 : hour;
@@ -29,9 +40,9 @@
     function buildDailySchedule(event) {
         const schedule = [];
 
-        // Sort days chronologically
+        // Sort days chronologically using local parsing
         const sortedDays = [...event.Days].sort((a, b) =>
-            new Date(a.Date) - new Date(b.Date)
+            parseLocalDate(a.Date) - parseLocalDate(b.Date)
         );
 
         sortedDays.forEach((day, index) => {
@@ -86,32 +97,36 @@
     }
 
     function createEventHtml(event) {
-        const schedule = buildDailySchedule(event);
+        // Use cached schedule if present, otherwise build and cache
+        const schedule = event._schedule || buildDailySchedule(event);
+        event._schedule = schedule;
+
         const groups = groupConsecutiveDays(schedule);
 
-        const startDate = schedule[0].date;
-        const endDate = schedule[schedule.length - 1].date;
+        // Correct date range using local parsing
+        const startDateObj = parseLocalDate(schedule[0].date);
+        const endDateObj = parseLocalDate(schedule[schedule.length - 1].date);
 
         let dateDisplay;
         let dateLabel = 'Date';
 
-        if (startDate === endDate) {
-            dateDisplay = formatDate(startDate);
+        if (startDateObj.getTime() === endDateObj.getTime()) {
+            dateDisplay = formatDate(schedule[0].date);
         } else {
-            dateDisplay = `${formatDate(startDate)} - ${formatDate(endDate)}`;
+            dateDisplay = `${formatDate(schedule[0].date)} - ${formatDate(schedule[schedule.length - 1].date)}`;
             dateLabel = 'Dates';
         }
 
-        let locationHtml = '';
-        let timeHtml = '';
+        // Build grouped HTML blocks: Day(s) → Location → Time
+        let groupedHtml = '';
 
         groups.forEach(group => {
             const dayLabel =
                 group.startDay === group.endDay
                     ? `Day ${group.startDay}`
-                    : `Days ${group.startDay} & ${group.endDay}`;
+                    : `Days ${group.startDay}–${group.endDay}`;
 
-            // Location
+            // Location name (linked or plain)
             let loc;
             if (group.locationURL && group.locationURL !== 'None') {
                 loc = `<a href="${group.locationURL}" target="_blank" rel="noopener noreferrer">${group.location}</a>`;
@@ -119,6 +134,7 @@
                 loc = group.location || 'TBD';
             }
 
+            // Map link
             let mapLink = 'Address TBD';
             if (group.locationAddress && group.locationAddress.trim() !== '') {
                 const encoded = encodeURIComponent(group.locationAddress);
@@ -126,13 +142,12 @@
                 mapLink = `<a href="${mapURL}" target="_blank" rel="noopener noreferrer">${group.locationAddress} <i class="fa fa-map"></i></a>`;
             }
 
-            locationHtml += `
-                <p class="event_details"><strong>Location for ${dayLabel}:</strong> ${loc} — ${mapLink}</p>
-            `;
-
-            // Time
-            timeHtml += `
-                <p class="event_details"><strong>Time for ${dayLabel}:</strong> ${formatTime(group.startTime)} - ${formatTime(group.endTime)}</p>
+            groupedHtml += `
+                <div class="event_group_block">
+                    <p class="event_details"><strong>${dayLabel}:</strong></p>
+                    <p class="event_details"><strong>Location:</strong> ${loc} — ${mapLink}</p>
+                    <p class="event_details"><strong>Time:</strong> ${formatTime(group.startTime)} - ${formatTime(group.endTime)}</p>
+                </div>
             `;
         });
 
@@ -140,9 +155,8 @@
             <div class="event_boxes" id="event-${event.ID}">
                 <img src="img/events/${event.Image}" alt="${event.Name} image">
                 <p class="event_details"><strong>Type of event:</strong> ${event.Type}</p>
-                ${locationHtml}
                 <p class="event_details"><strong>${dateLabel}:</strong> ${dateDisplay}</p>
-                ${timeHtml}
+                ${groupedHtml}
                 <p class="event_description">${event.Description}</p>
             </div>
         `;
@@ -180,9 +194,12 @@
             let filteredEvents = [];
 
             events.forEach(event => {
+                // Build and cache schedule once per event
                 const schedule = buildDailySchedule(event);
-                const eventStart = new Date(schedule[0].date);
-                const eventEnd = new Date(schedule[schedule.length - 1].date);
+                event._schedule = schedule;
+
+                const eventStart = parseLocalDate(schedule[0].date);
+                const eventEnd = parseLocalDate(schedule[schedule.length - 1].date);
 
                 eventStart.setHours(0, 0, 0, 0);
                 eventEnd.setHours(23, 59, 59, 999);
@@ -200,10 +217,11 @@
                 }
             });
 
+            // Sort by start date using cached schedule
             filteredEvents.sort((a, b) => {
-                const aStart = buildDailySchedule(a)[0].date;
-                const bStart = buildDailySchedule(b)[0].date;
-                return new Date(aStart) - new Date(bStart);
+                const aStart = parseLocalDate(a._schedule[0].date);
+                const bStart = parseLocalDate(b._schedule[0].date);
+                return aStart - bStart;
             });
 
             let upcomingEventsHtml = '';
