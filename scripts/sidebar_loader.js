@@ -18,11 +18,19 @@ fetch("sidenav.html")
 
 // Highlight the active page based on the current URL
 function highlightActivePage() {
-    const currentPage = window.location.pathname.split("/").pop();
+    // Normalize current page
+    let currentPage = window.location.pathname.split("/").pop().toLowerCase();
+    currentPage = currentPage.split("?")[0].split("#")[0];
+
     const links = document.querySelectorAll("#sidenav-container a");
 
     links.forEach(link => {
-        const href = link.getAttribute("href");
+        let href = link.getAttribute("href");
+        if (!href) return;
+
+        // Normalize link href
+        href = href.split("/").pop().toLowerCase();
+        href = href.split("?")[0].split("#")[0];
 
         if (href === currentPage) {
             // Highlight the link text
