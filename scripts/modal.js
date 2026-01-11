@@ -11,7 +11,9 @@
 
     if (!eventModal) return;
 
-    // --- Utility Functions ----------------------------------------------------
+    // ------------------------------------------------------------
+    // Utility Functions
+    // ------------------------------------------------------------
 
     function parseLocalDate(dateString) {
         const [y, m, d] = dateString.split('-');
@@ -41,7 +43,9 @@
         return `${hour}:${minute.toString().padStart(2, '0')} ${ampm}`;
     }
 
-    // --- Build schedule from Option 3 JSON -----------------------------------
+    // ------------------------------------------------------------
+    // Build schedule from Option 3 JSON
+    // ------------------------------------------------------------
 
     function buildDailySchedule(event) {
         const schedule = [];
@@ -100,32 +104,37 @@
         return groups;
     }
 
-    // --- Modal Rendering ------------------------------------------------------
+    // ------------------------------------------------------------
+    // Rendering Functions
+    // ------------------------------------------------------------
 
-    function renderDateTime(schedule, groups) {
-        const startDate = schedule[0].date;
-        const endDate = schedule[schedule.length - 1].date;
+    // Updated per your request:
+    // Single-day: "When: January 24, 2026, 9:00 PM – 2:00 AM"
+    // Multi-day:
+    // Day 1: January 24, 2026, 9:00 PM – 2:00 AM
+    // Day 2: January 25, 2026, 9:00 PM – 2:00 AM
+    function renderDateTime(schedule) {
 
-        let html = `<div><strong>${schedule.length > 1 ? 'Dates:' : 'Date:'}</strong> `;
-
-        if (startDate === endDate) {
-            html += `${formatDate(startDate)}</div>`;
-        } else {
-            html += `${formatDate(startDate)} – ${formatDate(endDate)}</div>`;
+        // Single-day event
+        if (schedule.length === 1) {
+            const d = schedule[0];
+            return `
+                <div>
+                    <strong>When:</strong> 
+                    ${formatDate(d.date)}, ${formatTime(d.startTime)} – ${formatTime(d.endTime)}
+                </div>
+            `;
         }
 
-        groups.forEach(group => {
-            const dayLabel =
-                schedule.length === 1
-                    ? ''
-                    : group.startDay === group.endDay
-                        ? `Day ${group.startDay}`
-                        : `Days ${group.startDay}–${group.endDay}`;
+        // Multi-day event
+        let html = `<div><strong>When:</strong></div>`;
 
+        schedule.forEach(day => {
             html += `
                 <div class="modal-day-block">
-                    ${dayLabel ? `<div><strong>${dayLabel}:</strong></div>` : ''}
-                    <div>${formatTime(group.startTime)} – ${formatTime(group.endTime)}</div>
+                    <strong>Day ${day.dayNumber}:</strong> 
+                    ${formatDate(day.date)}, 
+                    ${formatTime(day.startTime)} – ${formatTime(day.endTime)}
                 </div>
             `;
         });
@@ -133,6 +142,8 @@
         return html;
     }
 
+    // Updated per your request:
+    // Location on the SAME LINE as "Day 1–2:"
     function renderLocation(groups, scheduleLength) {
         let html = '';
 
@@ -158,8 +169,8 @@
 
             html += `
                 <div class="modal-location-block">
-                    ${dayLabel ? `<div><strong>${dayLabel}:</strong></div>` : ''}
-                    <div>${locName} — ${mapLink}</div>
+                    <strong>${dayLabel ? dayLabel + ':' : ''}</strong>
+                    ${locName} — ${mapLink}
                 </div>
             `;
         });
@@ -167,7 +178,9 @@
         return html;
     }
 
-    // --- Main Modal Function --------------------------------------------------
+    // ------------------------------------------------------------
+    // Main Modal Function
+    // ------------------------------------------------------------
 
     window.openEventModal = function (eventData) {
 
@@ -190,12 +203,12 @@
             EventDescription.textContent = eventData.Description || 'No description available.';
         }
 
-        // Date/Time block (split format)
+        // Date/Time block
         if (EventDateTime) {
-            EventDateTime.innerHTML = renderDateTime(schedule, groups);
+            EventDateTime.innerHTML = renderDateTime(schedule);
         }
 
-        // Location block (split format)
+        // Location block
         if (EventLocation) {
             EventLocation.innerHTML = renderLocation(groups, schedule.length);
         }
@@ -203,7 +216,9 @@
         eventModal.style.display = 'flex';
     };
 
-    // --- Close Modal ----------------------------------------------------------
+    // ------------------------------------------------------------
+    // Close Modal
+    // ------------------------------------------------------------
 
     function closeModal() {
         eventModal.style.display = 'none';
