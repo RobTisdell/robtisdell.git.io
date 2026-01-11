@@ -23,8 +23,16 @@ function highlightActivePage() {
 
     links.forEach(link => {
         const href = link.getAttribute("href");
+
         if (href === currentPage) {
+            // Highlight the link text
             link.classList.add("current");
+
+            // Highlight the LI background
+            const li = link.closest("li");
+            if (li) {
+                li.classList.add("current");
+            }
         }
     });
 }
