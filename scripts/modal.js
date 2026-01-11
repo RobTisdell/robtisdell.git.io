@@ -4,7 +4,6 @@
     const closeButton = eventModal ? document.querySelector('#eventModal .close-button') : null;
 
     const EventDetailsList = document.getElementById('EventDetailsList');
-    const EventImage = document.getElementById('EventImage');
 
     if (!eventModal) return;
 
@@ -177,17 +176,20 @@
         const schedule = buildDailySchedule(eventData);
         const groups = groupConsecutiveDays(schedule);
 
-        // Image stays separate
-        if (EventImage) {
-            EventImage.innerHTML =
-                `<div class="smalleventculumn"><img src="img/events/${eventData.Image || 'default.png'}"></div>`;
-        }
-
-        // Build the entire <ul> content
+        // Build the entire <ul> content INCLUDING the image
         EventDetailsList.innerHTML = `
+            <li>
+                <div class="smalleventculumn">
+                    <img src="img/events/${eventData.Image || 'default.png'}">
+                </div>
+            </li>
+
             <li><strong>Event:</strong> ${eventData.Name}</li>
+
             ${renderLocation(groups, schedule.length)}
+
             ${renderDateTime(schedule)}
+
             <li><strong>What:</strong> ${eventData.Description}</li>
         `;
 
@@ -200,7 +202,6 @@
 
     function closeModal() {
         eventModal.style.display = 'none';
-        if (EventImage) EventImage.innerHTML = '';
         EventDetailsList.innerHTML = '';
     }
 
