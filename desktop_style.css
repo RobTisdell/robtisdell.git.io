@@ -20,6 +20,11 @@ html, body {
 	font-family: FontAwesome !important;
 }
 
+.landing img {
+	max-width: 50%;
+	max-height: 50%;
+}
+
 /* fade effect for pages loading */
 
 .content {
