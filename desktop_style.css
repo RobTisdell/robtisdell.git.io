@@ -21,8 +21,8 @@ html, body {
 }
 
 .landing img {
-	max-width: 50%;
-	max-height: 50%;
+	width: 50%;
+	height: auto;
 }
 
 /* fade effect for pages loading */
