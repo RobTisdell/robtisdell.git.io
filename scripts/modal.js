@@ -3,11 +3,8 @@
     const eventModal = document.getElementById('eventModal');
     const closeButton = eventModal ? document.querySelector('#eventModal .close-button') : null;
 
+    const EventDetailsList = document.getElementById('EventDetailsList');
     const EventImage = document.getElementById('EventImage');
-    const EventName = document.getElementById('EventName');
-    const EventDateTime = document.getElementById('EventDateTime');
-    const EventDescription = document.getElementById('EventDescription');
-    const EventLocation = document.getElementById('EventLocation');
 
     if (!eventModal) return;
 
@@ -108,44 +105,37 @@
     // Rendering Functions
     // ------------------------------------------------------------
 
-    // Updated per your request:
-    // Single-day: "When: January 24, 2026, 9:00 PM – 2:00 AM"
-    // Multi-day:
-    // Day 1: January 24, 2026, 9:00 PM – 2:00 AM
-    // Day 2: January 25, 2026, 9:00 PM – 2:00 AM
     function renderDateTime(schedule) {
 
         // Single-day event
         if (schedule.length === 1) {
             const d = schedule[0];
             return `
-                <div>
+                <li>
                     <strong>When:</strong> 
                     ${formatDate(d.date)}, ${formatTime(d.startTime)} – ${formatTime(d.endTime)}
-                </div>
+                </li>
             `;
         }
 
         // Multi-day event
-        let html = `<div><strong>When:</strong></div>`;
+        let html = `<li><strong>When:</strong></li>`;
 
         schedule.forEach(day => {
             html += `
-                <div class="modal-day-block">
+                <li class="modal-day-block">
                     <strong>Day ${day.dayNumber}:</strong> 
                     ${formatDate(day.date)}, 
                     ${formatTime(day.startTime)} – ${formatTime(day.endTime)}
-                </div>
+                </li>
             `;
         });
 
         return html;
     }
 
-    // Updated per your request:
-    // Location on the SAME LINE as "Day 1–2:"
     function renderLocation(groups, scheduleLength) {
-        let html = '';
+        let html = `<li><strong>Where:</strong></li>`;
 
         groups.forEach(group => {
             const dayLabel =
@@ -168,10 +158,10 @@
             }
 
             html += `
-                <div class="modal-location-block">
+                <li class="modal-location-block">
                     <strong>${dayLabel ? dayLabel + ':' : ''}</strong>
                     ${locName} — ${mapLink}
-                </div>
+                </li>
             `;
         });
 
@@ -187,31 +177,19 @@
         const schedule = buildDailySchedule(eventData);
         const groups = groupConsecutiveDays(schedule);
 
-        // Image
+        // Image stays separate
         if (EventImage) {
             EventImage.innerHTML =
                 `<div class="smalleventculumn"><img src="img/events/${eventData.Image || 'default.png'}"></div>`;
         }
 
-        // Name
-        if (EventName) {
-            EventName.textContent = eventData.Name || 'Event Details';
-        }
-
-        // Description
-        if (EventDescription) {
-            EventDescription.textContent = eventData.Description || 'No description available.';
-        }
-
-        // Date/Time block
-        if (EventDateTime) {
-            EventDateTime.innerHTML = renderDateTime(schedule);
-        }
-
-        // Location block
-        if (EventLocation) {
-            EventLocation.innerHTML = renderLocation(groups, schedule.length);
-        }
+        // Build the entire <ul> content
+        EventDetailsList.innerHTML = `
+            <li><strong>Event:</strong> ${eventData.Name}</li>
+            ${renderLocation(groups, schedule.length)}
+            ${renderDateTime(schedule)}
+            <li><strong>What:</strong> ${eventData.Description}</li>
+        `;
 
         eventModal.style.display = 'flex';
     };
@@ -223,10 +201,7 @@
     function closeModal() {
         eventModal.style.display = 'none';
         if (EventImage) EventImage.innerHTML = '';
-        if (EventName) EventName.textContent = '';
-        if (EventDateTime) EventDateTime.innerHTML = '';
-        if (EventDescription) EventDescription.textContent = '';
-        if (EventLocation) EventLocation.innerHTML = '';
+        EventDetailsList.innerHTML = '';
     }
 
     if (closeButton) closeButton.addEventListener('click', closeModal);
