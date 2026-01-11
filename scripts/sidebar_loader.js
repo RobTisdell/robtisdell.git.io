@@ -1,24 +1,42 @@
 // sidebar_loader.js
 
-// Load the shared sidebar HTML into the sidenav container
-fetch("sidenav.html")
-    .then(response => response.text())
-    .then(html => {
-        document.getElementById("sidenav-container").innerHTML = html;
+// Load the sidebar, using sessionStorage cache if available
+function loadSidebar() {
+    const container = document.getElementById("sidenav-container");
+    if (!container) return;
 
+    // If cached, load instantly
+    const cached = sessionStorage.getItem("cachedSidebar");
+    if (cached) {
+        container.innerHTML = cached;
         highlightActivePage();
-
-        // Re-attach fade listeners now that new links exist
         if (typeof attachFadeListeners === "function") {
             attachFadeListeners();
         }
-    })
-    .catch(err => console.error("Sidebar failed to load:", err));
+        return;
+    }
+
+    // Otherwise fetch from server once
+    fetch("sidenav.html")
+        .then(response => response.text())
+        .then(html => {
+            container.innerHTML = html;
+
+            // Cache it for the rest of the session
+            sessionStorage.setItem("cachedSidebar", html);
+
+            highlightActivePage();
+
+            if (typeof attachFadeListeners === "function") {
+                attachFadeListeners();
+            }
+        })
+        .catch(err => console.error("Sidebar failed to load:", err));
+}
 
 
 // Highlight the active page based on the current URL
 function highlightActivePage() {
-    // Normalize current page
     let currentPage = window.location.pathname.split("/").pop().toLowerCase();
     currentPage = currentPage.split("?")[0].split("#")[0];
 
@@ -28,7 +46,6 @@ function highlightActivePage() {
         let href = link.getAttribute("href");
         if (!href) return;
 
-        // Normalize link href
         href = href.split("/").pop().toLowerCase();
         href = href.split("?")[0].split("#")[0];
 
@@ -36,14 +53,13 @@ function highlightActivePage() {
             // Highlight the link itself
             link.classList.add("current");
 
-            // Highlight the LI containing this link
+            // Highlight its LI
             let li = link.closest("li");
             if (li) {
                 li.classList.add("current");
             }
 
-            // If this LI is inside a dropright submenu,
-            // also highlight the parent category LI
+            // If inside a dropright submenu, highlight parent category
             const parentUl = li.parentElement.closest("ul");
             if (parentUl && parentUl.classList.contains("dropright")) {
                 const parentLi = parentUl.closest("li");
@@ -54,3 +70,7 @@ function highlightActivePage() {
         }
     });
 }
+
+
+// Run on page load
+document.addEventListener("DOMContentLoaded", loadSidebar);
