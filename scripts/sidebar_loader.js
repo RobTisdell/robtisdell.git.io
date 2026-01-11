@@ -33,13 +33,23 @@ function highlightActivePage() {
         href = href.split("?")[0].split("#")[0];
 
         if (href === currentPage) {
-            // Highlight the link text
+            // Highlight the link itself
             link.classList.add("current");
 
-            // Highlight the LI background
-            const li = link.closest("li");
+            // Highlight the LI containing this link
+            let li = link.closest("li");
             if (li) {
                 li.classList.add("current");
+            }
+
+            // If this LI is inside a dropright submenu,
+            // also highlight the parent category LI
+            const parentUl = li.parentElement.closest("ul");
+            if (parentUl && parentUl.classList.contains("dropright")) {
+                const parentLi = parentUl.closest("li");
+                if (parentLi) {
+                    parentLi.classList.add("current");
+                }
             }
         }
     });
