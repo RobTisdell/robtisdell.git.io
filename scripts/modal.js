@@ -1,4 +1,4 @@
-(function() { // Start of IIFE
+(function () {
 
     const eventModal = document.getElementById('eventModal');
     const closeButton = eventModal ? document.querySelector('#eventModal .close-button') : null;
@@ -9,218 +9,215 @@
     const EventDescription = document.getElementById('EventDescription');
     const EventLocation = document.getElementById('EventLocation');
 
-    // IMPORTANT: If modal elements are not present, this script should do nothing.
-    if (!eventModal) {
-        // console.warn("Modal elements not found. Modal script not initializing.");
-        return;
+    if (!eventModal) return;
+
+    // --- Utility Functions ----------------------------------------------------
+
+    function parseLocalDate(dateString) {
+        const [y, m, d] = dateString.split('-');
+        return new Date(Number(y), Number(m) - 1, Number(d));
     }
 
-    // A variable to store all events, which modal.js will now load itself
-    // We're keeping this in case modal needs to fetch its own data for other purposes
-    // but calendar.js will pass the eventData directly.
-    let _allEvents = []; 
-
-    /**
-     * Fetches the event data from events.json and stores it.
-     * This function will be called when the modal.js script loads.
-     * This is useful if modal needs to initiate on its own (e.g., direct link to an event).
-     * For calendar clicks, calendar.js will provide the eventData.
-     */
-    async function loadEventsForModal() {
-        try {
-            // Using relative path, assuming 'scripts/events.json' is correct from the root.
-            const response = await fetch('scripts/events.json');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            _allEvents = await response.json();
-            // console.log("Modal.js loaded events:", _allEvents);
-        } catch (error) {
-            console.error("Error loading events in modal.js:", error);
-        }
+    function formatDate(dateString) {
+        const date = parseLocalDate(dateString);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
     }
 
-    /**
-     * Helper function to format time (e.g., "09:00" to "9:00 AM" or "9:00 PM").
-     * @param {string} timeString - Time in "HH:MM" format.
-     * @returns {string} Formatted time string.
-     */
     function formatTime(timeString) {
         const [hourStr, minuteStr] = timeString.split(':');
         let hour = parseInt(hourStr, 10);
         const minute = parseInt(minuteStr, 10);
+
+        if (Number.isNaN(hour) || Number.isNaN(minute)) return 'TBD';
+
         const ampm = hour >= 12 ? 'PM' : 'AM';
         hour = hour % 12;
-        hour = hour === 0 ? 12 : hour; // The hour '0' (midnight) should be '12'
+        hour = hour === 0 ? 12 : hour;
+
         return `${hour}:${minute.toString().padStart(2, '0')} ${ampm}`;
     }
 
-    /**
-     * Formats the event date(s) and time(s) based on specified logic.
-     * 1)  Formatted "Saturday May 25th, 2025".
-     * 2) Display start and end time afterwards: "Saturday May 25th, 2025 9:00 PM - 2:00 AM".
-     * 3) Don't display end date unless it's a true multi-day event.
-     * @param {Object} eventData - The specific event object.
-     * @returns {string} Formatted date/time string for display.
-     */
-    function formatEventDateTime(eventData) {
-        // Ensure inputs are valid. Use current date for parsing if input is just time, etc.
-        const startYear = parseInt(eventData.StartDate.substring(0,4));
-        const startMonth = parseInt(eventData.StartDate.substring(5,7)) - 1; // Month is 0-indexed
-        const startDay = parseInt(eventData.StartDate.substring(8,10));
-        
-        const endYear = parseInt(eventData.EndDate.substring(0,4));
-        const endMonth = parseInt(eventData.EndDate.substring(5,7)) - 1;
-        const endDay = parseInt(eventData.EndDate.substring(8,10));
+    // --- Build schedule from Option 3 JSON -----------------------------------
 
-        const [startHour, startMinute] = eventData.StartTime.split(':').map(Number);
-        const [endHour, endMinute] = eventData.EndTime.split(':').map(Number);
+    function buildDailySchedule(event) {
+        const schedule = [];
 
-        // Create full Date objects including time for duration calculation
-        const eventStartDateTime = new Date(startYear, startMonth, startDay, startHour, startMinute);
-        const eventEndDateTime = new Date(endYear, endMonth, endDay, endHour, endMinute);
+        const sortedDays = [...event.Days].sort(
+            (a, b) => parseLocalDate(a.Date) - parseLocalDate(b.Date)
+        );
 
-        // Create Date objects for date parts only (normalized to start of day)
-        const eventStartDateOnly = new Date(startYear, startMonth, startDay);
-        eventStartDateOnly.setHours(0, 0, 0, 0);
+        sortedDays.forEach((day, index) => {
+            const times = day.OverrideTimes || event.DefaultTimes;
+            const location = day.OverrideLocation || event.DefaultLocation;
 
-        const eventEndDateOnly = new Date(endYear, endMonth, endDay);
-        eventEndDateOnly.setHours(0, 0, 0, 0);
+            schedule.push({
+                dayNumber: index + 1,
+                date: day.Date,
+                startTime: times.Start,
+                endTime: times.End,
+                location: location.Name,
+                locationURL: location.URL,
+                locationAddress: location.Address
+            });
+        });
 
-        const durationInMs = eventEndDateTime.getTime() - eventStartDateTime.getTime();
-        const durationInHours = durationInMs / (1000 * 60 * 60);
-
-        const LATE_NIGHT_THRESHOLD_HOURS = 10; // Same threshold as in calendar.js
-
-        const isTrulyMultiDayByDate = eventEndDateOnly.getTime() !== eventStartDateOnly.getTime();
-        const isTrueMultiDayEvent = isTrulyMultiDayByDate && durationInHours >= LATE_NIGHT_THRESHOLD_HOURS;
-
-        // Part 1 & 2: Format Start Date and Times
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        let dateTimeString = eventStartDateTime.toLocaleDateString('en-US', options); 
-
-        // Apply day suffix (st, nd, rd, th)
-        const dayOfMonth = eventStartDateTime.getDate();
-        const daySuffix = (dayOfMonth % 10 === 1 && dayOfMonth !== 11) ? 'st'
-                        : (dayOfMonth % 10 === 2 && dayOfMonth !== 12) ? 'nd'
-                        : (dayOfMonth % 10 === 3 && dayOfMonth !== 13) ? 'rd'
-                        : 'th';
-        
-        // Custom formatting to get "Saturday May 25th, 2025" style
-        const monthName = eventStartDateTime.toLocaleString('en-US', { month: 'long' });
-        dateTimeString = `${eventStartDateTime.toLocaleString('en-US', { weekday: 'long' })}, ${monthName} ${dayOfMonth}${daySuffix}, ${eventStartDateTime.getFullYear()}`;
-
-        dateTimeString += ` ${formatTime(eventData.StartTime)}`;
-
-        // Part 3: Conditional End Date/Time
-        if (isTrueMultiDayEvent) {
-            // Display full end date and time
-            const endOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            let endDateTimeString = eventEndDateTime.toLocaleDateString('en-US', endOptions);
-
-            const endDayOfMonth = eventEndDateTime.getDate();
-            const endDaySuffix = (endDayOfMonth % 10 === 1 && endDayOfMonth !== 11) ? 'st'
-                                : (endDayOfMonth % 10 === 2 && endDayOfMonth !== 12) ? 'nd'
-                                : (endDayOfMonth % 10 === 3 && endDayOfMonth !== 13) ? 'rd'
-                                : 'th';
-            
-            const endMonthName = eventEndDateTime.toLocaleString('en-US', { month: 'long' });
-            endDateTimeString = `${eventEndDateTime.toLocaleString('en-US', { weekday: 'long' })}, ${endMonthName} ${endDayOfMonth}${endDaySuffix}, ${eventEndDateTime.getFullYear()}`;
-
-            dateTimeString += ` - ${endDateTimeString} ${formatTime(eventData.EndTime)}`;
-        } else {
-            // Only display end time if it's a "spill-over" or single-day event
-            dateTimeString += ` - ${formatTime(eventData.EndTime)}`;
-        }
-
-        return dateTimeString;
+        return schedule;
     }
 
+    function groupConsecutiveDays(schedule) {
+        const groups = [];
+        let current = null;
 
-    /**
-     * Function to open the modal and populate it with event details.
-     * This function is now exposed globally for calendar.js to call.
-     * @param {Object} eventData - The specific event object to display.
-     */
-    window.openEventModal = function(eventData) { // EXPOSE GLOBALLY
-        if (eventData) {
-            if (EventImage){
-                EventImage.innerHTML = `<div class="smalleventculumn"><img src="img/events/${eventData.Image || 'default.png'}"></div>`; // Add a default image for safety
-            }
-            if (EventName) {
-                EventName.textContent = eventData.Name || 'Event Details';
-            }
-            if (EventDateTime) {
-                EventDateTime.textContent = formatEventDateTime(eventData);
-            }
-            if (EventDescription) {
-                EventDescription.textContent = eventData.Description || 'No description available.';
-            }
-            if (EventLocation) {
-                if (eventData.Location && eventData.LocationURL) {
-                    EventLocation.innerHTML = `<a href="${eventData.LocationURL}" target="_blank" rel="noopener noreferrer">${eventData.Location}</a>`;
-                } else if (eventData.Location) {
-                    EventLocation.textContent = `${eventData.Location}`;
-                } else {
-                    EventLocation.textContent = 'Location: N/A';
-                }
-            }
+        schedule.forEach(day => {
+            const same =
+                current &&
+                current.location === day.location &&
+                current.locationAddress === day.locationAddress &&
+                current.locationURL === day.locationURL &&
+                current.startTime === day.startTime &&
+                current.endTime === day.endTime;
 
+            if (!current || !same) {
+                current = {
+                    startDay: day.dayNumber,
+                    endDay: day.dayNumber,
+                    location: day.location,
+                    locationURL: day.locationURL,
+                    locationAddress: day.locationAddress,
+                    startTime: day.startTime,
+                    endTime: day.endTime
+                };
+                groups.push(current);
+            } else {
+                current.endDay = day.dayNumber;
+            }
+        });
+
+        return groups;
+    }
+
+    // --- Modal Rendering ------------------------------------------------------
+
+    function renderDateTime(schedule, groups) {
+        const startDate = schedule[0].date;
+        const endDate = schedule[schedule.length - 1].date;
+
+        let html = `<div><strong>${schedule.length > 1 ? 'Dates:' : 'Date:'}</strong> `;
+
+        if (startDate === endDate) {
+            html += `${formatDate(startDate)}</div>`;
         } else {
-            // If no eventData is provided, clear content
-            if (EventName) EventName.textContent = 'Event Details Not Found';
-            if (EventDateTime) EventDateTime.textContent = '';
-            if (EventDescription) EventDescription.textContent = 'Event details not available.';
-            if (EventLocation) EventLocation.textContent = '';
+            html += `${formatDate(startDate)} – ${formatDate(endDate)}</div>`;
         }
 
-        eventModal.style.display = 'flex'; // Make the modal visible
+        groups.forEach(group => {
+            const dayLabel =
+                schedule.length === 1
+                    ? ''
+                    : group.startDay === group.endDay
+                        ? `Day ${group.startDay}`
+                        : `Days ${group.startDay}–${group.endDay}`;
+
+            html += `
+                <div class="modal-day-block">
+                    ${dayLabel ? `<div><strong>${dayLabel}:</strong></div>` : ''}
+                    <div>${formatTime(group.startTime)} – ${formatTime(group.endTime)}</div>
+                </div>
+            `;
+        });
+
+        return html;
+    }
+
+    function renderLocation(groups, scheduleLength) {
+        let html = '';
+
+        groups.forEach(group => {
+            const dayLabel =
+                scheduleLength === 1
+                    ? ''
+                    : group.startDay === group.endDay
+                        ? `Day ${group.startDay}`
+                        : `Days ${group.startDay}–${group.endDay}`;
+
+            let locName = group.location || 'TBD';
+            if (group.locationURL && group.locationURL !== 'None') {
+                locName = `<a href="${group.locationURL}" target="_blank" rel="noopener noreferrer">${locName}</a>`;
+            }
+
+            let mapLink = 'Address TBD';
+            if (group.locationAddress && group.locationAddress.trim() !== '') {
+                const encoded = encodeURIComponent(group.locationAddress);
+                const mapURL = `https://www.google.com/maps/search/?api=1&query=${encoded}`;
+                mapLink = `<a href="${mapURL}" target="_blank" rel="noopener noreferrer">${group.locationAddress}</a>`;
+            }
+
+            html += `
+                <div class="modal-location-block">
+                    ${dayLabel ? `<div><strong>${dayLabel}:</strong></div>` : ''}
+                    <div>${locName} — ${mapLink}</div>
+                </div>
+            `;
+        });
+
+        return html;
+    }
+
+    // --- Main Modal Function --------------------------------------------------
+
+    window.openEventModal = function (eventData) {
+
+        const schedule = buildDailySchedule(eventData);
+        const groups = groupConsecutiveDays(schedule);
+
+        // Image
+        if (EventImage) {
+            EventImage.innerHTML =
+                `<div class="smalleventculumn"><img src="img/events/${eventData.Image || 'default.png'}"></div>`;
+        }
+
+        // Name
+        if (EventName) {
+            EventName.textContent = eventData.Name || 'Event Details';
+        }
+
+        // Description
+        if (EventDescription) {
+            EventDescription.textContent = eventData.Description || 'No description available.';
+        }
+
+        // Date/Time block (split format)
+        if (EventDateTime) {
+            EventDateTime.innerHTML = renderDateTime(schedule, groups);
+        }
+
+        // Location block (split format)
+        if (EventLocation) {
+            EventLocation.innerHTML = renderLocation(groups, schedule.length);
+        }
+
+        eventModal.style.display = 'flex';
     };
 
+    // --- Close Modal ----------------------------------------------------------
+
     function closeModal() {
-        eventModal.style.display = 'none'; // Hide the modal
-        // Optionally clear content when closing
-        if (EventImage) EventImage.innerHTML = ''; // Clear image
+        eventModal.style.display = 'none';
+        if (EventImage) EventImage.innerHTML = '';
         if (EventName) EventName.textContent = '';
-        if (EventDateTime) EventDateTime.textContent = '';
+        if (EventDateTime) EventDateTime.innerHTML = '';
         if (EventDescription) EventDescription.textContent = '';
-        if (EventLocation) EventLocation.textContent = '';
+        if (EventLocation) EventLocation.innerHTML = '';
     }
 
-    // Add event listener to the close button
-    if (closeButton) { // Check if closeButton exists before adding listener
-        closeButton.addEventListener('click', closeModal);
-    }
+    if (closeButton) closeButton.addEventListener('click', closeModal);
 
-    // Close modal when clicking outside the modal content
     window.addEventListener('click', (event) => {
-        if (event.target === eventModal) {
-            closeModal();
-        }
+        if (event.target === eventModal) closeModal();
     });
 
-    // --- No longer need this listener here for modal.js's own event links ---
-    // The calendar.js will directly call window.openEventModal with eventData.
-    // Keep this only if you have direct event links on the modal.html itself that need to open THIS modal.
-    // document.addEventListener('click', (e) => {
-    //     const clickedEventLink = e.target.closest('.event-link');
-    //     if (clickedEventLink) {
-    //         e.preventDefault();
-    //         const eventId = clickedEventLink.dataset.eventId;
-    //         // Using the _allEvents loaded by modal.js itself (if any)
-    //         const eventData = _allEvents.find(event => event.ID.toString() === eventId); // Use toString() for comparison
-    //         if (eventData) {
-    //             window.openEventModal(eventData); // Call the exposed function
-    //         } else {
-    //             console.warn(`Event with ID ${eventId} not found by modal.js.`);
-    //         }
-    //     }
-    // });
-
-
-    // --- Initial Call: Load events for modal (if needed for standalone use cases) ---
-    // This will run immediately when modal.js is parsed.
-    loadEventsForModal(); // This is for modal.js to have its own data, potentially for standalone use.
-                          // Calendar.js will pass the event object directly.
-
-})(); // End of the IIFE
+})();
