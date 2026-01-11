@@ -23,8 +23,20 @@ html, body {
 /* fade effect for pages loading */
 
 .content {
-	opacity: 1;
 	transition: opacity 0.3s ease-in-out; /* Smooth transition for initial load and default */
+}
+
+.fade-container {
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.fade-container.fade-in { 
+	opacity: 1;
+}
+
+.fade-container.fade-out {
+	opacity: 0;
 }
 
 .content.fade-out {
