@@ -5,7 +5,13 @@ fetch("sidenav.html")
     .then(response => response.text())
     .then(html => {
         document.getElementById("sidenav-container").innerHTML = html;
+
         highlightActivePage();
+
+        // Re-attach fade listeners now that new links exist
+        if (typeof attachFadeListeners === "function") {
+            attachFadeListeners();
+        }
     })
     .catch(err => console.error("Sidebar failed to load:", err));
 
@@ -18,7 +24,7 @@ function highlightActivePage() {
     links.forEach(link => {
         const href = link.getAttribute("href");
         if (href === currentPage) {
-            link.classList.add("active");
+            link.classList.add("current");
         }
     });
 }
