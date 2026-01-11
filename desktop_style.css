@@ -23,6 +23,9 @@ html, body {
 .landing img {
 	width: 50%;
 	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* fade effect for pages loading */
