@@ -17,7 +17,10 @@
     },
     "Days": [
         { "Date": "2026-01-17" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -37,7 +40,10 @@
     },
     "Days": [
         { "Date": "2026-01-18" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -57,7 +63,10 @@
     },
     "Days": [
         { "Date": "2026-01-24" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -86,7 +95,10 @@
               "Address" : "123 Fake Road, Nowhere KY"
            }
 		}
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -106,7 +118,10 @@
     },
     "Days": [
         { "Date": "2026-02-07" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -126,7 +141,10 @@
     },
     "Days": [
         { "Date": "2026-02-14" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -146,7 +164,10 @@
     },
     "Days": [
         { "Date": "2026-02-21" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -166,7 +187,10 @@
     },
     "Days": [
         { "Date": "2026-02-28" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -186,7 +210,10 @@
     },
     "Days": [
         { "Date": "2026-03-07" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -206,7 +233,10 @@
     },
     "Days": [
         { "Date": "2026-03-14" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -226,7 +256,10 @@
     },
     "Days": [
         { "Date": "2026-03-21" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -246,7 +279,10 @@
     },
     "Days": [
         { "Date": "2026-03-28" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -266,7 +302,10 @@
     },
     "Days": [
         { "Date": "2026-04-04" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -286,7 +325,10 @@
     },
     "Days": [
         { "Date": "2026-12-22" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -306,7 +348,10 @@
     },
     "Days": [
         { "Date": "2026-12-29" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -326,7 +371,10 @@
     },
     "Days": [
         { "Date": "2026-12-06" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -346,7 +394,10 @@
     },
     "Days": [
         { "Date": "2026-12-13" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -366,7 +417,10 @@
     },
     "Days": [
         { "Date": "2026-03-21" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 },
 
 {
@@ -386,6 +440,9 @@
     },
     "Days": [
         { "Date": "2026-12-27" }
-    ]
+    ],
+	"Timezone": { 
+	"Name": "America/New_York",
+	"UTCOffset": "-05:00" }
 }
 ]
