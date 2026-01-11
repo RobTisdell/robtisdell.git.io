@@ -1,15 +1,29 @@
-<div class="content" id="MainContent">
-	<article>
-		<p class="title">Previous Events</p>
-		<div class="event-display-wrapper">
-			<div class="pagination-controls left-btn-container">
-				<button id="prev-events-btn">&#11160;</button>
-			</div>
-			<div class="smalleventbanners" id="previous-events-container"></div>
-			<div class="pagination-controls right-btn-container">
-				<button id="next-events-btn">&#11162;</button>
-			</div>
+<html>
+	<head>
+		<link rel="stylesheet" media="screen and (min-device-width: 800px)" href="desktop_style.css" />
+		<link rel="stylesheet" media="screen and (max-device-width: 800px)" href="mobile_style.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="icon" type="image/png" href="img/logo.png">
+		<title>Fits Like a Glove</title>
+	</head>
+	<body>
+		<div class="sidenav" id="sidenav-container"></div>
+		<div class="content fade-container" id="MainContent">
+			<article>
+				<p class="title">Previous Events</p>
+				<div class="event-display-wrapper">
+					<div class="pagination-controls left-btn-container">
+						<button id="prev-events-btn">&#11160;</button>
+				</div>
+					<div class="smalleventbanners" id="previous-events-container"></div>
+					<div class="pagination-controls right-btn-container">
+						<button id="next-events-btn">&#11162;</button>
+					</div>
+				</div>
+			</article>
 		</div>
-	</article>
 	<script src="scripts/previous_events.js"></script>
-</div>
+	<script src="scripts/sidebar_loader.js"></script>
+	<script src="scripts/fade_nav.js"></script>
+	</body>
+</html>

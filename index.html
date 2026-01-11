@@ -1,25 +1,20 @@
-<!DOCTYPE html>
 <html>
 	<head>
-	    <script src="scripts/device_detector.js"></script>
 		<link rel="stylesheet" media="screen and (min-device-width: 800px)" href="desktop_style.css" />
 		<link rel="stylesheet" media="screen and (max-device-width: 800px)" href="mobile_style.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="icon" type="image/png" href="img/logo.png">
-		<title>Fits Like a Glove</title> </head>
-	
+		<title>Fits Like a Glove</title>
+	</head>
 	<body>
-	    <div id="mobile_menu_container">
-        <button id="mobile_menu_button" aria-label="Toggle Navigation">☰</button></div>
-		<div class="wrapper"> /
-			<div class="sidenav" id="sidenav-container"></div>
-			<div class="content" id="MainContent">
+		<div class="sidenav" id="sidenav-container"></div>
+		<div class="content fade-container" id="MainContent">
 				<article>
                     <p class="title">Welcome to Fits Like a Glove</p>
                     <p>This is the default home page content.</p>
                 </article>
-			</div>
 		</div>
-		<script src="scripts/content_loader.js"></script> 
+	<script src="scripts/sidebar_loader.js"></script>
+	<script src="scripts/fade_nav.js"></script>
 	</body>
 </html>

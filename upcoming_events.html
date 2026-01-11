@@ -1,10 +1,22 @@
-<div class="content" id="MainContent">
-	<article>
-		<p class="title">Upcoming Events</p>
-		<div id="upcoming-events-intro"></div>
-		<div class="upcoming_events" id="upcoming-events-list"></div>
-	</article>
-	<script src="scripts/mobmenu.js"></script>
-	<script src="scripts/content_loader.js"></script>
+<html>
+	<head>
+		<link rel="stylesheet" media="screen and (min-device-width: 800px)" href="desktop_style.css" />
+		<link rel="stylesheet" media="screen and (max-device-width: 800px)" href="mobile_style.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="icon" type="image/png" href="img/logo.png">
+		<title>Fits Like a Glove</title>
+	</head>
+	<body>
+		<div class="sidenav" id="sidenav-container"></div>
+		<div class="content fade-container" id="MainContent">
+			<article>
+				<p class="title">Upcoming Events</p>
+				<div id="upcoming-events-intro"></div>
+				<div class="upcoming_events" id="upcoming-events-list"></div>
+			</article>
+		</div>
 	<script src="scripts/upcoming_events.js"></script>
-</div>
+	<script src="scripts/sidebar_loader.js"></script>
+	<script src="scripts/fade_nav.js"></script>
+	</body>
+</html>
