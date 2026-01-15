@@ -133,10 +133,15 @@
         return html;
     }
 
-    function renderLocation(groups, scheduleLength) {
-        let html = `<li><strong>Where:</strong></li>`;
+    // ------------------------------------------------------------
+    // UPDATED renderLocation() — “Where:” on same line as first block
+    // ------------------------------------------------------------
 
-        groups.forEach(group => {
+    function renderLocation(groups, scheduleLength) {
+        let html = '';
+
+        groups.forEach((group, index) => {
+
             const dayLabel =
                 scheduleLength === 1
                     ? ''
@@ -156,12 +161,26 @@
                 mapLink = `<a href="${mapURL}" target="_blank" rel="noopener noreferrer">${group.locationAddress}</a>`;
             }
 
-            html += `
-                <li class="modal-location-block">
-                    <strong>${dayLabel ? dayLabel + ':' : ''}</strong>
-                    ${locName} — ${mapLink}
-                </li>
-            `;
+            // FIRST GROUP → same line as "Where:"
+            if (index === 0) {
+                html += `
+                    <li class="modal-location-block">
+                        <strong>Where:</strong>
+                        ${dayLabel ? `${dayLabel}:` : ''}
+                        ${locName} — ${mapLink}
+                    </li>
+                `;
+            }
+
+            // ADDITIONAL GROUPS → separate lines
+            else {
+                html += `
+                    <li class="modal-location-block">
+                        <strong>${dayLabel ? dayLabel + ':' : ''}</strong>
+                        ${locName} — ${mapLink}
+                    </li>
+                `;
+            }
         });
 
         return html;
@@ -176,7 +195,6 @@
         const schedule = buildDailySchedule(eventData);
         const groups = groupConsecutiveDays(schedule);
 
-        // Build the entire <ul> content INCLUDING the image
         EventDetailsList.innerHTML = `
             <li>
                 <div class="smalleventculumn">
@@ -185,8 +203,8 @@
             </li>
 
             <li><strong>Event:</strong> ${eventData.Name}</li>
-			
-			<li><strong>Hosted By:</strong> ${eventData.Host}</li>
+
+            <li><strong>Hosted By:</strong> ${eventData.Host}</li>
 
             ${renderLocation(groups, schedule.length)}
 
