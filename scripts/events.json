@@ -6,6 +6,7 @@
     "Type": "Bar night",
     "Image": "2025_March_22.jpg",
     "Description": "FLAG meetup and social event!    Bring some snacks and games!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -29,6 +30,7 @@
     "Type": "Social",
     "Image": "2025_April_13.jpg",
     "Description": "FLAG meetup and social event!    Bring some snacks and games!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Eagle's Nest",
         "URL": "https://www.facebook.com/Providencehealthclub/",
@@ -52,6 +54,7 @@
     "Type": "Bar night",
     "Image": "2025_May_10.jpg",
     "Description": "Are you virtuous or are you wicked?    Come bare your soul at our Angels and Demons night!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -75,6 +78,7 @@
     "Type": "Bar night",
     "Image": "red_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -107,6 +111,7 @@
     "Type": "Bar night",
     "Image": "orange_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -130,6 +135,7 @@
     "Type": "Bar night",
     "Image": "yellow_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -153,6 +159,7 @@
     "Type": "Bar night",
     "Image": "green_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -176,6 +183,7 @@
     "Type": "Bar night",
     "Image": "turquoise_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -199,6 +207,7 @@
     "Type": "Bar night",
     "Image": "blue_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -222,6 +231,7 @@
     "Type": "Bar night",
     "Image": "purple_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -245,6 +255,7 @@
     "Type": "Bar night",
     "Image": "magenta_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -268,6 +279,7 @@
     "Type": "Bar night",
     "Image": "red_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -291,6 +303,7 @@
     "Type": "Bar night",
     "Image": "orange_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -314,6 +327,7 @@
     "Type": "Bar night",
     "Image": "yellow_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -337,6 +351,7 @@
     "Type": "Bar night",
     "Image": "green_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -360,6 +375,7 @@
     "Type": "Bar night",
     "Image": "turquoise_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -383,6 +399,7 @@
     "Type": "Bar night",
     "Image": "blue_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -406,6 +423,7 @@
     "Type": "Bar night",
     "Image": "purple_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -429,6 +447,7 @@
     "Type": "Bar night",
     "Image": "magenta_event.jpg",
     "Description": "Test event!",
+	"Host": "FLAG",
     "DefaultLocation": {
         "Name": "Providence Eagle",
         "URL": "http://providenceeagle.com/Providence_Eagle/index.html",

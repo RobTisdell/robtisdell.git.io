@@ -185,6 +185,8 @@
             </li>
 
             <li><strong>Event:</strong> ${eventData.Name}</li>
+			
+			<li><strong>Hosted By:</strong> ${eventData.Host}</li>
 
             ${renderLocation(groups, schedule.length)}
 
