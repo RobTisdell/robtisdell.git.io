@@ -655,7 +655,7 @@ border-bottom-color: #080808;
 .modal-content {
 	background-color: #444449;
 	color: #AABBCC;
-	padding: 5%;
+	padding: 2.25vw;
 	border: 1px solid #F1F1F1;
 	max-width: 45vw;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
