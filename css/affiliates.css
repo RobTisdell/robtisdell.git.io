@@ -1,0 +1,32 @@
+.affiliate_container {
+margin-top: 2vh;
+height: 9vh;
+display: flex;
+padding-bottom: 5px;
+border-bottom: 5px solid #111111;
+}
+
+.affiliate_picture {
+	margin-top: auto;
+	margin-bottom: auto;
+	max-height: 8vh;
+	max-width: 8vh;
+}
+
+.affiliate_picture img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+}
+
+.affiliate_title {
+	padding-left: 2vw;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.affiliate_container:hover {
+transition: .3s;
+border-bottom: 5px solid;
+border-bottom-color: #080808;
+}

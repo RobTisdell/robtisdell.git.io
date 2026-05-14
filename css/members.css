@@ -1,0 +1,125 @@
+
+.staffpictures {
+	width: 25%;
+	height: 30vh;
+	float: left;
+	margin-top: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.staffpictures img {
+	object-fit: contain;
+	max-width: 100%;
+	max-height: 100%;
+	display: block;
+	margin: auto;
+}
+
+.staff-box {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 5vh;
+}
+
+/* Picture containers for the current titleholder.  These are deliberately larger than the staff pictures because I expect only one titleholder at a time*/
+
+.titleholder-box {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 5vh;
+	flex: 0 0 80%;
+}
+
+.titleholderpictures {
+	float: left;
+	flex: 0 0 20%;
+}
+
+.wrapper .content article p.titleholder-title {
+	/*	color: #E0AA3E; Just a reference to the default if we want it, but amethyst is too appropriate here~ */
+	color: #9966CC;
+	text-align: center;
+	font-size: 1.25em;
+	margin: 0;
+	line-height: 1;
+	text-indent: 0;
+}
+
+.wrapper .content article p.titleholder-title::first-letter {
+	font-size: 1.25em;
+}
+
+.titleholder-pictures img {
+	vertical-align: center;
+}
+
+.wrapper .content article p.titleholder-description {
+	font-size: 1.125em;
+}
+
+.wrapper .content article p.titleholder-description::first-letter {	
+	font-size: 1.25em;
+	font-weight: bold;
+}
+
+.divided_boxes {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    line-height: 1.6;
+	background: #333338AA;
+	display: flex;
+}
+
+.divided_boxes img {
+	display: block;
+    margin: 0 auto;
+    font-size: 1.5em;
+    padding-bottom: 10px;
+	width: 40vw;	
+}
+
+.divided_boxes p {
+    margin-bottom: 8px;
+}
+
+.divided_boxes a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.divided_boxes a:hover {
+    text-decoration: underline;
+}
+
+.unified_box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    line-height: 1.6;
+	background: #333338AA;
+	display: flex;
+}
+
+.unified_box img {
+	display: block;
+    font-size: 1.5em;
+	max-width: 100%;	
+	vertical-align: middle;
+}
+
+.current_titleholder_picture {
+	float: left;
+	margin-top: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.current_titleholder_picture img {
+	max-width: 100%;
+}
