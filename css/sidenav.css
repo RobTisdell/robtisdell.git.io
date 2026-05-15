@@ -69,9 +69,9 @@
 /* List link style and hover transition effects */
 .wrapper .sidenav a {
 	text-decoration: none;
-	font-size: clamp(16px, 0.9vw, 22px);;
+	font-size: clamp(8px, 0.9vw, 22px);;
 /*	color: #CCCCCC; */
-	color: #BBBB44;
+	color: #44FF00;
 	display: block;
 	width: 100%
 }
