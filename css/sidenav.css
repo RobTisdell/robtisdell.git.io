@@ -70,7 +70,8 @@
 .wrapper .sidenav a {
 	text-decoration: none;
 	font-size: calc(1rem + 2vh);
-	color: #CCCCCC;
+/*	color: #CCCCCC; */
+	color: #33BBBB;
 	display: block;
 	width: 100%
 }
