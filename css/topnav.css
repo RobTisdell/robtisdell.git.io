@@ -38,6 +38,16 @@
 	margin-top: 10vh;
 }
 
+.topnav a {
+	text-decoration: none;
+	font-size: 1.4vw;
+	color: #CCCCCC;
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+	width: 100%
+}
+
 .dropdown-menu ul li {
 	height: 8vh;
 }
