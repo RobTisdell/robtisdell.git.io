@@ -160,11 +160,6 @@
     padding: 15px; /* Adjust article padding */
 }
 
-/* Hide the desktop prototype and show mobile prototype */
-.prototype-desktop {
-    display: none !important; /* Use !important to ensure override */
-}
-
 .prototype-mobile {
     display: block !important;
     text-align: center;

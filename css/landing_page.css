@@ -1,0 +1,22 @@
+.wrapper .landingimagecontainer {
+	height: 100vh;
+	max-width: 87.875vw;
+}
+
+.wrapper .landingimagecontainer .landingpage {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+body.landing-page-no-scroll {
+	overflow: hidden;
+}
+
+.landing img {
+	width: 75%;
+	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
