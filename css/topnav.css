@@ -34,6 +34,8 @@
 .dropdown-menu {
     display: none;
     background-color: #111111CC;
+	width: 100vw;
+	margin-top: 1vh;
 }
 
 .dropdown-menu.open {
