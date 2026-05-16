@@ -145,3 +145,70 @@
 .sidebar-icon {
 	margin: 0 auto;
 }
+
+
+@media (max-width: 800px) {
+
+    /* Turn sidenav into a topnav */
+    .wrapper .sidenav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: auto;
+        background-color: #111111CC;
+        padding: 1vh 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 10;
+    }
+
+    /* Make the UL horizontal */
+    .wrapper .sidenav ul {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    /* Make LI horizontal */
+    .wrapper .sidenav ul li {
+        height: auto;
+        padding: 0.5em 1em;
+        border: none;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Make links horizontal */
+    .wrapper .sidenav a {
+        font-size: 4vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        padding: 0.5em;
+    }
+
+    /* Hide dropright menus on mobile (for now) */
+    .wrapper .sidenav ul li ul.dropright {
+        display: none;
+    }
+
+    /* Adjust content so it isn’t pushed right */
+    .wrapper .content {
+        margin-left: 0;
+        margin-top: 12vh; /* space for topnav */
+    }
+	
+	.wrapper .sidenav a .rightarrow { 
+	display: none;
+	}
+	
+    .wrapper .sidenav a .downarrow {
+	display: inline;
+	}
+}
