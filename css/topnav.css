@@ -28,7 +28,7 @@
 	font-size: 8vw;
 }
 
-.logo-box img {
+.logo-box img, .dropdown-menu img {
 	max-height: 80%;
 	width: auto;
 }
