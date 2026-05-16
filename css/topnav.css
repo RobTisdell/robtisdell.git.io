@@ -24,8 +24,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-	color: #FF00FF;
-	font-size: 8vw;
 }
 
 .logo-box img, .dropdown-menu img {
