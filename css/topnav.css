@@ -35,7 +35,11 @@
     display: none;
     background-color: #111111CC;
 	width: 100vw;
-	margin-top: 1vh;
+	margin-top: 10vh;
+}
+
+.dropdown-menu ul li {
+	height: 8vh;
 }
 
 .dropdown-menu.open {
