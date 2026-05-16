@@ -22,10 +22,12 @@
 	color: #44FFFF;
 	width: 10wv;
 	height: 7vh;
+	border-style: 2px solid red;
 }
 
 .mobile-logo {
 	height: 7vh;
 	width: 10wv;
 	object-fit: contain;
+	border-style: 2px solid red;
     }
