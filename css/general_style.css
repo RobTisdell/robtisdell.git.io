@@ -55,9 +55,15 @@ html, body {
 	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
 }
 
-@media (min-width: 800px) {
+@media (min-width: 801px) {
 	.wrapper .content {
 		margin-left: 12.125vw;
+	}
+}
+
+@media (max-width: 800px) {
+	.wrapper .content {
+		margin-left: 0vw;
 	}
 }
 
