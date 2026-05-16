@@ -18,16 +18,10 @@
 	z-index: 10;
 }
 
-.wrapper .topnav .hamburger {
+.dropdown-menu, .logo-box {
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 	color: #00FF00;
-	width: 10wv;
-	height: 7vh;
-	border-style: 2px solid red;
 }
-
-.mobile-logo {
-	height: 7vh;
-	width: 10wv;
-	object-fit: contain;
-	border-style: 2px solid red;
-    }
