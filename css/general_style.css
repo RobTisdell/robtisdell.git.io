@@ -95,7 +95,7 @@ html, body {
 .wrapper .content article p.title {
 	color:#E0AA3E;
 	text-align: center;
-	font-size: 2vw;
+	font-size: 2em;
 	margin-bottom: 0.5em;
 	text-indent: 0px;
 }

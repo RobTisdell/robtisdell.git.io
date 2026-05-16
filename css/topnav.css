@@ -20,5 +20,9 @@
 }
 
 .mobile-logo {
-        height: 7vh;
+	height: 7vh;
+	max-width: 20vw;
+	width: auto;
+	object-fit: contain;
+	flex-shrink: 1;
     }
