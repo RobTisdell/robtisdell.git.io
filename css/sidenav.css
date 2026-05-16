@@ -72,8 +72,15 @@
 	font-size: 1.8vw;
 /*	color: #CCCCCC; */
 	color: #FF0000;
-	display: block;
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
 	width: 100%
+}
+
+
+.wrapper .sidenav a .downarrow {
+    display: none;
 }
 
 .wrapper .sidenav li:hover {
