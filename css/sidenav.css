@@ -69,9 +69,9 @@
 /* List link style and hover transition effects */
 .wrapper .sidenav a {
 	text-decoration: none;
-	font-size: 1.8vw;
+	font-size: 1.5vw;
 /*	color: #CCCCCC; */
-	color: #FF00FF;
+	color: #0000FF;
 	display: flex;
     justify-content: space-between;
     align-items: center;
