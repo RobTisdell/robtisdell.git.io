@@ -19,19 +19,15 @@
 }
 
 .wrapper .topnav .hamburger {
-	color: #0000FF;
+	color: #00FF00;
 	width: 10wv;
 	height: 7vh;
 	border-style: 2px solid red;
 }
 
-.wrapper .topnav .mobile-logo {
+.mobile-logo {
 	height: 7vh;
 	width: 10wv;
 	object-fit: contain;
 	border-style: 2px solid red;
-}
-
-.wrapper .topnav .mobile-logo img {
-	max-width: 100%;
-}
+    }
