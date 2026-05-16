@@ -10,12 +10,10 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100vw;
 	height: 10vh;
 	background-color: #111111CC;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 2vw;
 	z-index: 10;
 }
 
