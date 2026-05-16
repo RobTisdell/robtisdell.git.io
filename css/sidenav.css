@@ -69,14 +69,13 @@
 /* List link style and hover transition effects */
 .wrapper .sidenav a {
 	text-decoration: none;
-	font-size: 1.5vw;
+	font-size: 1.4vw;
 	color: #CCCCCC;
 	display: flex;
     justify-content: space-between;
     align-items: center;
 	width: 100%
 }
-
 
 .wrapper .sidenav a .downarrow {
     display: none;
