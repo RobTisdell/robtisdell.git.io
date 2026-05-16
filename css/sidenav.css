@@ -1,8 +1,10 @@
-/* Settings for the sidenav container */
+/* First and foremost, make sure the mobile topnav isn't visible */
 
 .wrapper .topnav {
 	display: none;
 }
+
+/* Settings for the sidenav container */
 
 .wrapper .sidenav {
 	font-family: Monaco, monospace;
@@ -48,7 +50,7 @@
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* This is for the dropright menus in particular */
+/* Settings for the dropright menus */
 
 .wrapper .sidenav ul li ul {
 	margin: 0;
@@ -79,10 +81,6 @@
     justify-content: space-between;
     align-items: center;
 	width: 100%
-}
-
-.wrapper .sidenav a .down-arrow {
-    display: none;
 }
 
 .wrapper .sidenav li:hover {

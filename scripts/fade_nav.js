@@ -1,5 +1,3 @@
-// fade_nav.js
-
 // Attach fade-out listeners to all internal links.
 // Called on DOMContentLoaded and again after sidebar loads.
 function attachFadeListeners() {
@@ -24,7 +22,7 @@ function attachFadeListeners() {
 
             setTimeout(() => {
                 window.location = href;
-            }, 200); // match your CSS transition duration
+            }, 200); // match CSS transition duration
         });
     });
 }
@@ -39,12 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
             container.classList.add("fade-in");
         }, 10);
     }
-
     attachFadeListeners();
 });
 
 
-// ⭐ Fix for browser Back/Forward Cache (bfcache)
+// Fix for browser Back/Forward Cache (bfcache)
 // Ensures the page becomes visible again when restored from cache.
 window.addEventListener("pageshow", event => {
     const container = document.getElementById("MainContent");

@@ -30,3 +30,20 @@
 	max-height: 80%;
 	width: auto;
 }
+
+.dropdown-menu {
+    display: none;
+    background-color: #111111CC;
+}
+
+.dropdown-menu.open {
+    display: block;
+}
+
+.dropdown {
+    display: none;
+}
+
+.dropdown.open {
+    display: block;
+}
