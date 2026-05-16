@@ -2,6 +2,7 @@
 
 .wrapper .sidenav {
 	display: none;
+	width: 0px;
 }
 
 .wrapper .topnav {
@@ -17,3 +18,7 @@
 	padding: 0 2vw;
 	z-index: 10;
 }
+
+.mobile-logo {
+        height: 7vh;
+    }
