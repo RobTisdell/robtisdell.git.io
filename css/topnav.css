@@ -66,6 +66,8 @@
 .dropdown-menu ul li {
     height: auto;
     min-height: 8vh;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dropdown-menu.open {
