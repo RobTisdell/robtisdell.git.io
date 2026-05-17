@@ -1,6 +1,6 @@
 /* First and foremost, make sure the mobile topnav isn't visible */
 
-.wrapper .topnav-wrapper {
+#topnav-wrapper {
 	display: none;
 }
 

@@ -5,6 +5,10 @@
 	width: 0px;
 }
 
+#topnav-container {
+	display: block;
+}
+
 .topnav-wrapper {
     position: relative;
     width: 100%;
