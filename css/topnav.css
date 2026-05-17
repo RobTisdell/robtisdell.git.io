@@ -42,11 +42,10 @@
 }
 
 .dropdown-menu {
-	position: absolute;
-	top: 10vh;
-	left: 0;
+    position: static;
+    margin-top: 10vh;
     display: none;
-    background-color: #111111CC;
+    background-color: #FFAA33CC;
 	width: 100%;
 	z-index: 15;
 }
