@@ -45,7 +45,8 @@
     position: absolute;
     top: 10vh;
     left: 0;
-    background-color: #FF33AACC;
+	display: none;
+    background-color: #111111CC;
 	width: 100%;
 	z-index: 15;
 }
