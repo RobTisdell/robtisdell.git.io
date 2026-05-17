@@ -45,7 +45,7 @@
     position: static;
     margin-top: 10vh;
     display: none;
-    background-color: #FFAA33CC;
+    background-color: #AAFF33CC;
 	width: 100%;
 	z-index: 15;
 }
@@ -61,7 +61,8 @@
 }
 
 .dropdown-menu ul li {
-	height: 8vh;
+    height: auto;
+    min-height: 8vh;
 }
 
 .dropdown-menu.open {
