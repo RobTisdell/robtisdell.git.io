@@ -72,6 +72,10 @@
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.dropdown li.no-submenu {
+    background-color: #080808AA;
+}
+
 li.no-submenu {
 	background-color: #080808AA;
 	color: #CCCCCC;
