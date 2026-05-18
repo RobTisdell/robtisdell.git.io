@@ -53,21 +53,20 @@
 }
 
 .dropdown-menu a {
-	text-decoration: none;
-	font-size: 2.8vh;
-	color: #FF44AA;
 	display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 	width: 100%;
-	height: auto;
+	height: 8vh;
+	font-size: 2.8vh;
+	flex-shrink: 0;
+	color: #AA44FF;
 }
 
 .dropdown-menu ul li {
-    height: auto;
+	display: flex;
 	flex-direction: column;
     min-height: 8vh;
-	display: flex;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
