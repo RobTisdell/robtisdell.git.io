@@ -22,7 +22,7 @@
 	left: 0;
 	width: 100%;
 	height: 10dvh;
-	background-color: #111111CC;
+	background-color: #111111;
 	align-items: center;
 	justify-content: space-between;
 	z-index: 20;
@@ -47,7 +47,7 @@
 	top: 10dvh;
 	left: 0;
 	display: none;
-	background-color: #111111CC;
+	background-color: #111111;
 	width: 100%;
 	z-index: 15;
 }
@@ -74,17 +74,17 @@
 }
 
 .dropdown li.no-submenu {
-    background-color: #080808AA;
+    background-color: #080808;
 }
 
 li.no-submenu {
-	background-color: #080808AA;
+	background-color: #080808;
 	color: #CCCCCC;
 	
 }
 
 li.has-submenu {
-	background-color: #111111CC;
+	background-color: #111111;
 	color: #F1F1F1;
 }
 
