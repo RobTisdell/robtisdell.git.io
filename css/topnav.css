@@ -9,6 +9,10 @@
 	display: block;
 }
 
+.dropdown {
+    width: 100%;
+}
+
 .topnav-wrapper {
 	position: relative;
 	width: 100%;
