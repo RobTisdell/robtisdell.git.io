@@ -60,13 +60,17 @@
 	height: 7dvh;
 	font-size: 2.8dvh;
 	flex-shrink: 0;
-	color: #66FFBB;
+	color: #BBFF55;
 	padding: 0 8px;
 }
 
 .has-submenu > a {
 	padding-left: 8px;
 	padding-right: 0;
+}
+
+.has-submenu > a > .down-arrow {
+    margin-right: -16px;
 }
 
 .dropdown-menu ul {
