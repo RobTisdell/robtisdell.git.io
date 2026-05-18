@@ -9,9 +9,6 @@
 	display: block;
 }
 
-.dropdown {
-    width: 100%;
-}
 
 .topnav-wrapper {
 	position: relative;
@@ -77,7 +74,7 @@
 }
 
 .dropdown li.no-submenu {
-    background-color: #080808;
+	background-color: #080808;
 }
 
 li.no-submenu {
@@ -97,6 +94,9 @@ li.has-submenu {
 
 .dropdown {
 	display: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .dropdown.open {
