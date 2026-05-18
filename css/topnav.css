@@ -40,7 +40,7 @@
 }
 
 .logo-box img, .menu-button-box img {
-	width: auto;
+	max-height: 80%;
 	height: auto;
 	object-fit: contain;
 }
