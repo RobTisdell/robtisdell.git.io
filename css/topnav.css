@@ -61,11 +61,17 @@
 	height: 7dvh;
 	font-size: 2.8dvh;
 	flex-shrink: 0;
-	color: #CCCCCC;
+	color: #CCBBAA;
+	padding: 0 8px;
+}
+
+.dropdown-menu ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
 }
 
 .dropdown-menu ul li {
-	padding: 0 8px;
 	display: flex;
 	flex-direction: column;
 	min-height: 7dvh;
