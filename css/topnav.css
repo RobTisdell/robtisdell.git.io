@@ -73,13 +73,13 @@
 }
 
 li.no-submenu {
-	background-color: #111111CC;
+	background-color: #080808AA;
 	color: #CCCCCC;
 	
 }
 
 li.has-submenu {
-	background-color: #080808AA;
+	background-color: #111111CC;
 	color: #F1F1F1;
 }
 
