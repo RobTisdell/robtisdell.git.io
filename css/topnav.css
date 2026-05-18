@@ -64,11 +64,23 @@
 }
 
 .dropdown-menu ul li {
+	padding: 0 8px;
 	display: flex;
 	flex-direction: column;
 	min-height: 7dvh;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+li.no-submenu {
+	background-color: #111111CC;
+	color: #CCCCCC;
+	
+}
+
+li.has-submenu {
+	background-color: #080808AA;
+	color: #F1F1F1;
 }
 
 .dropdown-menu.open {
