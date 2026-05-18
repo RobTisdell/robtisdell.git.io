@@ -78,8 +78,8 @@
 	font-size: 1.4vw;
 	color: #CCCCCC;
 	display: flex;
-    justify-content: space-between;
-    align-items: center;
+	justify-content: space-between;
+	align-items: center;
 	width: 100%
 }
 
@@ -94,19 +94,19 @@
 }
 
 .wrapper .sidenav ul.dropright li:hover {
-    background-color: #080808AA;
+	background-color: #080808AA;
 }
 
 .wrapper .sidenav ul.dropright li:hover > a {
-    color: #F1F1F1;
+	color: #F1F1F1;
 }
 
 .wrapper .sidenav ul li:has(ul.dropright li:hover) {
-    background-color: #040404AA;
+	background-color: #040404AA;
 }
 
 .wrapper .sidenav ul li:has(ul.dropright li:hover) > a {
-    color: #F1F1F1; /* Matches .current A text color */
+	color: #F1F1F1; /* Matches .current A text color */
 }
 
 /* Makes the currently active page has the same styling as a hover link. */
