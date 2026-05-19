@@ -47,7 +47,6 @@
 .menu-button-box {
 	width: 10dvh;
 	border: 2px solid rgba(255, 255, 255, 0.1);
-	cursor: pointer;
 	height: 10dvh;
 	display: flex;
 	align-items: center;
@@ -59,6 +58,7 @@
 	height: 100%;
 	width: 100%;
 	object-fit: contain;
+	cursor: pointer;
 	display: block;
 }
 
