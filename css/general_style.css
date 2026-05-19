@@ -6,14 +6,14 @@
 
 html { 
 	background: none;
-	width: 100%;
-	height: 100svh;
 }
 
 body::before {
 	content: "";
 	position: fixed;
 	inset: 0;
+	height: 100lvh;
+	height: 100svh;
 	background: url("../img/background.jpg") no-repeat center center;
 	background-size: cover;
 	z-index: -1;
@@ -58,7 +58,7 @@ html, body {
 .wrapper .content {
 	margin-left: 12.125vw;
 	font-size: 1.25em;
-	color: #CCBBAA;
+	color: #AABBCC;
 	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
 }
 
