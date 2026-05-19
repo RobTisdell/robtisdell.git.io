@@ -106,6 +106,45 @@ function attachMobileMenuListeners() {
 	});
 }
 
+function attachMobileMenuListeners() {
+    const topnavWrapper = document.querySelector(".topnav-wrapper");
+    const menuButton = document.querySelector(".dropdown-button");
+    const dropdownMenu = document.querySelector(".dropdown-menu");
+
+    // ===============================
+    // MAIN MENU TOGGLE
+    // ===============================
+    if (menuButton && dropdownMenu && topnavWrapper) {
+        menuButton.addEventListener("click", () => {
+            dropdownMenu.classList.toggle("open");
+            topnavWrapper.classList.toggle("menu-open");   // NEW: controls styling + scroll lock
+        });
+    }
+
+    // ===============================
+    // SUBMENU TOGGLE (only one open)
+    // ===============================
+    document.querySelectorAll(".has-submenu > a").forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const parent = this.parentElement;
+            const submenu = parent.querySelector(".dropdown");
+
+            // Close all other submenus
+            document.querySelectorAll(".dropdown.open").forEach(openMenu => {
+                if (openMenu !== submenu) {
+                    openMenu.classList.remove("open");
+                    openMenu.parentElement.classList.remove("open");
+                }
+            });
+
+            // Toggle this submenu
+            submenu.classList.toggle("open");
+            parent.classList.toggle("open");
+        });
+    });
+}
 
 // ===============================
 // Run on page load
