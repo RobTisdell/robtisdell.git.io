@@ -48,6 +48,7 @@
 }
 
 .dropdown-menu {
+	font-family: Monaco, monospace;
 	position: absolute;
 	top: 10dvh;
 	left: 0;
