@@ -18,6 +18,8 @@ body::before {
 	background-size: cover;
 	z-index: -1;
 	pointer-events: none;
+	height: 100%;
+    min-height: 100%;
 }
 
 html, body {
