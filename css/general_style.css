@@ -86,7 +86,7 @@ html, body {
 .wrapper .content article {
 	min-height: 60vh;
 	padding: min(20px, 2vw);
-	background-color: #444444DD;
+	background-color: #4444FFDD;
 	border-style: solid;
 	border-radius: 10px;
 	border-color: #AAAAAAAA;
