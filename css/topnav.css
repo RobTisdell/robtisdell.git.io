@@ -46,7 +46,7 @@
 
 .menu-button-box {
 	width: 10dvh;
-	border: 2px solid rgba(255, 255, 255, 0.1);
+	border: 2px solid rgba(255, 255, 255, 0.9);
 	height: 10dvh;
 	display: flex;
 	align-items: center;
@@ -63,7 +63,17 @@
 	pointer-events: none;
 }
 
+.icon-close {
+    display: none;
+}
 
+.topnav-wrapper.menu-open .icon-hamburger {
+	display: none;
+}
+
+.topnav-wrapper.menu-open .icon-close {
+	display: block;
+}
 
 .topnav-wrapper.menu-open .menu-button-box {
 	background-color: #040404;
