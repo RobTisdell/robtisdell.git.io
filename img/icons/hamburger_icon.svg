@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 100 80">
+     viewBox="0 0 100 100">
 
-  <line x1="10" y1="15" x2="90" y2="15"
+  <line x1="10" y1="20" x2="90" y2="20"
         stroke="#CCCCCC" stroke-width="10" stroke-linecap="round" />
 
-  <line x1="10" y1="40" x2="90" y2="40"
+  <line x1="10" y1="50" x2="90" y2="50"
         stroke="#CCCCCC" stroke-width="10" stroke-linecap="round" />
 
-  <line x1="10" y1="65" x2="90" y2="65"
+  <line x1="10" y1="80" x2="90" y2="80"
         stroke="#CCCCCC" stroke-width="10" stroke-linecap="round" />
 
 </svg>

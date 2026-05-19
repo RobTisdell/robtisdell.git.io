@@ -46,7 +46,7 @@
 
 .menu-button-box {
 	width: 10dvh;
-	border: 2px solid rgba(255, 255, 0, 0.9);
+	border: 2px solid rgba(0, 255, 0, 0.9);
 	height: 10dvh;
 	display: flex;
 	align-items: center;
