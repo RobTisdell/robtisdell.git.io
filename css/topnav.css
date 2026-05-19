@@ -117,6 +117,11 @@ li.has-submenu {
 	color: #F1F1F1;
 }
 
+.down-arrow {
+    font-family: "Noto Sans Symbols 2", "Segoe UI Symbol", "Noto Sans Symbols", sans-serif;
+}
+
+
 .dropdown-menu.open {
 	display: block;
 }
