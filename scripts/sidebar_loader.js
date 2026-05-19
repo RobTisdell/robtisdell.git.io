@@ -13,7 +13,7 @@ function loadTopnav() {
 	}
 
 	fetch("topnav.html")
-		.then(response => response.text())
+		.then(r => r.text())
 		.then(html => {
 			container.innerHTML = html;
 			sessionStorage.setItem("cachedTopnav", html);
@@ -33,22 +33,17 @@ function loadSidebar() {
 	if (cached) {
 		container.innerHTML = cached;
 		highlightActivePage();
-		if (typeof attachFadeListeners === "function") {
-			attachFadeListeners();
-		}
+		if (typeof attachFadeListeners === "function") attachFadeListeners();
 		return;
 	}
 
 	fetch("sidenav.html")
-		.then(response => response.text())
+		.then(r => r.text())
 		.then(html => {
 			container.innerHTML = html;
 			sessionStorage.setItem("cachedSidebar", html);
-
 			highlightActivePage();
-			if (typeof attachFadeListeners === "function") {
-				attachFadeListeners();
-			}
+			if (typeof attachFadeListeners === "function") attachFadeListeners();
 		})
 		.catch(err => console.error("Sidebar failed to load:", err));
 }
@@ -57,22 +52,19 @@ function loadSidebar() {
 // Highlight active page (sidebar)
 // ===============================
 function highlightActivePage() {
-	let currentPage = window.location.pathname.split("/").pop().toLowerCase();
-	currentPage = currentPage.split("?")[0].split("#")[0];
+	let current = window.location.pathname.split("/").pop().toLowerCase();
+	current = current.split(/[?#]/)[0];
 
-	const links = document.querySelectorAll("#sidenav-container a");
-
-	links.forEach(link => {
+	document.querySelectorAll("#sidenav-container a").forEach(link => {
 		let href = link.getAttribute("href");
 		if (!href) return;
 
-		href = href.split("/").pop().toLowerCase();
-		href = href.split("?")[0].split("#")[0];
+		href = href.split("/").pop().toLowerCase().split(/[?#]/)[0];
 
-		if (href === currentPage) {
+		if (href === current) {
 			link.classList.add("current");
 
-			let li = link.closest("li");
+			const li = link.closest("li");
 			if (li) li.classList.add("current");
 
 			const parentUl = li?.parentElement.closest("ul");
@@ -88,24 +80,23 @@ function highlightActivePage() {
 // MOBILE MENU LOGIC (topnav)
 // ===============================
 function attachMobileMenuListeners() {
-	const topnavWrapper = document.querySelector(".topnav-wrapper");
+	const wrapper = document.querySelector(".topnav-wrapper");
 	const menuButton = document.querySelector(".dropdown-button");
 	const dropdownMenu = document.querySelector(".dropdown-menu");
 
-	// MAIN MENU TOGGLE
-	if (menuButton && dropdownMenu && topnavWrapper) {
+	if (menuButton && dropdownMenu && wrapper) {
 		menuButton.addEventListener("click", () => {
 			dropdownMenu.classList.toggle("open");
-			topnavWrapper.classList.toggle("menu-open");
+			wrapper.classList.toggle("menu-open");
 		});
 	}
 
-	// SUBMENU TOGGLE (close others)
+	// Submenu toggles (only one open at a time)
 	document.querySelectorAll(".has-submenu > a").forEach(link => {
-		link.addEventListener("click", function (e) {
+		link.addEventListener("click", e => {
 			e.preventDefault();
 
-			const parent = this.parentElement;
+			const parent = link.parentElement;
 			const submenu = parent.querySelector(".dropdown");
 
 			// Close all other submenus
