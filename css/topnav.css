@@ -42,7 +42,6 @@
 .logo-box img {
 	max-height: 10dvh;
 	object-fit: contain;
-	cursor: pointer;
 }
 
 .menu-button-box {
@@ -56,7 +55,7 @@
 	padding: 0;
 }
 
-.hamburger-icon {
+.hamburger-icon img {
 	height: 100%;
 	width: 100%;
 	object-fit: contain;
