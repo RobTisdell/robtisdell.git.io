@@ -107,9 +107,9 @@ html, body {
 
 .wrapper .content article p.title {
 /*	color:#E0AA3E; */
-	color: green;
+	color: yellow;
 	text-align: center;
-	font-size: clamp(1.5rem, calc(7vw + 1rem), 5rem);
+	font-size: clamp(1.5rem, calc(5vw + 0.5rem), 5rem);
 	margin-bottom: 0.5em;
 	text-indent: 0px;
 }
@@ -120,16 +120,16 @@ html, body {
 }
 
 .wrapper .content article p {
-	font-size: 1.25em;
-	text-indent: 2em;
+	font-size: 1.2r5em;
+	text-indent: 2rem;
 	line-height: 1.5;
-	margin-bottom: 1em;
-	margin-left: 2em;
-	margin-right: 2em;
+	margin-bottom: 1rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
 }
 
 .wrapper .content article p::first-letter {
-	font-size: 1.5em;
+	font-size: 1.5rem;
 }
 
 .wrapper .content a {
