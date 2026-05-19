@@ -83,10 +83,6 @@
 	width: 100%
 }
 
-.dropdown-menu a .down-arrow {
-    margin-right: -16px;
-}
-
 .wrapper .sidenav li:hover {
 	transition: .3s;
 	background-color: #080808AA;

@@ -60,7 +60,7 @@
 	height: 7dvh;
 	font-size: 2.8dvh;
 	flex-shrink: 0;
-	color: #55FFBB;
+	color: #CCCCCC;
 	padding: 0 8px;
 }
 
@@ -89,11 +89,11 @@
 }
 
 .dropdown li.no-submenu {
-	background-color: #080808;
+	background-color: #040404;
 }
 
 li.no-submenu {
-	background-color: #080808;
+	background-color: #040404;
 	color: #CCCCCC;
 }
 
