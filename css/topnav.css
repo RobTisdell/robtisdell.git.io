@@ -49,7 +49,7 @@
 	border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.hamburger-icon img {
+.hamburger-icon {
 	height: 10dvh;
 	width: 10dvh;
 	cursor: pointer;
