@@ -69,24 +69,26 @@ html, body {
 	.wrapper .content article {
 		margin-left: 10vw;
 		margin-right: 10vw;
+		margin-top: 5vh;
 	}
 }
 
 @media (max-width: 800px) {
 	.wrapper .content {
 		margin-left: 0vw;
+		padding: 20px;
 	}
 		.wrapper .content article {
-		margin-left: 2vw;
-		margin-right: 2vw;
+		margin-left: 5vw;
+		margin-right: 5vw;
+		margin-top: 15vh;
+		padding: 2vw;
 	}
 }
 
 .wrapper .content article {
 	min-height: 60vh;
 	background-color: #444444DD;
-	padding: 20px;
-	margin-top: 5vh;
 	border-style: solid;
 	border-radius: 10px;
 	border-color: #AAAAAAAA;
