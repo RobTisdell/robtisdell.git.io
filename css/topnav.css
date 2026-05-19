@@ -128,7 +128,6 @@ li.has-submenu {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 3vh 0;
 }
 
 .topnav-wrapper .dropdown-menu .socials a {
@@ -140,11 +139,11 @@ li.has-submenu {
 	justify-content: center;
 	align-items: center;
 	transition: transform .3s, background-color .3s;
+	text-decoration: none;
 }
 
-.topnav-wrapper .dropdown-menu .socials a:hover {
+.topnav-wrapper .dropdown-menu .socials a:active {
 	transform: rotate(360deg);
-	background-color: #333338;
 }
 
 /* Icon styling */
