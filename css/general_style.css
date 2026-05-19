@@ -106,7 +106,8 @@ html, body {
 }
 
 .wrapper .content article p.title {
-	color:#E0AA3E;
+/*	color:#E0AA3E; */
+	color: red;
 	text-align: center;
 	font-size: clamp(1.5rem, calc(7vw + 1rem), 5rem);
 	margin-bottom: 0.5em;
