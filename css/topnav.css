@@ -81,7 +81,6 @@
 
 .dropdown-menu a:not([href]) {
 	color: #CCCCCC;
-	font-weight: bold;
 }
 
 .dropdown-menu ul {
