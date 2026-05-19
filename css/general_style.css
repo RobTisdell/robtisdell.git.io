@@ -54,8 +54,8 @@ html, body {
 
 /* The following defines the universal style of the contents area */
 
+
 .wrapper .content {
-	margin-left: 12.125vw;
 	font-size: 1.25em;
 	color: #AABBCC;
 	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
@@ -65,11 +65,20 @@ html, body {
 	.wrapper .content {
 		margin-left: 12.125vw;
 	}
+	
+	.wrapper .content article {
+		margin-left: 10vw;
+		margin-right: 10vw;
+	}
 }
 
 @media (max-width: 800px) {
 	.wrapper .content {
 		margin-left: 0vw;
+	}
+		.wrapper .content article {
+		margin-left: 2vw;
+		margin-right: 2vw;
 	}
 }
 
@@ -77,13 +86,13 @@ html, body {
 	min-height: 60vh;
 	background-color: #444444DD;
 	padding: 20px;
-	margin-left: 10vw;
-	margin-right: 10vw;
-	margin-top: 15vh;
+	margin-top: 5vh;
 	border-style: solid;
 	border-radius: 10px;
 	border-color: #AAAAAAAA;
 }
+
+
 
 /* Style definitions within the article tag */
 
