@@ -1,5 +1,5 @@
 *, *::before, *::after {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .wrapper .sidenav {
@@ -121,7 +121,36 @@ li.has-submenu {
 }
 
 .down-arrow {
-    font-family: "Noto Sans Symbols 2", "Segoe UI Symbol", "Noto Sans Symbols", sans-serif;
+	font-family: "Noto Sans Symbols 2", "Segoe UI Symbol", "Noto Sans Symbols", sans-serif;
+}
+
+.topnav-wrapper .dropdown-menu .socials {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 3vh 0;
+}
+
+.topnav-wrapper .dropdown-menu .socials a {
+	background-color: #444449;
+	border-radius: 50%;
+	width: 5vh;
+	height: 5vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: transform .3s, background-color .3s;
+}
+
+.topnav-wrapper .dropdown-menu .socials a:hover {
+	transform: rotate(360deg);
+	background-color: #333338;
+}
+
+/* Icon styling */
+.topnav-wrapper .dropdown-menu .socials i {
+	font-size: 2.5vh;
+	color: #F1F1F1;
 }
 
 
