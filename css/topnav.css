@@ -62,10 +62,6 @@
 	display: block;
 }
 
-.topnav-wrapper.menu-open .hamburger-icon {
-	color: #F1F1F1;
-}
-
 .topnav-wrapper.menu-open .menu-button-box {
 	background-color: #040404;
 }
@@ -127,10 +123,6 @@
 	width: 100vw;
 }
 
-.dropdown li.no-submenu {
-	background-color: #040404;
-}
-
 li.no-submenu {
 	background-color: #040404;
 	color: #CCCCCC;
@@ -139,10 +131,6 @@ li.no-submenu {
 li.has-submenu {
 	background-color: #111111;
 	color: #F1F1F1;
-}
-
-.down-arrow {
-	font-family: "Noto Sans Symbols 2", "Segoe UI Symbol", "Noto Sans Symbols", sans-serif;
 }
 
 .topnav-wrapper .dropdown-menu .socials {
