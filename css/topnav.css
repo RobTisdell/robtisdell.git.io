@@ -39,6 +39,12 @@
 	justify-content: center;
 }
 
+.logo-box img {
+	max-height: 10dvh;
+	object-fit: contain;
+	cursor: pointer;
+}
+
 .menu-button-box {
 	border: 2px solid rgba(255, 255, 255, 0.1);
 }
