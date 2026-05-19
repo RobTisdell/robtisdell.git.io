@@ -188,6 +188,11 @@ li.has-submenu {
 	overflow: hidden;
 }
 
+body.menu-open {
+    overflow: hidden;
+    height: 100%;
+}
+
 .has-submenu .down-arrow {
 	transition: transform 0.3s ease;
 }

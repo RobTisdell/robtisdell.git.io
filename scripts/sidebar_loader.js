@@ -87,7 +87,7 @@ function attachMobileMenuListeners() {
 	if (menuButton && dropdownMenu && wrapper) {
 		menuButton.addEventListener("click", () => {
 			dropdownMenu.classList.toggle("open");
-			wrapper.classList.toggle("menu-open");
+			document.body.classList.toggle("menu-open");
 		});
 	}
 
