@@ -49,15 +49,16 @@
 	width: 10dvh;
 	border: 2px solid rgba(255, 255, 255, 0.1);
 	cursor: pointer;
-	height: calc(10dvh - 4px);
+	height: calc(10dvh - 2px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: 0;
 }
 
 .hamburger-icon {
 	height: 100%;
-	width: auto;
+	width: 100%;
 	object-fit: contain;
 	display: block;
 }
