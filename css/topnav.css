@@ -46,18 +46,20 @@
 }
 
 .menu-button-box {
-	border: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-.hamburger-icon {
-	height: 10dvh;
 	width: 10dvh;
+	border: 2px solid rgba(255, 255, 255, 0.1);
 	cursor: pointer;
-	color: #CCCCCC;
+	height: calc(10dvh - 4px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	object-fit: cover;
+}
+
+.hamburger-icon {
+	height: 100%;
+	width: auto;
+	object-fit: contain;
+	display: block;
 }
 
 .topnav-wrapper.menu-open .hamburger-icon {
