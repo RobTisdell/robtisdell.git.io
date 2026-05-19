@@ -77,8 +77,8 @@ html, body {
 	.wrapper .content {
 	}
 		.wrapper .content article {
-		margin-left: 5vw;
-		margin-right: 5vw;
+		margin-left: 2vw;
+		margin-right: 2vw;
 		margin-top: 15vh;
 	}
 }
@@ -86,7 +86,7 @@ html, body {
 .wrapper .content article {
 	min-height: 60vh;
 	padding: min(20px, 2vw);
-	background-color: #4444FFDD;
+	background-color: #444444DD;
 	border-style: solid;
 	border-radius: 10px;
 	border-color: #AAAAAAAA;
