@@ -46,12 +46,13 @@
 
 .menu-button-box {
 	width: 10dvh;
-	border: 2px solid rgba(0, 255, 0, 0.9);
+	border: 2px solid rgba(255, 255, 0, 0.9);
 	height: 10dvh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 0;
+	cursor: pointer;
 }
 
 .dropdown-button {
@@ -59,8 +60,10 @@
 	width: 100%;
 	object-fit: contain;
 	display: block;
-	cursor: pointer;
+	pointer-events: none;
 }
+
+
 
 .topnav-wrapper.menu-open .menu-button-box {
 	background-color: #040404;
