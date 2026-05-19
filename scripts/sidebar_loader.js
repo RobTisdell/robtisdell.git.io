@@ -81,7 +81,7 @@ function highlightActivePage() {
 // ===============================
 function attachMobileMenuListeners() {
 	const wrapper = document.querySelector(".topnav-wrapper");
-	const menuButton = document.querySelector(".dropdown-button");
+	const menuButton = document.querySelector(".menu-button-box");
 	const dropdownMenu = document.querySelector(".dropdown-menu");
 
 	if (menuButton && dropdownMenu && wrapper) {
