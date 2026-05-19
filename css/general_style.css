@@ -75,26 +75,22 @@ html, body {
 
 @media (max-width: 800px) {
 	.wrapper .content {
-		margin-left: 0vw;
-		padding: 20px;
 	}
 		.wrapper .content article {
 		margin-left: 5vw;
 		margin-right: 5vw;
 		margin-top: 15vh;
-		padding: 2vw;
 	}
 }
 
 .wrapper .content article {
 	min-height: 60vh;
+	padding: min(20px, 2vw);
 	background-color: #444444DD;
 	border-style: solid;
 	border-radius: 10px;
 	border-color: #AAAAAAAA;
 }
-
-
 
 /* Style definitions within the article tag */
 
