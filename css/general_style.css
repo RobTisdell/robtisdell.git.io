@@ -100,7 +100,7 @@ html, body {
 .wrapper .content article li {
 	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 	text-indent: min(2rem, 2vw);
-	margin-bottom: 0.25em;
+	margin-bottom: 0.5em;
 	margin-left: min(2rem, 2vw);
 	margin-right: min(2rem, 2vw);	
 }
