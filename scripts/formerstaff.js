@@ -88,9 +88,9 @@
 							<img src="img/staff/${staffMember.Image}" alt="${staffMember.Name}">
 						</div>
 						<div class="staff-box">
-								<p class="staff-name"><b>${staffMember.Name}</b></p>
-								<p class="staff-position"><b>Past Positions: ${staffMember.PastPositions && staffMember.PastPositions.length > 0 ? staffMember.PastPositions.join(', ') : 'N/A'}</b></p>
-								<p class="staff-description">${staffMember.Description}</p>
+								<span class="staff-name"><b>${staffMember.Name}</b></span>
+								<span class="staff-position"><b>Past Positions: ${staffMember.PastPositions && staffMember.PastPositions.length > 0 ? staffMember.PastPositions.join(', ') : 'N/A'}</b></span>
+								<span class="staff-description">${staffMember.Description}</span>
 						</div>
 					</div>
 				`;
