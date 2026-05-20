@@ -23,14 +23,17 @@
 
 p.staff-name {
 	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
+	text-indent: 0;
 }
 
 p.staff-position {
 	font-size: clamp(1.125rem, 1vw + 0.25rem, 2rem);
+	text-indent: 0;
 }
 
 p.staff-description {
 	font-size: clamp(1rem, 1vw + 0.125rem, 1.75rem);
+	text-indent: 0;
 }
 
 /* Picture containers for the current titleholder.  These are deliberately larger than the staff pictures because I expect only one titleholder at a time*/
