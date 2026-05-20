@@ -66,8 +66,8 @@ html, body {
 	}
 	
 	.wrapper .content article {
-		margin-left: 10vw;
-		margin-right: 10vw;
+		margin-left: clamp(2vw, 8vw, 10vw);
+		margin-right: clamp(2vw, 8vw, 10vw);
 		margin-top: 5vh;
 	}
 }
@@ -84,7 +84,7 @@ html, body {
 
 .wrapper .content article {
 	min-height: 60vh;
-	padding: min(20px, 2vw);
+	padding: clamp(8px, 1.5vw, 20px);
 	background-color: #444444DD;
 	border-style: solid;
 	border-radius: 10px;
