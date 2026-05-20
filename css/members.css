@@ -6,8 +6,9 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     line-height: 1.6;
 /*	background: #333338AA;*/
-	background: blue;
+	background: green;
 	display: flex;
+	align-items: stretch;
 }
 
 .divided_boxes p {
@@ -24,9 +25,10 @@
 }
 
 .staffpictures {
+	flex: 0 0 10vw;
+	height: auto;
+	min-height: 0;
 	width: 25%;
-	height: 30vh;
-	width: 10vw;
 	float: left;
 	margin-top: 3px;
 	margin-left: 3px;
