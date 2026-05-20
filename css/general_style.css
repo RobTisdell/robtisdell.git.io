@@ -128,7 +128,7 @@ html, body {
 }
 
 .wrapper .content article p::first-letter {
-	font-size: clamp(1.25rem, 2vw + 0.25rem, 2.5rem);
+	font-size: clamp(1.5rem, 2vw + 0.25rem, 2.5rem);
 }
 
 .wrapper .content a {
