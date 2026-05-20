@@ -107,7 +107,7 @@ html, body {
 
 .wrapper .content article p.title {
 /*	color:#E0AA3E; */
-	color: blue;
+	color: green;
 	text-align: center;
 	font-size: clamp(2.4rem, calc(2.5vw + 1em), 6rem);
 	margin-bottom: 0.5em;
