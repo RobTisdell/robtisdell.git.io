@@ -17,11 +17,11 @@ body::before {
 	background-size: cover;
 	z-index: -1;
 	pointer-events: none;
-	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 }
 
 html, body {
 	overscroll-behavior: none;
+	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 }
 
 .fa {
