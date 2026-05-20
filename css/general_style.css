@@ -120,9 +120,8 @@ html, body {
 }
 
 .wrapper .content article p {
-	font-size: clamp(1.25rem, 1vw + 0.25rem, 2rem);
+	font-size: clamp(1.25rem, 2vw + 0.25rem, 2.25rem);
 	text-indent: 2rem;
-	line-height: 1.5;
 	margin-bottom: 1rem;
 	margin-left: 2rem;
 	margin-right: 2rem;
