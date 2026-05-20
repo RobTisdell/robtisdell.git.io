@@ -1,12 +1,11 @@
 .divided_boxes {
 	border: 1px solid #ddd;
 	padding: clamp(2vw, 2rem 4vw);
-	margin-bottom: clamp(2vw, 2rem 4vw);
+	margin-bottom: clamp(2vh, 2rem 4vh);
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
-/*	background: #333338AA;*/
-	background: red;
+	background: #333338AA;
 	display: flex;
 	align-items: stretch;
 }
