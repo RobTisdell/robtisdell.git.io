@@ -6,7 +6,7 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     line-height: 1.6;
 /*	background: #333338AA;*/
-	background: #8844BB;
+	background: blue;
 	display: flex;
 }
 
@@ -26,7 +26,7 @@
 .staffpictures {
 	width: 25%;
 	height: 30vh;
-	width: 40vw;
+	width: 10vw;
 	float: left;
 	margin-top: 3px;
 	margin-left: 3px;
