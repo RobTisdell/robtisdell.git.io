@@ -1,11 +1,12 @@
 .divided_boxes {
 	border: 1px solid #ddd;
-	padding: 15px;
-	margin-bottom: 20px;
+	padding: clamp(2vw, 2rem 4vw);
+	margin-bottom: clamp(2vw, 2rem 4vw);
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
-	background: #333338AA;
+/*	background: #333338AA;*/
+	background: red;
 	display: flex;
 	align-items: stretch;
 }
@@ -42,6 +43,16 @@
 .staff-box {
 	display: flex;
 	flex-direction: column;
+}
+
+@media (min-width: 801px) {
+}
+
+@media (max-width: 800px) {
+	.divided_boxes {
+		flex-direction: column;
+	}
+
 }
 
 .staff-name {
