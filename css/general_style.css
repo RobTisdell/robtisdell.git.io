@@ -55,7 +55,7 @@ html, body {
 /* The following defines the universal style of the contents area */
 
 
-.content {
+.wrapper .content {
 	color: #AABBCC;
 	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
 }
@@ -82,7 +82,7 @@ html, body {
 	}
 }
 
-article {
+.wrapper .content article {
 	min-height: 60vh;
 	padding: min(20px, 2vw);
 	background-color: #444444DD;
@@ -93,11 +93,11 @@ article {
 
 /* Style definitions within the article tag */
 
-ol {
+.wrapper .content article ol {
 	list-style-position: inside;
 }
 
-li {
+.wrapper .content article li {
 	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 	text-indent: min(2rem, 2vw);
 	margin-bottom: 0.5em;
@@ -105,7 +105,7 @@ li {
 	margin-right: min(2rem, 2vw);	
 }
 
-p.title {
+.wrapper .content article p.title {
 	color:#E0AA3E;
 	text-align: center;
 	font-size: clamp(2.4rem, calc(2.5vw + 1em), 6rem);
@@ -113,12 +113,12 @@ p.title {
 	text-indent: 0px;
 }
 
-p.title::first-letter {
+.wrapper .content article p.title::first-letter {
 	font-size: clamp(2.4rem, calc(2.5vw + 1rem), 6rem);
 	font-weight: normal;
 }
 
-p {
+.wrapper .content article p {
 	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 	text-indent: 2rem;
 	margin-bottom: 1rem;
@@ -126,16 +126,16 @@ p {
 	margin-right: 2rem;
 }
 
-p::first-letter {
+.wrapper .content article p::first-letter {
 	font-size: clamp(1.5rem, 2vw + 0.25rem, 2.5rem);
 }
 
-a {
+.wrapper .content a {
 	color: #EEEEFF;
 	text-decoration: underline;
 }
 
-a:hover {
+.wrapper .content article a:hover {
 	transition: .3s;
 	color: #EEEEFF;
 }
