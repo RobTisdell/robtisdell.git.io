@@ -21,7 +21,6 @@ body::before {
 
 html, body {
 	overscroll-behavior: none;
-	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 }
 
 .fa {
@@ -57,7 +56,6 @@ html, body {
 
 
 .wrapper .content {
-	font-size: 1.25rem;
 	color: #AABBCC;
 	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
 }
@@ -100,6 +98,7 @@ html, body {
 }
 
 .wrapper .content article li {
+	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 	text-indent: min(2rem, 2vw);
 	margin-bottom: 0.25em;
 	margin-left: min(2rem, 2vw);
@@ -120,6 +119,7 @@ html, body {
 }
 
 .wrapper .content article p {
+	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 	text-indent: 2rem;
 	margin-bottom: 1rem;
 	margin-left: 2rem;
