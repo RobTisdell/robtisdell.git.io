@@ -65,7 +65,7 @@
 		if (eventsToDisplay.length > 0) {
 			eventsToDisplay.forEach(event => {
 				eventsHTML += `
-					<div class="smalleventculumn">
+					<div class="smalleventcolumn">
 						<img src="img/events/${event.Image}" alt="${event.Name} Event" />
 						</div>
 				`;

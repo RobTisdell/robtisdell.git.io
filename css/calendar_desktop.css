@@ -109,61 +109,7 @@
 	margin-top: 2.5vh;
 }
 
-.modal-content {
-	background-color: #444449;
-	color: #AABBCC;
-	padding: 2.25vw;
-	border: 1px solid #F1F1F1;
-	max-width: 45vw;
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-	border-radius: 8px;
-	position: relative;
-	min-height: 100px; /* Give it a little height */
-	display: flex;
-	flex-direction: column; /* Arrange children in a column */
-	justify-content: center; /* Vertically center content when flex-direction is column */
-	align-items: center; /* Horizontally center content when flex-direction is column */
-}
-
-/* The Close Button */
-.close-button {
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-	position: absolute;
-	top: 10px;
-	right: 15px;
-	width: 30px;
-	height: 30px;
-	background-color: #111111;
-	color: #818181;
-	border-radius: 50%;
-	align-items: center;
-	justify-content: center;
-	display: flex;
-}
-
-.close-button:hover,
-.close-button:focus {
-	transition: .3s;
-	background-color: #080808;
-	color: #F1F1F1;
-	cursor: pointer;
-}
-
-.modal-content ul {
-	padding-left: 10%;
-	padding-right: 10%;
-}
-
-.modal-content ul li {
-	list-style: none;
-}
-
-.modal-content ul li a {
-	text-decoration: none;
-	color: #CCCCDD;
-}
+/* Modal window */
 
 .modal {
 	display: none;
@@ -179,7 +125,6 @@
 	align-items: center;
 }
 
-/* Modal Content */
 .modal-content {
 	background-color: #444449;
 	color: #AABBCC;

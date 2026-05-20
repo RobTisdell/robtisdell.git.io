@@ -118,7 +118,7 @@ function upcomingEventsArray(_allevents) {
 function populateEvents(eventData) {
 	if (eventData) {
 		if (EventImage){
-			EventImage.innerHTML = `<div class="smalleventculumn"><img src="img/events/${eventData.Image}"></img></div>`;
+			EventImage.innerHTML = `<div class="smalleventcolumn"><img src="img/events/${eventData.Image}"></img></div>`;
 		}
 		if (EventName) {
 			EventName.textContent = eventData.Name || 'Event Details';

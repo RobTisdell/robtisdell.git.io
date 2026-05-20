@@ -197,7 +197,7 @@
 
 		EventDetailsList.innerHTML = `
 			<li>
-				<div class="smalleventculumn">
+				<div class="smalleventcolumn">
 					<img src="img/events/${eventData.Image || 'default.png'}">
 				</div>
 			</li>
