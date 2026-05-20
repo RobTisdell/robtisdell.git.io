@@ -120,8 +120,8 @@ html, body {
 }
 
 .wrapper .content article p {
-	font-size: clamp(1.25rem, 2vw + 0.25rem, 2.25rem);
-	color: green;
+	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
+	color: purple;
 	text-indent: 2rem;
 	margin-bottom: 1rem;
 	margin-left: 2rem;
