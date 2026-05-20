@@ -1,8 +1,18 @@
 /* Calendar Styles */
 
-.prototype-mobile {
-	display: none;
+
+@media (min-width: 801px) {
+	.mobile-days {
+		display: none;
+	}
 }
+
+@media (max-width: 800px) {
+	.desktop-days {
+		display: none;
+	}
+}
+
 
 .Calendar_Container {
 	display: flex;
@@ -11,7 +21,7 @@
 }
 
 .Calendar {
-	margin-top: 2.5vh;
+	margin-top: 5vh;
 	width: 75vw;
 	height: auto;
 	display: flex;
