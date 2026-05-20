@@ -6,7 +6,7 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     line-height: 1.6;
 /*	background: #333338AA;*/
-	background: purple;
+	background: pink;
 	display: flex;
 	align-items: stretch;
 }
@@ -32,7 +32,6 @@
     justify-content: center;
     margin: 3px;
 }
-}
 
 .staffpictures img {
     max-width: 100%;
@@ -43,7 +42,6 @@
 .staff-box {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 5vh;
 }
 
 .staff-name {
