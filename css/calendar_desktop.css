@@ -15,7 +15,7 @@
 	padding: 10px;
 	border-radius: 15px;
 /*	background-color: #333338AA;*/
-	color; gray
+	color; gray;
 }
 
 .Calendar_Header {
@@ -172,7 +172,7 @@
 		display: none;
 	}
 	
-	.wrapper .content article .modal .modal-content {
+	.modal .modal-content {
 		max-width: 45vw;
 	}
 
@@ -183,7 +183,7 @@
 		display: none;
 	}
 	
-	.wrapper .content article .modal .modal-content {
+	.modal .modal-content {
 		max-width: 95vw;
 	}
 }
