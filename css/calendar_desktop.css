@@ -15,7 +15,7 @@
 	padding: 10px;
 	border-radius: 15px;
 /*	background-color: #333338AA;*/
-	background-color: pink;
+	background-color: green;
 }
 
 .Calendar_Header {
@@ -117,6 +117,7 @@
 .modal .modal-content {
 	background-color: #444449;
 	color: #AABBCC;
+	padding: clamp(1rem, 1vw + 0.25rem, 2.25vw);
 	border: 1px solid #F1F1F1;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 	border-radius: 8px;
@@ -151,11 +152,6 @@
 	background-color: #080808;
 	color: #F1F1F1;
 	cursor: pointer;
-}
-
-.modal .modal-content ul {
-	padding-left: 10%;
-	padding-right: 10%;
 }
 
 .modal .modal-content ul li {
