@@ -14,7 +14,8 @@
 	flex-direction: column;
 	padding: 10px;
 	border-radius: 15px;
-	background-color: #333338AA;
+/*	background-color: #333338AA;*/
+	color; gray
 }
 
 .Calendar_Header {
@@ -152,16 +153,16 @@
 	cursor: pointer;
 }
 
-.wrapper .content article .modal .modal-content ul {
+.modal .modal-content ul {
 	padding-left: 10%;
 	padding-right: 10%;
 }
 
-.wrapper .content article .modal .modal-content ul li {
+.modal .modal-content ul li {
 	list-style: none;
 }
 
-.wrapper .content article .modal .modal-content ul li a {
+.modal .modal-content ul li a {
 	text-decoration: none;
 	color: #CCCCDD;
 }
