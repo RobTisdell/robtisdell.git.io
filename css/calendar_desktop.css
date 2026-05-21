@@ -44,12 +44,14 @@
 	color: #F1F1F1;
 }
 
-.Calendar_Days {
-	display: grid;
-	grid-template-columns: repeat(7,1fr);
+.monthYear, .prevBtn, .nextBtn {
+	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 }
 
-.Calendar_Day {
+.Calendar_Days {
+	font-size: clamp(1.125rem, 1vw + 0.25rem, 2rem);
+	display: grid;
+	grid-template-columns: repeat(7,1fr);
 	text-align: center;
 	padding: 5px;
 }
