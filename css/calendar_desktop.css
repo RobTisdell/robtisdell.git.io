@@ -7,7 +7,7 @@
 }
 
 .Calendar {
-	margin-top: 5vh;
+	margin-top: 2.5vh;
 	width: 75vw;
 	height: auto;
 	display: flex;
@@ -15,7 +15,7 @@
 	padding: 10px;
 	border-radius: 15px;
 /*	background-color: #333338AA;*/
-	background-color: green;
+	background-color: CornflowerBlue;
 }
 
 .Calendar_Header {
@@ -88,14 +88,8 @@
 	font-size: 2vh;
 }
 
-.date.inactive{ 
+.date.inactive { 
 	color: #818181;
-}
-
-.wrapper .content article.calendar_title {
-	margin-left: 10vw;
-	margin-right: 10vw;
-	margin-top: 2.5vh;
 }
 
 /* Modal window */
