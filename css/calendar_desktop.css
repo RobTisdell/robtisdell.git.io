@@ -122,11 +122,11 @@
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 	border-radius: 8px;
 	position: relative;
-	min-height: 100px; /* Give it a little height */
 	display: flex;
-	flex-direction: column; /* Arrange children in a column */
-	justify-content: center; /* Vertically center content when flex-direction is column */
-	align-items: center; /* Horizontally center content when flex-direction is column */
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: clamp(1rem, 1vw + 0.125rem, 1.75rem);
 }
 
 /* The Close Button */
