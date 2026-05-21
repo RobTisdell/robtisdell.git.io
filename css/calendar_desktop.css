@@ -98,7 +98,7 @@
 
 /* Modal window */
 
-.modal {
+.wrapper .content article .modal {
 	display: none;
 	position: fixed;
 	z-index: 1000;
@@ -112,7 +112,7 @@
 	align-items: center;
 }
 
-.modal-content {
+.wrapper .content article .modal .modal-content {
 	background-color: #444449;
 	color: #AABBCC;
 	padding: 2.25vw;
@@ -153,16 +153,16 @@
 	cursor: pointer;
 }
 
-.modal-content ul {
+.wrapper .content article .modal .modal-content ul {
 	padding-left: 10%;
 	padding-right: 10%;
 }
 
-.modal-content ul li {
+.wrapper .content article .modal .modal-content ul li {
 	list-style: none;
 }
 
-.modal-content ul li a {
+.wrapper .content article .modal .modal-content ul li a {
 	text-decoration: none;
 	color: #CCCCDD;
 }
@@ -172,7 +172,7 @@
 		display: none;
 	}
 	
-	.modal-content {
+	.wrapper .content article .modal .modal-content {
 		max-width: 45vw;
 	}
 
@@ -183,7 +183,7 @@
 		display: none;
 	}
 	
-	.modal-content {
+	.wrapper .content article .modal .modal-content {
 		max-width: 95vw;
 	}
 }
