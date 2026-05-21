@@ -14,8 +14,7 @@
 	flex-direction: column;
 	padding: 10px;
 	border-radius: 15px;
-/*	background-color: #333338AA;*/
-	background-color: red;
+	background-color: #333338AA;
 }
 
 .Calendar_Header {
