@@ -97,7 +97,7 @@
 
 /* Modal window */
 
-.wrapper .content article .modal {
+.modal {
 	display: none;
 	position: fixed;
 	z-index: 1000;
@@ -111,7 +111,7 @@
 	align-items: center;
 }
 
-.wrapper .content article .modal .modal-content {
+.modal .modal-content {
 	background-color: #444449;
 	color: #AABBCC;
 	padding: 2.25vw;
