@@ -185,6 +185,10 @@
 	.Calendar {
 		width: 75vw;
 	}
+	
+	.mobile-arrow {
+		display: none;
+	}
 
 }
 
@@ -199,5 +203,9 @@
 	
 	.Calendar {
 		width: 88vw;
+	}
+	
+	.mobile-arrow {
+		display: none;
 	}
 }
