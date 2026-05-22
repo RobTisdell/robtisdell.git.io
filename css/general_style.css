@@ -133,12 +133,12 @@ html, body {
 .wrapper .content a {
 	color: #CCCCCC;
 	text-decoration: underline;
-	background-color: #AAAAAA33;
+	background-color: #AAAAAA11;
 	border-radius: 3px;
 }
 
 .wrapper .content article a:hover {
 	transition: .3s;
-	background-color: #88888833;
+	background-color: #88888811;
 	color: #F1F1F1;
 }
