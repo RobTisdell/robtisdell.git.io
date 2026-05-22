@@ -23,7 +23,7 @@ body.landing-page-no-scroll {
 
 @media (max-width: 800px) {
 	.landing img {
-		height: clamp(40vh, 60vh, 70vh);
+		height: clamp(40vh, 80%, 60vh);
 		width: auto;
 	}
 }
