@@ -5,8 +5,7 @@
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
-/*	background: #333338AA;*/
-	background-color: pink;
+	background: #333338AA;
 	display: flex;
 	align-items: stretch;
 }
@@ -119,7 +118,12 @@
 
 .titleholder-box .staff-position {
 	color: #9966CC;
+	text-align: center;
 	margin: 0;
 	line-height: 1;
 	text-indent: 0;
+}
+
+.titleholder-box .staff-description {
+    color: #AABBCC;
 }
