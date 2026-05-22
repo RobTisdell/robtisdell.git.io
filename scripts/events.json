@@ -5,7 +5,7 @@
 	"Name": "Super Heroes Night",
 	"Type": "Bar night",
 	"Image": "2025_March_22.jpg",
-	"Description": "FLAG meetup and social event!	Bring some snacks and games!",
+	"Description": "FLAG meetup and social event! Bring some snacks and games!",
 	"Host": "FLAG",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
@@ -29,7 +29,7 @@
 	"Name": "FLAG Social",
 	"Type": "Social",
 	"Image": "2025_April_13.jpg",
-	"Description": "FLAG meetup and social event!	Bring some snacks and games!",
+	"Description": "FLAG meetup and social event! Bring some snacks and games!",
 	"Host": "FLAG",
 	"DefaultLocation": {
 		"Name": "Eagle's Nest",
