@@ -147,11 +147,9 @@
 			}
 
 			groupedHtml += `
-				<div class="event_group_block">
-					${dayLabel ? `<p class="event_details"><strong>${dayLabel}:</strong></p>` : ''}
-					<p class="event_details"><strong>Location:</strong> ${loc} — ${mapLink}</p>
-					<p class="event_details"><strong>Time:</strong> ${formatTime(group.startTime)} - ${formatTime(group.endTime)}</p>
-				</div>
+					${dayLabel ? `<li"><strong>${dayLabel}:</strong></li>` : ''}
+					<li><strong>Location:</strong> ${loc} — ${mapLink}</li>
+					<li><strong>Time:</strong> ${formatTime(group.startTime)} - ${formatTime(group.endTime)}</li>
 			`;
 		});
 
