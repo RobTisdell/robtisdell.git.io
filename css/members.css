@@ -44,14 +44,15 @@
 	flex-direction: column;
 }
 
-@media (min-width: 801px) {
-}
-
 @media (max-width: 800px) {
+	
 	.divided_boxes {
 		flex-direction: column;
 	}
-
+	
+	.unified_boxes {
+		flex-direction: column;
+	}
 }
 
 .staff-name {
@@ -80,6 +81,7 @@
 	line-height: 1.6;
 	background: #333338AA;
 	display: flex;
+	align-items: stretch;
 }
 
 .titleholderpictures {
