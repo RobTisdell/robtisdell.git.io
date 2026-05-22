@@ -66,8 +66,8 @@ html, body {
 	}
 	
 	.wrapper .content article {
-        margin-left: clamp(1rem, 8vw, 10vw);
-        margin-right: clamp(1rem, 8vw, 10vw);
+		margin-left: clamp(1rem, 8vw, 10vw);
+		margin-right: clamp(1rem, 8vw, 10vw);
 		margin-top: 5vh;
 	}
 }

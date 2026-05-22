@@ -64,7 +64,7 @@
 }
 
 .icon-close {
-    display: none;
+	display: none;
 }
 
 .topnav-wrapper.menu-open .icon-hamburger {
@@ -200,8 +200,8 @@ li.has-submenu {
 }
 
 body.menu-open {
-    overflow: hidden;
-    height: 100%;
+	overflow: hidden;
+	height: 100%;
 }
 
 .has-submenu .down-arrow {

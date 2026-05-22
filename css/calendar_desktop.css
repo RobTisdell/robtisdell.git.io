@@ -147,15 +147,15 @@
 }
 
 .smalleventcolumn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .smalleventcolumn img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
+	max-width: 90%;
+	max-height: 90%;
+	object-fit: contain;
 }
 
 .modal .modal-content ul li {
