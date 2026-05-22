@@ -126,8 +126,8 @@
 			if (schedule.length > 1) {
 				dayLabel =
 					group.startDay === group.endDay
-						? `Day ${group.startDay}`
-						: `Days ${group.startDay}–${group.endDay}`;
+						? `<li>Day ${group.startDay}</li>`
+						: `<li>Days ${group.startDay}–${group.endDay}</li>`;
 			}
 
 			// Location name (linked or plain)
