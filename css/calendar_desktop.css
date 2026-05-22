@@ -15,7 +15,7 @@
 	padding: 10px;
 	border-radius: 15px;
 /*	background-color: #333338AA;*/
-	background-color: DarkRed;
+	background-color: GoldenRod;
 }
 
 .Calendar_Header {
@@ -146,6 +146,20 @@
 	background-color: #080808;
 	color: #F1F1F1;
 	cursor: pointer;
+}
+
+.smalleventcolumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+	margin-right: 15px;
+}
+
+.smalleventcolumn img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .modal .modal-content ul li {
