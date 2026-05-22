@@ -85,8 +85,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     line-height: 1.6;
-/*	background-color: #333338AA;*/
-	background-color: pink;
+	background-color: #333338AA;
 }
 
 .event_images {
@@ -96,7 +95,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 3px;
 }
 
 .event_images img {
@@ -107,10 +105,8 @@
 
 .wrapper .content article .event_boxes p.event_details {
 	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
-	text-indent: 2rem;
-	margin-bottom: 0.25em;
-	margin-left: 2em;
-	margin-right: 2em;
+	text-indent: clamp(2vw, 1vw+0.5rem, 2rem);
+	margin-bottom: 2vh;
 }
 
 .wrapper .content article .event_boxes p.event_details::first-letter {
