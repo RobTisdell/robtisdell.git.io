@@ -147,7 +147,7 @@
 			}
 
 			groupedHtml += `
-					${dayLabel ? `<li"><strong>${dayLabel}:</strong></li>` : ''}
+					${dayLabel ? `<li><strong>${dayLabel}:</strong></li>` : ''}
 					<li><strong>Location:</strong> ${loc} — ${mapLink}</li>
 					<li><strong>Time:</strong> ${formatTime(group.startTime)} - ${formatTime(group.endTime)}</li>
 			`;
