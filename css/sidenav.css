@@ -130,8 +130,8 @@
 .wrapper .sidenav .socials a {
 	background-color: #444449;
 	border-radius: 50%;
-	width: 2.5vw;
-	height: 2.5vw;
+	width: (1.8rem, 2.5rem, 3rem);
+	height: clamp(1.8rem, 2.5rem, 3rem);
 	display: flex;
 	align-items: center;
 	margin: 0 auto;

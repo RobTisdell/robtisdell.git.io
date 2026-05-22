@@ -158,10 +158,12 @@
 		return `
 			<div class="event_boxes" id="event-${event.ID}">
 				<div class="event_images"><img src="img/events/${event.Image}" alt="${event.Name} image"></div>
-				<p class="event_details"><strong>Type of event:</strong> ${event.Type}</p>
-				<p class="event_details"><strong>${dateLabel}:</strong> ${dateDisplay}</p>
-				${groupedHtml}
-				<p class="event_description">${event.Description}</p>
+				<ul>
+					<li><strong>Type of event:</strong> ${event.Type}</li>
+					<li><strong>${dateLabel}:</strong> ${dateDisplay}</li>
+					${groupedHtml}
+					<li>${event.Description}</li>
+				</ul>
 			</div>
 		`;
 	}
