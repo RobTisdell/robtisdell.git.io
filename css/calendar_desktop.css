@@ -166,8 +166,16 @@
 }
 
 .modal .modal-content ul li a {
-	text-decoration: none;
-	color: #CCCCDD;
+	color: #CCCCCC;
+	text-decoration: underline;
+	background-color: #111111CC;
+	border-radius: 5px;
+}
+
+.modal .modal-content ul li a:hover {
+	transition: .3s;
+	background-color: #040404AA;
+	color: #F1F1F1;
 }
 
 @media (min-width: 801px) {
