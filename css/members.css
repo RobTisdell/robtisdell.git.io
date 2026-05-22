@@ -85,9 +85,10 @@
 }
 
 .titleholderpictures {
-	float: left;
 	flex: 0 0 20%;
 	margin-right: 2vw;
+	align-items: center;
+	justify-content: center;
 }
 
 .titleholder-pictures img {
