@@ -54,7 +54,6 @@ html, body {
 
 /* The following defines the universal style of the contents area */
 
-
 .wrapper .content {
 	color: #AABBCC;
 	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
@@ -69,6 +68,7 @@ html, body {
 		margin-left: clamp(1rem, 8vw, 10vw);
 		margin-right: clamp(1rem, 8vw, 10vw);
 		margin-top: 5vh;
+		margin-bottom: 5vh;
 	}
 }
 
@@ -79,6 +79,7 @@ html, body {
 		margin-left: 2vw;
 		margin-right: 2vw;
 		margin-top: 15vh;
+		margin-bottom: 5vh;
 	}
 }
 

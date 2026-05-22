@@ -1,0 +1,59 @@
+Classes in scripts:
+
+calendar.js
+monthYear
+Calendar_Dates
+	└── date
+		├── inactive
+		├── active
+		├── calendarnumber
+		└── event-note
+			└── event-link prevBtn nextBtn
+
+currentstaff.js
+current-staff-container
+└── divided_boxes
+	├── staffpictures 
+	└── staff-box
+
+currenttitleholder.js
+titlecontainer
+└── unified_box
+    ├── titleholder-pictures
+    └── titleholder-box
+        ├── titleholder-title
+        └── titleholder-description
+
+formerstaff.js
+former-staff-container
+└── divided_boxes
+    ├── staffpictures
+    └── staff-box
+
+
+formertitleholders.js
+titlecontainer
+└── divided_boxes
+    ├── staffpictures
+    └── staff-box
+
+
+modal.js
+eventModal
+├── close-button
+└── EventDetailsList
+    ├── smalleventculumn
+    ├── modal-location-block
+    └── modal-day-block
+
+
+upcomingevents.js
+upcoming-events-list
+└── event_boxes
+    ├── event_details
+    ├── event_group_block
+    │   └── event_details
+    └── event_description
+
+upcoming-events-intro
+
