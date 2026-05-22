@@ -2,254 +2,264 @@
 
 (function() { // Start of IIFE for scope isolation
 
-	const eventsListContainerId = 'upcoming-events-list';
-	const introTextContainerId = 'upcoming-events-intro';
-	const eventsJsonSource = 'scripts/events.json';
+    const eventsListContainerId = 'upcoming-events-list';
+    const introTextContainerId = 'upcoming-events-intro';
+    const eventsJsonSource = 'scripts/events.json';
 
-	// Parse YYYY-MM-DD as a local date (avoids UTC shift issues)
-	function parseLocalDate(dateString) {
-		const [y, m, d] = dateString.split('-');
-		return new Date(Number(y), Number(m) - 1, Number(d));
-	}
+    // Parse YYYY-MM-DD as a local date (avoids UTC shift issues)
+    function parseLocalDate(dateString) {
+        const [y, m, d] = dateString.split('-');
+        return new Date(Number(y), Number(m) - 1, Number(d));
+    }
 
-	function formatDate(dateString) {
-		const date = parseLocalDate(dateString);
-		return date.toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric'
-		});
-	}
+    function formatDate(dateString) {
+        const date = parseLocalDate(dateString);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
 
-	function formatTime(timeString) {
-		const [hourStr, minuteStr] = timeString.split(':');
-		let hour = parseInt(hourStr, 10);
-		const minute = parseInt(minuteStr, 10);
+    // NEW: weekday formatter
+    function formatWeekday(dateString) {
+        const date = parseLocalDate(dateString);
+        return date.toLocaleDateString('en-US', { weekday: 'long' });
+    }
 
-		if (Number.isNaN(hour) || Number.isNaN(minute)) {
-			return 'TBD';
-		}
+    function formatTime(timeString) {
+        const [hourStr, minuteStr] = timeString.split(':');
+        let hour = parseInt(hourStr, 10);
+        const minute = parseInt(minuteStr, 10);
 
-		const ampm = hour >= 12 ? 'PM' : 'AM';
-		hour = hour % 12;
-		hour = hour === 0 ? 12 : hour;
-		return `${hour}:${minute.toString().padStart(2, '0')} ${ampm}`;
-	}
+        if (Number.isNaN(hour) || Number.isNaN(minute)) {
+            return 'TBD';
+        }
 
-	// Build normalized schedule from Option 3 JSON
-	function buildDailySchedule(event) {
-		const schedule = [];
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        hour = hour % 12;
+        hour = hour === 0 ? 12 : hour;
+        return `${hour}:${minute.toString().padStart(2, '0')} ${ampm}`;
+    }
 
-		// Sort days chronologically using local parsing
-		const sortedDays = [...event.Days].sort((a, b) =>
-			parseLocalDate(a.Date) - parseLocalDate(b.Date)
-		);
+    // Build normalized schedule from Option 3 JSON
+    function buildDailySchedule(event) {
+        const schedule = [];
 
-		sortedDays.forEach((day, index) => {
-			const times = day.OverrideTimes || event.DefaultTimes;
-			const location = day.OverrideLocation || event.DefaultLocation;
+        // Sort days chronologically using local parsing
+        const sortedDays = [...event.Days].sort((a, b) =>
+            parseLocalDate(a.Date) - parseLocalDate(b.Date)
+        );
 
-			schedule.push({
-				dayNumber: index + 1,
-				date: day.Date,
-				startTime: times.Start,
-				endTime: times.End,
-				location: location.Name,
-				locationURL: location.URL,
-				locationAddress: location.Address
-			});
-		});
+        sortedDays.forEach((day, index) => {
+            const times = day.OverrideTimes || event.DefaultTimes;
+            const location = day.OverrideLocation || event.DefaultLocation;
 
-		return schedule;
-	}
+            schedule.push({
+                dayNumber: index + 1,
+                date: day.Date,
+                startTime: times.Start,
+                endTime: times.End,
+                location: location.Name,
+                locationURL: location.URL,
+                locationAddress: location.Address
+            });
+        });
 
-	// Group consecutive days with identical details
-	function groupConsecutiveDays(schedule) {
-		const groups = [];
-		let current = null;
+        return schedule;
+    }
 
-		schedule.forEach(day => {
-			const sameAsCurrent =
-				current &&
-				current.location === day.location &&
-				current.locationAddress === day.locationAddress &&
-				current.locationURL === day.locationURL &&
-				current.startTime === day.startTime &&
-				current.endTime === day.endTime;
+    // Group consecutive days with identical details
+    function groupConsecutiveDays(schedule) {
+        const groups = [];
+        let current = null;
 
-			if (!current || !sameAsCurrent) {
-				current = {
-					startDay: day.dayNumber,
-					endDay: day.dayNumber,
-					location: day.location,
-					locationAddress: day.locationAddress,
-					locationURL: day.locationURL,
-					startTime: day.startTime,
-					endTime: day.endTime
-				};
-				groups.push(current);
-			} else {
-				current.endDay = day.dayNumber;
-			}
-		});
+        schedule.forEach(day => {
+            const sameAsCurrent =
+                current &&
+                current.location === day.location &&
+                current.locationAddress === day.locationAddress &&
+                current.locationURL === day.locationURL &&
+                current.startTime === day.startTime &&
+                current.endTime === day.endTime;
 
-		return groups;
-	}
+            if (!current || !sameAsCurrent) {
+                current = {
+                    startDay: day.dayNumber,
+                    endDay: day.dayNumber,
+                    location: day.location,
+                    locationAddress: day.locationAddress,
+                    locationURL: day.locationURL,
+                    startTime: day.startTime,
+                    endTime: day.endTime
+                };
+                groups.push(current);
+            } else {
+                current.endDay = day.dayNumber;
+            }
+        });
 
-	function createEventHtml(event) {
-		// Use cached schedule if present, otherwise build and cache
-		const schedule = event._schedule || buildDailySchedule(event);
-		event._schedule = schedule;
+        return groups;
+    }
 
-		const groups = groupConsecutiveDays(schedule);
+    function createEventHtml(event) {
+        // Use cached schedule if present, otherwise build and cache
+        const schedule = event._schedule || buildDailySchedule(event);
+        event._schedule = schedule;
 
-		// Correct date range using local parsing
-		const startDateObj = parseLocalDate(schedule[0].date);
-		const endDateObj = parseLocalDate(schedule[schedule.length - 1].date);
+        const groups = groupConsecutiveDays(schedule);
 
-		let dateDisplay;
-		let dateLabel = 'Date';
+        // Correct date range using local parsing
+        const startDateObj = parseLocalDate(schedule[0].date);
+        const endDateObj = parseLocalDate(schedule[schedule.length - 1].date);
 
-		if (startDateObj.getTime() === endDateObj.getTime()) {
-			dateDisplay = formatDate(schedule[0].date);
-		} else {
-			dateDisplay = `${formatDate(schedule[0].date)} - ${formatDate(schedule[schedule.length - 1].date)}`;
-			dateLabel = 'Dates';
-		}
+        let dateDisplay;
+        let dateLabel = 'Date';
 
-		// Build grouped HTML blocks: Day(s) → Location → Time
-		let groupedHtml = '';
+        // UPDATED: include weekday names
+        if (startDateObj.getTime() === endDateObj.getTime()) {
+            const weekday = formatWeekday(schedule[0].date);
+            dateDisplay = `${weekday}, ${formatDate(schedule[0].date)}`;
+        } else {
+            const startWeekday = formatWeekday(schedule[0].date);
+            const endWeekday = formatWeekday(schedule[schedule.length - 1].date);
+            dateDisplay = `${startWeekday}, ${formatDate(schedule[0].date)} – ${endWeekday}, ${formatDate(schedule[schedule.length - 1].date)}`;
+            dateLabel = 'Dates';
+        }
 
-		groups.forEach(group => {
-			// Determine day label (omit for single-day events)
-			let dayLabel = '';
-			if (schedule.length > 1) {
-				dayLabel =
-					group.startDay === group.endDay
-						? `<li>Day ${group.startDay}</li>`
-						: `<li>Days ${group.startDay}–${group.endDay}</li>`;
-			}
+        // Build grouped HTML blocks: Day(s) → Location → Time
+        let groupedHtml = '';
 
-			// Location name (linked or plain)
-			let loc;
-			if (group.locationURL && group.locationURL !== 'None') {
-				loc = `<a href="${group.locationURL}" target="_blank" rel="noopener noreferrer">${group.location}</a>`;
-			} else {
-				loc = group.location || 'TBD';
-			}
+        groups.forEach(group => {
+            // Determine day label (omit for single-day events)
+            let dayLabel = '';
+            if (schedule.length > 1) {
+                dayLabel =
+                    group.startDay === group.endDay
+                        ? `<li><strong>Day ${group.startDay}:</strong></li>`
+                        : `<li><strong>Days ${group.startDay}–${group.endDay}:</strong></li>`;
+            }
 
-			// Map link
-			let mapLink = 'Address TBD';
-			if (group.locationAddress && group.locationAddress.trim() !== '') {
-				const encoded = encodeURIComponent(group.locationAddress);
-				const mapURL = `https://www.google.com/maps/search/?api=1&query=${encoded}`;
-				mapLink = `<a href="${mapURL}" target="_blank" rel="noopener noreferrer">${group.locationAddress} <i class="fa fa-map"></i></a>`;
-			}
+            // Location name (linked or plain)
+            let loc;
+            if (group.locationURL && group.locationURL !== 'None') {
+                loc = `<a href="${group.locationURL}" target="_blank" rel="noopener noreferrer">${group.location}</a>`;
+            } else {
+                loc = group.location || 'TBD';
+            }
 
-			groupedHtml += `
-					${dayLabel ? `<li><strong>${dayLabel}:</strong></li>` : ''}
-					<li><strong>Location:</strong> ${loc} — ${mapLink}</li>
-					<li><strong>Time:</strong> ${formatTime(group.startTime)} - ${formatTime(group.endTime)}</li>
-			`;
-		});
+            // Map link
+            let mapLink = 'Address TBD';
+            if (group.locationAddress && group.locationAddress.trim() !== '') {
+                const encoded = encodeURIComponent(group.locationAddress);
+                const mapURL = `https://www.google.com/maps/search/?api=1&query=${encoded}`;
+                mapLink = `<a href="${mapURL}" target="_blank" rel="noopener noreferrer">${group.locationAddress} <i class="fa fa-map"></i></a>`;
+            }
 
-		return `
-			<div class="event_boxes" id="event-${event.ID}">
-				<div class="event_images"><img src="img/events/${event.Image}" alt="${event.Name} image"></div>
-				<ul>
-					<li><strong>Type of event:</strong> ${event.Type}</li>
-					<li><strong>${dateLabel}:</strong> ${dateDisplay}</li>
-					${groupedHtml}
-					<li>${event.Description}</li>
-				</ul>
-			</div>
-		`;
-	}
+            groupedHtml += `
+                ${dayLabel}
+                <li><strong>Location:</strong> ${loc} — ${mapLink}</li>
+                <li><strong>Time:</strong> ${formatTime(group.startTime)} - ${formatTime(group.endTime)}</li>
+            `;
+        });
 
-	async function loadUpcomingEvents() {
-		const eventsListContainer = document.getElementById(eventsListContainerId);
-		const introTextContainer = document.getElementById(introTextContainerId);
+        return `
+            <div class="event_boxes" id="event-${event.ID}">
+                <div class="event_images"><img src="img/events/${event.Image}" alt="${event.Name} image"></div>
+                <ul>
+                    <li><strong>Type of event:</strong> ${event.Type}</li>
+                    <li><strong>${dateLabel}:</strong> ${dateDisplay}</li>
+                    ${groupedHtml}
+                    <li>${event.Description}</li>
+                </ul>
+            </div>
+        `;
+    }
 
-		if (!eventsListContainer || !introTextContainer) {
-			return;
-		}
+    async function loadUpcomingEvents() {
+        const eventsListContainer = document.getElementById(eventsListContainerId);
+        const introTextContainer = document.getElementById(introTextContainerId);
 
-		try {
-			const response = await fetch(eventsJsonSource);
-			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`);
-			}
-			const events = await response.json();
+        if (!eventsListContainer || !introTextContainer) {
+            return;
+        }
 
-			if (!Array.isArray(events)) {
-				console.error("Error: Events data is not an array.");
-				eventsListContainer.innerHTML = '<p>Error: Events data is malformed.</p>';
-				introTextContainer.innerHTML = '<p>We are currently experiencing issues loading event information. Please check back later.</p>';
-				return;
-			}
+        try {
+            const response = await fetch(eventsJsonSource);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const events = await response.json();
 
-			const today = new Date();
-			today.setHours(0, 0, 0, 0);
+            if (!Array.isArray(events)) {
+                console.error("Error: Events data is not an array.");
+                eventsListContainer.innerHTML = '<p>Error: Events data is malformed.</p>';
+                introTextContainer.innerHTML = '<p>We are currently experiencing issues loading event information. Please check back later.</p>';
+                return;
+            }
 
-			const thirtyOneDaysFromNow = new Date(today);
-			thirtyOneDaysFromNow.setDate(today.getDate() + 31);
-			thirtyOneDaysFromNow.setHours(23, 59, 59, 999);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
 
-			let filteredEvents = [];
+            const thirtyOneDaysFromNow = new Date(today);
+            thirtyOneDaysFromNow.setDate(today.getDate() + 31);
+            thirtyOneDaysFromNow.setHours(23, 59, 59, 999);
 
-			events.forEach(event => {
-				// Build and cache schedule once per event
-				const schedule = buildDailySchedule(event);
-				event._schedule = schedule;
+            let filteredEvents = [];
 
-				const eventStart = parseLocalDate(schedule[0].date);
-				const eventEnd = parseLocalDate(schedule[schedule.length - 1].date);
+            events.forEach(event => {
+                // Build and cache schedule once per event
+                const schedule = buildDailySchedule(event);
+                event._schedule = schedule;
 
-				eventStart.setHours(0, 0, 0, 0);
-				eventEnd.setHours(23, 59, 59, 999);
+                const eventStart = parseLocalDate(schedule[0].date);
+                const eventEnd = parseLocalDate(schedule[schedule.length - 1].date);
 
-				const isCurrentlyOccurring =
-					today.getTime() >= eventStart.getTime() &&
-					today.getTime() <= eventEnd.getTime();
+                eventStart.setHours(0, 0, 0, 0);
+                eventEnd.setHours(23, 59, 59, 999);
 
-				const startsWithin31Days =
-					eventStart.getTime() >= today.getTime() &&
-					eventStart.getTime() <= thirtyOneDaysFromNow.getTime();
+                const isCurrentlyOccurring =
+                    today.getTime() >= eventStart.getTime() &&
+                    today.getTime() <= eventEnd.getTime();
 
-				if (isCurrentlyOccurring || startsWithin31Days) {
-					filteredEvents.push(event);
-				}
-			});
+                const startsWithin31Days =
+                    eventStart.getTime() >= today.getTime() &&
+                    eventStart.getTime() <= thirtyOneDaysFromNow.getTime();
 
-			// Sort by start date using cached schedule
-			filteredEvents.sort((a, b) => {
-				const aStart = parseLocalDate(a._schedule[0].date);
-				const bStart = parseLocalDate(b._schedule[0].date);
-				return aStart - bStart;
-			});
+                if (isCurrentlyOccurring || startsWithin31Days) {
+                    filteredEvents.push(event);
+                }
+            });
 
-			let upcomingEventsHtml = '';
-			let introText = '';
+            // Sort by start date using cached schedule
+            filteredEvents.sort((a, b) => {
+                const aStart = parseLocalDate(a._schedule[0].date);
+                const bStart = parseLocalDate(b._schedule[0].date);
+                return aStart - bStart;
+            });
 
-			if (filteredEvents.length === 0) {
-				introText = '<p>We have no events planned for the immediate future. Check out our <a href="calendar.html">calendar</a> to see what we have planned later in the year!</p>';
-			} else {
-				introText = '<p>These are the upcoming events for the month. For events further out, check out our <a href="calendar.html">calendar</a>!</p>';
-				filteredEvents.forEach(event => {
-					upcomingEventsHtml += createEventHtml(event);
-				});
-			}
+            let upcomingEventsHtml = '';
+            let introText = '';
 
-			introTextContainer.innerHTML = introText;
-			eventsListContainer.innerHTML = upcomingEventsHtml;
+            if (filteredEvents.length === 0) {
+                introText = '<p>We have no events planned for the immediate future. Check out our <a href="calendar.html">calendar</a> to see what we have planned later in the year!</p>';
+            } else {
+                introText = '<p>These are the upcoming events for the month. For events further out, check out our <a href="calendar.html">calendar</a>!</p>';
+                filteredEvents.forEach(event => {
+                    upcomingEventsHtml += createEventHtml(event);
+                });
+            }
 
-		} catch (error) {
-			console.error('Error fetching or processing events:', error);
-			eventsListContainer.innerHTML = '<p>Sorry, there was an error loading the events. Please try again later.</p>';
-			introTextContainer.innerHTML = '<p>We are currently experiencing issues loading event information. Please check back later.</p>';
-		}
-	}
+            introTextContainer.innerHTML = introText;
+            eventsListContainer.innerHTML = upcomingEventsHtml;
 
-	loadUpcomingEvents();
+        } catch (error) {
+            console.error('Error fetching or processing events:', error);
+            eventsListContainer.innerHTML = '<p>Sorry, there was an error loading the events. Please try again later.</p>';
+            introTextContainer.innerHTML = '<p>We are currently experiencing issues loading event information. Please check back later.</p>';
+        }
+    }
+
+    loadUpcomingEvents();
 
 })(); // End of IIFE
