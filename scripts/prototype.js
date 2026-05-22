@@ -1,4 +1,4 @@
-const eventsListContainer = document.getElementById('upcoming-events-list');
+const eventsListContainer = document.getElementById('Upcoming_Events_List');
 
 // Stores all events
 let _allEvents = [];

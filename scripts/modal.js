@@ -1,11 +1,11 @@
 (function () {
 
-	const eventModal = document.getElementById('eventModal');
-	const closeButton = eventModal ? document.querySelector('#eventModal .close-button') : null;
+	const EventModal = document.getElementById('EventModal');
+	const closeButton = EventModal ? document.querySelector('#EventModal .close-button') : null;
 
 	const EventDetailsList = document.getElementById('EventDetailsList');
 
-	if (!eventModal) return;
+	if (!EventModal) return;
 
 	// ------------------------------------------------------------
 	// Utility Functions
@@ -211,7 +211,7 @@
 			<li><strong>What:</strong> ${eventData.Description}</li>
 		`;
 
-		eventModal.style.display = 'flex';
+		EventModal.style.display = 'flex';
 	};
 
 	// ------------------------------------------------------------
@@ -219,14 +219,14 @@
 	// ------------------------------------------------------------
 
 	function closeModal() {
-		eventModal.style.display = 'none';
+		EventModal.style.display = 'none';
 		EventDetailsList.innerHTML = '';
 	}
 
 	if (closeButton) closeButton.addEventListener('click', closeModal);
 
 	window.addEventListener('click', (event) => {
-		if (event.target === eventModal) closeModal();
+		if (event.target === EventModal) closeModal();
 	});
 
 })();

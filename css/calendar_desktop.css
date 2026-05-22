@@ -1,12 +1,12 @@
 /* Calendar Styles */
 
-.Calendar_Container {
+.calendar-container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.Calendar {
+.calendar {
 	margin-top: 2.5vh;
 	height: auto;
 	display: flex;
@@ -16,14 +16,14 @@
 	background-color: #333338AA;
 }
 
-.Calendar_Header {
+.calendar-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 10px;
 }
 
-.Calendar_Header button {
+.calendar-header button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -36,7 +36,7 @@
 	cursor: pointer;
 }
 
-.Calendar_Header button:hover {
+.calendar-header button:hover {
 	transition: .3s;
 	background-color: #080808;
 	color: #F1F1F1;
@@ -46,7 +46,7 @@
 	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 }
 
-.Calendar_Days {
+.calendar-days {
 	font-size: clamp(1.125rem, 1vw + 0.25rem, 2rem);
 	display: grid;
 	grid-template-columns: repeat(7,1fr);
@@ -54,7 +54,7 @@
 	padding: 5px;
 }
 
-.Calendar_Dates {
+.calendar-dates {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 }
@@ -182,7 +182,7 @@
 		max-width: 45vw;
 	}
 	
-	.Calendar {
+	.calendar {
 		width: 75vw;
 	}
 	
@@ -201,7 +201,7 @@
 		max-width: 90vw;
 	}
 	
-	.Calendar {
+	.calendar {
 		width: 88vw;
 	}
 	

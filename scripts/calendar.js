@@ -2,7 +2,7 @@
 
 	// --- Global DOM Element References ---
 	const monthYearElement = document.getElementById('monthYear');
-	const datesElement = document.getElementById('Calendar_Dates');
+	const datesElement = document.getElementById('calendar-dates');
 	const prevBtn = document.getElementById('prevBtn');
 	const nextBtn = document.getElementById('nextBtn');
 

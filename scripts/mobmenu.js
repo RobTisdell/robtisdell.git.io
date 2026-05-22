@@ -1,6 +1,6 @@
 function collapseexpandmenu() {
 	var collapse = document.getElementById("MobileMenuList");
-	var hidecontent = document.getElementById("MainContent");
+	var hidecontent = document.getElementById("Main_Content");
 	if (collapse.style.display === "block") {
 	collapse.style.display = "none";
 	} 

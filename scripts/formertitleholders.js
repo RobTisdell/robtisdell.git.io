@@ -1,7 +1,7 @@
 (function() {
 
 	const titleholderSource = 'scripts/titleholders.json';
-	const targetElementId = 'titlecontainer';
+	const targetElementId = 'titleholder-container';
 
 	async function displayFormerTitleholders() {
 		const outputContainer = document.getElementById(targetElementId);

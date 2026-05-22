@@ -1,7 +1,7 @@
 // Attach fade-out listeners to all internal links.
 // Called on DOMContentLoaded and again after sidebar loads.
 function attachFadeListeners() {
-	const container = document.getElementById("MainContent");
+	const container = document.getElementById("Main_Content");
 	if (!container) return;
 
 	document.querySelectorAll("a").forEach(link => {
@@ -30,7 +30,7 @@ function attachFadeListeners() {
 
 // Fade-in on initial load
 document.addEventListener("DOMContentLoaded", () => {
-	const container = document.getElementById("MainContent");
+	const container = document.getElementById("Main_Content");
 	if (container) {
 		// Small delay ensures CSS is parsed before transition
 		setTimeout(() => {
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Fix for browser Back/Forward Cache (bfcache)
 // Ensures the page becomes visible again when restored from cache.
 window.addEventListener("pageshow", event => {
-	const container = document.getElementById("MainContent");
+	const container = document.getElementById("Main_Content");
 	if (!container) return;
 
 	if (event.persisted) {

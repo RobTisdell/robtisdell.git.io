@@ -2,8 +2,8 @@
 
 (function() { // Start of IIFE for scope isolation
 
-	const eventsListContainerId = 'upcoming-events-list';
-	const introTextContainerId = 'upcoming-events-intro';
+	const eventsListContainerId = 'Upcoming_Events_List';
+	const introTextContainerId = 'Upcoming_Events_Intro';
 	const eventsJsonSource = 'scripts/events.json';
 
 	// Parse YYYY-MM-DD as a local date (avoids UTC shift issues)

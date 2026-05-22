@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-	const mainContentDiv = document.getElementById('MainContent');
+	const mainContentDiv = document.getElementById('Main_Content');
 	const sidenavContainer = document.getElementById('sidenav-container');
 	const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
 	const defaultPage = 'about.html';
@@ -96,10 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
-	// Function to load main content dynamically into #MainContent
-	async function loadMainContent(pageName) {
+	// Function to load main content dynamically into #Main_Content
+	async function loadMain_Content(pageName) {
 		if (!mainContentDiv) {
-			console.error("Error: Main content div with ID 'MainContent' not found.");
+			console.error("Error: Main content div with ID 'Main_Content' not found.");
 			return;
 		}
 
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			console.log("[Navigation] Toggled dropright for:", link.textContent.trim());
 		} else if (targetPage) {
 			event.preventDefault();
-			await loadMainContent(targetPage);
+			await loadMain_Content(targetPage);
 			history.pushState({ page: targetPage }, '', targetPage);
 			console.log(`[Navigation] Navigated to: ${targetPage}`);
 		} else {
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	window.addEventListener('popstate', function(event) {
 		const pageToLoad = event.state && event.state.page ? event.state.page : defaultPage;
 		console.log(`[History] Popstate detected. Loading: ${pageToLoad}`);
-		loadMainContent(pageToLoad);
+		loadMain_Content(pageToLoad);
 	});
 
 	// --- NEW: Mobile Sidenav Toggle Event Listener ---
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			'current_titleholder.html',
 			'previous_titleholders.html',
 			'contest.html',
-			'upcoming_events.html',
+			'upcoming-events.html',
 			'previous_events.html',
 			'calendar.html',
 			'staff.html',
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			console.log(`[Initial Load] URL is index.html or empty. Loading default page: ${defaultPage}`);
 		}
 
-		await loadMainContent(pageToLoad);
+		await loadMain_Content(pageToLoad);
 
 		if (window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1) !== pageToLoad) {
 			history.replaceState({ page: pageToLoad }, '', pageToLoad);
