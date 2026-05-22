@@ -6,6 +6,7 @@ body.landing-page-no-scroll {
 	height: 60vh;
 	justify-content: center;
 	align-items: center;
+	display: flex;
 }
 
 .landing img {
