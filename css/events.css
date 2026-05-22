@@ -1,3 +1,4 @@
+/* For now keep this commented.  It was for past events, but we're not doing that and may never do that.
 .event-display-wrapper {
     display: flex;
     align-items: center;
@@ -75,25 +76,37 @@
     display: block;
 }
 
+*/
 
 .event_boxes {
     border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 2vh clamp(2vw, 1vw + 2rem, 10vw);
+    margin-bottom: clamp(2vh, 2rem, 4vh);
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     line-height: 1.6;
 	background: #333338AA;
 }
 
-.event_boxes img {
-	display: block;
-	margin: auto;
+.event_images {
+	flex: 0 0 clamp(8rem, 12vw, 20rem);
+	height: clamp(8rem, 12vw, 20rem);
+	min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+}
+
+.event_images img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .wrapper .content article .event_boxes p.event_details {
-	font-size: 1.125em;
-	text-indent: 2em;
+	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
+	text-indent: 2rem;
 	margin-bottom: 0.25em;
 	margin-left: 2em;
 	margin-right: 2em;
