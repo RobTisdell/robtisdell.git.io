@@ -42,7 +42,7 @@
 						</div>
 						<div class="titleholder-box">
 							<span class="staff-name"><b>${titleHolder.Name}</b></span>
-							<p class="titleholder-title"><b>${titleHolder.Prefix} FLAG ${titleHolder.Year.slice(0, 4)}</b></span>
+							<p class="staff-position"><b>${titleHolder.Prefix} FLAG ${titleHolder.Year.slice(0, 4)}</b></span>
 							<span class="staff-description">${titleHolder.Description}</span>
 						</div>
 					</div>

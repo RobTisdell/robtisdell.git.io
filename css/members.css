@@ -5,7 +5,8 @@
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
-	background: #333338AA;
+/*	background: #333338AA;*/
+	background-color: pink;
 	display: flex;
 	align-items: stretch;
 }
@@ -23,7 +24,7 @@
     text-decoration: underline;
 }
 
-.staffpictures {
+.divided_boxes .staffpictures {
 	flex: 0 0 clamp(8rem, 12vw, 20rem);
 	height: clamp(8rem, 12vw, 20rem);
 	min-height: 0;
@@ -33,13 +34,13 @@
     margin: 3px;
 }
 
-.staffpictures img {
+.divided_boxes .staffpictures img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
 }
 
-.staff-box {
+.divided_boxes .staff-box {
 	display: flex;
 	flex-direction: column;
 }
@@ -64,6 +65,11 @@
 
 .staff-description {
 	font-size: clamp(1rem, 1vw + 0.125rem, 1.75rem);
+}
+
+.staff-position::first-letter {	
+	font-size: clamp(1.125rem, 1vw + 0.25rem, 2rem);
+	font-weight: bold;
 }
 
 .unified_box {
@@ -102,26 +108,18 @@
 	flex: 0 0 80%;
 }
 
-.wrapper .content article p.titleholder-title {
+.titleholder-box .staff-name {
 	/*	color: #E0AA3E; Just a reference to the default if we want it, but amethyst is too appropriate here~ */
 	color: #9966CC;
 	text-align: center;
-	font-size: 1.25em;
 	margin: 0;
 	line-height: 1;
 	text-indent: 0;
 }
 
-.wrapper .content article p.titleholder-title::first-letter {
-	font-size: 1.25em;
-}
-
-
-.wrapper .content article p.titleholder-description {
-	font-size: 1.125em;
-}
-
-.wrapper .content article p.titleholder-description::first-letter {	
-	font-size: 1.25em;
-	font-weight: bold;
+.titleholder-box .staff-position {
+	color: #9966CC;
+	margin: 0;
+	line-height: 1;
+	text-indent: 0;
 }
