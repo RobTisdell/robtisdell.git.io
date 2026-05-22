@@ -53,6 +53,10 @@
 	.unified_box {
 		flex-direction: column;
 	}
+	
+	.titleholder-pictures {
+		height: clamp(8rem, 30vh, 20rem);
+	}
 }
 
 .staff-name {
@@ -87,7 +91,6 @@
 .titleholder-pictures {
 	display: flex;
 	flex: 0 0 clamp(10rem, 18vw, 22rem);
-	height: clamp(8rem, 30vh, 20rem);
 	margin-right: 2vw;
 	align-items: center;
 	justify-content: center;
@@ -105,7 +108,6 @@
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 5vh;
-	flex: 0 0 80%;
 }
 
 .titleholder-box .staff-name {
