@@ -84,8 +84,7 @@
     margin-bottom: clamp(2vh, 2rem, 4vh);
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-/*	background-color: #333338AA;*/
-	background-color: pink;
+	background-color: #333338AA;
 }
 
 .event_images {
