@@ -10,7 +10,20 @@ body.landing-page-no-scroll {
 }
 
 .landing img {
-	height: 100%;
 	width: auto;
 	object-fit: contain;
+}
+
+@media (min-width: 801px) {
+	.landing img {
+		height: 100%;
+		width: auto;
+	}
+}
+
+@media (max-width: 800px) {
+	.landing img {
+		height: clamp(40vh, 60%, 70vh);
+		width: auto;
+	}
 }
