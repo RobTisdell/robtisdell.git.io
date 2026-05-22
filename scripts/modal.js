@@ -196,11 +196,9 @@
 		const groups = groupConsecutiveDays(schedule);
 
 		EventDetailsList.innerHTML = `
-			<li>
-				<div class="smalleventculumn">
-					<img src="img/events/${eventData.Image || 'default.png'}">
-				</div>
-			</li>
+			<div class="smalleventcolumn">
+				<img src="img/events/${eventData.Image || 'default.png'}">
+			</div>
 
 			<li><strong>Event:</strong> ${eventData.Name}</li>
 
