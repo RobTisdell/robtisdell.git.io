@@ -55,7 +55,7 @@
 	}
 	
 	.titleholder-pictures {
-		height: clamp(8rem, 30vh, 20rem);
+		height: 40vh;
 	}
 }
 
