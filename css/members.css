@@ -66,7 +66,7 @@
 	font-size: clamp(1rem, 1vw + 0.125rem, 1.75rem);
 }
 
-.staff-position::first-letter {	
+.staff-description::first-letter {	
 	font-size: clamp(1.125rem, 1vw + 0.25rem, 2rem);
 	font-weight: bold;
 }
@@ -105,11 +105,11 @@
 	flex-direction: column;
 	margin-bottom: 5vh;
 	flex: 0 0 80%;
-	background-color: gold;
 }
 
 .titleholder-box .staff-name {
 	/*	color: #E0AA3E; Just a reference to the default if we want it, but amethyst is too appropriate here~ */
+	font-size: clamp(1.5rem, 2vw + 0.25rem, 2.5rem);
 	color: #9966CC;
 	text-align: center;
 	margin: 0;
@@ -118,6 +118,7 @@
 }
 
 .titleholder-box .staff-position {
+	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 	color: #9966CC;
 	text-align: center;
 	margin: 0;
@@ -126,5 +127,11 @@
 }
 
 .titleholder-box .staff-description {
+	font-size: clamp(1.125rem, 1vw + 0.25rem, 2rem);
     color: #AABBCC;
+}
+
+.titleholder-box .staff-description::first-letter {	
+	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
+	font-weight: bold;
 }
