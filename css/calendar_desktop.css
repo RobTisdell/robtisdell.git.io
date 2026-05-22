@@ -186,7 +186,7 @@
 		width: 75vw;
 	}
 	
-	.mobile-arrow {
+	.mobile-arrows {
 		display: none;
 	}
 
@@ -205,7 +205,7 @@
 		width: 88vw;
 	}
 	
-	.mobile-arrow {
+	.desktop-arrows {
 		display: none;
 	}
 }
