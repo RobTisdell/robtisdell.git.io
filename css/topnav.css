@@ -150,6 +150,7 @@ li.has-submenu {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	gap: 4vh;
 }
 
 .topnav-wrapper .dropdown-menu .socials a {

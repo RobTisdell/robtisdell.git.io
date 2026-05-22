@@ -125,13 +125,17 @@
 	bottom: 5vh;
 	left: 50%;
 	transform: translate(-50%);
+	display: flex;
+	justify-content: center;
+	gap: 2.5vw;
+	flex-direction: row;
 }
 
 .wrapper .sidenav .socials a {
 	background-color: #444449;
 	border-radius: 50%;
-	width: (1.8rem, 2.5rem, 3rem);
-	height: clamp(1.8rem, 2.5rem, 3rem);
+	width: 2.5vw;
+	height: 2.5vw;
 	display: flex;
 	align-items: center;
 	margin: 0 auto;
