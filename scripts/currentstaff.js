@@ -66,7 +66,7 @@
 				const staffHtml = `
 					<div class="divided_boxes">
 						<div class="staffpictures">
-							<img src="img/staff/${staffMember.Image}" alt="${staffMember.Name}">
+							<a href="#0" class="event-link"><img src="img/staff/Thumbnails/${staffMember.Image}" alt="${staffMember.Name}"></a>
 						</div>
 						<div class="staff-box">
 							<span class="staff-name"><b>${staffMember.Name}</b></span>
