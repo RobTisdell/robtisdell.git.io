@@ -5,8 +5,8 @@
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
-/*	background-color: #333338AA; */
-	background-color: silver;
+/*	background-color: #333338AA;*/
+	background-color: gold;
 	display: flex;
 	align-items: stretch;
 }
@@ -53,6 +53,7 @@
 
 
 @media (min-width: 801px) {
+	
 	.divided_boxes .staffpictures a {
 		width: 100%;
 		height: 100%;
@@ -64,10 +65,23 @@
 	max-height: 100%;
 	object-fit: contain;
 	}
+	
+	.divided_boxes .staffpictures {
+		flex: 0 0 clamp(8rem, 12vw, 20rem);
+		height: clamp(8rem, 12vw, 20rem);
+		margin-right: 2vw;
+	}
 }
 
 
 @media (max-width: 800px) {
+	
+	.divided_boxes .staffpictures {
+		height: 40vh;
+		flex: 0 0 40vh;
+		margin-right: 0;
+		margin-bottom: 2vh;
+	}
 	
 	.divided_boxes {
 		flex-direction: column;
@@ -88,6 +102,7 @@
 	}
 	
 	.divided_boxes .staffpictures a img {
+		height: 100%;
 		max-width: 100%;
 		object-fit: contain;
 	}
@@ -196,9 +211,9 @@
 	position: relative;
 	display: flex;
 	justify-content: center;
-    max-width: 90vw;
-    max-height: 90vh;
-    overflow: hidden;
+	max-width: 90vw;
+	max-height: 90vh;
+	overflow: hidden;
 }
 
 .modal-image-container {
