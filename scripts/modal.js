@@ -226,6 +226,8 @@
     document.addEventListener('click', function (e) {
         const link = e.target.closest('.event-link');
         if (!link) return;
+		
+		e.preventDefault();
 
         const img = link.querySelector('img');
         if (!img) return; // prevents calendar events from triggering image modal
