@@ -5,8 +5,7 @@
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
-/*	background-color: #333338AA;*/
-	background-color: red;
+	background-color: #333338AA;
 	display: flex;
 	align-items: stretch;
 }
@@ -58,6 +57,11 @@
 		height: 100%;
 		flex: 1 1 auto;
 	}
+	
+	.divided_boxes .staffpictures a img {
+	max-width: 100%;
+	max-height: 100%;
+	}
 }
 
 
@@ -79,6 +83,12 @@
 		width: auto;
 		height: auto;
 		flex: 0 0 auto;
+	}
+	
+	.divided_boxes .staffpictures a img {
+	height: 40vh;
+	max-width: 100%;
+	object-fit: contain;
 	}
 	
 }
