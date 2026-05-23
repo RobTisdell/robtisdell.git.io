@@ -6,7 +6,7 @@
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
 /*	background-color: #333338AA;*/
-	background-color: green;
+	background-color: pink;
 	display: flex;
 	align-items: stretch;
 }
@@ -61,9 +61,9 @@
 	}
 	
 	.divided_boxes .staffpictures a img {
-	max-width: 100%;
-	max-height: 100%;
-	object-fit: contain;
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
 	}
 	
 	.divided_boxes .staffpictures {
@@ -77,10 +77,11 @@
 @media (max-width: 800px) {
 	
 	.divided_boxes .staffpictures {
+		display: block;
 		height: 40vh;
-		flex: 0 0 40vh;
 		margin-right: 0;
 		margin-bottom: 2vh;
+		text-align: center;
 	}
 	
 	.divided_boxes {
@@ -96,9 +97,11 @@
 	}
 	
 	.divided_boxes .staffpictures a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 		width: auto;
 		height: auto;
-		flex: 0 0 auto;
 	}
 	
 	.divided_boxes .staffpictures a img {
@@ -258,5 +261,3 @@
 	color: #F1F1F1;
 	cursor: pointer;
 }
-
-
