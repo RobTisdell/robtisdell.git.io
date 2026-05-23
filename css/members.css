@@ -5,7 +5,8 @@
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
-	background: #333338AA;
+/*	background: #333338AA;*/
+	background-color: green;
 	display: flex;
 	align-items: stretch;
 }
@@ -66,10 +67,6 @@
 		height: 40vh;
 	}
 	
-	.divided_boxes .staffpictures a {
-		width: 25%;
-		height: 25%;
-	}
 }
 
 .staff-name {
