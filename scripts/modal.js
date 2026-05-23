@@ -1,11 +1,9 @@
 (function () {
 
     const EventModal = document.getElementById('EventModal');
-    const closeButton = EventModal ? document.querySelector('#EventModal .close-button') : null;
+    const ModalContent = EventModal ? EventModal.querySelector('.modal-content') : null;
 
-    const EventDetailsList = document.getElementById('EventDetailsList');
-
-    if (!EventModal) return;
+    if (!EventModal || !ModalContent) return;
 
     // ------------------------------------------------------------
     // Utility Functions
@@ -101,32 +99,29 @@
     }
 
     // ------------------------------------------------------------
-    // Rendering Functions
+    // Rendering Functions (now return <p> blocks)
     // ------------------------------------------------------------
 
     function renderDateTime(schedule) {
 
-        // Single-day event
         if (schedule.length === 1) {
             const d = schedule[0];
             return `
-                <li>
-                    <strong>When:</strong> 
+                <p><strong>When:</strong> 
                     ${formatDate(d.date)}, ${formatTime(d.startTime)} – ${formatTime(d.endTime)}
-                </li>
+                </p>
             `;
         }
 
-        // Multi-day event
-        let html = `<li><strong>When:</strong></li>`;
+        let html = `<p><strong>When:</strong></p>`;
 
         schedule.forEach(day => {
             html += `
-                <li class="modal-day-block">
+                <p class="modal-day-block">
                     <strong>Day ${day.dayNumber}:</strong> 
                     ${formatDate(day.date)}, 
                     ${formatTime(day.startTime)} – ${formatTime(day.endTime)}
-                </li>
+                </p>
             `;
         });
 
@@ -159,18 +154,18 @@
 
             if (index === 0) {
                 html += `
-                    <li class="modal-location-block">
+                    <p class="modal-location-block">
                         <strong>Where:</strong>
                         ${dayLabel ? `${dayLabel}:` : ''}
                         ${locName} — ${mapLink}
-                    </li>
+                    </p>
                 `;
             } else {
                 html += `
-                    <li class="modal-location-block">
+                    <p class="modal-location-block">
                         <strong>${dayLabel ? dayLabel + ':' : ''}</strong>
                         ${locName} — ${mapLink}
-                    </li>
+                    </p>
                 `;
             }
         });
@@ -187,32 +182,33 @@
         const schedule = buildDailySchedule(eventData);
         const groups = groupConsecutiveDays(schedule);
 
-        EventDetailsList.innerHTML = `
+        ModalContent.innerHTML = `
+            <span class="close-button">&times;</span>
+
             <div class="smalleventcolumn">
                 <img src="img/events/${eventData.Image || 'default.png'}">
             </div>
 
-            <li><strong>Event:</strong> ${eventData.Name}</li>
-
-            <li><strong>Hosted By:</strong> ${eventData.Host}</li>
+            <p><strong>Event:</strong> ${eventData.Name}</p>
+            <p><strong>Hosted By:</strong> ${eventData.Host}</p>
 
             ${renderLocation(groups, schedule.length)}
-
             ${renderDateTime(schedule)}
 
-            <li><strong>What:</strong> ${eventData.Description}</li>
+            <p><strong>What:</strong> ${eventData.Description}</p>
         `;
 
         EventModal.style.display = 'flex';
     };
 
     // ------------------------------------------------------------
-    // NEW: Image-only modal
+    // Image-only modal (titleholders)
     // ------------------------------------------------------------
 
     window.openImageModal = function (imgPath) {
-        EventDetailsList.innerHTML = `
-            <div class="smalleventcolumn">
+        ModalContent.innerHTML = `
+            <span class="close-button">&times;</span>
+            <div class="modal-image-container">
                 <img src="${imgPath}">
             </div>
         `;
@@ -220,20 +216,19 @@
     };
 
     // ------------------------------------------------------------
-    // NEW: Delegated click handler for titleholder thumbnails
+    // Delegated click handler for titleholder thumbnails
     // ------------------------------------------------------------
 
     document.addEventListener('click', function (e) {
         const link = e.target.closest('.event-link');
         if (!link) return;
-		
-		e.preventDefault();
+
+        e.preventDefault();
 
         const img = link.querySelector('img');
-        if (!img) return; // prevents calendar events from triggering image modal
+        if (!img) return;
 
         const fullImagePath = img.src.replace('/Thumbnails/', '/FullSize/');
-
         openImageModal(fullImagePath);
     });
 
@@ -243,12 +238,11 @@
 
     function closeModal() {
         EventModal.style.display = 'none';
-        EventDetailsList.innerHTML = '';
+        ModalContent.innerHTML = '';
     }
 
-    if (closeButton) closeButton.addEventListener('click', closeModal);
-
-    window.addEventListener('click', (event) => {
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('close-button')) closeModal();
         if (event.target === EventModal) closeModal();
     });
 
