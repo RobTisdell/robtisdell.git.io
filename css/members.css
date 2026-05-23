@@ -5,8 +5,7 @@
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
-/*	background: #333338AA;*/
-	background-color: silver;
+	background: #333338AA;
 	display: flex;
 	align-items: stretch;
 }
@@ -36,10 +35,10 @@
 
 .divided_boxes .staffpictures a {
 	display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
 }
 
 .divided_boxes .staffpictures a img {
@@ -207,17 +206,18 @@
 	cursor: pointer;
 }
 
-.modal .modal-content ul li {
-	list-style: none;
-	max-width: 100%
+.modal-image-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 95vw;
+	max-height: 95vh;
+	padding: 1rem;
 }
 
-.modal .modal-content ul li a {
-	color: #DDDDDD;
-	text-decoration: underline;
-}
-
-.modal .modal-content ul li a:hover {
-	transition: .3s;
-	color: #F1F1F1;
+.modal-image-container img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	border-radius: 8px;
 }
