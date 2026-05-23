@@ -46,7 +46,7 @@
 				const titleholderHtml = `
 					<div class="divided_boxes">
 						<div class="staffpictures">
-							<img src="img/titleholders/${titleHolder.Image}" alt="${titleHolder.Name}">
+							<a href="#0" class="event-link"><img src="img/titleholders/Thumbnails/${titleHolder.Image}" alt="${titleHolder.Name}"></a>
 						</div>
 						<div class="staff-box">
 							<span class="staff-name"><b>${titleHolder.Name} - ${titleHolder.Prefix} FLAG (${titleHolder.Year})</b></span>
