@@ -6,7 +6,7 @@
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
 /*	background-color: #333338AA;*/
-	background-color: purple;
+	background-color: silver;
 	display: flex;
 	align-items: stretch;
 }
@@ -100,8 +100,8 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: auto;
-		height: auto;
+		width: 100%;
+		height: 100%;
 	}
 	
 	.divided_boxes .staffpictures a img {
