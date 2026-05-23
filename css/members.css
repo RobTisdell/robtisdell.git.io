@@ -6,7 +6,7 @@
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
 /*	background-color: #333338AA;*/
-	background-color: silver;
+	background-color: pink;
 	display: flex;
 	align-items: stretch;
 }
@@ -97,10 +97,10 @@
 	}
 	
 	.divided_boxes .staffpictures a {
-		display: inline-flex;
+		display: inline-block;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
+		width: auto;
 		height: 100%;
 	}
 	
