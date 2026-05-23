@@ -5,7 +5,8 @@
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
-	background: #333338AA;
+/*	background: #333338AA;*/
+	background-color: pink;
 	display: flex;
 	align-items: stretch;
 }
@@ -177,9 +178,10 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-    max-width: 95vw;
-    max-height: 95vh;
+    max-width: 90vw;
+    max-height: 90vh;
     overflow: hidden;
+	flex: 0 1 auto;
 }
 
 .modal-image-container {
