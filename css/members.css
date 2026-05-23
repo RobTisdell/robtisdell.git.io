@@ -6,7 +6,7 @@
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
 /*	background: #333338AA;*/
-	background: pink;
+	background: blue;
 	display: flex;
 	align-items: stretch;
 }
@@ -24,7 +24,7 @@
 	text-decoration: underline;
 }
 
-.divided_boxes .staffpictures a {
+.divided_boxes .staffpictures {
 	flex: 0 0 clamp(8rem, 12vw, 20rem);
 	height: clamp(8rem, 12vw, 20rem);
 	min-height: 0;
@@ -32,6 +32,14 @@
 	align-items: center;
 	justify-content: center;
 	margin-right: 2vw;
+}
+
+.divided_boxes .staffpictures a {
+	display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 .divided_boxes .staffpictures a img {
