@@ -74,6 +74,9 @@
 
 
 @media (max-width: 800px) {
+	.divided_boxes {
+		flex-direction: column;
+	}
 	
 	.divided_boxes .staffpictures {
 		display: block;
@@ -81,18 +84,6 @@
 		margin-right: 0;
 		margin-bottom: 2vh;
 		text-align: center;
-	}
-	
-	.divided_boxes {
-		flex-direction: column;
-	}
-	
-	.unified_box {
-		flex-direction: column;
-	}
-	
-	.titleholder-pictures {
-		height: 40vh;
 	}
 	
 	.divided_boxes .staffpictures a {
@@ -110,6 +101,32 @@
 		object-fit: contain;
 	}
 	
+	.unified_box {
+		flex-direction: column;
+	}
+	
+	.unified_box .titleholder-pictures {
+		display: block;
+		height: 60vh;
+		margin-right: 0;
+		margin-bottom: 2vh;
+		text-align: center;
+	}
+	
+	.unified_box .titleholder-pictures a {
+		display: inline-block;
+		align-items: center;
+		justify-content: center;
+		width: auto;
+		height: 100%;
+	}
+	
+	.unified_box .titleholder-pictures a img {
+		max-height: 100%;
+		width: auto;
+		max-width: 100%;
+		object-fit: contain;
+	}
 }
 
 .staff-name {
