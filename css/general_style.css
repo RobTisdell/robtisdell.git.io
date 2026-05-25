@@ -4,10 +4,6 @@
 	padding: 0;
 }
 
-html { 
-	background: none;
-}
-
 body::before {
 	content: "";
 	position: fixed;
