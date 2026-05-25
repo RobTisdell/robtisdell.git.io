@@ -95,9 +95,7 @@ html, body {
 }
 
 @media (max-width: 800px) {
-	.wrapper .content {
-	}
-		.wrapper .content article {
+	.wrapper .content article {
 		margin-left: 2vw;
 		margin-right: 2vw;
 		margin-top: 15vh;
