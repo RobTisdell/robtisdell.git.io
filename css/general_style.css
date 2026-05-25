@@ -4,6 +4,32 @@
 	padding: 0;
 }
 
+/* Variables!  Glorious! */
+/* Entire site's colors & font sizing can be changed from here.
+Primary definitions are the default for top-level content.
+content-box definitions are the default for anything contained
+within bounded boxes inside the main page, such as the staff boxes.
+nav-definitions are for any navigational elements (Sidenav, topnav, buttons within the pages).
+Note that staff image highlights inherit nav colors, and that affiliates is a slightly off amalgamation
+of different variables.  Transparency is definied when called in other CSS sheets.
+All CSS files refer to these.
+*/
+:root {
+	--primary-font-color: 170, 187, 204;
+	--primary-link-color: 221, 221, 221;
+	--primary-link-hover-color: 241, 241, 241;
+	--primary-background-color: 68, 68, 68;
+	--primary-border-color: 170, 170, 170;
+	--primary-title-color: 224, 170, 62;
+	--content-box-background-color: 51, 51, 56;
+	--nav-link-color: 204, 204, 204;
+	--nav-link-hover-color: 241, 241, 241;
+	--nav-background-color-normal: 17, 17, 17;
+	--nav-background-color-hover: 8, 8, 8;
+	--calendar-active-date: 242, 242, 242;
+	--calendar-inactive-date: 121, 121, 121;
+}
+
 body::before {
 	content: "";
 	position: fixed;
@@ -51,7 +77,7 @@ html, body {
 /* The following defines the universal style of the contents area */
 
 .wrapper .content {
-	color: #AABBCC;
+	color: rgb(var(--primary-font-color));
 	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
 }
 
@@ -82,10 +108,10 @@ html, body {
 .wrapper .content article {
 	min-height: 60vh;
 	padding: clamp(0.5rem, 1.5vw, 20px);
-	background-color: #444444DD;
+	background-color: rgba(var(--primary-background-color), 0.867);
 	border-style: solid;
 	border-radius: 10px;
-	border-color: #AAAAAAAA;
+	border-color: rgba(var(--primary-border-color), 0.867);
 }
 
 /* Style definitions within the article tag */
@@ -103,7 +129,7 @@ html, body {
 }
 
 .wrapper .content article p.title {
-	color:#E0AA3E;
+	color: rgb(var(--primary-title-color));
 	text-align: center;
 	font-size: clamp(2.4rem, calc(2.5vw + 1em), 6rem);
 	margin-bottom: 0.5em;
@@ -128,11 +154,11 @@ html, body {
 }
 
 .wrapper .content a {
-	color: #DDDDDD;
+	color: rgb(var(--primary-link-color));
 	text-decoration: underline;
 }
 
 .wrapper .content article a:hover {
 	transition: .3s;
-	color: #F1F1F1;
+	color: rgb(var(--primary-link-hover-color));
 }

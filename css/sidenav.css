@@ -13,7 +13,7 @@
 	top: 0;
 	width: 12.125vw;
 	height: 100vh;
-	background-color: #111111CC;
+	background-color: rgba(var(--nav-background-color-normal), 0.8);
 	padding-top: 2vh;
 	z-index: 2;
 }
@@ -59,7 +59,7 @@
 	width: 12.125vw;
 	min-width: 60px;
 	left: 100%;
-	background-color: #111111CC;
+	background-color: rgba(var(--nav-background-color-normal), 0.8);
 	visibility: hidden;
 	opacity: 0;
 	transition: visibility 0s linear 0.3s, opacity 0.3s ease-in-out;
@@ -75,47 +75,47 @@
 .wrapper .sidenav a {
 	text-decoration: none;
 	font-size: 1.4vw;
-	color: #CCCCCC;
+	color: rgb(var(--nav-link-color));
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 100%
+	width: 100%;
 }
 
 .wrapper .sidenav li:hover {
 	transition: .3s;
-	background-color: #080808AA;
+	background-color: rgba(var(--nav-background-color-hover), 0.667);
 }
 
 .wrapper .sidenav a:hover {	
 	transition: .3s;
-	color: #F1F1F1;
+	color: rgb(var(--nav-link-hover-color));
 }
 
 .wrapper .sidenav ul.dropright li:hover {
-	background-color: #080808AA;
+	background-color: rgba(var(--nav-background-color-hover), 0.667);
 }
 
 .wrapper .sidenav ul.dropright li:hover > a {
-	color: #F1F1F1;
+	color: rgba(var(--nav-link-hover-color), 1);
 }
 
 .wrapper .sidenav ul li:has(ul.dropright li:hover) {
-	background-color: #040404AA;
+	background-color: rgba(var(--nav-background-color-hover), 0.667);
 }
 
 .wrapper .sidenav ul li:has(ul.dropright li:hover) > a {
-	color: #F1F1F1; /* Matches .current A text color */
+	color: rgb(var(--nav-link-hover-color));
 }
 
 /* Makes the currently active page has the same styling as a hover link. */
 
 .wrapper .sidenav li.current {
-	background-color: #040404AA;
+	background-color: rgba(var(--nav-background-color-hover), 0.667);
 }
 
 .wrapper .sidenav a.current {
-	color: #F1F1F1;
+	color: rgb(var(--nav-link-hover-color));
 }
 
 /* Social media buttons alignment and styling */
@@ -132,7 +132,7 @@
 }
 
 .wrapper .sidenav .socials a {
-	background-color: #444449;
+	background-color: rgb(var(--primary-background-color));
 	border-radius: 50%;
 	width: 2.5vw;
 	height: 2.5vw;
@@ -144,7 +144,7 @@
 .wrapper .sidenav .socials a:hover{
 	transition: .3s;
 	transform: rotate(360deg);
-	background-color: #333338;
+	background-color: rgb(var(--content-box-background-color));
 }
 
 .sidebar-icon {

@@ -51,7 +51,7 @@ html, body {
 .wrapper .content {
 	margin-left: 12.125vw;
 	font-size: 1.25em;
-	color: #AABBCC;
+	color: var(--primary-font-color);
 	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
 }
 

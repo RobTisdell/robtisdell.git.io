@@ -13,7 +13,7 @@
 	flex-direction: column;
 	padding: 10px;
 	border-radius: 15px;
-	background-color: #333338AA;
+	background-color: rgba(var(--content-box-background-color), 0.667);
 }
 
 .calendar-header {
@@ -29,8 +29,8 @@
 	justify-content: center;
 	border: none;
 	border-radius: 50%;
-	background-color: #111111;
-	color: #818181;
+	background-color: rgb(var(--nav-background-color-normal));
+	color: rgb(var(--nav-link-color));
 	width: 30px;
 	height: 30px;
 	cursor: pointer;
@@ -38,8 +38,8 @@
 
 .calendar-header button:hover {
 	transition: .3s;
-	background-color: #080808;
-	color: #F1F1F1;
+	background-color: rgb(var(--nav-background-color-hover));
+	color: rgb(var(--nav-link-hover-color));
 }
 
 .monthYear, .prevBtn, .nextBtn {
@@ -62,7 +62,7 @@
 .date {
 	border-style: solid;
 	border-radius: 1px;
-	color: #F1F1F1;
+	color: rgb(var(--calendar-active-date));
 	height: 12vh;
 	display: flex;
 	flex-direction: column;
@@ -87,7 +87,7 @@
 }
 
 .date.inactive { 
-	color: #818181;
+	color: rgb(var(--calendar-inactive-date));
 }
 
 /* Modal window */
@@ -107,8 +107,8 @@
 }
 
 .modal .modal-content {
-	background-color: #444449;
-	color: #AABBCC;
+	background-color: rgb(var(--primary-background-color));
+	color: #rgb(var(--primary-font-color));
 	padding: clamp(1rem, 1vw + 0.25rem, 2.25vw);
 	border: 1px solid #F1F1F1;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -130,8 +130,8 @@
 	right: 15px;
 	width: 30px;
 	height: 30px;
-	background-color: #111111;
-	color: #818181;
+	background-color: rgb(var(--nav-background-color-normal));
+	color: #rgb(var(--nav-link-color));
 	border-radius: 50%;
 	align-items: center;
 	justify-content: center;
@@ -141,8 +141,8 @@
 .close-button:hover,
 .close-button:focus {
 	transition: .3s;
-	background-color: #080808;
-	color: #F1F1F1;
+	background-color: rgb(var(--nav-background-color-hover));
+	color: rgb(var(--nav-link-hover-color));
 	cursor: pointer;
 }
 
@@ -170,7 +170,7 @@
 
 .modal .modal-content ul li a:hover {
 	transition: .3s;
-	color: #F1F1F1;
+	color: rgb(var(--nav-link-hover-color));
 }
 
 @media (min-width: 801px) {
