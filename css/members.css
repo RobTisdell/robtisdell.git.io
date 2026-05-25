@@ -36,11 +36,21 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-color: unset;
+	background-color: rgba(var(--nav-background-color-normal), 0.667);
+	border-radius: 8px;
+	border: 1px solid rgb(var(--primary-border-color));
+}
+
+.staffpictures a:hover {
+	transition: .3s;
+	background-color: rgba(var(--nav-background-color-hover), 0.667);
+	border-radius: 8px;
+	border: 1px solid rgb(var(--nav-link-hover-color));
 }
 
 .divided_boxes .staffpictures a img {
-	max-width: 100%;
-	max-height: 100%;
+	border-radius: 8px;
 	object-fit: contain;
 }
 
@@ -89,8 +99,8 @@
 		display: inline-block;
 		align-items: center;
 		justify-content: center;
-		width: auto;
-		height: 100%;
+		width: 200px;
+		height: 20vh;
 	}
 	
 	.divided_boxes .staffpictures a img {
@@ -159,15 +169,36 @@
 
 .titleholder-pictures {
 	display: flex;
-	flex: 0 0 clamp(10rem, 18vw, 22rem);
+	flex: 0 0 clamp(10rem, 20vw, 22rem);
 	margin-right: 2vw;
 	align-items: center;
 	justify-content: center;
 }
 
-.titleholder-pictures img {
+.titleholder-pictures a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(var(--nav-background-color-normal), 0.667);
+	border-radius: 8px;
+	border: 1px solid rgb(var(--primary-border-color));
+}
+
+.titleholder-pictures a:hover {
+	transition: .3s;
+	background-color: rgba(var(--nav-background-color-hover), 0.667);
+	border-radius: 8px;
+	border: 1px solid rgb(var(--nav-link-hover-color));
+}
+
+.titleholder-pictures a img {
+	border-radius: 8px;
 	max-width: 100%;
 	max-height: 100%;
+	width: auto;
+	height: auto;
 	object-fit: contain;
 }
 
@@ -200,7 +231,7 @@
 
 .titleholder-box .staff-description {
 	font-size: clamp(1.125rem, 1vw + 0.25rem, 2rem);
-	color: var(--primary-font-color);
+	color: rgb(var(--primary-font-color));
 }
 
 .titleholder-box .staff-description::first-letter {	
@@ -262,7 +293,7 @@
 	width: 30px;
 	height: 30px;
 	background-color: rgb(var(--nav-background-color-normal));
-	color: #rgb(var(--nav-link-color));
+	color: rgb(var(--nav-link-color));
 	border-radius: 50%;
 	align-items: center;
 	justify-content: center;
@@ -273,6 +304,7 @@
 .close-button:focus {
 	transition: .3s;
 	background-color: rgb(var(--nav-background-color-hover));
-	color: var(--primary-link-hover-color);
+	color: rgb(var(--primary-link-hover-color));
 	cursor: pointer;
 }
+

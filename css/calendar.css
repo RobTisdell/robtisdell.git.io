@@ -108,9 +108,9 @@
 
 .modal .modal-content {
 	background-color: rgb(var(--primary-background-color));
-	color: #rgb(var(--primary-font-color));
+	color: rgb(var(--primary-font-color));
 	padding: clamp(1rem, 1vw + 0.25rem, 2.25vw);
-	border: 1px solid #F1F1F1;
+	border: 1px solid rgb(var(--primary-border-color));
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 	border-radius: 8px;
 	position: relative;
@@ -131,7 +131,7 @@
 	width: 30px;
 	height: 30px;
 	background-color: rgb(var(--nav-background-color-normal));
-	color: #rgb(var(--nav-link-color));
+	color: rgb(var(--nav-link-color));
 	border-radius: 50%;
 	align-items: center;
 	justify-content: center;
