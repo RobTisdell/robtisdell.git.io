@@ -3,7 +3,7 @@ margin-top: 2vh;
 height: 9vh;
 display: flex;
 padding-bottom: 5px;
-border-bottom: 5px solid var(--nav-background-color-normal);
+border-bottom: 5px solid rgb(var(--nav-background-color-normal));
 }
 
 .affiliate-picture {
@@ -28,5 +28,5 @@ border-bottom: 5px solid var(--nav-background-color-normal);
 .affiliate-container:hover {
 transition: .3s;
 border-bottom: 5px solid;
-border-bottom-color: var(--nav-background-color-hover);
+border-bottom-color: rgb(var(--nav-background-color-hover));
 }
