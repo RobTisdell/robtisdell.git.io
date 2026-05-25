@@ -1,6 +1,6 @@
 // scripts/currentstaff.js
 
-(function() { // Wrap the entire script in an IIFE for scope isolation
+(function() {
 
 	const staffSource = 'https://robtisdell.github.io/robtisdell.git.io/scripts/staff.json';
 	const targetElementId = 'current-staff-container'; // ID of the div where staff will be rendered
@@ -8,11 +8,10 @@
 	async function displayActiveStaff() {
 		const outputContainer = document.getElementById(targetElementId);
 
-		// Crucial: Check if the target container exists on the page
-		// If not, this script isn't relevant for the current content, so it exits cleanly.
+		// Do not proceed if the target container is not found in the DOM. This allows the script to be safely included on pages that do not have the container.
 		if (!outputContainer) {
-			// console.warn(`HTML element with ID '${targetElementId}' not found. Script skipped.`);
-			return; // Exit if the target container doesn't exist
+			console.warn(`HTML element with ID '${targetElementId}' not found. Script skipped.`);
+			return;
 		}
 
 		try {
@@ -23,8 +22,8 @@
 			const allStaffData = await response.json();
 
 			if (!Array.isArray(allStaffData)) {
-				console.error("Error: JSON data is not an array for staff.");
-				outputContainer.innerHTML = '<p>Error: Staff data is malformed.</p>';
+				console.error("Error: Staff data is not an array as expected.");
+				outputContainer.innerHTML = '<p>Apologies, but there seems to be an issue with the staff information, we can not display the list at this time.</p>';
 				return;
 			}
 
@@ -57,7 +56,7 @@
 			outputContainer.innerHTML = '';
 
 			if (activeStaff.length === 0) {
-				outputContainer.innerHTML = '<p>No active staff members found.</p>';
+				outputContainer.innerHTML = '<p>The staff list is currently empty.</p>';
 				return;
 			}
 
@@ -81,13 +80,10 @@
 
 		} catch (error) {
 			console.error("Failed to load or display staff data:", error);
-			// Display a user-friendly error message on the page
+			// Generic failure message for if something wonky happens.
 			outputContainer.innerHTML = '<p>Error loading staff information. Please try again later.</p>';
 		}
 	}
-
-	// Call the function to load and display staff when this script is executed.
-	// This happens automatically when content_loader.js injects and runs the script.
 	displayActiveStaff();
 
-})(); // End of the IIFE
+})();

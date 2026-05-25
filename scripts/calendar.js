@@ -23,7 +23,6 @@
 		return `${year}-${month}-${day}`;
 	}
 
-	// --- NEW: Build normalized schedule from Option 3 JSON ---
 	function buildDailySchedule(event) {
 		const schedule = [];
 
@@ -176,4 +175,4 @@
 	// --- Initialize ---
 	loadEventsAndPopulateCalendar();
 
-})(); // End IIFE
+})();
