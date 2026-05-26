@@ -74,8 +74,15 @@
 		height: clamp(8rem, 12vw, 20rem);
 		margin-right: 2vw;
 	}
-}
 
+	.unified_box .titleholder-pictures {
+		display: block;
+		height: 60vh;
+		margin-bottom: 2vh;
+		text-align: center;
+		margin-right: 2vw;
+	}
+}
 
 @media (max-width: 800px) {
 	.divided_boxes {
@@ -105,24 +112,8 @@
 	.unified_box .titleholder-pictures {
 		display: block;
 		height: 60vh;
-		margin-right: 0;
 		margin-bottom: 2vh;
-		text-align: center;
-	}
-	
-	.unified_box .titleholder-pictures a {
-		display: inline-block;
-		align-items: center;
-		justify-content: center;
-		width: auto;
-		height: 100%;
-	}
-	
-	.unified_box .titleholder-pictures a img {
-		max-height: 100%;
-		width: auto;
-		max-width: 100%;
-		object-fit: contain;
+		margin-right: none;
 	}
 }
 
@@ -146,21 +137,16 @@
 .unified_box {
 	border: 1px solid #ddd;
 	padding: 15px;
-	margin-bottom: 20px;
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
 	background: rgba(var(--content-box-background-color), 0.667);
 	display: flex;
-	align-items: stretch;
 }
 
 .titleholder-pictures {
 	display: flex;
 	flex: 0 0 clamp(10rem, 20vw, 22rem);
-	margin-right: 2vw;
-	align-items: center;
-	justify-content: center;
 }
 
 .titleholder-pictures a {
@@ -185,8 +171,6 @@
 	border-radius: 8px;
 	max-width: 100%;
 	max-height: 100%;
-	width: auto;
-	height: auto;
 	object-fit: contain;
 }
 
@@ -199,22 +183,16 @@
 }
 
 .titleholder-box .staff-name {
-	/*	color: #E0AA3E; Just a reference to the default if we want it, but amethyst is too appropriate here~ */
+	/*	Giving Anethyst her own color.  I normally wouldn't do this but it's too appropriate~ */
 	font-size: clamp(1.5rem, 2vw + 0.25rem, 2.5rem);
 	color: #9966CC;
 	text-align: center;
-	margin: 0;
-	line-height: 1;
-	text-indent: 0;
 }
 
 .titleholder-box .staff-position {
 	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 	color: #9966CC;
 	text-align: center;
-	margin: 0;
-	line-height: 1;
-	text-indent: 0;
 }
 
 .titleholder-box .staff-description {
@@ -283,16 +261,17 @@
 	background-color: rgb(var(--nav-background-color-normal));
 	color: rgb(var(--nav-link-color));
 	border-radius: 50%;
+	border: 1px solid rgb(var(--primary-border-color));
 	align-items: center;
 	justify-content: center;
 	display: flex;
 }
 
-.close-button:hover,
-.close-button:focus {
+.close-button:hover {
 	transition: .3s;
 	background-color: rgb(var(--nav-background-color-hover));
 	color: rgb(var(--primary-link-hover-color));
+	border: 1px solid rgb(var(--nav-link-hover-color));
 	cursor: pointer;
 }
 
