@@ -41,14 +41,10 @@ body::before {
 	pointer-events: none;
 }
 
-html, body {
-	overscroll-behavior: none;
-}
-
 .fa {
-	font-family: FontAwesome !important;
+	font-family: FontAwesome;
 }
-
+/* Just fancy fade stuff. */
 .content {
 	transition: opacity 0.3s ease-in-out; /* Smooth transition for initial load and default */
 }
@@ -78,7 +74,6 @@ html, body {
 
 .wrapper .content {
 	color: rgb(var(--primary-font-color));
-	overflow: hidden; /* Some aspect ratios have like, moniscule overflow that's unnoticable but still forces a sidescroll.  This should kill that. */
 }
 
 @media (min-width: 801px) {
@@ -121,7 +116,7 @@ html, body {
 .wrapper .content article li {
 	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 	text-indent: min(2rem, 2vw);
-	margin-bottom: 0.5em;
+	margin-bottom: 0.5rem;
 	margin-left: min(2rem, 2vw);
 	margin-right: min(2rem, 2vw);	
 }

@@ -10,7 +10,6 @@ body.landing-page-no-scroll {
 }
 
 .landing img {
-	width: auto;
 	object-fit: contain;
 }
 

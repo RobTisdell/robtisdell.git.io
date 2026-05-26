@@ -1,17 +1,12 @@
 .divided_boxes {
-	border: 1px solid #ddd;
-	padding: 1vw;
-	margin-bottom: clamp(2vh, 2rem, 4vh);
+	border: 1px solid rgb(var(--primary-border-color));
+	padding: clamp(10px, 1vw, 15px);
+	margin-bottom: clamp(20px, 1.5vh, 30px);
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	line-height: 1.6;
 	background-color: rgba(var(--content-box-background-color), 0.667);
 	display: flex;
-	align-items: stretch;
-}
-
-.divided_boxes p {
-	margin-bottom: 8px;
 }
 
 .divided_boxes a {
@@ -88,17 +83,12 @@
 	}
 	
 	.divided_boxes .staffpictures {
-		display: block;
-		height: 40vh;
-		margin-right: 0;
 		margin-bottom: 2vh;
 		text-align: center;
 	}
 	
 	.divided_boxes .staffpictures a {
 		display: inline-block;
-		align-items: center;
-		justify-content: center;
 		width: 200px;
 		height: 20vh;
 	}
@@ -106,8 +96,6 @@
 	.divided_boxes .staffpictures a img {
 		max-height: 100%;
 		width: auto;
-		max-width: 100%;
-		object-fit: contain;
 	}
 	
 	.unified_box {
