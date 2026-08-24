@@ -1,66 +1,60 @@
-// scripts/currentstaff.js
-
 (function() {
 
-	const staffSource = 'https://robtisdell.github.io/robtisdell.git.io/scripts/staff.json';
-	const targetElementId = 'current-staff-container'; // ID of the div where staff will be rendered
-
 	async function displayActiveStaff() {
-		const outputContainer = document.getElementById(targetElementId);
+		const outputContainer = document.getElementById('current-staff-container');
 
-		// Do not proceed if the target container is not found in the DOM. This allows the script to be safely included on pages that do not have the container.
+		// Pass an error if the main HTML document doesn't have a current-staff-container element.
 		if (!outputContainer) {
-			console.warn(`HTML element with ID '${targetElementId}' not found. Script skipped.`);
+			console.error("Error, there is no element with current-staff-container in the HTML file.");
 			return;
 		}
 
+		// Attempt to get the JSON file with the staff data.
 		try {
-			const response = await fetch(staffSource);
+			const response = await fetch('scripts/staff.json');
+			
+			// Pass an error if there is a server error in retrieving the JSON file.
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
+			
 			const allStaffData = await response.json();
 
+			// Pass an error if the JSON file is malformed to both the console and the webpage.
 			if (!Array.isArray(allStaffData)) {
-				console.error("Error: Staff data is not an array as expected.");
-				outputContainer.innerHTML = '<p>Apologies, but there seems to be an issue with the staff information, we can not display the list at this time.</p>';
+				console.error("Error: JSON data is not a valid array for staff data.");
+				outputContainer.innerHTML = '<p>Error: Staff data is malformed.</p>';
 				return;
 			}
 
 			const activeStaff = allStaffData.filter(staff => staff.IsActive === true);
 
-			// This is the code for sorting
+			/*	Define position heirarchy, staff will be sorted in this order.
+				NOTE:  The text must be EXACTLY as seen in the JSON file.
+				Additionally, any titles added here won't be applied unless the JSON file is updated with staff members with the same title.
+				This script and the JSON file go hand-in-hand and adding additional titles to one necessitates adding those to the other.
+			*/
+			
 			const positionOrder = {
 				"President": 1,
 				"Vice President": 2,
 				"Party Entertainment": 3
 				// Add other positions here as needed, giving them a numerical order.
-				// Positions not listed will appear after sorted ones, in their original order.
 			};
 
+			// Actually sort the staff.
 			activeStaff.sort((a, b) => {
-				const posA = a.CurrentPosition;
-				const posB = b.CurrentPosition;
-				const orderA = positionOrder[posA] || Infinity; // Assign Infinity for unlisted positions
-				const orderB = positionOrder[posB] || Infinity;
-				
-				// If positions are the same or both are unlisted, sort by name as a secondary sort
-				if (orderA === orderB) {
-					return a.Name.localeCompare(b.Name);
-				}
-				
-				return orderA - orderB; // Sort by the numerical order
+				return orderA - orderB;
 			});
 
-			// Clear existing content in the container.
-			outputContainer.innerHTML = '';
+			//	If there are no active staff members, output that to the webpage. This should never happen in practice, though.  This would only occur if someone incorrectly modified the JSON file.
 
 			if (activeStaff.length === 0) {
 				outputContainer.innerHTML = '<p>The staff list is currently empty.</p>';
 				return;
 			}
 
-			// Construct the HTML for each active staff member
+			// Generate HTML for the active staff members.
 			activeStaff.forEach(staffMember => {
 				const staffHtml = `
 					<div class="divided_boxes">
@@ -74,16 +68,17 @@
 						</div>
 					</div>
 				`;
-				// Append the generated HTML
+				// Append generated HTML to page.
 				outputContainer.innerHTML += staffHtml;
 			});
 
+		// Handle any other miscellaneous errors that could arise.
 		} catch (error) {
 			console.error("Failed to load or display staff data:", error);
-			// Generic failure message for if something wonky happens.
 			outputContainer.innerHTML = '<p>Error loading staff information. Please try again later.</p>';
 		}
 	}
+
 	displayActiveStaff();
 
 })();

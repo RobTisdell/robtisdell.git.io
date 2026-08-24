@@ -1,39 +1,43 @@
 (function() {
 
-	const titleholderSource = 'scripts/titleholders.json';
-	const targetElementId = 'titleholder-container';
-
 	async function displayActiveTitleholder() {
-		const outputContainer = document.getElementById(targetElementId);
+		const titleHolderBox = document.getElementById('titleholder-container');
 
-		if (!outputContainer) {
+		// Pass an error if the main HTML document doesn't have a titleholder-container element.
+		if (!titleHolderBox) {
+			console.error("Error, there is no element with titleholder-container in the HTML file.")
 			return;
 		}
 
+		// Attempt to get the JSON file with the titleholder data.
 		try {
-			const response = await fetch(titleholderSource);
+			const response = await fetch('scripts/titleholders.json');
+			
+			// Pass an error if there is a server error in retrieving the JSON file.
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
+			
 			const allTitleholderData = await response.json();
 
+			// Pass an error if the JSON file is malformed to both the console and the webpage.
 			if (!Array.isArray(allTitleholderData)) {
-				console.error("Error: JSON data is not an array for titleholders.");
-				outputContainer.innerHTML = '<p>Error: Titleholder data is malformed.</p>';
+				console.error("Error: JSON data is not a valid array for titleholder data.");
+				titleHolderBox.innerHTML = '<p>Error: Titleholder data is malformed.</p>';
 				return;
 			}
 
+			// Filter the data so that the active titleholder is what is being worked with.  There should only ever be one of these.
 			const activeTitleholder = allTitleholderData.filter(titleHolder => titleHolder.Active === true);
 
-			// Clear existing content in the container before rendering new content.
-			outputContainer.innerHTML = '';
-
+			//	If there are no previous titleholders, output that to the webpage. This should never happen in practice, though.  This would only occur if someone incorrectly modified the JSON file.
+			
 			if (activeTitleholder.length === 0) {
-				outputContainer.innerHTML = '<p>No active titleholder found.</p>';
+				titleHolderBox.innerHTML = '<p>No active titleholder found.</p>';
 				return;
 			}
 
-			// Construct the HTML for the active titleholder(s)
+			// Generate HTML for the active titleholder.
 			activeTitleholder.forEach(titleHolder => {
 				const titleholderHtml = `
 					<div class="unified_box">
@@ -47,20 +51,17 @@
 						</div>
 					</div>
 				`;
-				// Append the generated HTML
-				outputContainer.innerHTML += titleholderHtml;
+				// Append generated HTML to page.
+				titleHolderBox.innerHTML += titleholderHtml;
 			});
 
+		// Handle any other miscellaneous errors that could arise.
 		} catch (error) {
 			console.error("Failed to load or display titleholder data:", error);
-			// Display error message inside the container
-			outputContainer.innerHTML = '<p>Error loading titleholder information. Please try again later.</p>';
+			titleHolderBox.innerHTML = '<p>Error loading titleholder information. Please try again later.</p>';
 		}
 	}
-
-	// Call the function to load and display titleholder when this script is executed.
-	// We no longer use DOMContentLoaded because content_loader.js executes this script
-	// as soon as it's injected and available in the DOM.
+	
 	displayActiveTitleholder();
 
-})(); // End of the IIFE
+})();
