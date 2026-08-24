@@ -44,7 +44,7 @@
 
 			// Actually sort the staff.
 			activeStaff.sort((a, b) => {
-				return orderA - orderB;
+				return positionOrder[a.CurrentPosition] - positionOrder[b.CurrentPosition];
 			});
 
 			//	If there are no active staff members, output that to the webpage. This should never happen in practice, though.  This would only occur if someone incorrectly modified the JSON file.
