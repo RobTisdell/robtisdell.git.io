@@ -1,5 +1,7 @@
 [
 
+
+
 {
 	"ID": "event_0",
 	"Name": "Super Heroes Night",
@@ -17,7 +19,7 @@
 		"End": "02:00"
 	},
 	"Days": [
-		{ "Date": "2026-07-27" }
+		{ "Date": "2026-08-28" }
 	],
 	"Timezone": { 
 	"Name": "America/New_York",
@@ -41,7 +43,7 @@
 		"End": "17:00"
 	},
 	"Days": [
-		{ "Date": "2026-05-23" }
+		{ "Date": "2026-09-05" }
 	],
 	"Timezone": { 
 	"Name": "America/New_York",
@@ -65,7 +67,7 @@
 		"End": "02:00"
 	},
 	"Days": [
-		{ "Date": "2026-05-30" }
+		{ "Date": "2026-09-12" }
 	],
 	"Timezone": { 
 	"Name": "America/New_York",
@@ -80,18 +82,18 @@
 	"Description": "Test event!",
 	"Host": "FLAG",
 	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
+			"Name": "Providence Eagle",
+			"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
+			"Address": "124 Snow St, Providence RI"
 	},
 	"DefaultTimes": {
 		"Start": "21:00",
 		"End": "02:00"
 	},
 	"Days": [
-		{ "Date": "2026-06-05" },
-		{ "Date": "2026-06-06" },
-		{ "Date": "2026-06-07",
+		{ "Date": "2026-09-19" },
+		{ "Date": "2026-09-20" },
+		{ "Date": "2026-09-21",
 		  "OverrideTimes": { "Start" : "11:00", "End" : "17:00" },
 		  "OverrideLocation": {
 			  "Name": "Dave's House",

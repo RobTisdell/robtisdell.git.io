@@ -4,7 +4,17 @@
 	"Name": "Leather Daddy 7",
 	"IsActive": false,
 	"CurrentPosition": null,
-	"PastPositions": ["President", "Party Entertainment"],
+	"YearStarted": null,
+	"PastPositions": [
+		{
+			"Title": "President",
+			"Years": ["2010-2012", "2014-2016"]
+		},
+		{
+			"Title": "Party Entertainment",
+			"Years": ["2012-2014"]
+		}
+	],
 	"Image": "dude7.jpg",
 	"Description": "Takes what he wants and makes it look good."
 },
@@ -13,7 +23,13 @@
 	"Name": "Leather Daddy 6",
 	"IsActive": false,
 	"CurrentPosition": null,
-	"PastPositions": ["President"],
+	"YearStarted": null,
+	"PastPositions": [
+		{
+			"Title": "President",
+			"Years": ["2008-2010", "2014-2016"]
+		}
+	],
 	"Image": "dude6.jpg",
 	"Description": "Won't take no for an answer"
 },
@@ -22,7 +38,13 @@
 	"Name": "Leather Daddy 5",
 	"IsActive": false,
 	"CurrentPosition": null,
-	"PastPositions": ["Vice President"],
+	"YearStarted": null,
+	"PastPositions": [
+		{
+			"Title": "Vice President",
+			"Years": ["2010-2012"]
+		}
+	],
 	"Image": "dude5.jpg",
 	"Description": "Want a smoke?"
 },
@@ -31,7 +53,17 @@
 	"Name": "Leather Daddy 4",
 	"IsActive": false,
 	"CurrentPosition": null,
-	"PastPositions": ["President", "Vice President"],
+	"YearStarted": null,
+	"PastPositions": [
+		{
+			"Title": "President",
+			"Years": ["2010-2012", "2014-2016"]
+		},
+		{
+			"Title": "Vice President",
+			"Years": ["2012-2014"]
+		}
+	],
 	"Image": "dude4.jpg",
 	"Description": "Loves being manhandled"
 },
@@ -40,7 +72,8 @@
 	"Name": "Leather Daddy 3",
 	"IsActive": true,
 	"CurrentPosition": "Party Entertainment",
-	"PastPositions": ["President", "Vice President"],
+	"YearStarted": 2015,
+	"PastPositions": null,
 	"Image": "dude3.jpg",
 	"Description": "No inhibitions, ready to serve or be served."
 },
@@ -50,7 +83,17 @@
 	"Name": "Leather Daddy 2",
 	"IsActive": true,
 	"CurrentPosition": "Vice President",
-	"PastPositions": ["President", "Party Entertainment"],
+	"YearStarted": 2016,
+	"PastPositions": [
+		{
+			"Title": "President",
+			"Years": ["2010-2012", "2014-2016"]
+		},
+		{
+			"Title": "Party Entertainment",
+			"Years": ["2012-2014"]
+		}
+	],
 	"Image": "dude2.jpg",
 	"Description": "Emotional support for the president."
 },
@@ -60,7 +103,17 @@
 	"Name": "Leather Daddy 1",
 	"IsActive": true,
 	"CurrentPosition": "President",
-	"PastPositions": ["Vice-President", "Party Entertainment"],
+	"YearStarted": 2017,
+	"PastPositions": [
+		{
+			"Title": "Vice President",
+			"Years": ["2010-2012"]
+		},
+		{
+			"Title": "Party Entertainment",
+			"Years": ["2012-2014"]
+		}
+	],
 	"Image": "dude1.jpg",
 	"Description": "Runs the organization, meetings, etc."
 }

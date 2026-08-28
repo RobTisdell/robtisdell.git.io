@@ -1,0 +1,88 @@
+[
+	{
+		"ID": "Event_3",
+		"Name": "FLAG Anniversary Weekend",
+		"Type": "Anniversary Weekend",
+		"Image": "red_event.jpg",
+		"Description": "Test event!",
+		"Host": "FLAG",
+		"Days": 3,
+		"StartDate": "2026-09-12",
+		"EndDate": "2026-09-14",
+		"Part": [
+			{
+				"PartID": "Event_3_Part_1",
+				"Day": 1,
+				"StartTime": "21:00",
+				"EndTime": "02:00",
+				"EventName": "Bar Night",
+				"Location": {
+					"Place": "Providence Eagle",
+					"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
+					"Address": "124 Snow St, Providence RI"
+					},
+				"Description": "Enjoy the party at the bar!"
+			},
+
+			{
+				"PartID": "Event_3_Part_2",
+				"Day": 2,
+				"StartTime": "12:00",
+				"EndTime": "15:00",
+				"EventName": "Board Game Gathering",
+				"Location": {
+					"Place": "Mariott Hotel",
+					"URL": "http://mariott.com",
+					"Address": "456 Not Real Road"
+				},
+			"Description": "Board game event!"
+			},
+
+			{
+				"PartID": "Event_3_Part_3",
+				"Day": 2,
+				"StartTime": "17:00",
+				"EndTime": "21:00",
+				"EventName": "Meet and Greet",
+				"Location": {
+					"Place": "Eagle's Nest",
+					"URL": "https://www.facebook.com/Providencehealthclub/",
+					"Address": "257 Weybosset St, Providence, RI, United States"
+				},
+				"Description": "Enjoy the party at the bar!"
+			},
+
+			{
+				"PartID": "Event_3_Part_4",
+				"Day": 2,
+				"StartTime": "22:00",
+				"EndTime": "02:00",
+				"EventName": "Mr. FLAG Contest",
+				"Location": {
+					"Place": "Providence Eagle",
+					"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
+					"Address": "124 Snow St, Providence RI"
+				},
+				"Description": "Official FLAG contest!"
+			},
+
+			{
+				"PartID": "Event_3_Part_5",
+				"Day": 3,
+				"StartTime": "12:00",
+				"EndTime": "18:00",
+				"EventName": "FLAG Annual Cookout",
+				"Location": {
+					"Place": "Dave's House",
+					"URL": "None",
+					"Address" : "123 Fake Road, Nowhere KY"
+			},
+				"Description": "FLAG Annual cookout!"
+			}
+		],
+		"Timezone": { 
+			"Name": "America/New_York",
+			"UTCOffset": "-05:00"
+		}
+	}
+]
