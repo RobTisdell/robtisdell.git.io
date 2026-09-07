@@ -37,173 +37,160 @@
 		return `${hour}:${minute.toString().padStart(2, '0')} ${ampm}`;
 	}
 
+	// Helper function to display location and a link if included.
+	
+	function displayLocation(locationData, linkData) {
+		if (locationData != 'Private' && linkData === 'None' || ''){
+			return locationData
+		}
+		else if (locationData === 'Private') {
+			return 'This event is hosted at a private location.  Please contact Jim Maciel for the address.'
+		}
+		else {
+			return `<a href="${linkData}">${locationData}</a>`
+		}
+	}
+
+// ------------------------------------------------------------
+	// Hierarchical Schedule Builder & Renderer
 	// ------------------------------------------------------------
-	// Build schedule from Option 3 JSON
-	// ------------------------------------------------------------
 
-	function buildDailySchedule(event) {
-		const schedule = [];
+	function renderComplexSchedule(event) {
+		const parts = event.Part || [];
+		const startDate = event.StartDate ? parseLocalDate(event.StartDate) : new Date();
+		const totalDays = event.Days || 1;
 
-		const sortedDays = [...event.Days].sort(
-			(a, b) => parseLocalDate(a.Date) - parseLocalDate(b.Date)
-		);
-
-		sortedDays.forEach((day, index) => {
-			const times = day.OverrideTimes || event.DefaultTimes;
-			const location = day.OverrideLocation || event.DefaultLocation;
-
-			schedule.push({
-				dayNumber: index + 1,
-				date: day.Date,
-				startTime: times.Start,
-				endTime: times.End,
-				location: location.Name,
-				locationURL: location.URL,
-				locationAddress: location.Address
+		// Group parts by Day number
+		const daysMap = {};
+		parts.forEach((part, index) => {
+			const dayNum = part.Day || 1;
+			if (!daysMap[dayNum]) {
+				daysMap[dayNum] = [];
+			}
+			
+			// Calculate date for this day
+			const partDate = new Date(startDate);
+			partDate.setDate(startDate.getDate() + (dayNum - 1));
+			
+			daysMap[dayNum].push({
+				partId: part.PartID || `part_${index}`,
+				eventName: part.EventName || event.Name,
+				startTime: part.StartTime || 'TBD',
+				endTime: part.EndTime || 'TBD',
+				location: part.Location?.Place || event.DefaultLocation?.Name || 'TBD',
+				locationURL: part.Location?.URL || 'None',
+				locationAddress: part.Location?.Address || '',
+				description: part.Description || event.Description,
+				dateString: formatDate(partDate.toISOString().split('T')[0])
 			});
 		});
 
-		return schedule;
-	}
+		const dayKeys = Object.keys(daysMap);
+		const isMultiDay = dayKeys.length > 1;
 
-	function groupConsecutiveDays(schedule) {
-		const groups = [];
-		let current = null;
+		let html = `<div class="schedule-container">`;
 
-		schedule.forEach(day => {
-			const same =
-				current &&
-				current.location === day.location &&
-				current.locationAddress === day.locationAddress &&
-				current.locationURL === day.locationURL &&
-				current.startTime === day.startTime &&
-				current.endTime === day.endTime;
+		dayKeys.forEach((dayNum, dayIndex) => {
+			const dayEvents = daysMap[dayNum];
+			const sampleDate = dayEvents[0].dateString;
 
-			if (!current || !same) {
-				current = {
-					startDay: day.dayNumber,
-					endDay: day.dayNumber,
-					location: day.location,
-					locationURL: day.locationURL,
-					locationAddress: day.locationAddress,
-					startTime: day.startTime,
-					endTime: day.endTime
-				};
-				groups.push(current);
-			} else {
-				current.endDay = day.dayNumber;
+			// If multi-day, use collapsible <details>. If single day with multiple events, keep it open/static.
+			const wrapperTag = isMultiDay ? 'details' : 'div';
+			const openAttr = (dayIndex === 0 && isMultiDay) ? 'open' : ''; // Open first day by default
+
+			if (isMultiDay) {
+				html += `<details class="modal-day-group" ${openAttr}>`;
+				html += `<summary class="modal-day-header"><strong>Day ${dayNum}</strong> (${sampleDate})</summary>`;
 			}
+			else {
+				html += `<div class="modal-day-group">`;
+				html += `<p class="modal-day-header"><strong>Day ${dayNum}:</strong> ${sampleDate}</p>`;
+			}
+
+			html += `<div class="modal-subevents-list">`;
+
+			dayEvents.forEach((ev, evIndex) => {
+				html += `
+					<div class="sub-event-block" data-part-id="${ev.partId}">
+						<div class="sub-event-summary">
+							<span class="sub-event-name">${ev.eventName}</span></span>
+						</div>
+						<div class="sub-event-details" style="display: none;">
+							<p><strong>Where:</strong> ${ev.locationURL !== 'None' ? `<a href="${ev.locationURL}" target="_blank" rel="noopener noreferrer">${ev.location}</a>` : ev.location}</p>
+							${ev.locationAddress && ev.locationAddress !== 'None' ? `<p><strong>Address:</strong> <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.locationAddress)}" target="_blank" rel="noopener noreferrer">${ev.locationAddress}</a></p>` : ''}
+							<p><strong>Details:</strong> ${ev.description}</p>
+						</div>
+					</div>
+				`;
+			});
+
+			html += `</div>`; // close subevents-list
+			html += `</${wrapperTag}>`; // close details or div
 		});
 
-		return groups;
+		html += `</div>`;
+		return html;
 	}
 
-	// ------------------------------------------------------------
-	// Rendering Functions (now return <p> blocks)
-	// ------------------------------------------------------------
+window.openEventModal = function (eventData) {
+		const parts = eventData.Part || [];
+		
+		// Fallback check: if it's a legacy single-event structure without parts
+		const isSimpleEvent = parts.length <= 1 && (!eventData.Days || eventData.Days === 1);
 
-	function renderDateTime(schedule) {
 
-		if (schedule.length === 1) {
-			const d = schedule[0];
-			return `
-				<p><strong>When:</strong> 
-					${formatDate(d.date)}, ${formatTime(d.startTime)} – ${formatTime(d.endTime)}
-				</p>
-			`;
+		// This generates a basic list if the event in question is exactly 1 day and exactly 1 event, there's no need to complicate this bit.
+		if (!eventData.Days || eventData.Days && eventData.Part.length === 1) {
+		ModalContent.innerHTML = `
+			<span class = "close-button">&times;</span>
+			<div class="contentist">
+				<div class="smalleventcolumn">
+					<img src="img/events/${eventData.Image || 'default.png'}">
+				</div>
+				<ul>
+					<li><strong>Event:</strong> ${eventData.Name}</li>
+					<li><strong>Hosted by:</strong> ${eventData.Host}</li>
+					<li><strong>Date:</strong> ${eventData.StartDate}</li>
+					<li><strong>Time:</strong> ${formatTime(eventData.Part[0].StartTime)} - ${formatTime(eventData.Part[0].EndTime)}</li>
+					<li><strong>Where:</strong> ${displayLocation()}</li>
+
+			`
 		}
-
-		let html = `<p><strong>When:</strong></p>`;
-
-		schedule.forEach(day => {
-			html += `
-				<p class="modal-day-block">
-					<strong>Day ${day.dayNumber}:</strong> 
-					${formatDate(day.date)}, 
-					${formatTime(day.startTime)} – ${formatTime(day.endTime)}
-				</p>
-			`;
-		});
-
-		return html;
-	}
-
-	function renderLocation(groups, scheduleLength) {
-		let html = '';
-
-		groups.forEach((group, index) => {
-
-			const dayLabel =
-				scheduleLength === 1
-					? ''
-					: group.startDay === group.endDay
-						? `Day ${group.startDay}`
-						: `Days ${group.startDay}–${group.endDay}`;
-
-			let locName = group.location || 'TBD';
-			if (group.locationURL && group.locationURL !== 'None') {
-				locName = `<a href="${group.locationURL}" target="_blank" rel="noopener noreferrer">${locName}</a>`;
-			}
-
-			let mapLink = 'Address TBD';
-			if (group.locationAddress && group.locationAddress.trim() !== '') {
-				const encoded = encodeURIComponent(group.locationAddress);
-				const mapURL = `https://www.google.com/maps/search/?api=1&query=${encoded}`;
-				mapLink = `<a href="${mapURL}" target="_blank" rel="noopener noreferrer">${group.locationAddress}</a>`;
-			}
-
-			if (index === 0) {
-				html += `
-					<p class="modal-location-block">
-						<strong>Where:</strong>
-						${dayLabel ? `${dayLabel}:` : ''}
-						${locName} — ${mapLink}
-					</p>
-				`;
-			} else {
-				html += `
-					<p class="modal-location-block">
-						<strong>${dayLabel ? dayLabel + ':' : ''}</strong>
-						${locName} — ${mapLink}
-					</p>
-				`;
-			}
-		});
-
-		return html;
-	}
-
-	// ------------------------------------------------------------
-	// Main Calendar Modal Function
-	// ------------------------------------------------------------
-
-	window.openEventModal = function (eventData) {
-
-		const schedule = buildDailySchedule(eventData);
-		const groups = groupConsecutiveDays(schedule);
-
+		else {
 		ModalContent.innerHTML = `
 			<span class="close-button">&times;</span>
-
-			<div class="smalleventcolumn">
-				<img src="img/events/${eventData.Image || 'default.png'}">
-			</div>
-
-			<p><strong>Event:</strong> ${eventData.Name}</p>
-			<p><strong>Hosted By:</strong> ${eventData.Host}</p>
-
-			${renderLocation(groups, schedule.length)}
-			${renderDateTime(schedule)}
-
-			<p><strong>What:</strong> ${eventData.Description}</p>
-		`;
+			<div class = "contentlist">
+		   		<div class="smalleventcolumn">
+					<img src="img/events/${eventData.Image || 'default.png'}">
+				</div>
+				<p><strong>Event:</strong> ${eventData.Name}</p>
+				<p><strong>Hosted by:</strong> ${eventData.Host}</p>
+				${renderComplexSchedule(eventData)}
+			</dic>
+			`;
+		}
+		
 
 		EventModal.style.display = 'flex';
 	};
 
-	// ------------------------------------------------------------
-	// Image-only modal (titleholders)
-	// ------------------------------------------------------------
+
+	ModalContent.addEventListener('click', function (event) {
+		const subEventBlock = event.target.closest('.sub-event-block');
+		if (!subEventBlock) return;
+
+		// Prevent toggling if they clicked an actual link inside the details
+		if (event.target.tagName === 'A') return;
+
+		const detailsPane = subEventBlock.querySelector('.sub-event-details');
+		if (detailsPane) {
+			const isVisible = detailsPane.style.display === 'block';
+			detailsPane.style.display = isVisible ? 'none' : 'block';
+			subEventBlock.classList.toggle('active', !isVisible);
+		}
+	});
+
+	// Opens Modal window for titleholders.  Simply displays the full-res version of the display image.
 
 	window.openImageModal = function (imgPath) {
 		ModalContent.innerHTML = `
@@ -215,26 +202,26 @@
 		EventModal.style.display = 'flex';
 	};
 
-	// ------------------------------------------------------------
-	// Delegated click handler for titleholder thumbnails
-	// ------------------------------------------------------------
+	// Handles the display case for titleholders.
 
-	document.addEventListener('click', function (e) {
-		const link = e.target.closest('.event-link');
+	document.addEventListener('click', function (event) {
+		const link = event.target.closest('.event-link');
+		
+		// Failure case.  Should never happen, but if there's no link data...
 		if (!link) return;
 
-		e.preventDefault();
+		event.preventDefault();
 
+		// Check for the image path.  If it doesn't exist, this is a failure case.
 		const img = link.querySelector('img');
 		if (!img) return;
 
+		// Does the actual replacing of the thumbnail directory to the FullSize directory.
 		const fullImagePath = img.src.replace('/Thumbnails/', '/FullSize/');
 		openImageModal(fullImagePath);
 	});
 
-	// ------------------------------------------------------------
-	// Close Modal
-	// ------------------------------------------------------------
+	// Closes the Modal window in all cases.
 
 	function closeModal() {
 		EventModal.style.display = 'none';

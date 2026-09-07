@@ -1,19 +1,28 @@
 .event_boxes {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 	border: 1px solid #ddd;
 	padding: 2vh clamp(2vw, 1vw + 2rem, 10vw);
 	margin-bottom: clamp(2vh, 2rem, 4vh);
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 	background-color: rgba(var(--content-box-background-color),0.667);
-	object-fit: contain;
 }
 
 .event_images {
+	width: 100%;
 	flex: 0 0 clamp(8rem, 12vw, 20rem);
 	height: clamp(8rem, 12vw, 20rem);
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.event_images img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .wrapper .content article .event_boxes ul li {

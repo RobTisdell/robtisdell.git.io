@@ -1,265 +1,231 @@
-// scripts/upcoming_events.js
+(function() {
 
-(function() { // Start of IIFE for scope isolation
+	// Support functions for the main functions.  This one turns military time to 12-hour notation.
 
-	const eventsListContainerId = 'Upcoming_Events_List';
-	const introTextContainerId = 'Upcoming_Events_Intro';
-	const eventsJsonSource = 'scripts/events.json';
+	function formatTime(timeData) {
+	const [hourInput, minuteInput] = timeData.split(':')
+	let hourOutput = parseInt(hourInput, 10)
+	const minuteOutput = parseInt(minuteInput, 10)
 
-	// Parse YYYY-MM-DD as a local date (avoids UTC shift issues)
-	function parseLocalDate(dateString) {
-		const [y, m, d] = dateString.split('-');
-		return new Date(Number(y), Number(m) - 1, Number(d));
+	if (Number.isNaN(hourOutput) || Number.isNaN(minuteOutput) || hourInput > 23 || minuteInput > 59) {
+		return 'Time data is malformed';
 	}
+
+		if (hourOutput <= 12) {
+			isAMorPM = 'AM'
+		}
+		if (hourOutput > 12 && hourOutput <= 23) {
+			isAMorPM = 'PM'
+		}
+
+		if (hourOutput > 0) {
+			hourOutput = hourOutput % 12
+		}
+		if (hourOutput === 0) {
+			hourOutput = 12
+		}
+
+	return `${hourOutput}:${minuteOutput.toString().padStart(2, '0')} ${isAMorPM}`
+	}
+
+	// This one takes the YYYY-MM-DD notation from JSON and turns it into a Javascript date object.
+
+	function parseLocalDate(dateString) {
+		const [year, month, day] = dateString.split('-')
+		return new Date(Number(year), Number(month) - 1, Number(day))
+	}
+
+	// This one takes the Javascript date object and turns it into nicer textual data.
 
 	function formatDate(dateString) {
-		const date = parseLocalDate(dateString);
-		return date.toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric'
-		});
+		const date = parseLocalDate(dateString)
+
+		const year = date.getFullYear()
+		const month = date.toLocaleString(`en-US`, {month: 'long'})
+		const day = date.getDate()
+
+		if (day === 11 || day === 12 || day === 13) {
+			ordinal = 'th'
+		}
+		else {
+			switch(day % 10) {
+				case 1:
+					ordinal = 'st'
+					break
+				case 2:
+					ordinal = 'nd'
+					break
+				case 3:
+					ordinal = 'rd'
+					break
+				default:
+					ordinal = 'th'
+			}
+		}
+		return `${month} ${day}${ordinal}, ${year}`
 	}
 
-	// NEW: weekday formatter
-	function formatWeekday(dateString) {
-		const date = parseLocalDate(dateString);
-		return date.toLocaleDateString('en-US', { weekday: 'long' });
+	// Helper function to display location and a link if included.
+	
+	function displayLocation(locationData, linkData) {
+		if (locationData != 'Private' && linkData === 'None' || ''){
+			return locationData
+		}
+		else if (locationData === 'Private') {
+			return 'This event is hosted at a private location.  Please contact Jim Maciel for the address.'
+		}
+		else {
+			return `<a href="${linkData}">${locationData}</a>`
+		}
 	}
 
-	function formatTime(timeString) {
-		const [hourStr, minuteStr] = timeString.split(':');
-		let hour = parseInt(hourStr, 10);
-		const minute = parseInt(minuteStr, 10);
+	// Helper function to turn address data to a link.  This *could* be done as an if statement in the code but honestly that would just create some clutter.
 
-		if (Number.isNaN(hour) || Number.isNaN(minute)) {
-			return 'TBD';
+	function makeMapLink(addressData) {
+		if (addressData != 'None') {
+			linkData = encodeURIComponent(addressData)
+			return ` - <a href="https://www.google.com/maps/search/?api=1&query=${linkData}" target="_blank" rel="noopener noreferrer">${addressData} <i class="fa fa-map"></i></a>`
+		}
+		else {
+			return ''
+		}
+	}
+
+	async function displayUpcomingEvents() {
+
+		const outputContainer = document.getElementById('Upcoming_Events_List')
+		
+		// Pass an error if the main HTML document doesn't have a former-staff-container element.
+		if (!outputContainer) {
+			console.error("Error, there is no element with Upcoming_Events_List in the HTML file.")
+			return
 		}
 
-		const ampm = hour >= 12 ? 'PM' : 'AM';
-		hour = hour % 12;
-		hour = hour === 0 ? 12 : hour;
-		return `${hour}:${minute.toString().padStart(2, '0')} ${ampm}`;
-	}
-
-	// Build normalized schedule from Option 3 JSON
-	function buildDailySchedule(event) {
-		const schedule = [];
-
-		// Sort days chronologically using local parsing
-		const sortedDays = [...event.Days].sort((a, b) =>
-			parseLocalDate(a.Date) - parseLocalDate(b.Date)
-		);
-
-		sortedDays.forEach((day, index) => {
-			const times = day.OverrideTimes || event.DefaultTimes;
-			const location = day.OverrideLocation || event.DefaultLocation;
-
-			schedule.push({
-				dayNumber: index + 1,
-				date: day.Date,
-				startTime: times.Start,
-				endTime: times.End,
-				location: location.Name,
-				locationURL: location.URL,
-				locationAddress: location.Address
-			});
-		});
-
-		return schedule;
-	}
-
-	// Group consecutive days with identical details
-	function groupConsecutiveDays(schedule) {
-		const groups = [];
-		let current = null;
-
-		schedule.forEach(day => {
-			const sameAsCurrent =
-				current &&
-				current.location === day.location &&
-				current.locationAddress === day.locationAddress &&
-				current.locationURL === day.locationURL &&
-				current.startTime === day.startTime &&
-				current.endTime === day.endTime;
-
-			if (!current || !sameAsCurrent) {
-				current = {
-					startDay: day.dayNumber,
-					endDay: day.dayNumber,
-					location: day.location,
-					locationAddress: day.locationAddress,
-					locationURL: day.locationURL,
-					startTime: day.startTime,
-					endTime: day.endTime
-				};
-				groups.push(current);
-			} else {
-				current.endDay = day.dayNumber;
-			}
-		});
-
-		return groups;
-	}
-
-	function createEventHtml(event) {
-		// Use cached schedule if present, otherwise build and cache
-		const schedule = event._schedule || buildDailySchedule(event);
-		event._schedule = schedule;
-
-		const groups = groupConsecutiveDays(schedule);
-
-		// Correct date range using local parsing
-		const startDateObj = parseLocalDate(schedule[0].date);
-		const endDateObj = parseLocalDate(schedule[schedule.length - 1].date);
-
-		let dateDisplay;
-		let dateLabel = 'Date';
-
-		// UPDATED: include weekday names
-		if (startDateObj.getTime() === endDateObj.getTime()) {
-			const weekday = formatWeekday(schedule[0].date);
-			dateDisplay = `${weekday}, ${formatDate(schedule[0].date)}`;
-		} else {
-			const startWeekday = formatWeekday(schedule[0].date);
-			const endWeekday = formatWeekday(schedule[schedule.length - 1].date);
-			dateDisplay = `${startWeekday}, ${formatDate(schedule[0].date)} – ${endWeekday}, ${formatDate(schedule[schedule.length - 1].date)}`;
-			dateLabel = 'Dates';
-		}
-
-		// Build grouped HTML blocks: Day(s) → Location → Time
-		let groupedHtml = '';
-
-		groups.forEach(group => {
-			// Determine day label (omit for single-day events)
-			let dayLabel = '';
-			if (schedule.length > 1) {
-				dayLabel =
-					group.startDay === group.endDay
-						? `<li><strong>Day ${group.startDay}:</strong></li>`
-						: `<li><strong>Days ${group.startDay}–${group.endDay}:</strong></li>`;
-			}
-
-			// Location name (linked or plain)
-			let loc;
-			if (group.locationURL && group.locationURL !== 'None') {
-				loc = `<a href="${group.locationURL}" target="_blank" rel="noopener noreferrer">${group.location}</a>`;
-			} else {
-				loc = group.location || 'TBD';
-			}
-
-			// Map link
-			let mapLink = 'Address TBD';
-			if (group.locationAddress && group.locationAddress.trim() !== '') {
-				const encoded = encodeURIComponent(group.locationAddress);
-				const mapURL = `https://www.google.com/maps/search/?api=1&query=${encoded}`;
-				mapLink = `<a href="${mapURL}" target="_blank" rel="noopener noreferrer">${group.locationAddress} <i class="fa fa-map"></i></a>`;
-			}
-
-			groupedHtml += `
-				${dayLabel}
-				<li><strong>Location:</strong> ${loc} — ${mapLink}</li>
-				<li><strong>Time:</strong> ${formatTime(group.startTime)} - ${formatTime(group.endTime)}</li>
-			`;
-		});
-
-		return `
-			<div class="event_boxes" id="event-${event.ID}">
-				<div class="event_images"><img src="img/events/${event.Image}" alt="${event.Name} image"></div>
-				<ul>
-					<li><strong>Type of event:</strong> ${event.Type}</li>
-					<li><strong>${dateLabel}:</strong> ${dateDisplay}</li>
-					${groupedHtml}
-					<li>${event.Description}</li>
-				</ul>
-			</div>
-		`;
-	}
-
-	async function loadUpcomingEvents() {
-		const eventsListContainer = document.getElementById(eventsListContainerId);
-		const introTextContainer = document.getElementById(introTextContainerId);
-
-		if (!eventsListContainer || !introTextContainer) {
-			return;
-		}
-
+		// Attempt to get the JSON file with the event data.
 		try {
-			const response = await fetch(eventsJsonSource);
+			const response = await fetch('scripts/events.json')
+
+			// Pass an error if there is a server error in retrieving the JSON file.
 			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`);
+				throw new Error(`HTTP error! status: ${response.status}`)
 			}
-			const events = await response.json();
+			
+			const eventData = await response.json();
 
-			if (!Array.isArray(events)) {
-				console.error("Error: Events data is not an array.");
-				eventsListContainer.innerHTML = '<p>Error: Events data is malformed.</p>';
-				introTextContainer.innerHTML = '<p>We are currently experiencing issues loading event information. Please check back later.</p>';
-				return;
+			// Pass an error if the JSON file is malformed to both the console and the webpage.
+			if (!Array.isArray(eventData)) {
+				console.error("Error: JSON data is not a valid array for event data.")
+				outputContainer.innerHTML = '<p>Error: Event  is malformed.</p>'
+				return
 			}
 
-			const today = new Date();
-			today.setHours(0, 0, 0, 0);
+			/* Unlike other scripts, here we need to actually process data from the dates before we can filter anything.
+			 Since we want events showing up 31 days out from the current date, we need to convert the date strings in the JSON file to a readable format and compare them to the current date. */
 
-			const thirtyOneDaysFromNow = new Date(today);
-			thirtyOneDaysFromNow.setDate(today.getDate() + 31);
-			thirtyOneDaysFromNow.setHours(23, 59, 59, 999);
+			const currentDate = new Date()
+			const targetDate = new Date(currentDate)
+			targetDate.setDate(currentDate.getDate() + 31)
 
-			let filteredEvents = [];
+			// Now we can actually filter.
 
-			events.forEach(event => {
-				// Build and cache schedule once per event
-				const schedule = buildDailySchedule(event);
-				event._schedule = schedule;
+			const upcomingEvents = eventData.filter(event => {
+				const eventDate = new Date(event.StartDate)
+				return eventDate >= currentDate && eventDate <= targetDate
+			})
 
-				const eventStart = parseLocalDate(schedule[0].date);
-				const eventEnd = parseLocalDate(schedule[schedule.length - 1].date);
+			// If we don't have an upcoming event, then look for the nearest event in the future and display that instead.
+			if (upcomingEvents.length === 0) {
+				
+				const futureEvents = eventData.filter(event => new Date(event.StartDate) > currentDate)
+				futureEvents.sort((a, b) => new Date(a.StartDate) - new Date(b.StartDate))
+				upcomingEvents[0] = futureEvents[0]
+			}
 
-				eventStart.setHours(0, 0, 0, 0);
-				eventEnd.setHours(23, 59, 59, 999);
+			// Now actually sort the events by date.
 
-				const isCurrentlyOccurring =
-					today.getTime() >= eventStart.getTime() &&
-					today.getTime() <= eventEnd.getTime();
+			upcomingEvents.sort((a, b) => new Date(a.StartDate) - new Date(b.StartDate))
 
-				const startsWithin31Days =
-					eventStart.getTime() >= today.getTime() &&
-					eventStart.getTime() <= thirtyOneDaysFromNow.getTime();
 
-				if (isCurrentlyOccurring || startsWithin31Days) {
-					filteredEvents.push(event);
+			// We need this one variable to allow the various iterations to append to.
+			
+			let shellHTML = ""
+
+			// This goes through each event by sifting through what events have multiple days, single days, multiple parts, or single parts and generates HTML based on what's what.  Anything that has more than one part and/or days has some logic handling for formatting.
+
+			upcomingEvents.forEach(event => {
+				const eventParts = event.Part
+				let eventHTML = ""
+				let checkDayLogo = 1
+
+				// If condition that checks if there are more than 1 parts to an event, does some logic parsing for formatting, and passes off the parts of the event HTML that are different for multi-part events.
+
+				if (eventParts.length > 1) {
+
+					eventParts.forEach((Part, index) => {
+
+						const eventPartNumber = index + 1
+						
+						// Simple if statement that makes sure that "Day 1, Day 2" etc are only added one time for each day of events.
+
+							if (checkDayLogo === Part.Day) { 
+								eventHTML += `<li><strong>Day ${Part.Day}</strong></li>`
+								checkDayLogo++
+							}
+
+						// Generate HTML for each sub-event within an event.
+
+						eventHTML += `
+							<li><strong>Event ${eventPartNumber} - ${Part.EventName}</strong></li>
+							<li><strong>Location:</strong> ${displayLocation(Part.Location.Place, Part.Location.URL)}${makeMapLink(Part.Location.Address)}</li>
+							<li><strong>Time:</strong> ${formatTime(Part.StartTime)} - ${formatTime(Part.EndTime)}</li>
+							<li>${Part.Description}</li>
+							`
+				})
 				}
-			});
 
-			// Sort by start date using cached schedule
-			filteredEvents.sort((a, b) => {
-				const aStart = parseLocalDate(a._schedule[0].date);
-				const bStart = parseLocalDate(b._schedule[0].date);
-				return aStart - bStart;
-			});
+				// If condition that checks if there are is just 1 part to an event (Or day), and passes off the parts of the event HTML that applies to a single event.
 
-			let upcomingEventsHtml = '';
-			let introText = '';
+				if (eventParts.length === 1) {
 
-			if (filteredEvents.length === 0) {
-				introText = '<p>We have no events planned for the immediate future. Check out our <a href="calendar.html">calendar</a> to see what we have planned later in the year!</p>';
-			} else {
-				introText = '<p>These are the upcoming events for the month. For events further out, check out our <a href="calendar.html">calendar</a>!</p>';
-				filteredEvents.forEach(event => {
-					upcomingEventsHtml += createEventHtml(event);
-				});
-			}
+					const Part = eventParts[0]
 
-			introTextContainer.innerHTML = introText;
-			eventsListContainer.innerHTML = upcomingEventsHtml;
+					eventHTML += `
+						<li><strong>Type of event:</strong> ${Part.EventName}</li>
+						<li><strong>Location:</strong> ${displayLocation(Part.Location.Place, Part.Location.URL)}${makeMapLink(Part.Location.Address)}</li>
+						<li><strong>Time:</strong> ${formatTime(Part.StartTime)} - ${formatTime(Part.EndTime)}</li>
+                        <li>${Part.Description}</li>
+					`
+				}
 
-		} catch (error) {
-			console.error('Error fetching or processing events:', error);
-			eventsListContainer.innerHTML = '<p>Sorry, there was an error loading the events. Please try again later.</p>';
-			introTextContainer.innerHTML = '<p>We are currently experiencing issues loading event information. Please check back later.</p>';
+                // Generates simple HTML around the sub-event lists.
+
+					shellHTML += `
+					<div class="event_boxes" id="event-${event.ID}">
+					<div class="event_images"><img src="img/events/${event.Image}" alt="${event.Name} image"></div>
+					<ul>`
+						if (event.Days === 1) {
+							shellHTML += `<li><strong>Date:</strong> ${formatDate(event.StartDate)}</li>`
+						}
+
+						if (event.Days > 1) {
+							shellHTML += `<li><strong>Dates :</strong> ${formatDate(event.StartDate)} - ${formatDate(event.EndDate)}</li>`
+						}
+					shellHTML += `
+							${eventHTML}
+							</ul>
+					</div>`
+			})
+
+			outputContainer.innerHTML += shellHTML;
+		}
+
+		catch (error) {
+			console.error("Failed to load or display upcoming events:", error)
+			// Display a user-friendly error message on the page
+			outputContainer.innerHTML = '<p>Error loading event information. Please try again later.</p>'
 		}
 	}
 
-	loadUpcomingEvents();
+	displayUpcomingEvents()
 
-})(); // End of IIFE
+})();

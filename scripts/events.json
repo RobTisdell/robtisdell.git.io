@@ -1,6 +1,89 @@
 [
 
+	{
+		"ID": "Event_3",
+		"Name": "FLAG Anniversary Weekend",
+		"Type": "Anniversary Weekend",
+		"Image": "red_event.jpg",
+		"Description": "Test event!",
+		"Host": "FLAG",
+		"HostURL": "",
+		"Days": 3,
+		"StartDate": "2026-09-11",
+		"EndDate": "2026-09-13",
+		"Part": [
+			{
+				"PartID": "Event_3_Part_1",
+				"Day": 1,
+				"StartTime": "21:00",
+				"EndTime": "02:00",
+				"EventName": "Bar Night",
+				"Location": {
+					"Place": "Providence Eagle",
+					"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
+					"Address": "124 Snow St, Providence, RI"
+					},
+				"Description": "Enjoy the party at the bar!"
+			},
 
+			{
+				"PartID": "Event_3_Part_2",
+				"Day": 2,
+				"StartTime": "12:00",
+				"EndTime": "15:00",
+				"EventName": "Board Game Gathering",
+				"Location": {
+					"Place": "Mariott Hotel",
+					"URL": "http://mariott.com",
+					"Address": "456 Not Real Road, Nowhere, AK"
+				},
+			"Description": "Board game event!"
+			},
+
+			{
+				"PartID": "Event_3_Part_3",
+				"Day": 2,
+				"StartTime": "17:00",
+				"EndTime": "21:00",
+				"EventName": "Meet and Greet",
+				"Location": {
+					"Place": "Eagle's Nest",
+					"URL": "https://www.facebook.com/Providencehealthclub/",
+					"Address": "257 Weybosset St, Providence, RI"
+				},
+				"Description": "Enjoy the party at the bar!"
+			},
+
+			{
+				"PartID": "Event_3_Part_4",
+				"Day": 2,
+				"StartTime": "22:00",
+				"EndTime": "02:00",
+				"EventName": "Mr. FLAG Contest",
+				"Location": {
+					"Place": "Providence Eagle",
+					"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
+					"Address": "124 Snow St, Providence, RI"
+				},
+				"Description": "Official FLAG contest!"
+			},
+
+			{
+				"PartID": "Event_3_Part_5",
+				"Day": 3,
+				"StartTime": "12:00",
+				"EndTime": "18:00",
+				"EventName": "FLAG Annual Cookout",
+				"Location": {
+					"Place": "Private",
+					"URL": "None",
+					"Address" : "None"
+					},
+				"Description": "FLAG Annual cookout!"
+			}
+		],
+		"Timezone": "America/New_York"
+	},
 
 {
 	"ID": "event_0",
@@ -9,21 +92,21 @@
 	"Image": "2025_March_22.jpg",
 	"Description": "FLAG meetup and social event! Bring some snacks and games!",
 	"Host": "FLAG",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-08-28" }
+	"Days": 1,
+	"StartDate": "2026-09-05",
+	"Part": [
+		{
+			"PartID": "Event_0_Part_1",
+			"StartTime": "20:00",
+			"EndTime": "02:00",
+			"Location": {
+				"Place": "Providence Eagle",
+				"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
+				"Address": "124 Snow St, Providence RI"
+				}
+		}
 	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
+	"Timezone":  "America/New_York"
 },
 
 {
@@ -33,6 +116,7 @@
 	"Image": "2025_April_13.jpg",
 	"Description": "FLAG meetup and social event! Bring some snacks and games!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Eagle's Nest",
 		"URL": "https://www.facebook.com/Providencehealthclub/",
@@ -57,6 +141,7 @@
 	"Image": "2025_May_10.jpg",
 	"Description": "Are you virtuous or are you wicked? Come bare your soul at our Angels and Demons night!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -81,6 +166,7 @@
 	"Image": "red_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 			"Name": "Providence Eagle",
 			"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -114,6 +200,7 @@
 	"Image": "orange_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -138,6 +225,7 @@
 	"Image": "yellow_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -162,6 +250,7 @@
 	"Image": "green_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -186,6 +275,7 @@
 	"Image": "turquoise_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -210,6 +300,7 @@
 	"Image": "blue_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -234,6 +325,7 @@
 	"Image": "purple_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -258,6 +350,7 @@
 	"Image": "magenta_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -282,6 +375,7 @@
 	"Image": "red_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -306,6 +400,7 @@
 	"Image": "orange_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -330,6 +425,7 @@
 	"Image": "yellow_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -354,6 +450,7 @@
 	"Image": "green_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -378,6 +475,7 @@
 	"Image": "turquoise_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -402,6 +500,7 @@
 	"Image": "blue_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -426,6 +525,7 @@
 	"Image": "purple_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
@@ -450,6 +550,7 @@
 	"Image": "magenta_event.jpg",
 	"Description": "Test event!",
 	"Host": "FLAG",
+	"HostURL": "",
 	"DefaultLocation": {
 		"Name": "Providence Eagle",
 		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
