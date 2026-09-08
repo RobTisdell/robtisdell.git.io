@@ -100,21 +100,12 @@
 
 {
 	"ID": "staff_0",
-	"Name": "Leather Daddy 1",
+	"Name": "Jim Maciel",
 	"IsActive": true,
 	"CurrentPosition": "President",
-	"YearStarted": 2017,
-	"PastPositions": [
-		{
-			"Title": "Vice President",
-			"Years": ["2010-2012"]
-		},
-		{
-			"Title": "Party Entertainment",
-			"Years": ["2012-2014"]
-		}
-	],
-	"Image": "dude1.jpg",
+	"YearStarted": 1991,
+	"PastPositions": null,
+	"Image": "JimMaciel.jpg",
 	"Description": "Runs the organization, meetings, etc."
 }
 ]
