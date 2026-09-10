@@ -69,33 +69,24 @@
 },
 {
 	"ID": "staff_2",
-	"Name": "Leather Daddy 3",
+	"Name": "Rocco Pesce",
 	"IsActive": true,
-	"CurrentPosition": "Party Entertainment",
-	"YearStarted": 2015,
+	"CurrentPosition": "Executive Secretary",
+	"YearStarted": 2022,
 	"PastPositions": null,
-	"Image": "dude3.jpg",
-	"Description": "No inhibitions, ready to serve or be served."
+	"Image": "RoccoPesce.jpg",
+	"Description": "I’m Rocco—a veterinary technician, animal lover, husband to Jack Keegan, and proud drag enthusiast who recently discovered just how much I love this art form. I’m navigating life with an open mind, an open heart, and a whole lot of curiosity. As I continue growing in this community, I hope to share my gloved hands with everyone around me and help create a space where people feel welcomed, supported, and celebrated. I’m always happy to lend an ear, a hand, a mouth—or pretty much anything else needed to get the job done!"
 },
 
 {
 	"ID": "staff_1",
-	"Name": "Leather Daddy 2",
+	"Name": "Rob Tisdell",
 	"IsActive": true,
-	"CurrentPosition": "Vice President",
-	"YearStarted": 2016,
-	"PastPositions": [
-		{
-			"Title": "President",
-			"Years": ["2010-2012", "2014-2016"]
-		},
-		{
-			"Title": "Party Entertainment",
-			"Years": ["2012-2014"]
-		}
-	],
-	"Image": "dude2.jpg",
-	"Description": "Emotional support for the president."
+	"CurrentPosition": "Webmaster",
+	"YearStarted": 2025,
+	"PastPositions": null,
+	"Image": "RobTisdell.jpg",
+	"Description": "Rob joined FLAG in FLAG in 2025 after looking to get active in the gay & leather community.  He had started exporing a long time ago, but COVID and major foot issues prevented him from following through.  But the wait was worth it and he has thoroughly enjoyed his time with FLAG, making all sorts of great friends and getting to be a part of the broader community.  He volunteered to build the website after hearing FLAG had been without a website, dusting off skills he hadn't used since he was first in college, and has been thrilled at being able to positively contribute to the community."
 },
 
 {

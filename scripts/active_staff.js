@@ -45,7 +45,9 @@
 			const positionOrder = {
 				"President": 1,
 				"Vice President": 2,
-				"Party Entertainment": 3
+				"Executive Secretary": 3,
+				"Party Entertainment": 4,
+				"Webmaster": 5
 				// Add other positions here as needed, giving them a numerical order.
 			};
 
