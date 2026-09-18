@@ -6,6 +6,7 @@
 		<link rel="stylesheet" media="screen and (min-width: 801px)" href="css/sidenav.css">
 		<link rel="stylesheet" href="css/events.css">
 		<link rel="stylesheet" media="screen and (max-width: 800px)" href="css/topnav.css">
+		<link rel="stylesheet" href="css/modal.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="icon" type="image/svg+xml" href="img/flag_logo_cartoon.svg">
 		<title>Fits Like a Glove</title>
@@ -18,12 +19,20 @@
 				<article>
 					<p class="title">Upcoming Events</p>
 					<div id="Upcoming_Events_Intro"></div>
-					<div class="upcoming-events" id="Upcoming_Events_List"></div>
+					<div class="upcoming-events" id="Upcoming_Events_List">
+						<div class="events" id ="flag-events"></div>
+						<div class="meetings" id="flag-meetings"></div>
+					</div>
+						<div class="all" id="mobile-events"></div>
+					<div id="EventModal" class="modal">
+						<div class="modal-content"></div>
+					</div>
 				</article>
 			</div>
 		</div>
 		<script src="scripts/upcoming_events.js"></script>
 		<script src="scripts/navigation.js"></script>
 		<script src="scripts/fade_handler.js"></script>
+		<script src="scripts/modal.js"></script>
 	</body>
 </html>

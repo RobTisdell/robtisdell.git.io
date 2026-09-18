@@ -211,3 +211,11 @@ body.menu-open {
 .has-submenu.open .down-arrow {
 	transform: rotate(180deg);
 }
+
+.flag-meetings {
+	display: none;
+}
+
+.flag-events {
+	display: none;
+}

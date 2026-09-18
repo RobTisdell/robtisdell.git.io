@@ -152,7 +152,7 @@ window.openEventModal = function (eventData) {
 					<li><strong>Hosted by:</strong> ${eventData.Host}</li>
 					<li><strong>Date:</strong> ${eventData.StartDate}</li>
 					<li><strong>Time:</strong> ${formatTime(eventData.Part[0].StartTime)} - ${formatTime(eventData.Part[0].EndTime)}</li>
-					<li><strong>Where:</strong> ${displayLocation()}</li>
+					<li><strong>Where:</strong> ${displayLocation(eventData.Part[0].Location.Place, eventData.Part[0].Location.URL)}</li>
 
 			`
 		}
@@ -202,10 +202,10 @@ window.openEventModal = function (eventData) {
 		EventModal.style.display = 'flex';
 	};
 
-	// Handles the display case for titleholders.
+	// This looks for links for images specifically.  This is the section that pops up the modal window for titleholder images, staff images, and event flyers.
 
 	document.addEventListener('click', function (event) {
-		const link = event.target.closest('.event-link');
+		const link = event.target.closest('.image-link');
 		
 		// Failure case.  Should never happen, but if there's no link data...
 		if (!link) return;
@@ -219,6 +219,34 @@ window.openEventModal = function (eventData) {
 		// Does the actual replacing of the thumbnail directory to the FullSize directory.
 		const fullImagePath = img.src.replace('/Thumbnails/', '/FullSize/');
 		openImageModal(fullImagePath);
+	});
+
+		document.addEventListener('click', (event) => {
+		const eventLink = event.target.closest('.event-link');
+		if (eventLink) {
+
+			// Kills the normal function of links and substitute our own.
+			event.preventDefault();
+
+			// Looks for event ID and we'll use that to populate the modal window.
+			const eventId = eventLink.dataset.eventId;
+
+			const eventDetails = eventData.find(event => event.ID.toString() === eventId);
+
+			// Opens the modal window or error out if the modal isn't found
+			if (eventDetails) {
+				if (typeof window.openEventModal === 'function') {
+					window.openEventModal(eventDetails);
+				}
+				else {
+					console.error("Error: window.openEventModal is not defined. Ensure modal.js is loaded.")
+				}
+			} 
+			
+			else {
+				console.warn(`Event with ID ${eventId} not found.`)
+			}
+		}
 	});
 
 	// Closes the Modal window in all cases.

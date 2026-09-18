@@ -42,7 +42,7 @@
 				const titleholderHtml = `
 					<div class="unified_box">
 						<div class="titleholder-pictures">
-							<a href="#0" class="event-link"><img src="img/titleholders/Thumbnails/${titleHolder.Image}" alt="${titleHolder.Name}"></a>
+							<a href="#" class="image-link"><img src="img/titleholders/Thumbnails/${titleHolder.Image}" alt="${titleHolder.Name}"></a>
 						</div>
 						<div class="titleholder-box">
 							<span class="staff-name"><b>${titleHolder.Name}</b></span>

@@ -1,0 +1,114 @@
+/* Handles CSS information for all modal window cases across pages that have modal content. */
+
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.4);
+	justify-content: center;
+	align-items: center;
+}
+
+.modal .modal-content {
+	background-color: #444449;
+	color: var(--primary-font-color);
+	padding: clamp(1rem, 1vw + 0.25rem, 2.25vw);
+	border: 1px solid #F1F1F1;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	border-radius: 8px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	max-width: 90vw;
+	max-height: 90vh;
+	overflow: hidden;
+}
+
+.modal-image-container {
+	height: 90vh;
+	max-width: 90vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-height: 100%;
+}
+
+.modal-image-container img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	border-radius: 8px;
+}
+
+.modal .modal-content .contentlist {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	border: 1px solid #ddd;
+	padding: 2vh clamp(2vw, 1vw + 2rem, 10vw);
+	margin-bottom: clamp(2vh, 2rem, 4vh);
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+	background-color: rgba(var(--content-box-background-color),0.667);
+}
+
+.modal .modal-content ul li {
+	list-style: none;
+	max-width: 100%
+}
+
+.modal .modal-content ul li a {
+	color: #DDDDDD;
+	text-decoration: underline;
+}
+
+.modal .modal-content ul li a:hover {
+	transition: .3s;
+	color: rgb(var(--nav-link-hover-color));
+}
+
+.modal-day-header {
+	text-align: center;
+	background-color: rgb(var(--content-dropdown-menu-color));
+	border: 1px solid rgb(var(--primary-border-color))
+}
+
+.modal-day-header:hover {
+	cursor: pointer;
+	transition: .3s;
+	color: rgb(var(--nav-link-hover-color));
+	border: 1px solid rgb(var(--nav-link-hover-color));
+	background-color: rgb(var(nav-background-color-hover));
+}
+
+/* The Close Button */
+.close-button {
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	width: 30px;
+	height: 30px;
+	background-color: rgb(var(--nav-background-color-normal));
+	color: rgb(var(--nav-link-color));
+	border-radius: 50%;
+	border: 1px solid rgb(var(--primary-border-color));
+	align-items: center;
+	justify-content: center;
+	display: flex;
+}
+
+.close-button:hover {
+	transition: .3s;
+	background-color: rgb(var(--nav-background-color-hover));
+	color: rgb(var(--primary-link-hover-color));
+	border: 1px solid rgb(var(--nav-link-hover-color));
+	cursor: pointer;
+}
+

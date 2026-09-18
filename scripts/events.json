@@ -5,12 +5,13 @@
 		"Name": "FLAG Anniversary Weekend",
 		"Type": "Anniversary Weekend",
 		"Image": "red_event.jpg",
+		"Flyer": "demo_flyer_3.jpg",
 		"Description": "Test event!",
 		"Host": "FLAG",
 		"HostURL": "",
 		"Days": 3,
-		"StartDate": "2026-09-11",
-		"EndDate": "2026-09-13",
+		"StartDate": "2026-10-11",
+		"EndDate": "2026-10-13",
 		"Part": [
 			{
 				"PartID": "Event_3_Part_1",
@@ -86,17 +87,44 @@
 	},
 
 {
-	"ID": "event_0",
+	"ID": "event_1",
 	"Name": "Super Heroes Night",
 	"Type": "Bar night",
 	"Image": "2025_March_22.jpg",
+	"Flyer": "demo_flyer_1.jpg",
 	"Description": "FLAG meetup and social event! Bring some snacks and games!",
 	"Host": "FLAG",
 	"Days": 1,
-	"StartDate": "2026-09-05",
+	"StartDate": "2026-10-05",
 	"Part": [
 		{
-			"PartID": "Event_0_Part_1",
+			"PartID": "Event_1_Part_1",
+			"StartTime": "20:00",
+			"EndTime": "02:00",
+			"Location": {
+				"Place": "Providence Eagle",
+				"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
+				"Address": "124 Snow St, Providence RI"
+				}
+		}
+	],
+	"Timezone":  "America/New_York"
+},
+
+
+{
+	"ID": "event_1",
+	"Name": "Super Heroes Night",
+	"Type": "Bar night",
+	"Image": "2025_March_22.jpg",
+	"Flyer": "demo_flyer_1.jpg",
+	"Description": "FLAG meetup and social event! Bring some snacks and games!",
+	"Host": "FLAG",
+	"Days": 1,
+	"StartDate": "2026-10-31",
+	"Part": [
+		{
+			"PartID": "Event_1_Part_1",
 			"StartTime": "20:00",
 			"EndTime": "02:00",
 			"Location": {
@@ -110,461 +138,27 @@
 },
 
 {
-	"ID": "event_1",
-	"Name": "FLAG Social",
-	"Type": "Social",
-	"Image": "2025_April_13.jpg",
+	"ID": "event_0",
+	"Name": "Super Heroes Night",
+	"Type": "FLAG Meeting",
+	"Image": "2025_March_22.jpg",
+	"Flyer": "demo_flyer_1.jpg",
 	"Description": "FLAG meetup and social event! Bring some snacks and games!",
 	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Eagle's Nest",
-		"URL": "https://www.facebook.com/Providencehealthclub/",
-		"Address": "257 Weybosset St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "12:00",
-		"End": "17:00"
-	},
-	"Days": [
-		{ "Date": "2026-09-05" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_2",
-	"Name": "Angels and Demons",
-	"Type": "Bar night",
-	"Image": "2025_May_10.jpg",
-	"Description": "Are you virtuous or are you wicked? Come bare your soul at our Angels and Demons night!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-09-12" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_3",
-	"Name": "Test Event 1",
-	"Type": "Bar night",
-	"Image": "red_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-			"Name": "Providence Eagle",
-			"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-			"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-09-19" },
-		{ "Date": "2026-09-20" },
-		{ "Date": "2026-09-21",
-		  "OverrideTimes": { "Start" : "11:00", "End" : "17:00" },
-		  "OverrideLocation": {
-			  "Name": "Dave's House",
-			  "URL": "None",
-			  "Address" : "123 Fake Road, Nowhere KY"
-		   }
+	"Days": 1,
+	"StartDate": "2026-10-12",
+	"Part": [
+		{
+			"PartID": "Event_0_Part_1",
+			"StartTime": "20:00",
+			"EndTime": "02:00",
+			"Location": {
+				"Place": "Providence Eagle",
+				"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
+				"Address": "124 Snow St, Providence RI"
+				}
 		}
 	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_4",
-	"Name": "Test Event 2",
-	"Type": "Bar night",
-	"Image": "orange_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-06-13" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_5",
-	"Name": "Test Event 3",
-	"Type": "Bar night",
-	"Image": "yellow_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-06-20" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_6",
-	"Name": "Test Event 4",
-	"Type": "Bar night",
-	"Image": "green_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-06-27" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_7",
-	"Name": "Test Event 5",
-	"Type": "Bar night",
-	"Image": "turquoise_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-02-28" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_8",
-	"Name": "Test Event 6",
-	"Type": "Bar night",
-	"Image": "blue_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-03-07" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_9",
-	"Name": "Test Event 7",
-	"Type": "Bar night",
-	"Image": "purple_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-03-14" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_10",
-	"Name": "Test Event 8",
-	"Type": "Bar night",
-	"Image": "magenta_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-03-21" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_11",
-	"Name": "Test Event 9",
-	"Type": "Bar night",
-	"Image": "red_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-03-28" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_12",
-	"Name": "Test Event 10",
-	"Type": "Bar night",
-	"Image": "orange_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-04-04" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_13",
-	"Name": "Test Event 11",
-	"Type": "Bar night",
-	"Image": "yellow_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-12-22" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_14",
-	"Name": "Test Event 12",
-	"Type": "Bar night",
-	"Image": "green_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-12-29" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_15",
-	"Name": "Test Event 13",
-	"Type": "Bar night",
-	"Image": "turquoise_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-12-06" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_16",
-	"Name": "Test Event 14",
-	"Type": "Bar night",
-	"Image": "blue_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-12-13" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_17",
-	"Name": "Test Event 15",
-	"Type": "Bar night",
-	"Image": "purple_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-03-21" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
-},
-
-{
-	"ID": "event_18",
-	"Name": "Test Event 16",
-	"Type": "Bar night",
-	"Image": "magenta_event.jpg",
-	"Description": "Test event!",
-	"Host": "FLAG",
-	"HostURL": "",
-	"DefaultLocation": {
-		"Name": "Providence Eagle",
-		"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
-		"Address": "124 Snow St, Providence RI"
-	},
-	"DefaultTimes": {
-		"Start": "21:00",
-		"End": "02:00"
-	},
-	"Days": [
-		{ "Date": "2026-12-27" }
-	],
-	"Timezone": { 
-	"Name": "America/New_York",
-	"UTCOffset": "-05:00" }
+	"Timezone":  "America/New_York"
 }
 ]

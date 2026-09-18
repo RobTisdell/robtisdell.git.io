@@ -34,38 +34,29 @@
 	"Description": "Won't take no for an answer"
 },
 {
-	"ID": "staff_4",
-	"Name": "Leather Daddy 5",
-	"IsActive": false,
-	"CurrentPosition": null,
-	"YearStarted": null,
-	"PastPositions": [
-		{
-			"Title": "Vice President",
-			"Years": ["2010-2012"]
-		}
-	],
-	"Image": "dude5.jpg",
-	"Description": "Want a smoke?"
+	"ID": "staff_5",
+	"Name": "SPOT",
+	"IsActive": true,
+	"CurrentPosition": "Events Coordinator",
+	"YearStarted": 2025,
+	"PastPositions": null,
+	"Image": "SPOT.jpg",
+	"Description": ""
 },
 {
 	"ID": "staff_3",
-	"Name": "Leather Daddy 4",
-	"IsActive": false,
-	"CurrentPosition": null,
-	"YearStarted": null,
+	"Name": "Kevin Samson",
+	"IsActive": true,
+	"CurrentPosition": "Vice President",
+	"YearStarted": 2013,
 	"PastPositions": [
 		{
-			"Title": "President",
-			"Years": ["2010-2012", "2014-2016"]
-		},
-		{
 			"Title": "Vice President",
-			"Years": ["2012-2014"]
+			"Years": ["1993-1998"]
 		}
 	],
-	"Image": "dude4.jpg",
-	"Description": "Loves being manhandled"
+	"Image": "KevinSamson.jpg",
+	"Description": ""
 },
 {
 	"ID": "staff_2",

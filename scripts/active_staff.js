@@ -46,7 +46,7 @@
 				"President": 1,
 				"Vice President": 2,
 				"Executive Secretary": 3,
-				"Party Entertainment": 4,
+				"Events Coordinator": 4,
 				"Webmaster": 5
 				// Add other positions here as needed, giving them a numerical order.
 			};
@@ -90,7 +90,7 @@
 				const staffHtml = `
 					<div class="divided_boxes">
 						<div class="staffpictures">
-							<a href="#0" class="event-link"><img src="img/staff/Thumbnails/${staffMember.Image}" alt="${staffMember.Name}"></a>
+							<a href="#" class="image-link"><img src="img/staff/Thumbnails/${staffMember.Image}" alt="${staffMember.Name}"></a>
 						</div>
 						<div class="staff-box">
 							<span class="staff-name"><b>${staffMember.Name} - ${staffMember.CurrentPosition} since ${staffMember.YearStarted}</b></span>

@@ -15,8 +15,8 @@
 	// Pulls the current date out as a reference for the rest of the calendar.  This is played with by the previous and next buttons and used to alter the calendar dynamically.
 	let currentDate = new Date()
 
-	// Create empty array that we'll store future events in.
-	let allEvents = [];
+	// Create empty array that we'll store future events in.  This *could* be defined later in a function to keep it local, but we really want modal.js to be able to access it, so we let it be global.
+	let eventData  = [];
 
 	// Build the calendar schedule from the event data pulled.
 	function buildCalendarSchedule(event) {
@@ -86,7 +86,7 @@
 
 		// This runs through any days from the previous month that could be displayed and sets them up as a bunch of divs.  Rendering for the calendar is dealt with by CSS, this is just creating an amount of necessary divs to solve for the fact that a full calendar DISPLAY month is 42 days and we need to fill the	days.
 
-		//	This one took me a while to understand when I saw it weitten out.  But it's actually simple.  The first day of the week is defined numerically in Javascript as 0-6.  firstDayIndex sets the first day of the month to one of those.  Then it iterates backwards until i hits 0, filling in the first week with the excess information.
+		//	This one took me a while to understand when I saw it written out.  But it's actually simple.  The first day of the week is defined numerically in Javascript as 0-6.  firstDayIndex sets the first day of the month to one of those.  Then it iterates backwards until it hits 0, filling in the first week with the excess information.
 		for (let i = firstDayIndex; i > 0; i--) {
 			const prevDate = new Date(currentYear, currentMonth, 0 - i + 1)
 			datesHTML += `<div class="date inactive"><span class="calendarnumber">${prevDate.getDate()}</span></div>`
@@ -109,7 +109,7 @@
 
 			// Build event HTML for the specific day in the div iteration loop.
 			let eventHtml = ''
-			allEvents.forEach(event => {
+			eventData .forEach(event => {
 				if (event._schedule) {
 					const hasEventOnThisDay = event._schedule.some(item => item.date === compareEventString)
 					if (hasEventOnThisDay) {
@@ -166,9 +166,9 @@
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
 
-			allEvents = await response.json();
+			eventData = await response.json();
 
-			allEvents.forEach(event => {
+			eventData .forEach(event => {
 				event._schedule = buildCalendarSchedule(event);
 			});
 
@@ -190,7 +190,7 @@
 			// Looks for event ID and we'll use that to populate the modal window.
 			const eventId = eventLink.dataset.eventId;
 
-			const eventDetails = allEvents.find(event => event.ID.toString() === eventId);
+			const eventDetails = eventData .find(event => event.ID.toString() === eventId);
 
 			// Opens the modal window or error out if the modal isn't found
 			if (eventDetails) {
