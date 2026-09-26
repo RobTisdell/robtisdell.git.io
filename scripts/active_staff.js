@@ -40,14 +40,24 @@
 				NOTE:  The text must be EXACTLY as seen in the JSON file.
 				Additionally, any titles added here won't be applied unless the JSON file is updated with staff members with the same title.
 				This script and the JSON file go hand-in-hand and adding additional titles to one necessitates adding those to the other.
+
+				This list doesn't prioritize executive counsel vs board of directors explicitly.  This is accomplished purely by just writing the board at the top of the list and then going down to executive.  Be aware of this when making changes.  Sorting happens regardless of whether a position is filled, so it's OK if any one of these are blank.
 			*/
 			
 			const positionOrder = {
+				// Board
 				"President": 1,
 				"Vice President": 2,
 				"Executive Secretary": 3,
-				"Events Coordinator": 4,
-				"Webmaster": 5
+				"Treasurer": 4,
+				// Executive counsel
+				"Assistant Secretary": 5,
+				"Assistant Treasurer": 6,
+				"Social Media Specialist": 7,
+				"Event Coordinator": 8,
+				"Webmaster": 9,
+				"Historian": 10,
+				"Club Liason": 11
 				// Add other positions here as needed, giving them a numerical order.
 			};
 

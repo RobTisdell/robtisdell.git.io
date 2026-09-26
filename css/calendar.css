@@ -93,18 +93,6 @@
 	color: rgb(var(--calendar-inactive-date));
 }
 
-.smalleventcolumn {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.smalleventcolumn img {
-	max-width: 90%;
-	max-height: 90%;
-	object-fit: contain;
-}
-
 
 @media (min-width: 801px) {
 	.mobile-days {

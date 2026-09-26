@@ -151,7 +151,7 @@
 				// let flagEvents = ""
 
 
-                // the HTML for each event box.  This section handles the mobile list.
+				// the HTML for each event box.  This section handles the mobile list.
 
 					mobileHTML += `
 					<div class="event_boxes" id="event-${event.ID}">

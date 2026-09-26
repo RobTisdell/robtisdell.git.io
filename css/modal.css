@@ -15,7 +15,6 @@
 
 .modal .modal-content {
 	background-color: #444449;
-	color: var(--primary-font-color);
 	padding: clamp(1rem, 1vw + 0.25rem, 2.25vw);
 	border: 1px solid #F1F1F1;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -73,6 +72,7 @@
 
 .modal-day-header {
 	text-align: center;
+	color: rgb(var(--primary-link-color));
 	background-color: rgb(var(--content-dropdown-menu-color));
 	border: 1px solid rgb(var(--primary-border-color))
 }
@@ -112,3 +112,55 @@
 	cursor: pointer;
 }
 
+/* Handles the smooth animation of the dropdown menus for complex events. */
+.sub-event-details {
+	max-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* When active, allow max-height to expand */
+.sub-event-block.active .sub-event-details {
+	max-height: 500px; /* Set to a value larger than any expected sub-event content */
+	opacity: 1;
+}
+
+/* Banner for events */
+.smalleventcolumn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.smalleventcolumn img {
+	max-width: 70%;
+	max-height:70%;
+	object-fit: contain;
+}
+
+/* Style the items in the Event & Hosted By section.  */
+
+.sub-event-summary {
+	background-color: #222222;
+	color: rgb(var(--primary-link-color));
+	border: 1px solid rgb(var(--primary-border-color));
+}
+
+.sub-event-summary:hover {
+	transition: .3s;
+	cursor: pointer;
+	border: 1px solid rgb(var(--nav-link-hover-color));
+	color: rgb(var(--primary-link-hover-color));
+}
+
+.sub-event-details {
+	background-color: #333333;
+	border: 1px solid rgb(var(--primary-border-color));
+}
+
+/* This all addresses the accordian behavior for large event modals. */
+
+.modal-subevents-list {
+	overflow: hidden;
+}

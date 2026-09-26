@@ -12,7 +12,7 @@ within bounded boxes inside the main page, such as the staff boxes.
 nav-definitions are for any navigational elements (Sidenav, topnav, buttons within the pages).
 Note that staff image highlights inherit nav colors, and that affiliates is a slightly off amalgamation
 of different variables.  Transparency is definied when called in other CSS sheets.
-All CSS files refer to these.
+All CSS files refer to these.  I'll say explicitly what uses these in case anyone wants to change the theming.
 */
 :root {
 	--primary-font-color: 170, 187, 204;
@@ -31,11 +31,43 @@ All CSS files refer to these.
 	--calendar-inactive-date: 121, 121, 121;
 }
 
+/* 
+--primary-font-color: Universal, it's used for all non-link text.  Note that links include highlight elements that are interactive with the page (Like complex event modal buttons or the X button on the modal).
+
+primary-link-color: Universal, it's used on all link text.  As noted above, this includes interactive clickable elements.
+
+--primary-link-hover-color: Universal, it's used on all link text when hovered over.  Same notes as previous.
+
+--primary-background-color: This is the base background color that sits in all pages.  It is also the color that the social media navigation buttons use when not hovered over.
+
+--primary-border-color: Universally used on all internal borders (The border around the main content is excluded from this).  There are some borders in modal.css that are constants there that I need to take another look at and try and bring them in-lone to be able to unify the theme.
+
+--primary-title-color: The color of each page's title.  This is universal, no page has any deviation from this and no page should have any deviation from this.
+
+--content-box-background-color: The darker color for content that's put onto pages generally to make it clear where the content boxes are and to keep division.  There *may* be a need to apply this as a background to all text, but that will be dependent on what we make for background images.
+
+--content-dropdown-menu-color: Used for the nav menu mostly.  There is one specific place where it's used because it's a particularly dark color, and that's for the background specifically of the Day divs on multi-day event modals.
+
+-nav-link-color: Currently used for navigation links and buttons (Calendar arrows, modal close...).  I'm honestly not sure how important it is to distinguish this from normal link colors and I may wind up nixing this.
+
+--nav-link-hover-color: This doubles as both the link hover color *and* the border hover color.  Changing this will have some outsized effects on what the name implies.  May fix later, may not.
+
+--nav-background-color-normal: This was originally just for the list on the sidenav and topnav bars, but it was extended to the super dark background for images and affiliates.
+
+--nav-background-color-hover: Same as above.  The darker hover color to make it clear where the mouse is.  Also extended tfor the images and affiliates.
+
+--calendar-active-date: Used only for calendar days that correspond to the display month on the calendar.
+
+--calendar-inactive-date: Same as above, but for dates that don't correspond to the active month.
+
+*/
+
 body::before {
 	content: "";
 	position: fixed;
 	inset: 0;
 	height: 100lvh;
+	background-color: rgb(var(--content-box-background-color));
 	background: url("../img/background.jpg") no-repeat center center;
 	background-size: cover;
 	z-index: -1;

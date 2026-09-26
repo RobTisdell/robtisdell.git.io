@@ -20,24 +20,19 @@
 },
 {
 	"ID": "staff_5",
-	"Name": "Leather Daddy 6",
-	"IsActive": false,
-	"CurrentPosition": null,
-	"YearStarted": null,
-	"PastPositions": [
-		{
-			"Title": "President",
-			"Years": ["2008-2010", "2014-2016"]
-		}
-	],
-	"Image": "dude6.jpg",
-	"Description": "Won't take no for an answer"
+	"Name": "Kevin McCaskill",
+	"IsActive": true,
+	"CurrentPosition": "Treasurer",
+	"YearStarted": 2025,
+	"PastPositions": null,
+	"Image": "KevinMcCaskill.jpg",
+	"Description": "Kevin McCaskill, AKA Pup Casmir, is a disabled, trans, leather pup who has been a queer activist and community organizer for over 25 years. His involvement in various community organizations includes being a member of leather clubs, a board member of nonprofit organizations, and a cofounder of RI Pup and Pet Scouts. In his vanilla life, Casmir enjoys baking, gardening, and spending time with his chosen friends and family."
 },
 {
 	"ID": "staff_5",
 	"Name": "SPOT",
 	"IsActive": true,
-	"CurrentPosition": "Events Coordinator",
+	"CurrentPosition": "Event Coordinator",
 	"YearStarted": 2025,
 	"PastPositions": null,
 	"Image": "SPOT.jpg",

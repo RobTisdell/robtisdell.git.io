@@ -190,7 +190,7 @@
 			// Looks for event ID and we'll use that to populate the modal window.
 			const eventId = eventLink.dataset.eventId;
 
-			const eventDetails = eventData .find(event => event.ID.toString() === eventId);
+			const eventDetails = eventData.find(event => event.ID.toString() === eventId);
 
 			// Opens the modal window or error out if the modal isn't found
 			if (eventDetails) {

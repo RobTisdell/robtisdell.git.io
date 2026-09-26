@@ -1,0 +1,57 @@
+[
+{
+	"ID": "affiliate_1",
+	"Name": "Full Kit Gear",
+	"URL": "https://www.fullkit.com/",
+	"Logo": "full_kit_gear.png",
+	"Category": "Gear"
+},
+
+{
+	"ID": "affiliate_2",
+	"Name": "Providence Eagle",
+	"URL": "http://providenceeagle.com/",
+	"Logo": "providence_eagle.jpg",
+	"Category": "Cruisin' Grounds"
+},
+
+{
+	"ID": "affiliate_3",
+	"Name": "Eagle's Nest",
+	"URL": "https://www.facebook.com/Providencehealthclub/",
+	"Logo": "ealges_nest.jpg",
+	"Category": "Cruisin' Grounds"
+},
+
+{
+	"ID": "affiliate_4",
+	"Name": "Mates Leather Weekend",
+	"URL": "https://www.matesleatherweekend.com/",
+	"Logo": "mates_leather_weekend.png",
+	"Category": "Weekend Fun"
+},
+
+{
+	"ID": "affiliate_5",
+	"Name": "New England Leather",
+	"URL": "https://www.matesleatherweekend.com/",
+	"Logo": "new_england_leather_weekend.png",
+	"Category": "Weekend Fun"
+},
+
+{
+	"ID": "affiliate_6",
+	"Name": "Mr. & Ms. CT Leather",
+	"URL": "http://www.mrctleather.org/",
+	"Logo": "mr_ms_ct_leather.png",
+	"Category": "Weekend Fun"
+},
+
+{
+	"ID": "affiliate_7",
+	"Name": "New England Rubber Club",
+	"URL": "https://www.newenglandrubberclub.com/",
+	"Logo": "new_england_rubber_club.png",
+	"Category": "Clubs and Community"
+}
+]
