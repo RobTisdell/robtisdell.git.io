@@ -51,3 +51,13 @@ border-bottom-color: rgb(var(--nav-background-color-hover));
 	background-color: rgb(var(--nav-background-color-hover));
 	border: 1px solid rgb(var(--nav-link-hover-color));
 }
+
+.link_bar a.Active {
+	display: flex;
+	justify-content: space-evenly;
+	width: 25%;
+	background-color: rgb(var(--nav-background-color-hover));
+	border: 1px solid rgb(var(--nav-link-hover-color));
+	padding-top: 20px;
+	padding-bottom: 20px;
+}

@@ -11,7 +11,7 @@
 	let eventData = []
 
 	if (Number.isNaN(hourOutput) || Number.isNaN(minuteOutput) || hourOutput > 23 || minuteOutput > 59) {
-		return 'Time data is malformed';
+		return 'Time data is malformed'
 	}
 
 		var isAMorPM = ''
@@ -117,7 +117,7 @@
 				throw new Error(`HTTP error! status: ${response.status}`)
 			}
 			
-			eventData = await response.json();
+			eventData = await response.json()
 
 			// Pass an error if the JSON file is malformed to both the console and the webpage.
 			if (!Array.isArray(eventData)) {
@@ -199,7 +199,7 @@
 							This event has multiple parts to it!  Please click <a href="#" class="event-link" data-event-id="${event.ID}">here</a> to see all the details.<br><br>`
 						}
 						if (event.Days === 1 && event.Part.length === 1){
-							const eventPart = event.Part[0];
+							const eventPart = event.Part[0]
 							eventHTML +=
 							`<strong>Date:</strong><br>${formatDate(event.StartDate)}<br><br>
 							<strong>Time:</strong><br>${formatTime(eventPart.StartTime)} - ${formatTime(eventPart.EndTime)}<br><br>
@@ -209,9 +209,9 @@
 					}
 			})
 
-			mobileOutputContainer.innerHTML += mobileHTML;
-			meetingOutputContainer.innerHTML += meetingHTML;
-			eventOutputContainer.innerHTML += eventHTML;
+			mobileOutputContainer.innerHTML += mobileHTML
+			meetingOutputContainer.innerHTML += meetingHTML
+			eventOutputContainer.innerHTML += eventHTML
 
 		}
 
@@ -224,4 +224,4 @@
 
 	displayUpcomingEvents()
 
-})();
+})()

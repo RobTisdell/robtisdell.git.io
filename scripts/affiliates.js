@@ -1,23 +1,63 @@
 (function() {
 
-	// If I'm right on how this will need to play out, I'll want these as variables outside of  other functions.  Since this is the only page where visible data changes on demand, I won't want to have to run the same loop logic multiple times when I could just create a conditional statement that compares against whether or not these have values.  The HTML will get kicked into these and then they can get cleared and reloaded on demand.
+	// These are variables that need to get called within multiple nested functions down the line.  The parts that use these variables describe exactly how they're used, they just need to be declared up here so they can be applied properly, as they will contain data needed throughout the function.
 
-	let gearHTML = "blank"
-	let placesHTML = "blank"
-	let eventsHTML = "blank"
-	let communitiesHTML = "blank"
-	let supportHTML = "blank"
+	const categoryLookup = {}
+	let setOfCategories = new Set([])
 
 	// This will stop the normal behavior of anchor links.
 
 	async function displayAffiliates() {
 		const outputContainer = document.getElementById("affiliates")
+		const outputHeader = document.getElementById("header_links")
 
 		// Pass an error if the main HTML document doesn't have a former-staff-container element.
 		if (!outputContainer) {
 			console.error("Error, there is no element with affiliates-container in the HTML file.")
 			return
 		}
+
+		if (!outputHeader) {
+			console.error("Error, there is no element with header_links in the HTML file.")
+			return
+		}
+
+		// Helper function for creating hashtags out of category information.
+		function createHashTag(category){
+			const hashTag = category.replace(/[^A-Za-z0-9_]/g, '')
+			return hashTag
+		}
+
+		// Helper function for stripping links of active status and adding active status for the currently active link.
+		function setActiveLink(hash) {
+			document.querySelectorAll("#header_links a").forEach(link => {link.classList.remove("Active")
+				if (link.getAttribute("href") === `#${hash}`) {
+					link.classList.add("Active")
+				}
+			})
+		}
+
+		// I hesitate to call this a helper function, because this is really kind of the end-goal.  But this is what's going to generate the links based on hashtag values.
+		function renderCategory(hash) {
+
+   			const selectedCategory = categoryLookup[hash]
+				if (!selectedCategory) {
+				return
+    		}
+
+			outputContainer.innerHTML = ""
+
+			selectedCategory.forEach(affiliate => {
+				outputContainer.innerHTML += `
+				<a href="${affiliate.URL}" target="_blank">
+					<div class="affiliate-container">
+						<div class="affiliate-picture"><img src="img/affiliates/${affiliate.Logo}"></div>
+						<div class="affiliate-title">${affiliate.Name}</div>
+					</div>
+				</a>
+        	`
+		})
+}
 
 		// Attempt to get the JSON file with the affiliate data.
 		try {
@@ -34,173 +74,72 @@
 			if (!Array.isArray(affiliateData)) {
 				console.error("Error: JSON data is not a valid array for affiliate data.")
 				outputContainer.innerHTML = '<p>Error: Affiliate data is malformed.</p>'
-				return;
+				return
 			}
+
+			// This part of the function creates a set (A set is defined as only having unique values) of categories and hashtags from the Category data of affiliates.json.  The Category set will be used to generate the list of category links at the top of the affiliates page, the hashtag set will be used as variables for switch cases later.
+
+			affiliateData.forEach(affiliate => {
+				setOfCategories.add(affiliate.Category)
+			})
+
+			// Sets can not be sorted naturally in Javascript, so I gotta convert them to an array temporarily, sort the array, then re-cast it as a set.  I'll do this for each, though honestly sorting the cases may be completely unnecessary.  I'll kill it if it is..
+			// It is important to note that, at this point, I'm not planning on modifying the sets and they're not relevant anymore (They were made to filter unique data).  I can use these arrays without worrying about the sets anymore, *but only if* they're never being modified.  If they are expected to be, this needs to be reconsidered, since it's important that the links we generate from these all be unique.
+
+			const sortedCategories = Array.from(setOfCategories)
+			sortedCategories.sort((a, b) => {
+				return a.localeCompare(b)
+			})
+
+			// Now we can start generating some links.  This outputs the header links with hashtags converted by the same function that made the variable set.
+
+			sortedCategories.forEach(category => {
+				outputHeader.innerHTML += `<a href=#${createHashTag(category)}>${category}</a>`
+			})
+
+			// Now that we have header links, we can move onto dealing with the real meat and potatoes here.
 
 			// Pre-sort the entire array, this should propagate into categories later.
 			affiliateData.sort((a, b) => {
-				return a.Name.localeCompare(b.Name);
-			});
+				return a.Name.localeCompare(b.Name)
+			})
 
-			// Create 4 different arrays based on the category of the
-			const gear = affiliateData.filter(affiliates => affiliates.Category === "Gear")
-			const places = affiliateData.filter(affiliates => affiliates.Category === "Cruisin' Grounds")
-			const events = affiliateData.filter(affiliates => affiliates.Category === "Weekend Fun")
-			const communities = affiliateData.filter(affiliates => affiliates.Category === "Clubs and Community")
+			// Now we start moving onto where the real important stuff lies.  The first thing that will be done is to set up a filter that will functionally sort the links by their categories
 
-			/* This should not be necessary, but I'm keeping it here in case the sort -> recategorize logic fails.
-			// Sort each list
-			gear.sort((a, b) => {
-				return positionOrder[a.Name] - positionOrder[b.Name];
-			});
-			places.sort((a, b) => {
-				return positionOrder[a.Name] - positionOrder[b.Name];
-			});
-			events.sort((a, b) => {
-				return positionOrder[a.Name] - positionOrder[b.Name];
-			});
-			communities.sort((a, b) => {
-				return positionOrder[a.Name] - positionOrder[b.Name];
-			});
-			*/
+			sortedCategories.forEach(category => {
+				categoryLookup[createHashTag(category)] =
+					affiliateData.filter(affiliate => affiliate.Category === category)
+			})
 
-			// Generate HTML for the gear list:
-			if (gearHTML === "blank") {
-				let gearOutput = ''
-				gear.forEach(gear => {
-					const gearStructure = `
-						<a href="${gear.URL}" target="_blank">
-						<div class="affiliate-container">
-							<div class="affiliate-picture">
-								<img src="img/affiliates/${gear.Logo}">
-							</div>
-							<div class="affiliate-title">
-								<b>${gear.Name}</b>
-							</div>
-						</div>
-						</a>
-					`
-					gearOutput += gearStructure
-				})
-				gearHTML = gearOutput
+
+			// These next two code sections handle the loading of links. There are two situations to consider here, and this first one is when a link without an anchoring hash is provided (affiliates.html rather than affiliates.html#ClubsandCommunity for example).  This *could* be solved by just including a hash, but I'd prefer to just have a clean link setup.  It just looks nicer.
+			let currentHash = window.location.hash.substring(1)
+
+				// If no hash exists, use the first category.
+			if (!currentHash) {
+    			currentHash = createHashTag(sortedCategories[0])
+    			window.location.hash = currentHash
 			}
 
-			// Generates HTML for the places list:
-			if (placesHTML === "blank") {
-				let placeOutput = ''
-				places.forEach(place => {
-					const placeStructure = `
-						<a href="${place.URL}" target="_blank">
-						<div class="affiliate-container">
-							<div class="affiliate-picture">
-								<img src="img/affiliates/${place.Logo}">
-							</div>
-							<div class="affiliate-title">
-								<b>${place.Name}</b>
-							</div>
-						</div>
-						</a>
-					`
-					placeOutput += placeStructure
-				})
-				placesHTML = placeOutput
-			}
+				renderCategory(currentHash)
+				setActiveLink(currentHash)
 			
-			if (eventsHTML === "blank") {
-				let eventOutput = ''
-				events.forEach(event => {
-					const eventStructure = `
-						<a href="${event.URL}" target="_blank">
-						<div class="affiliate-container">
-							<div class="affiliate-picture">
-								<img src="img/affiliates/${event.Logo}">
-							</div>
-							<div class="affiliate-title">
-								<b>${event.Name}</b>
-							</div>
-						</div>
-						</a>
-					`
-					eventOutput += eventStructure
-				})
-				eventsHTML = eventOutput
-			}
+			// This is the other case, where when an anchor hash is present and/or changes (Which is what's happening when a user clicks a header link). This will run the rendering and active link functions again when this happens.
+			window.addEventListener("hashchange", () => {
 
-			if (communitiesHTML === "blank") {
-				let communityOutput = ''
-				communities.forEach(community => {
-					const communityStructure = `
-						<a href="${community.URL}" target="_blank">
-						<div class="affiliate-container">
-							<div class="affiliate-picture">
-								<img src="img/affiliates/${community.Logo}">
-							</div>
-							<div class="affiliate-title">
-								<b>${community.Name}</b>
-							</div>
-						</div>
-						</a>
-					`
-					communityOutput += communityStructure
-				})
-				communitiesHTML = communityOutput
-			}
-
-			if (supportHTML === "blank") {
-				let supportOutput = ''
-				communities.forEach(community => {
-					const supportStructure = `
-						<a href="${community.URL}" target="_blank">
-						<div class="affiliate-container">
-							<div class="affiliate-picture">
-								<img src="img/affiliates/${community.Logo}">
-							</div>
-							<div class="affiliate-title">
-								<b>${community.Name}</b>
-							</div>
-						</div>
-						</a>
-					`
-					supportOutput += supportStructure
-				})
-				supportHTML = supportOutput
-			}
+			const hash = window.location.hash.substring(1)
+    		renderCategory(hash)
+   			setActiveLink(hash)
+		})
+	
 
 		} catch (error) {
 			// Handle any other miscellaneous errors that could arise.
-			console.error("Failed to load or display affiliate data:", error);
-			outputContainer.innerHTML = '<p>Error loading affiliate information. Please try again later.</p>';
+			console.error("Failed to load or display affiliate data:", error)
+			outputContainer.innerHTML = '<p>Error loading affiliate information. Please try again later.</p>'
 		}
-
-		// Anchor link handling
-		document.querySelectorAll('a[href^="#"]').forEach(link => {
-			link.addEventListener('click', function(event) {
-				event.preventDefault();
-
-				const hash = link.getAttribute('href').substring(1);
-
-				switch (hash) {
-					case "gear":
-						outputContainer.innerHTML = gearHTML;
-						break;
-					case "places":
-						outputContainer.innerHTML = placesHTML;
-						break;
-					case "events":
-						outputContainer.innerHTML = eventsHTML;
-						break;
-					case "clubs":
-						outputContainer.innerHTML = communitiesHTML;
-						break;
-					case "support":
-						outputContainer.innerHTML = supportHTML;
-					default:
-						outputContainer.innerHTML = "<p>No matching category.</p>";
-				}
-			});
-		});
 	}
 
-	displayAffiliates();
+	displayAffiliates()
 
-})();
+})()

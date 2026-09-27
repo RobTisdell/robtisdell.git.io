@@ -16,15 +16,15 @@
 	let currentDate = new Date()
 
 	// Create empty array that we'll store future events in.  This *could* be defined later in a function to keep it local, but we really want modal.js to be able to access it, so we let it be global.
-	let eventData  = [];
+	let eventData  = []
 
 	// Build the calendar schedule from the event data pulled.
 	function buildCalendarSchedule(event) {
-		const schedule = [];
+		const schedule = []
 
 		
 		if (Array.isArray(event.Part) && event.StartDate) {
-			const startDate = new Date(event.StartDate);
+			const startDate = new Date(event.StartDate)
 
 			// If there's no day number defined in the Part section, then we assume it's on day 1 (Always true for single day events), or else we just assign it the actual day number.
 			event.Part.forEach(part => {
@@ -36,11 +36,11 @@
 				}
 
 				// Get the date of the individual parts, and set the dates.  This is necessary because we define the days as "Day 1, Day 2, etc" in the JSON as a way of simplifying what we have to process.  The script would have to parse this anyways, so this is where the conversion happens.
-				const partDate = new Date(startDate);
-				partDate.setDate(startDate.getDate() + (dayNumber - 1));
+				const partDate = new Date(startDate)
+				partDate.setDate(startDate.getDate() + (dayNumber - 1))
 				
 				// Dates in Javascript are complex objects.  This strips down the date to YYYY-MM-DD format, just like in the JSON for simpler parsing down the line.
-				const dateString = partDate.toISOString().split('T')[0];
+				const dateString = partDate.toISOString().split('T')[0]
 
 				// These parts are taken from the overall event information and kicked over to the schedule array.
 				schedule.push({
@@ -49,11 +49,11 @@
 					endTime: part.EndTime,
 					partName: part.EventName || event.Name,
 					location: part.Location || {}
-				});
-			});
+				})
+			})
 		}
 
-		return schedule;
+		return schedule
 	}
 
 	// Now onto the calendar itself...
@@ -161,41 +161,41 @@
 		// This pulls the data from events and runs them through the calendar schedule builder function.  This is exactly the same procedure done in other content loading scripts, which have detailed commentary if you're curious to read how this works.
 	async function loadEvents() {
 		try {
-			const response = await fetch('scripts/events.json');
+			const response = await fetch('scripts/events.json')
 			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`);
+				throw new Error(`HTTP error! status: ${response.status}`)
 			}
 
-			eventData = await response.json();
+			eventData = await response.json()
 
 			eventData .forEach(event => {
-				event._schedule = buildCalendarSchedule(event);
-			});
+				event._schedule = buildCalendarSchedule(event)
+			})
 
-			updateCalendar();
+			updateCalendar()
 
 		} catch (error) {
-			console.error("Error loading or parsing events:", error);
+			console.error("Error loading or parsing events:", error)
 		}
 	}
 
 	// This bit turns the links on the calendar to open a modal window that will display the complete event information.
 	document.addEventListener('click', (event) => {
-		const eventLink = event.target.closest('.event-link');
+		const eventLink = event.target.closest('.event-link')
 		if (eventLink) {
 
 			// Kills the normal function of links and substitute our own.
-			event.preventDefault();
+			event.preventDefault()
 
 			// Looks for event ID and we'll use that to populate the modal window.
-			const eventId = eventLink.dataset.eventId;
+			const eventId = eventLink.dataset.eventId
 
-			const eventDetails = eventData.find(event => event.ID.toString() === eventId);
+			const eventDetails = eventData.find(event => event.ID.toString() === eventId)
 
 			// Opens the modal window or error out if the modal isn't found
 			if (eventDetails) {
 				if (typeof window.openEventModal === 'function') {
-					window.openEventModal(eventDetails);
+					window.openEventModal(eventDetails)
 				}
 				else {
 					console.error("Error: window.openEventModal is not defined. Ensure modal.js is loaded.")
@@ -206,9 +206,9 @@
 				console.warn(`Event with ID ${eventId} not found.`)
 			}
 		}
-	});
+	})
 
 	// --- Initialize ---
-	loadEvents();
+	loadEvents()
 
 })()

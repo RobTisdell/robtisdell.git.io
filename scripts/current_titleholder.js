@@ -51,7 +51,7 @@
 					</div>
 				`
 				// Append generated HTML to page.
-				titleHolderBox.innerHTML += titleholderHtml;
+				titleHolderBox.innerHTML += titleholderHtml
 				titleHolderHeader.innerHTML = `Congratulations to ${titleHolder.Prefix} FLAG ${titleHolder.Year.slice(0, 4)}, ${titleHolder.Name}!`
 			})
 

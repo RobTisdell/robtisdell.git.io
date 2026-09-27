@@ -238,23 +238,23 @@ window.openEventModal = function (eventData) {
 
 // --- Sub-event accordion handlers ---
 // --- Sub-event accordion handlers ---
-const subEventBlocks = ModalContent.querySelectorAll('.sub-event-block');
+const subEventBlocks = ModalContent.querySelectorAll('.sub-event-block')
 
 subEventBlocks.forEach(block => {
-	const summary = block.querySelector('.sub-event-summary');
-	const details = block.querySelector('.sub-event-details');
-	let isAnimating = false;
+	const summary = block.querySelector('.sub-event-summary')
+	const details = block.querySelector('.sub-event-details')
+	let isAnimating = false
 
 	summary.addEventListener('click', (e) => {
-		e.stopPropagation();
-		if (isAnimating) return;
+		e.stopPropagation()
+		if (isAnimating) return
 
-		isAnimating = true;
-		const isActive = block.classList.contains('active');
+		isAnimating = true
+		const isActive = block.classList.contains('active')
 
 		if (isActive) {
 			// CLOSING
-			const height = details.scrollHeight;
+			const height = details.scrollHeight
 			
 			const animation = details.animate(
 				[
@@ -262,25 +262,25 @@ subEventBlocks.forEach(block => {
 					{ height: '0px', opacity: 0 }
 				],
 				{ duration: 250, easing: 'ease' }
-			);
+			)
 
 			animation.onfinish = () => {
-				block.classList.remove('active');
-				details.style.display = 'none'; // Hide content after closing
-				isAnimating = false;
-			};
+				block.classList.remove('active')
+				details.style.display = 'none' // Hide content after closing
+				isAnimating = false
+			}
 		} else {
 			// OPENING
-			details.style.display = 'block'; // Make element visible so scrollHeight can be calculated
-			const height = details.scrollHeight;
+			details.style.display = 'block' // Make element visible so scrollHeight can be calculated
+			const height = details.scrollHeight
 
 			// Optional: Close other active sub-events in the same list
-			const parent = block.parentElement;
-			const activeOther = parent.querySelector('.sub-event-block.active');
+			const parent = block.parentElement
+			const activeOther = parent.querySelector('.sub-event-block.active')
 			if (activeOther) {
-				const activeDetails = activeOther.querySelector('.sub-event-details');
-				const otherHeight = activeDetails.scrollHeight;
-				activeOther.classList.remove('active');
+				const activeDetails = activeOther.querySelector('.sub-event-details')
+				const otherHeight = activeDetails.scrollHeight
+				activeOther.classList.remove('active')
 
 				activeDetails.animate(
 					[
@@ -289,8 +289,8 @@ subEventBlocks.forEach(block => {
 					],
 					{ duration: 200, easing: 'ease' }
 				).onfinish = () => {
-					activeDetails.style.display = 'none';
-				};
+					activeDetails.style.display = 'none'
+				}
 			}
 
 			const animation = details.animate(
@@ -299,15 +299,15 @@ subEventBlocks.forEach(block => {
 					{ height: `${height}px`, opacity: 1 }
 				],
 				{ duration: 250, easing: 'ease' }
-			);
+			)
 
 			animation.onfinish = () => {
-				block.classList.add('active');
-				isAnimating = false;
-			};
+				block.classList.add('active')
+				isAnimating = false
+			}
 		}
-	});
-});
+	})
+})
 
 }
 
