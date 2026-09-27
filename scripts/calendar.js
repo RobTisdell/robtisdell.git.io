@@ -89,8 +89,18 @@
 		//	This one took me a while to understand when I saw it written out.  But it's actually simple.  The first day of the week is defined numerically in Javascript as 0-6.  firstDayIndex sets the first day of the month to one of those.  Then it iterates backwards until it hits 0, filling in the first week with the excess information.
 		for (let i = firstDayIndex; i > 0; i--) {
 			const prevDate = new Date(currentYear, currentMonth, 0 - i + 1)
-			datesHTML += `<div class="date inactive"><span class="calendarnumber">${prevDate.getDate()}</span></div>`
-		}
+			const compareEventYear = prevDate.getFullYear()
+			const compareEventMonth = String(prevDate.getMonth() + 1).padStart(2, '0')
+			const compareEventDayNumber = String(prevDate.getDate()).padStart(2, '0')
+			const compareEventString = `${compareEventYear}-${compareEventMonth}-${compareEventDayNumber}`
+			const dayEvents = eventData.filter(event => event._schedule?.some(item => item.date === compareEventString))
+			datesHTML += `
+				<div class="date inactive ${dayEvents.length ? 'has-events' : ''}"data-date="${compareEventString}">
+					<span class="calendarnumber">${prevDate.getDate()}</span>
+				</div>
+			`
+		}	
+
 
 		// Iterates through the number of days of the month and adds a div for each.
 		for (let i = 1; i <= totalDays; i++) {
@@ -108,22 +118,36 @@
 			const compareEventString = `${compareEventYear}-${compareEventMonth}-${compareEventDayNumber}`
 
 			// Build event HTML for the specific day in the div iteration loop.
+			const dayEvents = eventData.filter(event =>
+				event._schedule?.some(item =>
+					item.date === compareEventString
+    			)
+			)
+
 			let eventHtml = ''
-			eventData .forEach(event => {
-				if (event._schedule) {
-					const hasEventOnThisDay = event._schedule.some(item => item.date === compareEventString)
-					if (hasEventOnThisDay) {
-						eventHtml += `<a href="#" class="event-link" data-event-id="${event.ID}">${event.Name}</a>`
-					}
+
+			if (dayEvents.length === 1) {
+				eventHtml = `
+					<div class="event-summary">
+						${dayEvents[0].Name}
+					</div>
+				`
+			}
+			else if (dayEvents.length > 1) {
+				eventHtml = `
+					<div class="event-summary multiple-events">
+						${dayEvents.length} Events
+					</div>
+    				`
 				}
-			})
 
 			// Makes the date number for each cell.
 			datesHTML += `
-			<div class="date ${activeClass}">
-				<span class="calendarnumber">${i}</span>
-				<div class="day-events">${eventHtml}</div>
-			</div>
+				<div class="date ${activeClass} ${dayEvents.length ? 'has-events' : ''}"
+    				data-date="${compareEventString}">
+					<span class="calendarnumber">${i}</span>
+					<div class="day-events">${eventHtml}</div>
+				</div>
 			`
 		}
 
@@ -137,8 +161,19 @@
 
 		for (let i = 1; i <= remainingCells; i++) {
 			const nextDate = new Date(currentYear, currentMonth + 1, i)
-			datesHTML += `<div class="date inactive"><span class="calendarnumber">${nextDate.getDate()}</span></div>`
+			const compareEventYear = nextDate.getFullYear()
+			const compareEventMonth = String(nextDate.getMonth() + 1).padStart(2, '0')
+			const compareEventDayNumber = String(nextDate.getDate()).padStart(2, '0')
+			const compareEventString = `${compareEventYear}-${compareEventMonth}-${compareEventDayNumber}`
+			const dayEvents = eventData.filter(event =>event._schedule?.some(item =>item.date === compareEventString))
+
+			datesHTML += `
+				<div class="date inactive ${dayEvents.length ? 'has-events' : ''}"data-date="${compareEventString}">
+					<span class="calendarnumber">${nextDate.getDate()}</span>
+				</div>
+			`
 		}
+
 
 		// This just updates the month and year at the top of the calendar to display whatever the month and year should be.
 		monthYearElement.textContent = firstDay.toLocaleString('default', { month: 'long', year: 'numeric' })
@@ -167,6 +202,7 @@
 			}
 
 			eventData = await response.json()
+			window.eventData = eventData
 
 			eventData .forEach(event => {
 				event._schedule = buildCalendarSchedule(event)
@@ -207,6 +243,32 @@
 			}
 		}
 	})
+
+	document.addEventListener('click', (event) => {
+
+    	const dayCell = event.target.closest('.date.has-events')
+
+    	if (!dayCell) {
+    		return
+    	}
+
+    	const selectedDate = dayCell.dataset.date
+
+   		const dayEvents = eventData.filter(event =>
+			event._schedule?.some(item =>
+			item.date === selectedDate
+			)
+		)
+
+		if (dayEvents.length === 1) {
+			window.openEventModal(dayEvents[0])
+		}
+		else if (dayEvents.length > 1) {
+   			window.openDayModal(dayEvents, selectedDate)
+		}
+
+		})
+
 
 	// --- Initialize ---
 	loadEvents()

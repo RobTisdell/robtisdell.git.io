@@ -63,8 +63,9 @@
 }
 
 .date {
+	position: relative;
 	border-style: solid;
-	color: rgb(var(--calendar-active-date));
+	color: rgb(var(--primary-link-color));
 	height: 20vh;
 	display: flex;
 	flex-direction: column;
@@ -91,6 +92,34 @@
 
 .date.inactive { 
 	color: rgb(var(--calendar-inactive-date));
+}
+
+.date.has-events:hover {
+	transition: .3s;
+	color: rgb(var(--calendar-active-highlight-color));
+	background-color: rgba(var(--nav-background-color-hover), 0.667);
+	cursor: pointer;
+}
+
+.date.inactive.has-events:hover {
+	transition: .3s;
+	color: rgb(var(--nav-link-color));
+	background-color: rgba(var(--nav-background-color-hover), 0.667);
+	cursor: pointer;
+}
+
+.day-events {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	text-align: center;
+}
+
+.event-summary {
+	width: 100%;
+	text-align: center;
 }
 
 

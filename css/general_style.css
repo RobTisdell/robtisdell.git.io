@@ -29,6 +29,7 @@ All CSS files refer to these.  I'll say explicitly what uses these in case anyon
 	--nav-background-color-hover: 8, 8, 8;
 	--calendar-active-date: 242, 242, 242;
 	--calendar-inactive-date: 121, 121, 121;
+	--calendar-active-highlight-color: 255, 255, 255;
 }
 
 /* 
@@ -48,7 +49,7 @@ primary-link-color: Universal, it's used on all link text.  As noted above, this
 
 --content-dropdown-menu-color: Used for the nav menu mostly.  There is one specific place where it's used because it's a particularly dark color, and that's for the background specifically of the Day divs on multi-day event modals.
 
--nav-link-color: Currently used for navigation links and buttons (Calendar arrows, modal close...).  I'm honestly not sure how important it is to distinguish this from normal link colors and I may wind up nixing this.
+-nav-link-color: Currently used for navigation links and buttons (Calendar arrows, modal close...).  I'm honestly not sure how important it is to distinguish this from normal link colors and I may wind up nixing this.  It is also the highlight color for inactive calendar dates when hovered over.
 
 --nav-link-hover-color: This doubles as both the link hover color *and* the border hover color.  Changing this will have some outsized effects on what the name implies.  May fix later, may not.
 

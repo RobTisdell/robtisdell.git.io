@@ -145,6 +145,34 @@
 		return html
 	}
 
+window.openDayModal = function(dayEvents, selectedDate) {
+
+    let html = `
+        <span class="close-button">&times</span>
+
+        <h2>${formatDate(selectedDate)}</h2>
+
+        <div class="day-modal-events">
+    `
+
+    dayEvents.forEach(event => {
+
+        html += `
+            <button
+                class="day-modal-view-event"
+                data-event-id="${event.ID}">
+                ${event.Name}
+            </button>
+        `
+    })
+
+    html += `</div>`
+
+    ModalContent.innerHTML = html
+
+    EventModal.style.display = 'flex'
+}
+
 window.openEventModal = function (eventData) {
 		// This generates a basic list if the event in question is exactly 1 day and exactly 1 event.  These are so simple that they don't need much explaining.
 		if (!eventData.Days || eventData.Days && eventData.Part.length === 1) {
@@ -322,6 +350,25 @@ subEventBlocks.forEach(block => {
 		`
 		EventModal.style.display = 'flex'
 	}
+
+	document.addEventListener('click', (event) => {
+
+    	const button = event.target.closest('.day-modal-view-event')
+
+    	if (!button) {
+    		return
+    	}
+
+	    const eventId = button.dataset.eventId
+
+    	const eventDetails = window.eventData.find(
+        	event => event.ID.toString() === eventId
+    	)
+
+	    if (eventDetails) {
+    	    window.openEventModal(eventDetails)
+    	}
+})
 
 	// This looks for links for images specifically.	This is the section that pops up the modal window for titleholder images, staff images, and event flyers.
 
