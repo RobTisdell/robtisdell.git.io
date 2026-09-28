@@ -30,6 +30,8 @@ All CSS files refer to these.  I'll say explicitly what uses these in case anyon
 	--calendar-active-date: 242, 242, 242;
 	--calendar-inactive-date: 121, 121, 121;
 	--calendar-active-highlight-color: 255, 255, 255;
+	--FLAG-yellow-color: 254, 219, 27;
+	--FLAG-blue-color: 87, 109, 166;
 }
 
 /* 
@@ -60,6 +62,10 @@ primary-link-color: Universal, it's used on all link text.  As noted above, this
 --calendar-active-date: Used only for calendar days that correspond to the display month on the calendar.
 
 --calendar-inactive-date: Same as above, but for dates that don't correspond to the active month.
+
+--FLAG-yellow-color: The yellow color used on the FLAG logo.  Currently only used for the circles on the mobile calendar for multi-day events, but made available as a variable for any case where we may need color to differentiate things.
+
+--FLAG-blue-color: The blue color used on the FLAG logo.  Currently only used for the circles on the mobile calendar for single-day events, but made available as a variable for any case where we may need color to differentiate things.
 
 */
 

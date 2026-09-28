@@ -153,6 +153,46 @@
 
 				// the HTML for each event box.  This section handles the mobile list.
 
+				mobileHTML += `<div class="event_boxes" id="event-${event.ID}">
+					<div class="event_flyer">
+					<a href="#" class="image-link"><img src="img/events/flyers/${event.Flyer}" alt="${event.Name} flyer preview"></a></div>`
+					// Conditional start for FLAG meetings specifically.
+					if(event.Type === "FLAG Meeting") {
+					mobileHTML += `<div class="event_description">
+						<strong>Event:</strong><br>${event.Name}<br><br>
+						<strong>Date:</strong><br>${formatDate(event.StartDate)}<br><br>
+						`
+						event.Part.forEach(Part => {
+						mobileHTML +=
+							`<strong>Location:</strong><br>${displayLocation(Part.Location.Place, Part.Location.URL)}${makeMapLink(Part.Location.Address)}`
+						})
+					mobileHTML += `</div>`
+					}
+					// Conditional start for single-day events.
+					if(event.Type != "FLAG Meeting" && (event.Days > 1 || event.Part.length > 1)) {
+					mobileHTML += 
+					`<div class="event_description">
+						<strong>Event:</strong><br>${event.Name}<br><br>`
+						mobileHTML +=`<strong>Start Date:</strong><br>${formatDate(event.StartDate)}<br><br>
+						This event has multiple parts to it!  Please click <a href="#" class="event-link" data-event-id="${event.ID}">here</a> to see all the details.<br><br>
+						</div>`
+					}
+					// Conditional start for one-day, one-part, non-meeting events.
+					if(event.Type != "FLAG Meeting" && (event.Days === 1 && event.Part.length === 1)) {
+						const eventPart = event.Part[0]
+						mobileHTML +=
+						`<div class="event_description">
+							<strong>Event:</strong><br>${event.Name}<br><	
+							<strong>Date:</strong><br>${formatDate(event.StartDate)}<br><br>
+							<strong>Time:</strong><br>${formatTime(eventPart.StartTime)} - ${formatTime(eventPart.EndTime)}<br><br>
+							<strong>Location:</strong><br>${displayLocation(eventPart.Location.Place, eventPart.Location.URL)}${makeMapLink(eventPart.Location.Address)}
+						</div>`
+					}
+
+				// Close out the event box div.
+				mobileHTML += `</div>`
+
+					/* Commenting out to try how the "new" setup looks on a mobile device before I start trying to make things drastically different.
 					mobileHTML += `
 					<div class="event_boxes" id="event-${event.ID}">
 					<div class="event_images"><img src="img/events/${event.Image}" alt="${event.Name} image"></div>
@@ -165,7 +205,7 @@
 						if (event.Days > 1) {
 							mobileHTML += `<li><strong>Dates :</strong> ${formatDate(event.StartDate)} - ${formatDate(event.EndDate)}</li>`
 						}
-					mobileHTML += `</ul></div>`
+					mobileHTML += `</ul></div>`*/
 
 					// This section handles the desktop list of meetings. BE AWARE!  This was written with the assumption that all meetings are 1-day meetings, and likely only have 1, possibly 2, parts (Such as going to a restaraunt).  If this assumption is wrong, the meeting box will bloat.  If the nature of meetings change, this MUST be rewrtitten.
 

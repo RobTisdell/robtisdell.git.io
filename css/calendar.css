@@ -66,7 +66,6 @@
 	position: relative;
 	border-style: solid;
 	color: rgb(var(--primary-link-color));
-	height: 20vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -117,11 +116,6 @@
 	text-align: center;
 }
 
-.event-summary {
-	width: 100%;
-	text-align: center;
-}
-
 
 @media (min-width: 801px) {
 	.mobile-days {
@@ -140,6 +134,23 @@
 		display: none;
 	}
 
+	.event-summary-desktop {
+	width: 100%;
+	text-align: center;
+	text-decoration: underline;
+	}
+
+	.event-summary-mobile {
+	display: none;
+	}
+
+	.date {
+		height: 20vh;
+	}
+
+	.mobile-legend {
+		display: none;
+	}
 }
 
 @media (max-width: 800px) {
@@ -157,5 +168,29 @@
 	
 	.desktop-arrows {
 		display: none;
+	}
+
+	.event-summary-desktop {
+	display: none;
+	}
+
+	.event-summary-mobile {
+	text-align: center;
+	}
+
+	.blue-circle {
+		color: rgb(var(--FLAG-blue-color));
+	}
+
+	.yellow-circle {
+		color: rgb(var(--FLAG-yellow-color));
+	}
+
+	.date {
+		height: 10vh;
+	}
+
+	.mobile-legend {
+		text-align: center;
 	}
 }

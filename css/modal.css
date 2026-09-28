@@ -1,6 +1,5 @@
 /* Handles CSS information for all modal window cases across pages that have modal content. */
 
-
 .modal {
 	display: none;
 	position: fixed;
@@ -159,7 +158,16 @@
 	border: 1px solid rgb(var(--primary-border-color));
 }
 
-/* This all addresses the accordian behavior for large event modals. */
+.multi-day-header {
+	font-size: 2rem;
+	text-align: center;
+}
+
+.day-modal-content {
+	min-width: 40vw;
+}
+
+/* This addresses the accordian behavior for large event modals. */
 
 .modal-subevents-list {
 	overflow: hidden;

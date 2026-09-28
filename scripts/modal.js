@@ -147,30 +147,33 @@
 
 window.openDayModal = function(dayEvents, selectedDate) {
 
-    let html = `
-        <span class="close-button">&times</span>
+	let html = `
+		<span class="close-button">&times</span>
 
-        <h2>${formatDate(selectedDate)}</h2>
+		<div class="day-modal-content">
 
-        <div class="day-modal-events">
-    `
+		<div class="multi-day-header">Events happening on<br>${formatDate(selectedDate)}</div>
+		<br>
+		<div class="day-modal-events">
+	`
 
-    dayEvents.forEach(event => {
+	dayEvents.forEach(event => {
 
-        html += `
-            <button
-                class="day-modal-view-event"
-                data-event-id="${event.ID}">
-                ${event.Name}
-            </button>
-        `
-    })
+		html += `
+			<a href="#"
+				class="day-modal-view-event"
+				data-event-id="${event.ID}">
+				${event.Name}
+			</a> - Hosted by: ${event.Host}
+			<br>
+		`
+	})
 
-    html += `</div>`
+	html += `</div></div>`
 
-    ModalContent.innerHTML = html
+	ModalContent.innerHTML = html
 
-    EventModal.style.display = 'flex'
+	EventModal.style.display = 'flex'
 }
 
 window.openEventModal = function (eventData) {
@@ -352,23 +355,25 @@ subEventBlocks.forEach(block => {
 	}
 
 	document.addEventListener('click', (event) => {
+		const link = event.target.closest('.day-modal-view-event')
 
-    	const button = event.target.closest('.day-modal-view-event')
+		if (!link) {
+			return
+		}
 
-    	if (!button) {
-    		return
-    	}
+		event.preventDefault()
 
-	    const eventId = button.dataset.eventId
+		const eventId = link.dataset.eventId
 
-    	const eventDetails = window.eventData.find(
-        	event => event.ID.toString() === eventId
-    	)
+		const eventDetails = window.eventData.find(
+			event => event.ID.toString() === eventId
+		)
 
-	    if (eventDetails) {
-    	    window.openEventModal(eventDetails)
-    	}
-})
+		if (eventDetails) {
+			window.openEventModal(eventDetails)
+		}
+	})
+
 
 	// This looks for links for images specifically.	This is the section that pops up the modal window for titleholder images, staff images, and event flyers.
 

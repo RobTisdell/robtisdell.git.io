@@ -128,16 +128,18 @@
 
 			if (dayEvents.length === 1) {
 				eventHtml = `
-					<div class="event-summary">
+					<div class="event-summary-desktop">
 						${dayEvents[0].Name}
 					</div>
+					<div class="event-summary-mobile"><span class="blue-circle">&#11044;</span></div>
 				`
 			}
 			else if (dayEvents.length > 1) {
 				eventHtml = `
-					<div class="event-summary multiple-events">
-						${dayEvents.length} Events
+					<div class="event-summary-desktop">
+						There are ${dayEvents.length} events happening on this day.<br>Click to see.
 					</div>
+					<div class="event-summary-mobile"><span class="yellow-circle">&#11044;</span></div>
     				`
 				}
 
