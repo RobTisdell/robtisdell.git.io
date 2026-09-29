@@ -104,12 +104,13 @@
 	.divided_boxes .staffpictures a {
 		display: inline-block;
 		width: 200px;
-		height: 20vh;
+		height: 20svh;
 	}
 	
 	.divided_boxes .staffpictures a img {
 		max-height: 100%;
 		width: auto;
+		display: block;
 	}
 	
 	.unified_box {
