@@ -82,7 +82,7 @@
 .dropdown-menu {
 	font-family: Monaco, monospace;
 	position: absolute;
-	top: 10dvh;
+	top: 10svh;
 	left: 0;
 	display: none;
 	background-color: rgb(var(--nav-background-color-normal));
