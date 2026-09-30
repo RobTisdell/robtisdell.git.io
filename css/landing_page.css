@@ -22,7 +22,6 @@ body.landing-page-no-scroll {
 
 @media (max-width: 800px) {
 	.landing img {
-		height: 45vh;
-		width: auto;
+		height: 40vh;
 	}
 }
