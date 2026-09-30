@@ -45,7 +45,6 @@
 	padding: 2px;
 	border-radius: 8px;
 	object-fit: contain;
-	max-width: 12.5vw;
 }
 
 .event_boxes i.fa {
@@ -69,11 +68,19 @@
 	.events {
 		display: none;
 	}
+
+	.event_flyer a img {
+		max-width: 25vw;
+	}
 }
 
 @media (min-width: 801px) {
 
 	.all {
 		display: none;
+	}
+
+	.event_flyer a img {
+		max-width: 12.5vw;
 	}
 }

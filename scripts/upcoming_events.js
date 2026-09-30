@@ -182,7 +182,7 @@
 						const eventPart = event.Part[0]
 						mobileHTML +=
 						`<div class="event_description">
-							<strong>Event:</strong><br>${event.Name}<br><	
+							<strong>Event:</strong><br>${event.Name}<br>	
 							<strong>Date:</strong><br>${formatDate(event.StartDate)}<br><br>
 							<strong>Time:</strong><br>${formatTime(eventPart.StartTime)} - ${formatTime(eventPart.EndTime)}<br><br>
 							<strong>Location:</strong><br>${displayLocation(eventPart.Location.Place, eventPart.Location.URL)}${makeMapLink(eventPart.Location.Address)}
