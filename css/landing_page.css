@@ -3,11 +3,11 @@ body.landing-page-no-scroll {
 }
 
 .landing {
-	height: 60vh;
+	height: 50vh;
 	justify-content: center;
 	align-items: center;
 	display: flex;
-	border: 1px solid green;
+	border: 1px solid blue;
 }
 
 .landing img {
@@ -23,6 +23,6 @@ body.landing-page-no-scroll {
 
 @media (max-width: 800px) {
 	.landing img {
-		height: 40vh;
+		height: 35vh;
 	}
 }
