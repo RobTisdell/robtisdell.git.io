@@ -12,6 +12,7 @@ body.landing-page-no-scroll {
 
 .landing img {
 	object-fit: contain;
+	border: 1px solid red;
 }
 
 @media (min-width: 801px) {
