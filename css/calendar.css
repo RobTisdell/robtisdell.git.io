@@ -7,7 +7,6 @@
 }
 
 .calendar {
-	margin-top: 2.5vh;
 	height: auto;
 	display: flex;
 	flex-direction: column;
@@ -63,18 +62,19 @@
 }
 
 .date {
-	position: relative;
-	border-style: solid;
-	color: rgb(var(--primary-link-color));
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
-	background-color: rgba(var(--nav-background-color-normal), 0.667);
+    position: relative;
+    border-style: solid;
+    color: rgb(var(--primary-link-color));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: rgba(var(--nav-background-color-normal), 0.667);
+    aspect-ratio: 1 / 1;
 }
 
 .calendarnumber {
-	font-size: 2vh;
+	font-size: 1rem;
 }
 
 .event-note {
@@ -144,10 +144,6 @@
 	display: none;
 	}
 
-	.date {
-		height: 20vh;
-	}
-
 	.mobile-legend {
 		display: none;
 	}
@@ -184,10 +180,6 @@
 
 	.yellow-circle {
 		color: rgb(var(--FLAG-yellow-color));
-	}
-
-	.date {
-		height: 9vh;
 	}
 
 	.mobile-legend {
