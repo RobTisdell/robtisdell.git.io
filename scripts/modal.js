@@ -183,7 +183,7 @@ window.openEventModal = function (eventData) {
 			<span class = "close-button">&times</span>
 			<div class="contentist">
 				<div class="smalleventcolumn">
-					<img src="img/events/${eventData.Image || 'default.png'}">
+					<img src="img/events/banners/${eventData.Image || 'default.png'}">
 				</div>
 			<ul>
 				<li><strong>Event:</strong> ${eventData.Name}</li>
@@ -199,7 +199,7 @@ window.openEventModal = function (eventData) {
 			<span class="close-button">&times</span>
 			<div class = "contentlist">
 			 		<div class="smalleventcolumn">
-					<img src="img/events/${eventData.Image || 'default.png'}">
+					<img src="img/events/banners/${eventData.Image || 'default.png'}">
 				</div>
 				<p><strong>Event:</strong> ${eventData.Name}</p>
 				<p><strong>Hosted by:</strong> ${eventData.Host}</p>
