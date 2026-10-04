@@ -1,9 +1,9 @@
 .affiliate-container {
-margin-top: 2vh;
-height: 9vh;
-display: flex;
-padding-bottom: 5px;
-border-bottom: 5px solid rgb(var(--nav-background-color-normal));
+	margin-top: 2vh;
+	height: 9vh;
+	display: flex;
+	padding-bottom: 5px;
+	border-bottom: 5px solid rgb(var(--nav-background-color-normal));
 }
 
 .affiliate-picture {
@@ -26,38 +26,76 @@ border-bottom: 5px solid rgb(var(--nav-background-color-normal));
 }
 
 .affiliate-container:hover {
-transition: .3s;
-border-bottom: 5px solid;
-border-bottom-color: rgb(var(--nav-background-color-hover));
+	transition: .3s;
+	border-bottom: 5px solid;
+	border-bottom-color: rgb(var(--nav-background-color-hover));
 }
 
-.link_bar {
+/* Parent container: Turns into a single, cohesive, physical strip */
+#header_links {
 	display: flex;
-	justify-content: space-evenly;
-	border-color: rgb(var())
+	justify-content: center;       /* Pulls all boxes together horizontally so they touch */
+	align-items: stretch;          /* Forces all boxes to automatically match the tallest item's height */
+	width: 100%;                   
+	box-sizing: border-box;
 }
 
-.link_bar a {
+/* Anchor links: Perfectly uniform dimensions, matched to the largest text requirements */
+#header_links a {
 	display: flex;
-	justify-content: space-evenly;
-	width: 25%;
+	justify-content: center;       /* Centers text content horizontally */
+	align-items: center;           /* Centers text content vertically */
+	
+	flex: 1 0 0%;                  /* Evenly distributes the width based on the maximum content demands */
+	box-sizing: border-box;        
+	
+	text-align: center;
+	text-decoration: none;         
+	
+	/* Borders are modified to prevent thick double-borders when boxes connect */
 	border: 1px solid rgb(var(--primary-border-color));
+	border-right: none;            /* Removes inner overlapping right borders permanently */
+	
 	background-color: rgb(var(--nav-background-color-normal));
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
 
-.link_bar a:hover {
-	background-color: rgb(var(--nav-background-color-hover));
-	border: 1px solid rgb(var(--nav-link-hover-color));
+/* Re-applies the missing right border ONLY to the very last box in the strip closure */
+#header_links a:last-child {
+	border-right: 1px solid rgb(var(--primary-border-color));
 }
 
-.link_bar a.Active {
-	display: flex;
-	justify-content: space-evenly;
-	width: 25%;
+/* Hover state interaction */
+#header_links a:hover {
 	background-color: rgb(var(--nav-background-color-hover));
-	border: 1px solid rgb(var(--nav-link-hover-color));
-	padding-top: 20px;
-	padding-bottom: 20px;
+	border-top-color: rgb(var(--nav-link-hover-color));
+	border-bottom-color: rgb(var(--nav-link-hover-color));
+	border-left-color: rgb(var(--nav-link-hover-color));
+}
+
+/* If the last child is hovered, update its fixed right border color */
+#header_links a:last-child:hover {
+	border-right-color: rgb(var(--nav-link-hover-color));
+}
+
+/* THE JUMPING FIX: Updates the left border of the next element instead of adding a right border */
+#header_links a:hover + a {
+	border-left-color: rgb(var(--nav-link-hover-color));
+}
+
+/* Active state triggered by your JavaScript script toggle rules */
+#header_links a.Active {
+	background-color: rgb(var(--nav-background-color-hover));
+	border-top-color: rgb(var(--nav-link-hover-color));
+	border-bottom-color: rgb(var(--nav-link-hover-color));
+	border-left-color: rgb(var(--nav-link-hover-color));
+}
+
+#header_links a.Active:last-child {
+	border-right-color: rgb(var(--nav-link-hover-color));
+}
+
+#header_links a.Active + a {
+	border-left-color: rgb(var(--nav-link-hover-color));
 }

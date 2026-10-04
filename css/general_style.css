@@ -145,6 +145,8 @@ body::before {
 	border-style: solid;
 	border-radius: 10px;
 	border-color: rgba(var(--primary-border-color), 0.867);
+	-webkit-hyphens: auto;
+	hyphens: auto;
 }
 
 /* Style definitions within the article tag */
