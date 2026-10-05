@@ -24,7 +24,9 @@
 
 		// Helper function for creating hashtags out of category information.
 		function createHashTag(category){
-			const hashTag = category.replace(/[^A-Za-z0-9_]/g, '')
+			const hashTag = category
+			.replace(/&/g, 'and')
+			.replace(/[^A-Za-z0-9_]/g, '')
 			return hashTag
 		}
 

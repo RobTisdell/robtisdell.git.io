@@ -28,7 +28,7 @@
 	"Name": "Mates Leather Weekend",
 	"URL": "https://www.matesleatherweekend.com/",
 	"Logo": "mates_leather_weekend.png",
-	"Category": "Weekend Fun"
+	"Category": "Week\u00ADend Fun"
 },
 
 {
@@ -36,7 +36,7 @@
 	"Name": "New England Leather",
 	"URL": "https://neleather.org/",
 	"Logo": "new_england_leather_weekend.png",
-	"Category": "Weekend Fun"
+	"Category": "Week\u00ADend Fun"
 },
 
 {
@@ -44,7 +44,7 @@
 	"Name": "Mr. & Ms. CT Leather",
 	"URL": "http://www.mrctleather.org/",
 	"Logo": "mr_ms_ct_leather.png",
-	"Category": "Weekend Fun"
+	"Category": "Week\u00ADend Fun"
 },
 
 {
@@ -52,6 +52,15 @@
 	"Name": "New England Rubber Club",
 	"URL": "https://www.newenglandrubberclub.com/",
 	"Logo": "new_england_rubber_club.png",
-	"Category": "Clubs and Community"
+	"Category": "Clubs & Com\u00ADmu\u00ADni\u00ADty"
+},
+
+{
+	"ID": "affiliate_8",
+	"Name": "Haus of Codec",
+	"URL": "https://www.hausofcodec.org/",
+	"Logo": "haus_of_codec.png",
+	"Category": "Sup\u00ADport"
 }
+
 ]
