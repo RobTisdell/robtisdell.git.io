@@ -172,13 +172,12 @@ body::before {
 }
 
 .wrapper .content article p.title::first-letter {
-	font-size: clamp(2.4rem, calc(2.5vw + 1rem), 6rem);
+	font-size: clamp(2.4rem, calc(2.5vw + 2rem), 6rem);
 	font-weight: normal;
 }
 
 .wrapper .content article p {
 	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
-	text-indent: 2rem;
 	margin-bottom: 1rem;
 	margin-left: 2rem;
 	margin-right: 2rem;
@@ -196,4 +195,18 @@ body::before {
 .wrapper .content article a:hover {
 	transition: .3s;
 	color: rgb(var(--primary-link-hover-color));
+}
+
+@media (min-width: 801px) {
+	.wrapper .content article p {
+		margin-left: 2rem;
+		margin-right: 2rem;
+	}
+}
+
+@media (max-width: 800px) {
+	.wrapper .content article p {
+	margin-left: 1vw;
+	margin-right: 1vw;
+	}
 }
