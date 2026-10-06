@@ -1,0 +1,243 @@
+[
+	{
+	"ID": "glove_0",
+	"Name": "Rene Beaudoin",
+	"Year": 2001,
+	"Image": "dude1.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_1",
+	"Name": "Don Costanzo?",
+	"Year": 2002,
+	"Image": "dude1.jpg",
+	"Description": ""
+	},
+	
+	{
+	"ID": "glove_2",
+	"Name": "Lederlied of CT Pete?",
+	"Year": 2003,
+	"Image": "dude1.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_3",
+	"Name": "Tim Starky",
+	"Year": 2009,
+	"Image": "dude1.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_4",
+	"Name": "Arne Grandell-Bennett",
+	"Year": 2010,
+	"Image": "ArneGrandell-Bennett.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_5",
+	"Name": "Jim Gardner",
+	"Year": 2011,
+	"Image": "JimGardner.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_6",
+	"Name": "Corvette (Derek Chandler)",
+	"Year": 2012,
+	"Image": "Corvette.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_7",
+	"Name": "Providence Eagle",
+	"Year": 2013,
+	"Image": "dude1.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_8",
+	"Name": "Michael Maggard",
+	"Year": 2013,
+	"Image": "MichaelMaggard.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_9",
+	"Name": "Rick Daley",
+	"Year": 2014,
+	"Image": "RickDaley.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_10",
+	"Name": "Rob Claffie",
+	"Year": 2014,
+	"Image": "RobClaffie.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_11",
+	"Name": "Matt Kenney",
+	"Year": 2015,
+	"Image": "MattKenney.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_12",
+	"Name": "Jay Falcon",
+	"Year": 2015,
+	"Image": "dude1.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_13",
+	"Name": "Ken Sautter",
+	"Year": 2016,
+	"Image": "KenSautter.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_14",
+	"Name": "David Bielski (skeeter)",
+	"Year": 2016,
+	"Image": "Skeeter.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_15",
+	"Name": "Karen Taylor",
+	"Year": 2017,
+	"Image": "KarenTaylor.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_16",
+	"Name": "Marky Bucknam",
+	"Year": 2017,
+	"Image": "MarkyBucknam.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_17",
+	"Name": "Remi Graber",
+	"Year": 2018,
+	"Image": "dude1.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_18",
+	"Name": "Traci Welch",
+	"Year": 2018,
+	"Image": "TraciWelch.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_19",
+	"Name": "Jay Menick",
+	"Year": 2019,
+	"Image": "dude1.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_20",
+	"Name": "George Hicks",
+	"Year": 2019,
+	"Image": "GeorgeHicks.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_21",
+	"Name": "Boggy Fryer",
+	"Year": 2021,
+	"Image": "BoggyFryer.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_22",
+	"Name": "Russ Wyatt",
+	"Year": 2021,
+	"Image": "RussWyatt.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_23",
+	"Name": "Sir Justin Eddy-Scyoc",
+	"Year": 2022,
+	"Image": "JustinEddy-Scyoc.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_24",
+	"Name": "Harry James Ostrowsky",
+	"Year": 2023,
+	"Image": "HarryJamesOstrowsky.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_25",
+	"Name": "Jeff Janelle",
+	"Year": 2023,
+	"Image": "JeffJanelle.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_26",
+	"Name": "Susan Weinstein",
+	"Year": 2024,
+	"Image": "SusanWeinstein.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_27",
+	"Name": "Rocco Pesce",
+	"Year": 2024,
+	"Image": "RoccoPesce.jpg",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_29",
+	"Name": "Spot",
+	"Year": 2025,
+	"Image": "Spot.jpg",
+	"Description": ""
+	},
+
+
+	{
+	"ID": "glove_30",
+	"Name": "Pup Casmir",
+	"Year": 2025,
+	"Image": "PupCasmir.jpg",
+	"Description": ""
+	}
+
+]
