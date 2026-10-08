@@ -513,7 +513,7 @@ about.html, history.html, contest.html, contest_rules.html, contest_application.
 *********************************************************************
 
 
-Social media links show up in two files.  They show up in sidenav.html and topnav.html.  These two files are navigation files, and while they're still technically static html pages, I did not list them with the above ones, as they're fundamental to how users navigate.   As with all HTML files, it should only be modified if you know what you're doing.  I am *only* pointing out where the relevant code lies so you don't have to dig.  I'm not going to explain what's going on (With one exception) below, because frankly there needs to be a filter.  Someone who doesn't know what they're doing can break something accidentaly, so if you can't read and understand this, don't try and update it.
+Social media links show up in two files.  They show up in sidenav.html and topnav.html.  These two files are navigation files, and while they're still technically static html pages, I did not list them with the above ones, as they're fundamental to how users navigate.   As with all HTML files, it should only be modified if you know what you're doing.  I am *only* pointing out where the relevant code lies so you don't have to dig.  I'm not going to explain what's going on (With one exception) below, because frankly there needs to be a filter.  Someone who doesn't know what they're doing can break something accidentaly, so if you can't read and understand the following, don't try and update it.
 
 		<div class="socials">
 			<a href="https://www.facebook.com/groups/79158953813" target="_blank" rel="noopener noreferrer">

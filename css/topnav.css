@@ -93,9 +93,10 @@
 .dropdown-menu a {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
+	text-align: center;
 	width: 100%;
-	height: 7svh;
+	height: 6svh;
 	font-size: 2.8svh;
 	flex-shrink: 0;
 	padding: 0 8px;
@@ -103,8 +104,9 @@
 }
 
 .has-submenu > a {
-	padding-left: 8px;
-	padding-right: 0;
+	justify-content: space-between;
+	padding-left: 16px;
+	padding-right: 16px;
 }
 
 .has-submenu > a > .down-arrow {
@@ -129,7 +131,7 @@
 .dropdown-menu ul li {
 	display: flex;
 	flex-direction: column;
-	min-height: 7svh;
+	min-height: 6svh;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
 	padding: 0;
