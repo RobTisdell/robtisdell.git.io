@@ -54,6 +54,7 @@
 						</div>
 						<div class="staff-box">
 							<span class="staff-name"><b>${titleHolder.Name} - ${titleHolder.Prefix} FLAG (${titleHolder.Year})</b></span>
+							<br>
 							<span class="staff-description">${titleHolder.Description}</span>
 						</div>
 					</div>

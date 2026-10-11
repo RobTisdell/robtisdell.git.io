@@ -92,7 +92,7 @@
 					let pastPositionsLine = ''
 					const doesMemberHavePastPositions = formatPastPositions(staffMember)
 						if (doesMemberHavePastPositions !== '') {
-							pastPositionsLine = `<span class="staff-position">Also served as ${doesMemberHavePastPositions}</span>`
+							pastPositionsLine = `<span class="staff-position">Also served as ${doesMemberHavePastPositions}</span><br>`
 							}
 
 				// The final HTML generation.
@@ -104,12 +104,13 @@
 						</div>
 						<div class="staff-box">
 							<span class="staff-name"><b>${staffMember.Name} - ${staffMember.CurrentPosition} since ${staffMember.YearStarted}</b></span>
+							<br>
 							${pastPositionsLine}
 							<span class="staff-description">${staffMember.Description}</span>
 						</div>
 					</div>
 				`
-				
+
 				// Append generated HTML to page.
 				outputContainer.innerHTML += staffHtml
 			})

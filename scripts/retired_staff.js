@@ -125,8 +125,8 @@
 						<a href="#" class="image-link"><img src="img/staff/Thumbnails/${staffMember.Image}" alt="${staffMember.Name}"></a>
 					</div>
 					<div class="staff-box">
-							<span class="staff-name"><b>${staffMember.Name}</b></span>
-							<span class="staff-position"><b>Past Positions:</b> ${formatPastPositions(staffMember)}</span>
+							<span class="staff-name"><b>${staffMember.Name}</b></span><br>
+							<span class="staff-position"><b>Past Positions:</b> ${formatPastPositions(staffMember)}</span><br>
 							<span class="staff-description">${staffMember.Description}</span>
 					</div>
 				</div>
