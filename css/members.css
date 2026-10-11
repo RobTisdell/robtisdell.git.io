@@ -1,106 +1,106 @@
 .divided_boxes {
-    border: 1px solid rgb(var(--primary-border-color));
-    padding: clamp(10px, 1vw, 15px);
-    margin-bottom: clamp(20px, 1.5vh, 30px);
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    background-color: rgba(var(--content-box-background-color), 0.667);
-    display: flow-root; /* Keeps the container wrapped around the float */
+	border: 1px solid rgb(var(--primary-border-color));
+	padding: clamp(10px, 1vw, 15px);
+	margin-bottom: clamp(20px, 1.5vh, 30px);
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+	background-color: rgba(var(--content-box-background-color), 0.667);
 }
 
 .divided_boxes a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .divided_boxes a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .divided_boxes .staffpictures {
-    float: left;
-    width: clamp(8rem, 12vw, 20rem);
-    height: clamp(8rem, 12vw, 20rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 2vw;
+	width: clamp(8rem, 12vw, 20rem);
+	height: clamp(8rem, 12vw, 20rem);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 2vw;
 }
 
 .divided_boxes .staffpictures a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(var(--nav-background-color-normal), 0.667);
-    border-radius: 8px;
-    border: 1px solid rgb(var(--primary-border-color));
-    padding: 3px;
-    width: 100%;
-    height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(var(--nav-background-color-normal), 0.667);
+	border-radius: 8px;
+	border: 1px solid rgb(var(--primary-border-color));
+	padding: 3px;
 }
 
 .staffpictures a:hover {
-    transition: .3s;
-    background-color: rgba(var(--nav-background-color-hover), 0.667);
-    border-radius: 8px;
-    border: 1px solid rgb(var(--nav-link-hover-color));
+	transition: .3s;
+	background-color: rgba(var(--nav-background-color-hover), 0.667);
+	border-radius: 8px;
+	border: 1px solid rgb(var(--nav-link-hover-color));
 }
 
 .divided_boxes .staffpictures a img {
-    border-radius: 8px;
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
-    border: 1px solid rgb(var(--primary-border-color));
+	border-radius: 8px;
+	object-fit: contain;
+	max-width: 100%;
+	max-height: 100%;
+	border: 1px solid rgb(var(--primary-border-color));
 }
 
 .divided_boxes .staffpictures a:hover img {
-    transition: .3s;
-    border: 1px solid rgb(var(--nav-link-hover-color));
+	transition: .3s;
+	border: 1px solid rgb(var(--nav-link-hover-color));
 }
 
 /* Ensure staff-box behaves as a clean block container */
 .divided_boxes .staff-box {
-    display: block;
 	font-size: clamp(1rem, 1vw + 0.125rem, 1.75rem);
-    line-height: 1.6;
+	line-height: 1.6;
 }
 
 /* Force each text section onto its own separate line */
-.divided_boxes .staff-name,
-.divided_boxes .staff-position,
-.divided_boxes .staff-description {
-    display: block;
-}
-
-.staff-box {
-	border-style: 1px solid white;
-}
 
 .staff-name {
-    font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
+	font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.25rem);
 }
 
 .staff-position {
-    font-size: clamp(1.125rem, 1vw + 0.25rem, 2rem);
+	font-size: clamp(1.125rem, 1vw + 0.25rem, 2rem);
 }
 
 .divided_boxes .staff-description {
-    font-size: clamp(1rem, 1vw + 0.125rem, 1.75rem);
-    line-height: 1.6;
-    
-    /* Pulls the text block left to fill that empty space under the image */
-    margin-left: calc(-1 * (clamp(8rem, 12vw, 20rem) + 2vw));
-    padding-left: calc(clamp(8rem, 12vw, 20rem) + 2vw);
+	font-size: clamp(1rem, 1vw + 0.125rem, 1.75rem);
+	line-height: 1.6;
+	
+	/* Pulls the text block left to fill that empty space under the image */
+	margin-left: calc(-1 * (clamp(8rem, 12vw, 20rem) + 2vw));
+	padding-left: calc(clamp(8rem, 12vw, 20rem) + 2vw);
 }
 
 /* Restores the stylized first letter for the description */
 .staff-description::first-letter {  
-    font-size: clamp(1.125rem, 1vw + 0.25rem, 2rem);
-    font-weight: bold;
+	font-size: clamp(1.125rem, 1vw + 0.25rem, 2rem);
+	font-weight: bold;
 }
 
 
 @media (min-width: 801px) {
+
+	.divided_boxes .staff-name,
+	.divided_boxes .staff-position,
+	.staff-description {
+	display: block;
+	}
+
+	.divided_boxes {
+		display: flow-root;
+	}
+
+	.divided_boxes .staffpictures {
+		float: left;
+	}
 	
 	.divided_boxes .staffpictures a {
 		width: 100%;
@@ -114,17 +114,17 @@
 		object-fit: contain;
 	}
 	
-.divided_boxes .staffpictures {
-    float: left;
-    width: clamp(8rem, 12vw, 20rem);
-    height: clamp(8rem, 12vw, 20rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    top: 10px;
-	left: 1vw;
-}
+	.divided_boxes .staffpictures {
+		float: left;
+   		width: clamp(8rem, 12vw, 20rem);
+		height: clamp(8rem, 12vw, 20rem);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		top: 10px;
+		left: 1vw;
+	}
 
 	.unified_box .titleholder-pictures {
 		display: block;
@@ -137,23 +137,33 @@
 
 @media (max-width: 800px) {
 	.divided_boxes {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		flex-direction: column;
 	}
 	
 	.divided_boxes .staffpictures {
-		margin-top: 2vh;
-		margin-bottom: 2vh;
-		text-align: center;
-	}
-	
-	.divided_boxes .staffpictures a {
-		display: inline-block;
-		width: 200px;
-		height: 20svh;
+		margin-top: 3vh;
+		margin-bottom: 3vh;
 	}
 	
 	.divided_boxes .staffpictures a img {
 		max-height: 40svh;
+	}
+
+	.divided_boxes .staff-box {
+		width: 100%;
+	}
+
+	.staff-name {
+		display: block;
+		
+		text-align: center; /* Ensures text aligns identically to the centered image */
+	}
+
+	.staff-description {
+		display: block;
 	}
 	
 	.unified_box {
