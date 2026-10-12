@@ -1,4 +1,15 @@
 [
+
+{
+	"ID": "staff_7",
+	"Name": "Amethyst Rain",
+	"IsActive": true,
+	"CurrentPosition": "Social Media Specialist",
+	"YearStarted": 2025,
+	"PastPositions": null,
+	"Image": "AmethystRain.jpg",
+	"Description": ""
+},
 {
 	"ID": "staff_6",
 	"Name": "Leather Daddy 7",

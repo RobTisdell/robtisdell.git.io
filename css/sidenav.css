@@ -55,9 +55,7 @@
 	margin: 0;
 	top: 0;
 	position: absolute;
-	margin-left: -1px;
-	width: 12.125vw;
-	min-width: 60px;
+	width: 15vw;
 	left: 100%;
 	background-color: rgba(var(--nav-background-color-normal), 0.8);
 	visibility: hidden;

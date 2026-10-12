@@ -12,7 +12,7 @@
 		
 		// Attempt to get the JSON file with the titleholder data.
 		try {
-			const response = await fetch('scripts/mentor_award_recipients.json')
+			const response = await fetch('scripts/json/mentor_award_recipients.json')
 			
 			// Pass an error if there is a server error in retrieving the JSON file.
 			if (!response.ok) {

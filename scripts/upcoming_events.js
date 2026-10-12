@@ -110,7 +110,7 @@
 
 		// Attempt to get the JSON file with the event data.
 		try {
-			const response = await fetch('scripts/events.json')
+			const response = await fetch('scripts/json/events.json')
 
 			// Pass an error if there is a server error in retrieving the JSON file.
 			if (!response.ok) {
@@ -135,8 +135,8 @@
 			// We need these three variables to hold the HTML output for events.  Since Jim wants to split events on the desktop site into two columns (One for events and one for normal meetings), we need those two variables.  Since mobile doesn't have enough physical screen space for this to work, that needs its own variable that contains everything.
 			
 			let mobileHTML = ""
-			let meetingHTML = ""
-			let eventHTML = ""
+			let eventHTML = `<div class="event-category><p class="event-header">FLAG Social Meetings</p>`
+			let meetingHTML = `<div class="event-category><p class="meeting-header">FLAG Events</p>`
 
 			// This goes through each event by sifting through what events have multiple days, single days, multiple parts, or single parts and generates HTML based on what's what.  Anything that has more than one part and/or days has some logic handling for formatting.
 
@@ -248,6 +248,9 @@
 					eventHTML += `</div></div>`
 					}
 			})
+
+			meetingHTML += `</div>`
+			eventHTML += `</div>`
 
 			mobileOutputContainer.innerHTML += mobileHTML
 			meetingOutputContainer.innerHTML += meetingHTML

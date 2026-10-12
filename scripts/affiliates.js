@@ -63,7 +63,7 @@
 
 		// Attempt to get the JSON file with the affiliate data.
 		try {
-			const response = await fetch('scripts/affiliates.json')
+			const response = await fetch('scripts/json/affiliates.json')
 			
 			// Pass an error if there is a server error in retrieving the JSON file.
 			if (!response.ok) {

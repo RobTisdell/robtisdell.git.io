@@ -102,6 +102,31 @@
 			"StartTime": "20:00",
 			"EndTime": "02:00",
 			"Location": {
+				"Place": "Private",
+				"URL": "None",
+				"Address": "None"
+				}
+		}
+	],
+	"Timezone":  "America/New_York"
+},
+
+{
+	"ID": "event_1",
+	"Name": "Super Heroes Night",
+	"Type": "Bar night",
+	"Image": "2025_March_22.jpg",
+	"Flyer": "demo_flyer_1.jpg",
+	"Description": "FLAG meetup and social event! Bring some snacks and games!",
+	"Host": "FLAG",
+	"Days": 1,
+	"StartDate": "2026-10-12",
+	"Part": [
+		{
+			"PartID": "Event_1_Part_1",
+			"StartTime": "20:00",
+			"EndTime": "02:00",
+			"Location": {
 				"Place": "Providence Eagle",
 				"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
 				"Address": "124 Snow St, Providence RI"

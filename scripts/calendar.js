@@ -198,7 +198,7 @@
 		// This pulls the data from events and runs them through the calendar schedule builder function.  This is exactly the same procedure done in other content loading scripts, which have detailed commentary if you're curious to read how this works.
 	async function loadEvents() {
 		try {
-			const response = await fetch('scripts/events.json')
+			const response = await fetch('scripts/json/events.json')
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`)
 			}

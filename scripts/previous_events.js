@@ -4,7 +4,7 @@
 
 	"use strict"
 
-	const eventsSource = 'scripts/events.json'
+	const eventsSource = 'scripts/json/events.json'
 	const targetContainerId = 'previous-events-container' // ID of the div to output events into
 
 	// --- Pagination State Variables (reset on each load) ---

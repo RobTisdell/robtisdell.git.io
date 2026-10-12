@@ -11,7 +11,7 @@
 
 		// Attempt to get the JSON file with the staff data.
 		try {
-			const response = await fetch('scripts/staff.json')
+			const response = await fetch('scripts/json/staff.json')
 			
 			// Pass an error if there is a server error in retrieving the JSON file.
 			if (!response.ok) {
@@ -27,11 +27,11 @@
 				return
 			}
 
-			const activeStaff = allStaffData.filter(staff => staff.IsActive === true)
+			const boardMembers = allStaffData.filter(staff => staff.IsActive === true && (staff.CurrentPosition == "President" || staff.CurrentPosition ==  "Vice President" || staff.CurrentPosition ==  "Executive Secretary" || staff.CurrentPosition ==  "Treasurer"))
 
 			//	If there are no active staff members, output that to the webpage. This should never happen in practice, though.  This would only occur if someone incorrectly modified the JSON file.
 
-			if (activeStaff.length === 0) {
+			if (boardMembers.length === 0) {
 				outputContainer.innerHTML = '<p>The staff list is currently empty.</p>'
 				return
 			}
@@ -61,8 +61,10 @@
 				// Add other positions here as needed, giving them a numerical order.
 			}
 
+			
+
 			// Actually sort the staff.
-			activeStaff.sort((a, b) => {
+			boardMembers.sort((a, b) => {
 				return positionOrder[a.CurrentPosition] - positionOrder[b.CurrentPosition]
 			})
 
@@ -86,7 +88,7 @@
 			}
 
 			// Generate HTML for the active staff members.
-			activeStaff.forEach(staffMember => {
+			boardMembers.forEach(staffMember => {
 
 				// The part of the HTML generation code that uses the above helper function to format past positions.
 					let pastPositionsLine = ''

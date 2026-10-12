@@ -11,7 +11,7 @@
 
 		// Attempt to get the JSON file with the staff data.
 		try {
-			const response = await fetch('scripts/staff.json')
+			const response = await fetch('scripts/json/staff.json')
 			
 			// Pass an error if there is a server error in retrieving the JSON file.
 			if (!response.ok) {

@@ -11,6 +11,22 @@
 	align-items: stretch;
 }
 
+p.event-header {
+	color: rgb(var(--primary-title-color));
+	text-align: center;
+	font-size: clamp(1.2rem, calc(1.25vw + 1em), 6rem);
+	margin-bottom: 0.5em;
+	text-indent: 0px;
+}
+
+p.meeting-header {
+	color: rgb(var(--primary-title-color));
+	text-align: center;
+	font-size: clamp(1.2rem, calc(1.25w + 1em), 6rem);
+	margin-bottom: 0.5em;
+	text-indent: 0px;
+}
+
 .upcoming-events {
 	display: flex;
 	flex-direction: row;
