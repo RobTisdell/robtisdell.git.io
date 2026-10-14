@@ -158,15 +158,27 @@ window.openDayModal = function(dayEvents, selectedDate) {
 	`
 
 	dayEvents.forEach(event => {
-
+		if (event.Host != "FLAG") {
 		html += `
 			<a href="#"
 				class="day-modal-view-event"
 				data-event-id="${event.ID}">
 				${event.Name}
+			</a>  - Hosted by: <a href="${event.Site}">${event.Host}</a>
+			<br>
+		`
+		}
+
+		if (event.Host === "FLAG") {
+		html += `
+			<a href="#" class="day-modal-view-event" data-event-id="${event.ID}">
+			<span class="FLAG-Event">
+				${event.Name}
+				</span>
 			</a> - Hosted by: ${event.Host}
 			<br>
 		`
+		}
 	})
 
 	html += `</div></div>`
@@ -187,7 +199,7 @@ window.openEventModal = function (eventData) {
 				</div>
 			<ul>
 				<li><strong>Event:</strong> ${eventData.Name}</li>
-				<li><strong>Hosted by:</strong> ${eventData.Host}</li>
+				<li><strong>Hosted by:</strong> <a href="${eventData.Site}" target="_blank">${eventData.Host}</a></li>
 				<li><strong>Date:</strong> ${eventData.StartDate}</li>
 				<li><strong>Time:</strong> ${formatTime(eventData.Part[0].StartTime)} - ${formatTime(eventData.Part[0].EndTime)}</li>
 				<li><strong>Where:</strong> ${displayLocation(eventData.Part[0].Location.Place, eventData.Part[0].Location.URL)}</li>
@@ -202,7 +214,7 @@ window.openEventModal = function (eventData) {
 					<img src="img/events/banners/${eventData.Image || 'default.png'}">
 				</div>
 				<p><strong>Event:</strong> ${eventData.Name}</p>
-				<p><strong>Hosted by:</strong> ${eventData.Host}</p>
+				<p><strong>Hosted by:</strong> <a href="${eventData.Site}" target="_blank"}">${eventData.Host}</a></p>
 				${buildMultiDaySchedule(eventData)}
 			</div>
 			`

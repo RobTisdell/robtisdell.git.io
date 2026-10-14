@@ -8,6 +8,7 @@
 		"Flyer": "demo_flyer_3.jpg",
 		"Description": "Test event!",
 		"Host": "FLAG",
+		"Site": "http://fitslikeaglove.org/",
 		"HostURL": "",
 		"Days": 3,
 		"StartDate": "2026-10-11",
@@ -94,6 +95,7 @@
 	"Flyer": "demo_flyer_1.jpg",
 	"Description": "FLAG meetup and social event! Bring some snacks and games!",
 	"Host": "FLAG",
+	"Site": "http://fitslikeaglove.org/",
 	"Days": 1,
 	"StartDate": "2026-10-05",
 	"Part": [
@@ -119,6 +121,7 @@
 	"Flyer": "demo_flyer_1.jpg",
 	"Description": "FLAG meetup and social event! Bring some snacks and games!",
 	"Host": "FLAG",
+	"Site": "http://fitslikeaglove.org/",
 	"Days": 1,
 	"StartDate": "2026-10-12",
 	"Part": [
@@ -145,6 +148,7 @@
 	"Flyer": "demo_flyer_1.jpg",
 	"Description": "FLAG meetup and social event! Bring some snacks and games!",
 	"Host": "FLAG",
+	"Site": "http://fitslikeaglove.org/",
 	"Days": 1,
 	"StartDate": "2026-10-31",
 	"Part": [
@@ -170,6 +174,7 @@
 	"Flyer": "demo_flyer_1.jpg",
 	"Description": "FLAG meetup and social event! Bring some snacks and games!",
 	"Host": "FLAG",
+	"Site": "http://fitslikeaglove.org/",
 	"Days": 1,
 	"StartDate": "2026-10-12",
 	"Part": [

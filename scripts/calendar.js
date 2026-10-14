@@ -125,21 +125,45 @@
 			)
 
 			let eventHtml = ''
-
 			if (dayEvents.length === 1) {
 				eventHtml = `
-					<div class="event-summary-desktop">
-						${dayEvents[0].Name}
-					</div>
-					<div class="event-summary-mobile"><span class="blue-circle">&#11044;</span></div>
-				`
-			}
+					<div class="event-summary-desktop">`
+						if (dayEvents[0].Host === "FLAG") {
+							eventHtml += `<span class="FLAG-Event">`
+						}
+							eventHtml += `${dayEvents[0].Name}`
+
+						if (dayEvents.Host === "FLAG") {
+							eventHtml += `</span>`
+						}
+					eventHtml += `</div>`
+					if (dayEvents[0].Host != "FLAG") {
+						eventHtml += `<div class="host"><br>Hosted by:<br><a href="${dayEvents[0].Site}" target="_blank">${dayEvents[0].Host}</a></div>
+						<div> class="event-summary-mobile"><span class="single-day">&#11044;</span></div>`
+					}
+					else if (dayEvents[0].Host == "FLAG") {
+						eventHtml += `<div class="host"><br>Hosted by:<br><a href="${dayEvents[0].Site}" target="_blank">${dayEvents[0].Host}</a></div><div class="event-summary-mobile"><span class="single-day">&#9650;</span></div>`
+					}
+				}
 			else if (dayEvents.length > 1) {
-				eventHtml = `
-					<div class="event-summary-desktop">
-						There are ${dayEvents.length} events happening on this day.<br>Click to see.
-					</div>
-					<div class="event-summary-mobile"><span class="yellow-circle">&#11044;</span></div>
+
+				if (dayEvents.some(event => event.Host === "FLAG")) {
+        			eventHtml = `
+            			<div class="event-summary-desktop"><span class="FLAG-Event">There are ${dayEvents.length} events on this day.<br>Click for list.</span>
+            			</div>
+						<div class="event-summary-mobile"><span class="multi-day">&#9650;</span></div>
+        			`
+    			}
+				else {
+        			eventHtml = `
+            			<div class="event-summary-desktop">
+                			There are ${dayEvents.length} events scheduled for this day. Click for details.
+            			</div>
+						<div class="event-summary-mobile"><span class="multi-day">&#11044;</span></div>
+        			`
+    			}
+				eventHtml += `
+					
     				`
 				}
 
@@ -219,6 +243,13 @@
 
 	// This bit turns the links on the calendar to open a modal window that will display the complete event information.
 	document.addEventListener('click', (event) => {
+
+		
+		// Kills the function immediately if clicking a host link, which is the only other link that should ever show on the calendar.
+		if (event.target.closest('.host a')) {
+   			return
+		}
+
 		const eventLink = event.target.closest('.event-link')
 		if (eventLink) {
 
@@ -247,6 +278,12 @@
 	})
 
 	document.addEventListener('click', (event) => {
+
+		
+		// Kills the function immediately if clicking a host link, which is the only other link that should ever show on the calendar.
+		if (event.target.closest('.host a')) {
+   			return
+		}
 
     	const dayCell = event.target.closest('.date.has-events')
 

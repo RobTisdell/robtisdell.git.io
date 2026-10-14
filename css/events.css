@@ -11,20 +11,34 @@
 	align-items: stretch;
 }
 
+.meeting-category {
+	border: 2px solid rgb(var(--FLAG-yellow-color));
+	padding: 1vw;
+	border-radius: 8px;
+}
+
+.event-category {
+	border: 2px solid rgb(var(--FLAG-blue-color));
+	padding: 1vw;
+	border-radius: 8px;
+}
+
 p.event-header {
-	color: rgb(var(--primary-title-color));
+	color: rgb(var(--FLAG-blue-color));
 	text-align: center;
 	font-size: clamp(1.2rem, calc(1.25vw + 1em), 6rem);
-	margin-bottom: 0.5em;
+	margin-bottom: 0.25em;
 	text-indent: 0px;
+	font-weight: bold;
 }
 
 p.meeting-header {
-	color: rgb(var(--primary-title-color));
+	color: rgb(var(--FLAG-yellow-color));
 	text-align: center;
 	font-size: clamp(1.2rem, calc(1.25w + 1em), 6rem);
-	margin-bottom: 0.5em;
+	margin-bottom: 0.25em;
 	text-indent: 0px;
+	font-weight: bold;
 }
 
 .upcoming-events {

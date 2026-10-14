@@ -238,6 +238,21 @@
 	"Year": 2025,
 	"Image": "PupCasmir.jpg",
 	"Description": ""
-	}
+	},
 
+	{
+	"ID": "glove_31",
+	"Name": "Amethyst Rain",
+	"Year": 2026,
+	"Image": "",
+	"Description": ""
+	},
+
+	{
+	"ID": "glove_31",
+	"Name": "Ricky Mestre",
+	"Year": 2026,
+	"Image": "",
+	"Description": ""
+	}
 ]

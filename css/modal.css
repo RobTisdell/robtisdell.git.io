@@ -172,3 +172,10 @@
 .modal-subevents-list {
 	overflow: hidden;
 }
+
+a .FLAG-Event:hover {
+	color: rgb(var(--FLAG-yellow-hover-color));
+	text-decoration-line: underline;
+	text-decoration-color: rgb(var(--FLAG-yellow-hover-color));
+	transition: .3s
+}

@@ -135,21 +135,12 @@
 			// We need these three variables to hold the HTML output for events.  Since Jim wants to split events on the desktop site into two columns (One for events and one for normal meetings), we need those two variables.  Since mobile doesn't have enough physical screen space for this to work, that needs its own variable that contains everything.
 			
 			let mobileHTML = ""
-			let eventHTML = `<div class="event-category><p class="event-header">FLAG Social Meetings</p>`
-			let meetingHTML = `<div class="event-category><p class="meeting-header">FLAG Events</p>`
+			let eventHTML = `<div class="meeting-category"><p class="meeting-header">FLAG Social Meetings</p>`
+			let meetingHTML = `<div class="event-category"><p class="event-header">FLAG Events</p>`
 
 			// This goes through each event by sifting through what events have multiple days, single days, multiple parts, or single parts and generates HTML based on what's what.  Anything that has more than one part and/or days has some logic handling for formatting.
 
 			eventData.forEach(event => {
-
-				// These are the containers HTML will get appeneded to in the loops.  Their final content will be added directly to mobileHTML, meetingHTML, and eventHTML at the end.
-				// EDIT: We're not doing the loops anymore, delete these if the setup doesn't require them further.
-
-
-				// let mobileEvents = ""
-				// let meetingEvents = ""
-				// let flagEvents = ""
-
 
 				// the HTML for each event box.  This section handles the mobile list.
 
@@ -182,7 +173,7 @@
 						const eventPart = event.Part[0]
 						mobileHTML +=
 						`<div class="event_description">
-							<strong>Event:</strong><br>${event.Name}<br>	
+							<strong>Event:</strong><br>${event.Name}<br><br>
 							<strong>Date:</strong><br>${formatDate(event.StartDate)}<br><br>
 							<strong>Time:</strong><br>${formatTime(eventPart.StartTime)} - ${formatTime(eventPart.EndTime)}<br><br>
 							<strong>Location:</strong><br>${displayLocation(eventPart.Location.Place, eventPart.Location.URL)}${makeMapLink(eventPart.Location.Address)}
@@ -192,20 +183,6 @@
 				// Close out the event box div.
 				mobileHTML += `</div>`
 
-					/* Commenting out to try how the "new" setup looks on a mobile device before I start trying to make things drastically different.
-					mobileHTML += `
-					<div class="event_boxes" id="event-${event.ID}">
-					<div class="event_images"><img src="img/events/${event.Image}" alt="${event.Name} image"></div>
-					<ul>
-						<li><strong>Event:</strong> ${event.Name}</li>`
-						if (event.Days === 1) {
-							mobileHTML += `<li><strong>Date:</strong> ${formatDate(event.StartDate)}</li>`
-						}
-
-						if (event.Days > 1) {
-							mobileHTML += `<li><strong>Dates :</strong> ${formatDate(event.StartDate)} - ${formatDate(event.EndDate)}</li>`
-						}
-					mobileHTML += `</ul></div>`*/
 
 					// This section handles the desktop list of meetings. BE AWARE!  This was written with the assumption that all meetings are 1-day meetings, and likely only have 1, possibly 2, parts (Such as going to a restaraunt).  If this assumption is wrong, the meeting box will bloat.  If the nature of meetings change, this MUST be rewrtitten.
 

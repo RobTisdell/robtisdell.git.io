@@ -61,6 +61,22 @@
 	"Year": 2025,
 	"Image": "KevinSamson.jpg",
 	"Description": ""
+	},
+
+	{
+	"ID": "mentor_8",
+	"Name": "Banshee",
+	"Year": 2026,
+	"Image": "",
+	"Description": ""
+	},
+
+	{
+	"ID": "mentor_9",
+	"Name": "Jay Falcon",
+	"Year": 2026,
+	"Image": "",
+	"Description": ""
 	}
 
 ]

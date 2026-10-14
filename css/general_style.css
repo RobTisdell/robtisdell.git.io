@@ -31,6 +31,8 @@ All CSS files refer to these.  I'll say explicitly what uses these in case anyon
 	--calendar-inactive-date: 121, 121, 121;
 	--calendar-active-highlight-color: 255, 255, 255;
 	--FLAG-yellow-color: 254, 219, 27;
+	--FLAG-yellow-hover-color: 255, 249, 57;
+	--FLAG-gray-color: 133, 133, 133;
 	--FLAG-blue-color: 87, 109, 166;
 }
 

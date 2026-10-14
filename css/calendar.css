@@ -41,7 +41,6 @@
 	transition: .3s;
 	background-color: rgb(var(--nav-background-color-hover));
 	border: 1px solid rgb(var(--nav-link-hover-color));
-	color: rgb(var(--nav-link-hover-color));
 }
 
 .monthYear, .prevBtn, .nextBtn {
@@ -147,6 +146,20 @@
 	.mobile-legend {
 		display: none;
 	}
+
+	.desktop-legend {
+		text-align: center;
+	}
+
+	.host {
+	font-size: 8pt;
+	color: white;
+	font-weight: bold;
+}
+
+	.host a {
+	font-size: 8pt;
+	}
 }
 
 @media (max-width: 800px) {
@@ -174,15 +187,36 @@
 	text-align: center;
 	}
 
-	.blue-circle {
+	.single-day {
 		color: rgb(var(--FLAG-blue-color));
 	}
 
-	.yellow-circle {
+	.multi-day {
 		color: rgb(var(--FLAG-yellow-color));
 	}
 
 	.mobile-legend {
 		text-align: center;
 	}
+
+	.desktop-legend {
+		display: none;
+	}
+
+	.host {
+		display: none;
+	}
+}
+
+.FLAG-Event {
+	color: rgb(var(--FLAG-yellow-color));
+	text-decoration-line: underline;
+	text-decoration-color: rgb(var(--FLAG-yellow-color));
+}
+
+.date.has-events:hover .FLAG-Event {
+	color: rgb(var(--FLAG-yellow-hover-color));
+	text-decoration-line: underline;
+	text-decoration-color: rgb(var(--FLAG-yellow-hover-color));
+	transition: .3s
 }
