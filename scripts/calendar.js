@@ -7,7 +7,7 @@
 	const prevBtn = document.getElementById('prevBtn')
 	const nextBtn = document.getElementById('nextBtn')
 
-	// Makes sure the calendar elements actually exist.	If not, close the program.
+	// Makes sure the calendar elements actually exist.	If not, stop the script altogether.
 	if (!monthYearElement || !datesElement || !prevBtn || !nextBtn) {
 		return
 	}
@@ -99,8 +99,7 @@
 					<span class="calendarnumber">${prevDate.getDate()}</span>
 				</div>
 			`
-		}	
-
+		}
 
 		// Iterates through the number of days of the month and adds a div for each.
 		for (let i = 1; i <= totalDays; i++) {
@@ -121,7 +120,7 @@
 			const dayEvents = eventData.filter(event =>
 				event._schedule?.some(item =>
 					item.date === compareEventString
-    			)
+				)
 			)
 
 			let eventHtml = ''
@@ -137,40 +136,37 @@
 							eventHtml += `</span>`
 						}
 					eventHtml += `</div>`
-					if (dayEvents[0].Host != "FLAG") {
+					if (dayEvents[0].Host !== "FLAG") {
 						eventHtml += `<div class="host"><br>Hosted by:<br><a href="${dayEvents[0].Site}" target="_blank">${dayEvents[0].Host}</a></div>
-						<div> class="event-summary-mobile"><span class="single-day">&#11044;</span></div>`
+						<div class="event-summary-mobile"><span class="single-day">&#11044;</span></div>`
 					}
-					else if (dayEvents[0].Host == "FLAG") {
-						eventHtml += `<div class="host"><br>Hosted by:<br><a href="${dayEvents[0].Site}" target="_blank">${dayEvents[0].Host}</a></div><div class="event-summary-mobile"><span class="single-day">&#9650;</span></div>`
+					else {
+						eventHtml += `<div class="event-summary-mobile"><span class="single-day">&#9650;</span></div>`
 					}
 				}
 			else if (dayEvents.length > 1) {
 
 				if (dayEvents.some(event => event.Host === "FLAG")) {
-        			eventHtml = `
-            			<div class="event-summary-desktop"><span class="FLAG-Event">There are ${dayEvents.length} events on this day.<br>Click for list.</span>
-            			</div>
+					eventHtml = `
+						<div class="event-summary-desktop"><span class="FLAG-Event">There are ${dayEvents.length} events on this day.<br>Click for list.</span>
+						</div>
 						<div class="event-summary-mobile"><span class="multi-day">&#9650;</span></div>
-        			`
-    			}
+					`
+				}
 				else {
-        			eventHtml = `
-            			<div class="event-summary-desktop">
-                			There are ${dayEvents.length} events scheduled for this day. Click for details.
-            			</div>
+					eventHtml = `
+						<div class="event-summary-desktop">
+							There are ${dayEvents.length} events scheduled for this day. Click for details.
+						</div>
 						<div class="event-summary-mobile"><span class="multi-day">&#11044;</span></div>
-        			`
-    			}
-				eventHtml += `
-					
-    				`
+					`
+				}
 				}
 
 			// Makes the date number for each cell.
 			datesHTML += `
 				<div class="date ${activeClass} ${dayEvents.length ? 'has-events' : ''}"
-    				data-date="${compareEventString}">
+					data-date="${compareEventString}">
 					<span class="calendarnumber">${i}</span>
 					<div class="day-events">${eventHtml}</div>
 				</div>
@@ -200,7 +196,6 @@
 			`
 		}
 
-
 		// This just updates the month and year at the top of the calendar to display whatever the month and year should be.
 		monthYearElement.textContent = firstDay.toLocaleString('default', { month: 'long', year: 'numeric' })
 		datesElement.innerHTML = datesHTML
@@ -217,28 +212,73 @@
 		updateCalendar()
 	})
 
-	updateCalendar()
+	// Create an array that holds the JSON path, the banner path, and the flyer path.  This helper function is called later to append this information to events that are loaded.
+	function makePathArray(jsonData) {
+		let jsonArray = []
+			jsonData.forEach(entry => {
+				jsonArray.push({
+					jsonPath:`/scripts/json/events/${entry.Year}/${entry.GroupName}.json`,
+					imagePath: `/img/events/${entry.GroupName}/${entry.Year}/banners/`,
+					flyerPath: `/img/events/${entry.GroupName}/${entry.Year}/flyers/`
+				})
+			})
+			return jsonArray
+		}
 
-		// This pulls the data from events and runs them through the calendar schedule builder function.  This is exactly the same procedure done in other content loading scripts, which have detailed commentary if you're curious to read how this works.
+	updateCalendar()
+	/* This loads a JSON that will generate a series of jsons to load information from. Note that said JSON doesn't have the location file directory of the JSON fils, because honestly that would be redundant. It'd go in specific folders in an organization structure that can just be inferred from the year and group anyways. */
+	async function loadFetchList() {
+	const response = await fetch('scripts/json/event_fetchlist.json')
+
+	if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`)
+	}
+
+	return await response.json()
+	}
+
+	// This takes the JSON result and appends the relevant information to the generated list (via helper function).  Then this pulls the data from events and runs them through the calendar schedule builder function.  This is exactly the same procedure done in other content loading scripts, which have detailed commentary if you're curious to read how this works.
 	async function loadEvents() {
 		try {
-			const response = await fetch('scripts/json/events.json')
-			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`)
-			}
+			// Run the loadFetchList function that loads the JSON with the group and year summary.
+	   		const fetchList = await loadFetchList()
+			// Run the makePathArray function that generates the JSON paths for each group and year, based on the data from fetchList..
+			const pathArray = makePathArray(fetchList)
+			// Now we make the actual event data.
+			eventData = []
+				for (const source of pathArray) {
+					const response = await fetch(source.jsonPath)
+					if (!response.ok) {
+						console.warn(`Could not load: ${source.jsonPath}`)
+						continue
+					}
+					const events = await response.json()
 
-			eventData = await response.json()
-			window.eventData = eventData
+					events.forEach(event => {
+						if (event.Image) {
+							event.Image = source.imagePath + event.Image
+							}
+						if (event.Flyer) {
+							event.Flyer = source.flyerPath + event.Flyer
+						}
+					})
 
-			eventData .forEach(event => {
-				event._schedule = buildCalendarSchedule(event)
+					eventData.push(...events)
+				}
+
+	   		window.eventData = eventData
+
+			eventData.forEach(event => {
+			event._schedule = buildCalendarSchedule(event)
 			})
 
-			updateCalendar()
-
-		} catch (error) {
-			console.error("Error loading or parsing events:", error)
+		updateCalendar()
 		}
+		catch (error) {
+			console.error(
+			"Error loading or parsing events:",
+			error
+		)}
 	}
 
 	// This bit turns the links on the calendar to open a modal window that will display the complete event information.
@@ -285,13 +325,13 @@
    			return
 		}
 
-    	const dayCell = event.target.closest('.date.has-events')
+		const dayCell = event.target.closest('.date.has-events')
 
-    	if (!dayCell) {
-    		return
-    	}
+		if (!dayCell) {
+			return
+		}
 
-    	const selectedDate = dayCell.dataset.date
+		const selectedDate = dayCell.dataset.date
 
    		const dayEvents = eventData.filter(event =>
 			event._schedule?.some(item =>
@@ -308,8 +348,6 @@
 
 		})
 
-
-	// --- Initialize ---
 	loadEvents()
 
 })()

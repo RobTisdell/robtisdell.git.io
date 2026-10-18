@@ -1,35 +1,3 @@
-.affiliate-container {
-	margin-top: 2vh;
-	height: 9vh;
-	display: flex;
-	padding-bottom: 5px;
-	border-bottom: 5px solid rgb(var(--nav-background-color-normal));
-}
-
-.affiliate-picture {
-	margin-top: auto;
-	margin-bottom: auto;
-	max-height: 8vh;
-	max-width: 8vh;
-}
-
-.affiliate-picture img {
-	max-width: 100%;
-	max-height: 100%;
-	object-fit: contain;
-}
-
-.affiliate-title {
-	padding-left: 2vw;
-	margin-top: auto;
-	margin-bottom: auto;
-}
-
-.affiliate-container:hover {
-	transition: .3s;
-	border-bottom: 5px solid;
-	border-bottom-color: rgb(var(--nav-background-color-hover));
-}
 
 /* Parent container: Turns into a single, cohesive, physical strip */
 #header_links {

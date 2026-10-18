@@ -1,0 +1,74 @@
+[
+
+	{
+		"ID": "Event_3",
+		"Name": "Spookybear!",
+		"Type": "Anniversary Weekend",
+		"Image": "red_event.jpg",
+		"Flyer": "spookybearbanner.avif",
+		"Description": "Test event!",
+		"Host": "Northeast Ursamen",
+		"Site": "https://www.ursamen.org/",
+		"HostURL": "",
+		"Days": 4,
+		"StartDate": "2026-10-29",
+		"EndDate": "2026-11-01",
+		"Part": [
+			{
+				"PartID": "Event_3_Part_1",
+				"Day": 1,
+				"StartTime": "21:00",
+				"EndTime": "02:00",
+				"EventName": "Bar Night",
+				"Location": {
+					"Place": "Providence Eagle",
+					"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
+					"Address": "124 Snow St, Providence, RI"
+					},
+				"Description": "Enjoy the party at the bar!"
+			},
+
+            {
+				"PartID": "Event_3_Part_1",
+				"Day": 2,
+				"StartTime": "21:00",
+				"EndTime": "02:00",
+				"EventName": "Bar Night",
+				"Location": {
+					"Place": "Providence Eagle",
+					"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
+					"Address": "124 Snow St, Providence, RI"
+					},
+				"Description": "Enjoy the party at the bar!"
+			},
+
+            {
+				"PartID": "Event_3_Part_1",
+				"Day": 3,
+				"StartTime": "21:00",
+				"EndTime": "02:00",
+				"EventName": "Bar Night",
+				"Location": {
+					"Place": "Providence Eagle",
+					"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
+					"Address": "124 Snow St, Providence, RI"
+					},
+				"Description": "Enjoy the party at the bar!"
+			},
+
+            {
+				"PartID": "Event_3_Part_1",
+				"Day": 4,
+				"StartTime": "21:00",
+				"EndTime": "02:00",
+				"EventName": "Bar Night",
+				"Location": {
+					"Place": "Providence Eagle",
+					"URL": "http://providenceeagle.com/Providence_Eagle/index.html",
+					"Address": "124 Snow St, Providence, RI"
+					},
+				"Description": "Enjoy the party at the bar!"
+			}
+        ]
+    }
+]

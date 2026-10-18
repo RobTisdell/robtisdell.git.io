@@ -158,7 +158,7 @@ window.openDayModal = function(dayEvents, selectedDate) {
 	`
 
 	dayEvents.forEach(event => {
-		if (event.Host != "FLAG") {
+		if (event.Host !== "FLAG") {
 		html += `
 			<a href="#"
 				class="day-modal-view-event"
@@ -195,7 +195,7 @@ window.openEventModal = function (eventData) {
 			<span class = "close-button">&times</span>
 			<div class="contentist">
 				<div class="smalleventcolumn">
-					<img src="img/events/banners/${eventData.Image || 'default.png'}">
+					<img src="${eventData.Image || 'default.png'}">
 				</div>
 			<ul>
 				<li><strong>Event:</strong> ${eventData.Name}</li>
@@ -211,7 +211,7 @@ window.openEventModal = function (eventData) {
 			<span class="close-button">&times</span>
 			<div class = "contentlist">
 			 		<div class="smalleventcolumn">
-					<img src="img/events/banners/${eventData.Image || 'default.png'}">
+					<img src="${eventData.Image || 'default.png'}">
 				</div>
 				<p><strong>Event:</strong> ${eventData.Name}</p>
 				<p><strong>Hosted by:</strong> <a href="${eventData.Site}" target="_blank"}">${eventData.Host}</a></p>
@@ -304,7 +304,7 @@ subEventBlocks.forEach(block => {
 					{ height: `${height}px`, opacity: 1 },
 					{ height: '0px', opacity: 0 }
 				],
-				{ duration: 250, easing: 'ease' }
+				{ duration: 300, easing: 'ease' }
 			)
 
 			animation.onfinish = () => {
@@ -330,7 +330,7 @@ subEventBlocks.forEach(block => {
 						{ height: `${otherHeight}px`, opacity: 1 },
 						{ height: '0px', opacity: 0 }
 					],
-					{ duration: 200, easing: 'ease' }
+					{ duration: 300, easing: 'ease' }
 				).onfinish = () => {
 					activeDetails.style.display = 'none'
 				}
@@ -341,7 +341,7 @@ subEventBlocks.forEach(block => {
 					{ height: '0px', opacity: 0 },
 					{ height: `${height}px`, opacity: 1 }
 				],
-				{ duration: 250, easing: 'ease' }
+				{ duration: 300, easing: 'ease' }
 			)
 
 			animation.onfinish = () => {

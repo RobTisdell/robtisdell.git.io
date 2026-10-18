@@ -212,3 +212,38 @@ body::before {
 	margin-right: 1vw;
 	}
 }
+
+/* Styling for pages where the primary goal is to provide links (Affiliates & Documents at the time of this writing. */
+
+.link-container {
+	margin-top: 2vh;
+	height: 9vh;
+	display: flex;
+	padding-bottom: 5px;
+	border-bottom: 5px solid rgb(var(--nav-background-color-normal));
+}
+
+.link-picture {
+	margin-top: auto;
+	margin-bottom: auto;
+	max-height: 8vh;
+	max-width: 8vh;
+}
+
+.link-picture img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+}
+
+.link-title {
+	padding-left: 2vw;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.link-container:hover {
+	transition: .3s;
+	border-bottom: 5px solid;
+	border-bottom-color: rgb(var(--nav-background-color-hover));
+}

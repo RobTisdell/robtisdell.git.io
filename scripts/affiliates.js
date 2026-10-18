@@ -52,9 +52,9 @@
 			selectedCategory.forEach(affiliate => {
 				outputContainer.innerHTML += `
 				<a href="${affiliate.URL}" target="_blank">
-					<div class="affiliate-container">
-						<div class="affiliate-picture"><img src="img/affiliates/${affiliate.Logo}"></div>
-						<div class="affiliate-title">${affiliate.Name}</div>
+					<div class="link-container">
+						<div class="link-picture"><img src="img/affiliates/${affiliate.Logo}"></div>
+						<div class="link-title">${affiliate.Name}</div>
 					</div>
 				</a>
         	`

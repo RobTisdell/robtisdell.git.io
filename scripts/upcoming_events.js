@@ -96,6 +96,38 @@
 		}
 	}
 
+	// Helper function that generates the list of events to pull from.
+	async function loadFetchList() {
+	const response = await fetch('scripts/json/event_fetchlist.json')
+
+	if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`)
+	}
+
+	return await response.json()
+	}
+
+	// Helper function that generates the relative paths for upcoming events.  This one specifically only looks for events of the current year or greater, filters others out, and then further filters out everything that isn't FLAG events.
+	function makePathArray(jsonData) {
+
+		currentYear = new Date().getFullYear()
+
+		filteredData = jsonData.filter(entry => {
+			filterCondition = parseInt(entry.Year, 10)
+			return filterCondition >= currentYear && entry.GroupName === "FLAG"
+		})
+
+		let jsonArray = []
+			filteredData.forEach(entry => {
+				jsonArray.push({
+					jsonPath:`/scripts/json/events/${entry.Year}/${entry.GroupName}.json`,
+					imagePath: `/img/events/${entry.GroupName}/${entry.Year}/banners/`,
+					flyerPath: `/img/events/${entry.GroupName}/${entry.Year}/flyers/`
+				})
+			})
+			return jsonArray
+		}
+
 	async function displayUpcomingEvents() {
 
 		const mobileOutputContainer = document.getElementById('mobile-events')
@@ -108,16 +140,47 @@
 			return
 		}
 
-		// Attempt to get the JSON file with the event data.
+		// Attempt to get the JSON file with the master datafor events using the loadFetchList helper function.
 		try {
-			const response = await fetch('scripts/json/events.json')
+			const fetchList = await loadFetchList()
 
-			// Pass an error if there is a server error in retrieving the JSON file.
-			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`)
-			}
-			
-			eventData = await response.json()
+			// Now use the makePathArray helper function to generate the relative path for upcoming events.
+			const pathArray = makePathArray(fetchList)
+
+			eventData = []
+
+			for (const source of pathArray) {
+					const response = await fetch(source.jsonPath)
+					if (!response.ok) {
+						console.warn(`Could not load: ${source.jsonPath}`)
+						continue
+					}
+					const events = await response.json()
+
+					events.forEach(event => {
+						if (event.Image) {
+							event.Image = source.imagePath + event.Image
+							}
+						if (event.Flyer) {
+							event.Flyer = source.flyerPath + event.Flyer
+						}
+					})
+
+					eventData.push(...events)
+				}
+
+				// The following simply filters out any events that have endDates before the current day.
+				const today = new Date()
+				today.setHours(0, 0, 0, 0)
+
+				eventData = eventData.filter(event => {
+    				const endDate = parseLocalDate(event.StartDate)
+
+					// If Days is missing, assume a 1-day event
+					const days = event.Days || 1
+    				endDate.setDate(endDate.getDate() + days - 1)
+					return endDate >= today
+					})
 
 			// Pass an error if the JSON file is malformed to both the console and the webpage.
 			if (!Array.isArray(eventData)) {
@@ -130,7 +193,6 @@
 			// Now actually sort the events by date.
 
 			eventData.sort((a, b) => new Date(a.StartDate) - new Date(b.StartDate))
-
 
 			// We need these three variables to hold the HTML output for events.  Since Jim wants to split events on the desktop site into two columns (One for events and one for normal meetings), we need those two variables.  Since mobile doesn't have enough physical screen space for this to work, that needs its own variable that contains everything.
 			
@@ -146,7 +208,7 @@
 
 				mobileHTML += `<div class="event_boxes" id="event-${event.ID}">
 					<div class="event_flyer">
-					<a href="#" class="image-link"><img src="img/events/flyers/${event.Flyer}" alt="${event.Name} flyer preview"></a></div>`
+					<a href="#" class="image-link"><img src="${event.Flyer}" alt="${event.Name} flyer preview"></a></div>`
 					// Conditional start for FLAG meetings specifically.
 					if(event.Type === "FLAG Meeting") {
 					mobileHTML += `<div class="event_description">
@@ -189,7 +251,7 @@
 					if (event.Type === "FLAG Meeting") {
 						meetingHTML += `<div class="event_boxes" id="event-${event.ID}">
 					<div class="event_flyer">
-					<a href="#" class="image-link"><img src="img/events/flyers/${event.Flyer}" alt="${event.Name} flyer preview"></a></div>
+					<a href="#" class="image-link"><img src="/${event.Flyer}" alt="${event.Name} flyer preview"></a></div>
 					<div class="event_description">
 						<strong>Event:</strong><br>${event.Name}<br><br>
 						<strong>Date:</strong><br>${formatDate(event.StartDate)}<br><br>
@@ -207,7 +269,7 @@
 					if (event.Type !== "FLAG Meeting") {
 						eventHTML += `<div class="event_boxes" id="event-${event.ID}">
 					<div class="event_flyer">
-						<a href="#" class="image-link"><img src="img/events/flyers/${event.Flyer}" alt="${event.Name} image"></a>
+						<a href="#" class="image-link"><img src="${event.Flyer}" alt="${event.Name} image"></a>
 					</div>
 					<div class="event_description">
 						<strong>Event:</strong><br>${event.Name}<br><br>`
