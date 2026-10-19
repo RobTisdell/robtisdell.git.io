@@ -100,11 +100,11 @@
 			const sampleDate = dayEvents[0].dateString
 
 			// For complex events, if there is a multi-day event, we want to have the user be able to select which day they want to see details of (We need this because the modal would get too big too fast and I honestly don't feel like writing a scrollbar into the modal).  For single-day complex events, this isn't as much a problem.  So this is just a quick "See if it's single or not" as well as being complex.  If single, then it creates a static 1-day list (Which you can just click to find sub-events for) and if it's multi, then have a clickable day list.
-			const checkDayCount = (dayIndex === 0 && isMultiDay) ? 'open' : ''
+			const detailAttributes = (dayIndex === 0 && isMultiDay) ? 'class="multi-day-event expanded" open': 'class="multi-day-event"'
 
 			// Now for the giant nonsense that is the HTML output.
 			if (isMultiDay) {
-				html += `<details class="multi-day-event" ${checkDayCount}>`
+				html += `<details ${detailAttributes}>`
 				html += `<summary class="modal-day-header"><strong>Day ${dayNum}</strong> (${sampleDate})</summary>`
 			}
 			else {
@@ -118,12 +118,12 @@
 				html += `
 					<div class="sub-event-block" data-part-id="${subEvent.partId}">
 						<div class="sub-event-summary">
-							<span class="sub-event-name">${subEvent.eventName}</span>
+							<span class="sub-event-name">${subEvent.eventName}</span> (<i class="details-toggle-text">show details</i>)
 						</div>
 						<div class="sub-event-details">
 							<p><strong>Where:</strong> ${subEvent.locationURL !== 'None' ? `<a href="${subEvent.locationURL}" target="_blank" rel="noopener noreferrer">${subEvent.location}</a>` : subEvent.location}</p>
 							${subEvent.locationAddress && subEvent.locationAddress !== 'None' ? `<p><strong>Address:</strong> <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(subEvent.locationAddress)}" target="_blank" rel="noopener noreferrer">${subEvent.locationAddress}</a></p>` : ''}
-							<p><strong>Details:</strong> ${subEvent.description}</p>
+							<p><strong>Description:</strong> ${subEvent.description}</p>
 						</div>
 					</div>
 				`
@@ -205,7 +205,7 @@ window.openEventModal = function (eventData) {
 				<li><strong>Where:</strong> ${displayLocation(eventData.Part[0].Location.Place, eventData.Part[0].Location.URL)}</li>
 			</ul>
 		`}
-		// This is where that big stupid helper function is used.	This is for the complex events.
+		// This is where that big stupid helper function is used. This is for the complex events.
 		else {
 		ModalContent.innerHTML = `
 			<span class="close-button">&times</span>
@@ -221,7 +221,7 @@ window.openEventModal = function (eventData) {
 		}
 		EventModal.style.display = 'flex'
 
-		// I had to rely a lot on generative chat models for this segment, unfortunately.  I didn't know how to animate stuff and the one explanation I found didn't really have a good "Here's how to deal with your complexities".  And I really just needed the list to not populate while being jarring to see. Given more weeks I could have figured something out, but this was done at the point where most everything else was set and this needed to just be finished.  I am at least commenting on how it works for my own future reference at least.
+		// I had to rely a lot on generative chat models for this segment, unfortunately.  I didn't know how to animate stuff and the one explanation I found didn't really have a good "Here's how to deal with your complexities".  And I really just needed the list to not populate while being jarring to see. Given more months I could have figured something out, but this was done at the point where most everything else was set and this needed to just be finished.  I am at least commenting on how it works for my own future reference at least.
 		
 		// Kicks all multi-day events into a single variable
 		const subEventsList = ModalContent.querySelectorAll('.multi-day-event')
@@ -237,12 +237,14 @@ window.openEventModal = function (eventData) {
 		summary.addEventListener('click', ev => {
 			ev.preventDefault()
 			if (isAnimating) return
+
 		// Now we start the animation.  contentHeight is set to the value of the actual height of the details list.  The height exists as a value despite not being shown.  Then flag that the content is animating. */
 			const contentHeight = content.scrollHeight
 			isAnimating = true
 
 			// This is where hairs start getting split.  This animation closes a sub-event detail day.
 			if (details.open) {
+				details.classList.remove('expanded')
 				content.animate(
 					{ height: [contentHeight + 'px', '0px'] },
 					{ duration: 300, easing: 'ease' }
@@ -255,20 +257,23 @@ window.openEventModal = function (eventData) {
 			else {
 				// This part of the block closes the already open days.
 					subEventsList.forEach(other => {
-					if (other !== details && other.open) {
-						const otherContent = other.querySelector('.modal-subevents-list')
-						const otherHeight = otherContent.scrollHeight
-						otherContent.animate(
-							{ height: [otherHeight + 'px', '0px'] },
-							{ duration: 300, easing: 'ease' }
-						).finished.then(() => {
-						other.open = false
-						})
-					}
-				})
+						if (other !== details && other.open) {
+							other.classList.remove('expanded')
+							const otherContent = other.querySelector('.modal-subevents-list')
+							const otherHeight = otherContent.scrollHeight
+							otherContent.animate(
+								{ height: [otherHeight + 'px', '0px'] },
+								{ duration: 300, easing: 'ease' }
+							).finished.then(() => {
+							other.open = false
+							})
+						}
+					})
+
 
 				// And this part of the block actually opens up the new day.
 				details.open = true
+				details.classList.add('expanded')
 				content.animate(
 					{ height: ['0px', contentHeight + 'px'] },
 					{ duration: 300, easing: 'ease' }
@@ -286,6 +291,8 @@ const subEventBlocks = ModalContent.querySelectorAll('.sub-event-block')
 subEventBlocks.forEach(block => {
 	const summary = block.querySelector('.sub-event-summary')
 	const details = block.querySelector('.sub-event-details')
+	const toggleText = block.querySelector('.details-toggle-text')
+	
 	let isAnimating = false
 
 	summary.addEventListener('click', (e) => {
@@ -310,17 +317,21 @@ subEventBlocks.forEach(block => {
 			animation.onfinish = () => {
 				block.classList.remove('active')
 				details.style.display = 'none' // Hide content after closing
+				toggleText.textContent = 'show details'
 				isAnimating = false
 			}
 		} else {
 			// OPENING
 			details.style.display = 'block' // Make element visible so scrollHeight can be calculated
+			details.style.height = '0px'
+			details.style.opacity = '0'
 			const height = details.scrollHeight
 
 			// Optional: Close other active sub-events in the same list
 			const parent = block.parentElement
 			const activeOther = parent.querySelector('.sub-event-block.active')
 			if (activeOther) {
+				const otherToggleText = activeOther.querySelector('.details-toggle-text')
 				const activeDetails = activeOther.querySelector('.sub-event-details')
 				const otherHeight = activeDetails.scrollHeight
 				activeOther.classList.remove('active')
@@ -333,6 +344,7 @@ subEventBlocks.forEach(block => {
 					{ duration: 300, easing: 'ease' }
 				).onfinish = () => {
 					activeDetails.style.display = 'none'
+					otherToggleText.textContent = 'show details'
 				}
 			}
 
@@ -345,9 +357,12 @@ subEventBlocks.forEach(block => {
 			)
 
 			animation.onfinish = () => {
-				block.classList.add('active')
-				isAnimating = false
-			}
+    			details.style.height = 'auto'
+    			details.style.opacity = '1'
+    			block.classList.add('active')
+				toggleText.textContent = 'hide details'
+    			isAnimating = false
+}
 		}
 	})
 })

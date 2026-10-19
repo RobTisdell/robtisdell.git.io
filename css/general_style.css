@@ -194,7 +194,7 @@ body::before {
 	text-decoration: underline;
 }
 
-.wrapper .content article a:hover {
+.wrapper .content a:hover {
 	transition: .3s;
 	color: rgb(var(--primary-link-hover-color));
 }

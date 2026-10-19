@@ -59,16 +59,6 @@
 	max-width: 100%
 }
 
-.modal .modal-content ul li a {
-	color: #DDDDDD;
-	text-decoration: underline;
-}
-
-.modal .modal-content ul li a:hover {
-	transition: .3s;
-	color: rgb(var(--nav-link-hover-color));
-}
-
 .modal-day-header {
 	text-align: center;
 	color: rgb(var(--primary-link-color));
@@ -113,16 +103,9 @@
 
 /* Handles the smooth animation of the dropdown menus for complex events. */
 .sub-event-details {
-	max-height: 0;
+	display: none;
 	opacity: 0;
 	overflow: hidden;
-	transition: max-height 0.3s ease, opacity 0.3s ease;
-}
-
-/* When active, allow max-height to expand */
-.sub-event-block.active .sub-event-details {
-	max-height: 500px; /* Set to a value larger than any expected sub-event content */
-	opacity: 1;
 }
 
 /* Banner for events */
@@ -178,4 +161,47 @@ a .FLAG-Event:hover {
 	text-decoration-line: underline;
 	text-decoration-color: rgb(var(--FLAG-yellow-hover-color));
 	transition: .3s
+}
+
+.multi-day-event summary {
+    list-style: none;
+}
+
+.multi-day-event summary::-webkit-details-marker {
+    display: none;
+}
+
+.modal-day-header {
+    position: relative;
+    text-align: center;
+}
+
+.modal-day-header::before {
+    content: "▶";
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+.modal-day-header::after {
+    content: "◀";
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.modal-day-header::before {
+    margin-right: 0.5rem;
+}
+
+.modal-day-header::after {
+    margin-left: 0.5rem;
+}
+
+.multi-day-event.expanded .modal-day-header::before {
+    transform: rotate(90deg);
+}
+
+.multi-day-event.expanded .modal-day-header::after {
+    transform: rotate(-90deg);
 }
